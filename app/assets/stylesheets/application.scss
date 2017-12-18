@@ -16,3 +16,125 @@
 
  @import "bootstrap-sprockets";
  @import "bootstrap";
+ 
+ html{
+  height: 100%;
+}
+
+body { 
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  padding: 70px 0 0 0;
+  position: relative;
+  background-color: #F5F5F5;
+  
+  color: #333;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+ }
+ 
+ .main-content{
+   /* 将 flex-grow 设置为1，该元素会占用全部可使用空间 
+      而其他元素该属性值为0，因此不会得到多余的空间*/
+   /* 1 flex-grow, 0 flex-shrink, auto flex-basis */
+   flex: 1 0 auto;
+ }
+ 
+ // .show-content{
+ //   margin: 30px auto;
+ //   padding: 15px 60px;
+ //   border-radius: 1px;
+ //   box-shadow: 1px 2px 4px 0 rgba(0,0,0,0.25);
+ //   min-height: 950px;
+ //   background-color: #FAFAFA;
+ // }
+
+ nav{
+   /* 我们希望 navbar 采用固定的高度，只占用必须的空间 */
+   /* 0 flex-grow, 0 flex-shrink, auto flex-basis */
+   flex: 0 0 auto;
+   // background-color: #424242;
+  }
+ 
+ /* footer */
+
+ .footer{
+     /* 和 navbar 一样，footer 也采用固定高度*/
+     /* 0 flex-grow, 0 flex-shrink, auto flex-basis */
+     flex: 0 0 auto;
+     width:100%;
+     text-align: center;
+     height: 240px;
+     background-color: #E0E0E0;
+     margin-bottom: auto;
+     padding: 15px 0;
+     color: #212121;
+
+     p{
+         font-size: 14px;
+         text-align: left;
+     }
+
+     li{
+       margin-top: 5px;
+     }
+
+     a{
+       text-decoration:none;
+       color: #616161;
+     }
+     a:hover,
+     a:active,
+     a:focus{
+       color: #424242;
+     }
+
+     img{
+       width: 35px;
+       margin: 5px;
+     }
+
+     img:hover{
+       opacity: 0.75;
+     }
+
+     .footer-box{
+       text-align: left !important;
+       margin-top: 15px;
+       .icon{
+         margin-left: 7.5px;
+       }
+       i{
+         margin-right: 7.5px;
+       }
+     }
+     
+     .footer-content{
+       font-size: 16px;
+       color: #616161;
+       letter-spacing: 1px;
+       margin-top: 10px;
+       font-weight: 200;
+
+       img{
+         width: 30px;
+         margin-left: 7.5px;
+         margin-right: -0.1px;
+       }
+     }
+     .copyright-info{
+       float: left;
+       color: #616161;
+     }
+     .legal-info{
+       float: right;
+       color: #9E9E9E;
+     }
+ }
+
+
+
+
+ /* end of footer */
