@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
   resources :groups do
     resources :posts do
-      resources comments
+      resources :comments
     end
   end
 end
