@@ -2,34 +2,6 @@
     <h2>更新官方文章</h2>
 
     <hr>
-    <%= form_for @official_article do |f| %>
-    
-    <% if @official_article.errors.any? %>
-    <ul>
-      <% @official_article.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-    <% end %>
-    
-    标题
-    <%= f.text_field :title %>
-    <br>
-    
-    作者
-    <%= f.text_field :author %>
-    <br>
-    
-    来源
-    <%= f.text_field :source %>
-    <br>
-    
-    内容
-    <br>
-    <%= f.text_area :content %>
-    <br>
-
-    <%= f.submit "Submit", :disable_with => 'Submitting...' %>
-    <% end %>
+    <%= render "_official_article_form" %>
 
 </div>
