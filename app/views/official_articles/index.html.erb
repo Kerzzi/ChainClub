@@ -1,0 +1,32 @@
+<div class="col-md-12">
+  <div class="group">
+    <%= link_to("New article", new_official_article_path, class: "btn btn-primary pull-right") %>
+  </div>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <td>#</td>
+        <td>Title</td>
+        <td>content</td>
+        <td>author</td>
+        <td>source</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @official_articles.each do |official_article| %>
+        <tr>
+          <td>#</td>
+          <td><%= link_to(official_article.title, official_article_path(official_article)) %></td>
+          <td><%= official_article.content %></td>
+          <td><%= official_article.author %></td>
+          <td><%= official_article.source %></td>
+          <td>
+              <%= link_to("Edit", edit_official_article_path(official_article), class: "btn btn-sm btn-default")%>
+              <%= link_to("Delete", official_article_path(official_article),    class: "btn btn-sm btn-default", 
+                          method: :delete, data: { confirm: "Are you sure?" } )%>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
