@@ -1,5 +1,5 @@
 class ArticleCommentsController < ApplicationController
-  before_action :authenticate_user!, :only => [:new, :create]
+  before_action :authenticate_user!, :only => [:new, :create, :destroy]
 
   def new
     @official_article = OfficialArticle.find(params[:official_article_id])
@@ -19,7 +19,18 @@ class ArticleCommentsController < ApplicationController
     end
   end
 
-
+  def destroy
+    @official_article = OfficialArticle.find(params[:official_article_id]) 
+    @article_comment = ArticleComment.find(params[:id]) 
+    
+    if current_user != @article_comment.user
+      redirect_to official_article_path(@official_article), alert: "抱歉，您没有相应的权限！"
+    end
+    
+    @article_comment.destroy
+    redirect_to official_article_path(@official_article), alert: "删除成功！"
+  end
+  
   private
 
   def article_comment_params
