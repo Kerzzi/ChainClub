@@ -5,4 +5,24 @@
   <h2><%= @official_article.title %></h2>
   <p> 作者：<%= @official_article.author %> 文章来源：<%= @official_article.source %></p>
   <p><%= @official_article.content %></p>
+  <hr>
+  <%= link_to("写评论", new_official_article_article_comment_path(@official_article), class: "btn btn-default pull-right")%>
+  <table class="table">
+    <thead>
+     <tr>
+        <th>评论内容</th>
+        <th>发表者</th>
+        <th>发表时间</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @article_comments.each do |article_comment| %>
+        <tr>
+          <td><%= article_comment.content %></td>
+          <td><%= article_comment.user.email %></td>
+          <td><%= article_comment.created_at %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>

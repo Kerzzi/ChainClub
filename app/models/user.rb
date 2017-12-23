@@ -7,5 +7,5 @@ class User < ApplicationRecord
   has_many :groups
   has_many :posts
   has_many :comments #小组文章post的评论
-  has_many :artile_comments  #官方文章official article的评论
+  has_many :article_comments  #官方文章official article的评论
 end
