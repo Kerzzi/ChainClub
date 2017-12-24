@@ -9,36 +9,3 @@
 </div>
 
 <br>
-<%= link_to("写评论", new_group_post_comment_path(@group,@post), class: "btn btn-default pull-left")%>
-
-<div class="col-md-12">
-  <table class="table">
-    <thead>
-     <tr>
-        <th>评论内容</th>
-        <th>发表者</th>
-        <th>发表时间</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @comments.each do |comment| %>
-        <tr>
-          <td><%= comment.content %></td>
-          <td><%= comment.user.email %></td>
-          <td><%= comment.created_at %></td>
-          <td>
-              <% if current_user && current_user == @post.user %>
-              <%= link_to("Edit", edit_group_post_comment_path(@group,@post,comment), class: "btn btn-sm btn-default")%>
-              <%= link_to("Delete", group_post_comment_path(@group,@post,comment),    class: "btn btn-sm btn-default", 
-                          method: :delete, data: { confirm: "Are you sure?" } )%>
-              <% end %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
-
-<div class="text-center">
-  <%= will_paginate @comments %>
-</div>

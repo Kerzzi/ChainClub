@@ -37,6 +37,7 @@ gem 'bootstrap-sass'
 gem 'simple_form'
 gem 'devise'
 gem 'will_paginate'
+gem 'acts_as_commentable_with_threading'
 
 
 group :development, :test do

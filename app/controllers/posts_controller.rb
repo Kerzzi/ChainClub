@@ -5,7 +5,6 @@ class PostsController < ApplicationController
   def show
     @group = Group.find(params[:group_id])
     @post = Post.find(params[:id])
-    @comments = @post.comments.paginate(:page => params[:page], :per_page => 10)
   end
   
   def new

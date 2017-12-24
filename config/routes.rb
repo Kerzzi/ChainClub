@@ -9,8 +9,6 @@ Rails.application.routes.draw do
     resources :answers
   end
   resources :groups do
-    resources :posts do
-      resources :comments
-    end
+    resources :posts
   end
 end
