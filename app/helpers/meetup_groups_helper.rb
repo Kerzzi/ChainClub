@@ -1,0 +1,2 @@
+module MeetupGroupsHelper
+end
