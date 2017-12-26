@@ -1,0 +1,59 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="dashboard-content">
+      
+      <div class="meetup-block">
+        <div class="heading">
+          <a href="/meetup_groups"><h1 class="title">Meetup</h1></a>  
+        </div>
+        <div class="heading-line">
+          <div class="right-btn-block">
+            <a class="btn btn-default" href="/meetup_groups">查看全部Meetup</a>
+          </div>
+        </div>
+
+        <div class="meetup-detail">
+          <div class="meetup-content">
+            <div class="opt">
+            </div>
+            <h2 class="meetup-name"> @meetup_group.title</h2>
+            
+            <p class="type">
+              <span class="title">活动期限:</span><span class="show-info"><span>@meetup_group.time_limit</span></span>
+            </p>
+
+            <p>
+              <span class="title">活动类型:</span><span class="show-info"><span>@meetup_group.type</span></span>
+            </p>
+            
+            <p class="time">
+              <span class="title">举办时间:</span><span class="show-info">@meetup_group.activity_time</span>
+            </p>
+            
+            <p class="city">
+              <span class="title">城市:</span><span class="show-info">@meetup_group.city</span>
+            </p>
+            
+            <p class="location">
+              <span class="title location-title">聚会地点:</span><span class="show-info">@meetup_group.address</span>
+            </p>
+            
+            <div class="description"><span class="title">聚会详情:</span>
+              <div class="meetup-description">
+              @meetup_group.introduce
+              </div>
+            </div>
+            <p class="link">
+              <span class="title">报名入口:</span><span class="show-info"><a>@meetup_group.register</a></span>
+            </p>
+            
+            <p class="contact">
+              <span class="title">联系人:</span><span class="show-info">@meetup_group.user.email</span>
+            </p>
+          </div>  
+        </div>
+      </div>
+    </div>     
+  </div>
+</div>    
+    

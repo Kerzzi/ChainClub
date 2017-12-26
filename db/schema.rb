@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171226110649) do
+ActiveRecord::Schema.define(version: 20171226145120) do
 
   create_table "answers", force: :cascade do |t|
     t.text "content"
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 20171226110649) do
 
   create_table "meetup_groups", force: :cascade do |t|
     t.string "title"
-    t.string "type"
+    t.string "meetup_type"
     t.string "time_limit"
     t.string "activity_time"
     t.string "city"

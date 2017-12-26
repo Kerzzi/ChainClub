@@ -1,0 +1,40 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="heading">
+      <a href="/meetup_groups"><h1 class="title">Meetup</h1></a>    
+    </div>
+    <div class="right-btn-block">
+      <%= link_to("新建Meetup", new_meetup_group_path, class: "btn btn-primary pull-right") %>
+    </div>
+  </div>
+
+  <table class="table">
+    <thead>
+     <tr>
+        <th>活动名称</th>
+        <th>城市</th>
+        <th>时间</th>
+        <th>联系人</th>
+        <th>查看</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @meetup_groups.each do |meetup_group| %>
+        <tr>
+          <td><%= meetup_group.meetup_type %><%= meetup_group.time_limit %><%= meetup_group.title %></td>
+          <td><%= meetup_group.city %></td>
+          <td><%= meetup_group.activity_time %></td>
+          <td><%= meetup_group.user.email %></td>
+          <td><%= link_to("查看", meetup_group_path(meetup_group), class: "btn btn-default") %></td>
+          <td><%= link_to("更新", edit_meetup_group_path(meetup_group), class: "btn btn-default") %>
+              <%= link_to("Delete", meetup_group_path(meetup_group),    class: "btn btn-sm btn-default", 
+                      method: :delete, data: { confirm: "Are you sure?" } )%><td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div class="text-center">
+  <%= will_paginate @meetup_groups %>
+</div>

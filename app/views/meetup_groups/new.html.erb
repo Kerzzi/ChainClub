@@ -1,0 +1,33 @@
+<h2 class="text-center">新增活动</h2>
+
+<div class="col-md-4 col-md-offset-4">
+  <%= simple_form_for @meetup_group do |f| %>
+    <div class="form-group">
+      <%= f.input :title, input_html: { class: "form-control"} %>
+    </div>
+    <div class="form-group">
+      <%= f.input :meetup_type, input_html: { class: "form-control"} %>
+    </div>
+    <div class="form-group">
+      <%= f.input :time_limit, input_html: { class: "form-control"} %>
+    </div>
+    <div class="form-group">
+      <%= f.input :activity_time, input_html: { class: "form-control"} %>
+    </div>
+    <div class="form-group">
+      <%= f.input :city, input_html: { class: "form-control"} %>
+    </div>
+    <div class="form-group">
+      <%= f.input :address, input_html: { class: "form-control"} %>
+    </div>
+    <div class="form-group">
+      <%= f.input :register, input_html: { class: "form-control"} %>
+    </div>
+    <div class="form-group">
+      <%= f.input :introduce, input_html: { class: "form-control"} %>
+    </div>
+    <div class="form-actions">
+      <%= f.submit "Submit", disable_with: "Submiting...", class: "btn btn-primary"%>
+    </div>
+  <% end %>
+</div>
