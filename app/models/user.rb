@@ -11,4 +11,5 @@ class User < ApplicationRecord
   has_many :article_comments  #官方文章official article的评论
   has_many :answers
   has_many :topics
+  has_many :meetup_groups
 end
