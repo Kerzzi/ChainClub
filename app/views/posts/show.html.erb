@@ -6,6 +6,7 @@
   </div>
   <h2><%= @post.title %></h2>
   <p><%= @post.content %></p>
-</div>
+  <br>
+  <%= render partial: "comments/template", locals: {commentable: @post, new_comment: @comment} %>  
 
-<br>
+</div>

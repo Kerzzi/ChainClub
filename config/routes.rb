@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :topics do
     resources :answers
   end
+  resources :comments 
   resources :groups do
     resources :posts
   end

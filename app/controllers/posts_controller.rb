@@ -5,6 +5,7 @@ class PostsController < ApplicationController
   def show
     @group = Group.find(params[:group_id])
     @post = Post.find(params[:id])
+    @new_comment = Comment.build_from(@post, current_user.id, "")
   end
   
   def new
