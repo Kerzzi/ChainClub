@@ -1,0 +1,40 @@
+<div class="panel panel-primary">
+  <!-- Default panel contents -->
+  <div class="panel-heading">网址导航分类管理</div>
+  <div class="panel-body">
+    <p>...</p>
+    <div class="group">
+      <%= link_to("新增分类", new_admin_site_node_path, class: "btn btn-primary pull-right") %>
+    </div>
+  </div>
+
+  <!-- Table -->
+  <div id="admin_site_nodes">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <td>#</td>
+          <td>分类名</td>
+          <td>排序</td>
+          <td class="opts">操作</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% @site_nodes.each do |site_node| %>
+          <tr>
+            <td><%= site_node.id %></td>
+            <td><%= site_node.name %></td>
+            <td><%= site_node.sort %></td>
+            <td>
+              <% if current_user %>
+                <%= link_to("Edit", edit_admin_site_node_path(site_node), class: "btn btn-sm btn-default")%>
+                <%= link_to("Delete", admin_site_node_path(site_node),    class: "btn btn-sm btn-default", 
+                            method: :delete, data: { confirm: "Are you sure?" } )%>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

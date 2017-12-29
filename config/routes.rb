@@ -16,5 +16,6 @@ Rails.application.routes.draw do
   
   namespace :admin do
     resources :article_categories
+    resources :site_nodes
   end
 end

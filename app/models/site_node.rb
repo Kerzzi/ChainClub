@@ -1,0 +1,2 @@
+class SiteNode < ApplicationRecord
+end

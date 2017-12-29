@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  neme: MyString
+  url: MyString
+  description: MyString
+  site_node_id: 1
+  user_id: 1
+
+two:
+  neme: MyString
+  url: MyString
+  description: MyString
+  site_node_id: 1
+  user_id: 1

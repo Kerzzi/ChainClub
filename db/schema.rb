@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171228123731) do
+ActiveRecord::Schema.define(version: 20171229130331) do
 
   create_table "answers", force: :cascade do |t|
     t.text "content"
@@ -90,6 +90,26 @@ ActiveRecord::Schema.define(version: 20171228123731) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "site_nodes", force: :cascade do |t|
+    t.string "name"
+    t.integer "sort", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sort"], name: "index_site_nodes_on_sort"
+  end
+
+  create_table "sites", force: :cascade do |t|
+    t.string "neme"
+    t.string "url"
+    t.string "description"
+    t.integer "site_node_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["site_node_id"], name: "index_sites_on_site_node_id"
+    t.index ["url"], name: "index_sites_on_url"
   end
 
   create_table "topics", force: :cascade do |t|
