@@ -10,6 +10,7 @@
         <td>content</td>
         <td>author</td>
         <td>source</td>
+        <td>category</td>
       </tr>
     </thead>
     <tbody>
@@ -20,6 +21,7 @@
           <td><%= official_article.content %></td>
           <td><%= official_article.author %></td>
           <td><%= official_article.source %></td>
+          <td><%=official_article.article_category.try(:name) %></td>
           <td>
               <%= link_to("Edit", edit_official_article_path(official_article), class: "btn btn-sm btn-default")%>
               <%= link_to("Delete", official_article_path(official_article),    class: "btn btn-sm btn-default", 

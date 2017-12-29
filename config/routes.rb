@@ -13,4 +13,8 @@ Rails.application.routes.draw do
     resources :posts
   end
   resources :meetup_groups
+  
+  namespace :admin do
+    resources :article_categories
+  end
 end

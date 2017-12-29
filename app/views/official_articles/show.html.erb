@@ -3,8 +3,10 @@
     <%= link_to("更新文章", edit_official_article_path(@official_article), class: "btn btn-primary pull-right")%>
   </div>
   <h2><%= @official_article.title %></h2>
+  <p> 分类：<%= @official_article.article_category.try(:name) %></p>
   <p> 作者：<%= @official_article.author %> 文章来源：<%= @official_article.source %></p>
   <p><%= @official_article.content %></p>
+  
   <hr>
   <%= link_to("写评论", new_official_article_article_comment_path(@official_article), class: "btn btn-default pull-right")%>
   <table class="table">

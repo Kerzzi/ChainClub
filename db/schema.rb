@@ -10,12 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171226145120) do
+ActiveRecord::Schema.define(version: 20171228123731) do
 
   create_table "answers", force: :cascade do |t|
     t.text "content"
     t.integer "topic_id"
     t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "article_categories", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -73,6 +79,8 @@ ActiveRecord::Schema.define(version: 20171226145120) do
     t.string "source"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "article_category_id"
+    t.index ["article_category_id"], name: "index_official_articles_on_article_category_id"
   end
 
   create_table "posts", force: :cascade do |t|
