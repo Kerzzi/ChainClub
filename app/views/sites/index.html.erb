@@ -1,0 +1,14 @@
+<div id="site_nodes">
+  <% @site_nodes.each do |node| %>
+    <div class="panel panel-default">
+      <div class="panel-heading"><%= node.name %></div>
+      <div class="panel-body row">
+        <% node.sites.each do |site| %>
+        <div class="col-md-2 site">
+          <%= link_to site.name, site.url, target: "_blank", rel: "twipsy", title: site.description %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>  
+</div>

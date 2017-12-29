@@ -1,0 +1,14 @@
+<div id="site" class="panel panel-primary">
+  <div class="panel-heading">提交网站</div>
+  <div class="panel-body">
+    <%= simple_form_for [:admin,@site] do |f| %>
+      <div class="form-group">
+        <%= f.association :site_node %>
+        <%= f.input :name, input_html: { class: "form-control"} %>
+        <%= f.input :url, input_html: { class: "form-control" }, placeholder: "http://"  %>
+        <%= f.input :description, as: :text, input_html: { class: "form-control" } %>
+      </div>
+      <%= f.submit "Submit", class: "btn btn-primary", data: { disable_with: "Submiting..." } %>
+    <% end %>
+  </div>
+</div>

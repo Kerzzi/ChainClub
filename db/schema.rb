@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171229130331) do
+ActiveRecord::Schema.define(version: 20171229153723) do
 
   create_table "answers", force: :cascade do |t|
     t.text "content"
@@ -101,7 +101,7 @@ ActiveRecord::Schema.define(version: 20171229130331) do
   end
 
   create_table "sites", force: :cascade do |t|
-    t.string "neme"
+    t.string "name"
     t.string "url"
     t.string "description"
     t.integer "site_node_id"

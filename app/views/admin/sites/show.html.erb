@@ -1,0 +1,23 @@
+<div class="tools">
+   <%= link_to "修改", edit_admin_site_path(@site), class: "btn btn-default" %>
+   <%= link_to "返回", admin_sites_path, class: "btn btn-default" %>
+</div>
+
+<div id="site">
+  <p>
+    <b>网站名称:</b>
+    <%= @site.name %>
+  </p>
+  <p>
+    <b>网址:</b>
+    <%= @site.url %>
+  </p>
+  <p>
+    <b>介绍:</b>
+    <%= @site.description %>
+  </p>
+  <p>
+    <b>网址分类:</b>
+    <%= @site.site_node %>
+  </p>
+</div> 

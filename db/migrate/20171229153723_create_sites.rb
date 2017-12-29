@@ -1,7 +1,7 @@
 class CreateSites < ActiveRecord::Migration[5.1]
   def change
     create_table :sites do |t|
-      t.string :neme
+      t.string :name
       t.string :url
       t.string :description
       t.integer :site_node_id

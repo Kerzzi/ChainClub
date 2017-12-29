@@ -14,8 +14,10 @@ Rails.application.routes.draw do
   end
   resources :meetup_groups
   
+  resources :sites
   namespace :admin do
     resources :article_categories
     resources :site_nodes
+    resources :sites
   end
 end
