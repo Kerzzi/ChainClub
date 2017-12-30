@@ -7,6 +7,89 @@
     <%= f.time_zone_select :time_zone %>
   </div>
 
+  <%= f.fields_for :profile do |ff| %>
+
+    <div class="form-group">
+      <%= ff.label :name %>
+      <%= ff.text_field :name, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= ff.label :birthday %>
+      <%= ff.date_field :birthday, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= ff.label :city %>
+      <%= ff.text_field :location, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= ff.label :education %>
+      <%= ff.text_field :education, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= ff.label :school %>
+      <%= ff.text_field :school, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= ff.label :company %>
+      <%= ff.text_field :company, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= ff.label :occupation %>
+      <%= ff.text_field :occupation, :class => "form-control" %>
+    </div>
+    
+    <div class="form-group">
+      <%= ff.label :position %>
+      <%= ff.text_field :position, :class => "form-control" %>
+    </div>
+    
+    <div class="form-group">
+      <%= ff.label :address %>
+      <%= ff.text_field :address, :class => "form-control" %>
+    </div>
+    
+    <div class="form-group">
+      <%= ff.label :qq %>
+      <%= ff.text_field :qq, :class => "form-control" %>
+    </div>
+    
+    <div class="form-group">
+      <%= ff.label :github %>
+      <%= ff.text_field :github, :class => "form-control" %>
+    </div>
+    
+    <div class="form-group">
+      <%= ff.label :weibo %>
+      <%= ff.text_field :weibo, :class => "form-control" %>
+    </div>
+    
+    <div class="form-group">
+      <%= ff.label :wechat %>
+      <%= ff.text_field :wechat, :class => "form-control" %>
+    </div>  
+    
+    <div class="form-group">
+      <%= ff.label :bio %>
+      <%= ff.text_area :bio, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= ff.label :specialty %>
+      <%= ff.text_area :specialty, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= ff.label :introduce %>
+      <%= ff.text_area :introduce, :class => "form-control" %>
+    </div>  
+  <% end %>
+
   <div class="form-group">
     <%= f.submit "Save", :class => "btn btn-primary" %>
   </div>

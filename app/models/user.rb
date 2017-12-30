@@ -12,4 +12,8 @@ class User < ApplicationRecord
   has_many :answers
   has_many :topics
   has_many :meetup_groups
+  has_one :profile
+  
+  accepts_nested_attributes_for :profile
+  
 end

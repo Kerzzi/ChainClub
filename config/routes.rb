@@ -21,6 +21,8 @@ Rails.application.routes.draw do
     resources :article_categories
     resources :site_nodes
     resources :sites
-    resources :users
+    resources :users do
+      resource :profile, :controller => "user_profiles"
+    end
   end
 end

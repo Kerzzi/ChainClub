@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171230075024) do
+ActiveRecord::Schema.define(version: 20171230100328) do
 
   create_table "answers", force: :cascade do |t|
     t.text "content"
@@ -91,6 +91,29 @@ ActiveRecord::Schema.define(version: 20171230075024) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "name"
+    t.date "birthday"
+    t.string "location"
+    t.string "school"
+    t.string "education"
+    t.string "company"
+    t.string "occupation"
+    t.string "position"
+    t.string "address"
+    t.string "weibo"
+    t.string "wechat"
+    t.string "github"
+    t.integer "qq"
+    t.text "bio"
+    t.text "specialty"
+    t.text "introduce"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
   create_table "site_nodes", force: :cascade do |t|
