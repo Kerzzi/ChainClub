@@ -1,0 +1,5 @@
+"zh-CN":
+  official_article: 官方文章
+  admin:
+    official_article: 官方文章管理
+  hello: "亲～ %{name} 你好："
