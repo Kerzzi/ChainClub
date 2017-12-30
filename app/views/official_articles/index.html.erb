@@ -22,6 +22,7 @@
           <td><%= official_article.author %></td>
           <td><%= official_article.source %></td>
           <td><%=official_article.article_category.try(:name) %></td>
+          <td><%= official_article.created_at %></td>
           <td>
               <%= link_to("Edit", edit_official_article_path(official_article), class: "btn btn-sm btn-default")%>
               <%= link_to("Delete", official_article_path(official_article),    class: "btn btn-sm btn-default", 
