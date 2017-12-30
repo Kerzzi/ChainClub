@@ -1,0 +1,28 @@
+<div class="panel panel-primary">
+  <!-- Default panel contents -->
+  <div class="panel-heading">用户信息管理</div>
+  <div class="panel-body">
+    <p>...</p>
+    <!-- Table -->
+    <div id="admin_site_nodes">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Email</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td><%= user.id %></td>
+              <td><%= user.email %></td>
+              <td><%= link_to "Edit", edit_admin_user_path(user), :class => "btn btn-default" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>  
+  </div>
+</div>

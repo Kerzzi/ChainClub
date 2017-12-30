@@ -19,5 +19,6 @@ Rails.application.routes.draw do
     resources :article_categories
     resources :site_nodes
     resources :sites
+    resources :users
   end
 end
