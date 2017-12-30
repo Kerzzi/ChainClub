@@ -43,6 +43,7 @@ gem 'acts_as_commentable_with_threading'
 gem 'rails-i18n'
 gem "devise-i18n"
 gem "select2-rails"
+gem 'bootstrap-datepicker-rails'
 
 
 group :development, :test do
