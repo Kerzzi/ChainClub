@@ -45,8 +45,15 @@ class Admin::OfficialArticlesController < Admin::BaseController
     total = 0
     Array(params[:ids]).each do |official_article_id|
       official_article = OfficialArticle.find(official_article_id)
-      official_article.destroy
-      total += 1
+      if params[:commit] == I18n.t(:bulk_update)
+        official_article.status = params[:official_article_status]
+        if official_article.save
+          total += 1
+        end
+      elsif params[:commit] == I18n.t(:bulk_delete)
+        official_article.destroy
+        total += 1
+      end
     end
 
     flash[:alert] = "成功完成 #{total} 笔"

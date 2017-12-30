@@ -31,3 +31,5 @@
 
 en:
   hello: "Hi %{name}"
+  bulk_update: Bulk Edit
+  bulk_delete: Bulk Delete

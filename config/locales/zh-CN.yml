@@ -1,4 +1,6 @@
 zh-CN:
+  bulk_update: 批量编辑
+  bulk_delete: 批量删除
   official_article:
     status:
       draft: 草稿

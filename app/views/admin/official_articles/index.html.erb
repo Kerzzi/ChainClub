@@ -37,7 +37,12 @@
         <% end %>
       </tbody>
     </table>
-    <p><%= submit_tag "批次删除", :class => "btn btn-danger", :data => { :confirm => "Are you sure?" } %></p>
+    <p>
+    <%= select_tag :official_article_status, options_for_select( OfficialArticle::STATUS.map{ |s| [t(s, :scope => + "official_article.status"), s] }), :class => "form-control" %>
+    
+    <%= submit_tag t(:bulk_update), :class => "btn btn-primary" %>
+    <%= submit_tag t(:bulk_delete), :class => "btn btn-danger", :data => { :confirm => "Are you + sure?" } %>
+    </p>
   <% end %>
 </div>
 
