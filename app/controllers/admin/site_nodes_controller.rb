@@ -1,4 +1,4 @@
-class Admin::SiteNodesController < ApplicationController
+class Admin::SiteNodesController < Admin::BaseController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   
   def index

@@ -16,8 +16,6 @@
                 <li><%= link_to("机会", "#") %></li>
                 <li><%= link_to("书籍", "#") %></li>
                 <li><%= link_to("常用工具", sites_path) %></li>
-                <li><%= link_to("后台", admin_site_nodes_path) %></li>
-                <li><%= link_to("文章分类管理", admin_article_categories_path) %></li>
             </ul>
             
             <ul class="nav navbar-nav navbar-right">
@@ -31,6 +29,7 @@
                       <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
+                      <li><%= link_to("后台管理", admin_site_nodes_path) %></li>
                       <li><%= link_to("备用", "#") %></li>
                       <li role="separator" class="divider"></li>
                       <li><%= link_to("备用", "#") %></li>

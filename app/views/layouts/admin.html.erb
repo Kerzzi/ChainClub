@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ChainClub后台</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body  id="<%= "#{controller_name}-#{action_name}"%>">
+
+    <%= render "admin/common/navbar" %>
+
+    <div class="container">
+
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+
+      <%= render "common/flashes" %>
+      <%= yield %>
+    </div>
+  </body>
+</html>
