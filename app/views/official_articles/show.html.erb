@@ -23,7 +23,7 @@
         <tr>
           <td><%= article_comment.content %></td>
           <td><%= article_comment.user.email %></td>
-          <td><%= article_comment.created_at %></td>
+          <td><%= article_comment.created_at.strftime("%Y/%m/%d %I:%M %p") %></td>
           <td>
               <% if current_user && current_user == article_comment.user %>
               <%= link_to("Delete", official_article_article_comment_path(@official_article,article_comment),    class: "btn btn-sm btn-default", 
