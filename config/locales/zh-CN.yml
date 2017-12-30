@@ -1,5 +1,9 @@
-"zh-CN":
-  official_article: 官方文章
+zh-CN:
+  official_article:
+    status:
+      draft: 草稿
+      public: 公开
+      private: 私密
   admin:
     official_article: 官方文章管理
   hello: "亲～ %{name} 你好："

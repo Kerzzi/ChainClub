@@ -3,6 +3,7 @@
     <%= link_to("更新文章", edit_official_article_path(@official_article), class: "btn btn-primary pull-right")%>
   </div>
   <h2><%= @official_article.title %></h2>
+  <p><%= t(@official_article.status, :scope => "official_article.status") %></p>
   <p> 分类：<%= @official_article.article_category.try(:name) %></p>
   <p> 作者：<%= @official_article.author %> 文章来源：<%= @official_article.source %></p>
   <p> 最后更新时间：<%= @official_article.updated_at %></p>

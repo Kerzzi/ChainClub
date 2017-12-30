@@ -9,6 +9,7 @@
         <td>Title</td>
         <td>content</td>
         <td>author</td>
+        <td>status</td>
         <td>source</td>
         <td>category</td>
       </tr>
@@ -20,6 +21,7 @@
           <td><%= link_to(official_article.title, official_article_path(official_article)) %></td>
           <td><%= official_article.content %></td>
           <td><%= official_article.author %></td>
+          <td><%= t(official_article.status, :scope => "official_article.status") %></td>
           <td><%= official_article.source %></td>
           <td><%=official_article.article_category.try(:name) %></td>
           <td><%= official_article.created_at.to_s %></td>

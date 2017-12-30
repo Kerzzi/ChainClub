@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171230072531) do
+ActiveRecord::Schema.define(version: 20171230075024) do
 
   create_table "answers", force: :cascade do |t|
     t.text "content"
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 20171230072531) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "article_category_id"
+    t.string "status", default: "draft"
     t.index ["article_category_id"], name: "index_official_articles_on_article_category_id"
   end
 
