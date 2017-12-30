@@ -5,6 +5,7 @@
   <h2><%= @official_article.title %></h2>
   <p> 分类：<%= @official_article.article_category.try(:name) %></p>
   <p> 作者：<%= @official_article.author %> 文章来源：<%= @official_article.source %></p>
+  <p> 最后更新时间：<%= @official_article.updated_at %></p>
   <p><%= @official_article.content %></p>
   
   <hr>

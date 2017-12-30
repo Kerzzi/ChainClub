@@ -30,4 +30,4 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hi %{name},"
+  hello: "Hi %{name}"

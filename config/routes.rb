@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   
-  devise_for :users
   root 'official_articles#index'
+  devise_for :users
+  resource :user
+  
   resources :official_articles do
     resources :article_comments
   end
