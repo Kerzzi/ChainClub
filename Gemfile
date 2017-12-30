@@ -44,6 +44,7 @@ gem 'rails-i18n'
 gem "devise-i18n"
 gem "select2-rails"
 gem 'bootstrap-datepicker-rails'
+gem 'ckeditor'
 
 
 group :development, :test do
