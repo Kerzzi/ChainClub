@@ -17,7 +17,7 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
  
- html{
+html{
   height: 100%;
 }
 
@@ -55,8 +55,29 @@ body {
    /* 我们希望 navbar 采用固定的高度，只占用必须的空间 */
    /* 0 flex-grow, 0 flex-shrink, auto flex-basis */
    flex: 0 0 auto;
-   // background-color: #424242;
+   
   }
+.navbar-default{
+  background-color: #FAFAFA;  //背景颜色
+  border-color: #212121; //边框色
+  margin-bottom: 0; //底部 margin 不撑开距离
+  color: #FAFAFA;
+}  
+
+.navbar-default .navbar-brand {
+  color: #EF6C00; //字体颜色
+
+  padding: 10px 15px; //上下10px，左右15px
+  line-height: 30px; //文字行高
+}
+
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+  color: #FF6F00; //鼠标放置在链接上的文字颜色
+
+  background-color: transparent; //鼠标放置在链接上的背景颜色，这里设为透明
+}
+
  
  /* footer */
 
