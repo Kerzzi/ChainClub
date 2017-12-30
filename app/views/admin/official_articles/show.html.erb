@@ -1,0 +1,37 @@
+<div class="col-md-12">
+  <div class="group">
+    <%= link_to("更新文章", edit_admin_official_article_path(@official_article), class: "btn btn-primary pull-right")%>
+  </div>
+  <h2><%= @official_article.title %></h2>
+  <p><%= t(@official_article.status, :scope => "official_article.status") %></p>
+  <p> 分类：<%= @official_article.article_category.try(:name) %></p>
+  <p> 作者：<%= @official_article.author %> 文章来源：<%= @official_article.source %></p>
+  <p> 最后更新时间：<%= @official_article.updated_at %></p>
+  <hr>
+  <%= sanitize @official_article.content %>
+  <%= link_to("写评论", new_official_article_article_comment_path(@official_article), class: "btn btn-default pull-right")%>
+  <table class="table">
+    <thead>
+     <tr>
+        <th>评论内容</th>
+        <th>发表者</th>
+        <th>发表时间</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @article_comments.each do |article_comment| %>
+        <tr>
+          <td><%= article_comment.content %></td>
+          <td><%= article_comment.user.email %></td>
+          <td><%= article_comment.created_at.to_s %></td>
+          <td>
+              <% if current_user && current_user == article_comment.user %>
+              <%= link_to("Delete", official_article_article_comment_path(@official_article,article_comment),    class: "btn btn-sm btn-default", 
+                          method: :delete, data: { confirm: "确定删除该评论?" } )%>
+              <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

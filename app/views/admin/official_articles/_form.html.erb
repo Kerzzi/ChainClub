@@ -1,0 +1,26 @@
+<%= simple_form_for @official_article do |f| %>
+  <div class="form-group">
+    <%= f.input :title, input_html: { class: "form-control"} %>
+    <%= f.input :author, input_html: { class: "form-control"} %>
+    <%= f.input :source, input_html: { class: "form-control"} %>
+    <%= f.association :article_category %>
+    <%= f.input :content, as: :ckeditor %>
+  </div>
+  
+  <div class="form-group">
+    <div class="btn-group" data-toggle="buttons">
+      <% OfficialArticle::STATUS.each do |status| %>
+        <label class="btn btn-default <%= (status == f.object.status)? 'active' : '' %>">
+          <%= f.radio_button :status, status %>
+          <%= t(status, :scope => "official_article.status") %>
+        </label>
+      <% end %>
+    </div> 
+  </div>  
+  <%= f.submit "Submit", class: "btn btn-primary", data: { disable_with: "Submiting..." } %>
+<% end %>
+
+
+<script>
+  $("#official_article_article_category_id").select2( { theme: "bootstrap"} );
+</script>

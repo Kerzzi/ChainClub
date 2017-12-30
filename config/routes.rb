@@ -19,6 +19,11 @@ Rails.application.routes.draw do
   resources :sites
   namespace :admin do
     resources :article_categories
+    resources :official_articles do
+      collection do
+        post :bulk_update
+      end
+    end
     resources :site_nodes
     resources :sites
     resources :users do

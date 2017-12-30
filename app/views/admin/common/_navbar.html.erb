@@ -10,6 +10,7 @@
             <ul class="nav navbar-nav navbar-left">
               <% if current_user %>
                 <li class="active"><%= link_to('网站分类', admin_site_nodes_path) %></li>
+                <li ><%= link_to('官方文章', admin_official_articles_path) %></li>
                 <li ><%= link_to('文章分类', admin_article_categories_path) %></li>
                 <li ><%= link_to('小组管理', admin_article_categories_path) %></li>
                 <li ><%= link_to('课程管理', "#") %></li>
