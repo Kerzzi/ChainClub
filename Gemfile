@@ -40,6 +40,7 @@ gem 'simple_form'
 gem 'devise'
 gem 'will_paginate'
 gem 'acts_as_commentable_with_threading'
+gem 'rails-i18n'
 
 
 group :development, :test do
