@@ -1,0 +1,52 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">招聘管理</h3>
+  </div>
+  <div class="panel-body">
+    <div class="group">
+      <%= link_to("发布招聘信息", new_job_path, class: "btn btn-primary pull-right") %>
+    </div>
+  </div>  
+  <hr>
+    
+    <!-- Table -->
+    <div id="admin_jobs">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <td>#</td>
+            <td>招聘信息</td>
+            <td>工作地点</td>
+            <td>发布方</td>
+            <td>截止时间</td>
+            <td>更新时间</td>
+            <td class="opts">操作</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% @jobs.each do |job| %>
+            <tr>
+              <td><%= job.id %></td>
+              <td><%= link_to(job.title, job_path(job)) %></td>
+              <td><%= job.city %></td>
+              <td><%= job.publisher %></td>
+              <td><%= job.deadline %></td>
+              <td><%= job.updated_at %></td>
+              <td>
+                <% if current_user %>
+                  <%= link_to("Edit", edit_job_path(job), class: "btn btn-sm btn-default")%>
+                  <%= link_to("Delete", job_path(job),    class: "btn btn-sm btn-default", 
+                              method: :delete, data: { confirm: "Are you sure?" } )%>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div><!-- /Table -->
+
+    <div class="text-center">
+      <%= will_paginate @jobs %>
+    </div>
+
+</div>
