@@ -1,4 +1,6 @@
 class Admin::UsersController < Admin::BaseController
+  before_action :require_super_admin!
+  
    def index
      @users = User.all.paginate(:page => params[:page], :per_page => 20) 
    end
@@ -32,6 +34,6 @@ class Admin::UsersController < Admin::BaseController
    protected
 
    def user_params
-     params.require(:user).permit(:email)
+     params.require(:user).permit(:email, :role)
    end
 end

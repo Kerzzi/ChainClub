@@ -7,17 +7,19 @@
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" >
-            <ul class="nav navbar-nav navbar-left">
-              <% if current_user %>
-                <li class="active"><%= link_to('网站分类', admin_site_nodes_path) %></li>
-                <li ><%= link_to('官方文章', admin_official_articles_path) %></li>
-                <li ><%= link_to('文章分类', admin_article_categories_path) %></li>
-                <li ><%= link_to('小组管理', admin_article_categories_path) %></li>
-                <li ><%= link_to('课程管理', "#") %></li>
-                <li ><%= link_to('招聘管理', admin_jobs_path) %></li>
-                <li ><%= link_to('用户管理', admin_users_path) %></li>
-                <li ><%= link_to('管理面板', "#") %></li>
+            <ul class="nav navbar-nav navbar-left">  
+              <li class="active"><%= link_to('网站分类', admin_site_nodes_path) %></li>
+              <li ><%= link_to('官方文章', admin_official_articles_path) %></li>
+              <li ><%= link_to('文章分类', admin_article_categories_path) %></li>
+              <li ><%= link_to('小组管理', admin_article_categories_path) %></li>
+              <li ><%= link_to('课程管理', "#") %></li>
+              <li ><%= link_to('招聘管理', admin_jobs_path) %></li>
+              <li ><%= link_to('管理面板', "#") %></li>
+              
+              <% if current_user.is_super_admin? %> 
+                <li ><%= link_to('用户管理', admin_users_path) %></li> 
               <% end %>
+              
             </ul>
             
             <ul class="nav navbar-nav navbar-right">

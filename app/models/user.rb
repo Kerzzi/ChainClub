@@ -17,4 +17,18 @@ class User < ApplicationRecord
   
   accepts_nested_attributes_for :profile
   
+  ROLES = ["super_admin","admin", "editor"]
+  
+  def is_super_admin?
+    self.role == "super_admin"
+  end
+
+  def is_admin?
+    ["super_admin", "admin"].include?(self.role) # 如果是 super_admin 的话，当然也有 admin 的权限
+  end
+
+  def is_editor?
+    ["super_admin","admin", "editor"].include?(self.role) 
+  end
+
 end

@@ -1,5 +1,5 @@
 class Admin::ArticleCategoriesController < Admin::BaseController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :require_editor!
   
   def index
     @article_categories = ArticleCategory.all.paginate(:page => params[:page], :per_page => 10) 

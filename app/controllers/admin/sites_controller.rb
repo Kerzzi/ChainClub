@@ -1,5 +1,5 @@
 class Admin::SitesController < Admin::BaseController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :require_editor!
   
   def index
     @site_nodes = SiteNode.all

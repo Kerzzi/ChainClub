@@ -1,4 +1,6 @@
 class Admin::OfficialArticlesController < Admin::BaseController
+  before_action :require_editor!
+  
   def index
     @official_articles = OfficialArticle.all.paginate(:page => params[:page], :per_page => 5) 
   end

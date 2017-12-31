@@ -1,4 +1,5 @@
 class Admin::UserProfilesController < Admin::BaseController
+  before_action :require_super_admin!
   before_action :find_user_and_profile
 
   def edit
