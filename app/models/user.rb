@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :topics
   has_many :meetup_groups
   has_one :profile
+  has_many :jobs
   
   accepts_nested_attributes_for :profile
   

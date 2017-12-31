@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  city: MyString
+  publisher: MyString
+  benefit: MyText
+  introduce: MyText
+  demand: MyText
+  deadline: 2017-12-31
+  process: MyText
+  user_id: 1
+
+two:
+  title: MyString
+  city: MyString
+  publisher: MyString
+  benefit: MyText
+  introduce: MyText
+  demand: MyText
+  deadline: 2017-12-31
+  process: MyText
+  user_id: 1
