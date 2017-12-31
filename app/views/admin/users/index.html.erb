@@ -1,34 +1,51 @@
-<div class="panel panel-primary">
+<div class="panel panel-default">
   <!-- Default panel contents -->
   <div class="panel-heading">用户信息管理</div>
   <div class="panel-body">
-    <p>...</p>
+    <p>操作说明：mark</p>
+    <hr>
+    
     <!-- Table -->
-    <div id="admin_site_nodes">
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Email</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @users.each do |user| %>
+    <div id="admin_users">
+      <%= form_tag bulk_update_admin_users_path, :class => "form-inline" do %>
+        <table class="table table-hover">
+          <thead>
             <tr>
-              <td><%= user.id %></td>
-              <td><%= user.email %></td>
-              <td><%= link_to "Edit", edit_admin_user_path(user), :class => "btn btn-default" %></td>
-              <td><%= link_to "Edit Profile", edit_admin_user_profile_path(user), :class => "btn btn-default" %></td>
+              <th><%= check_box_tag "全选", "1", false, :id => "toggle_all" %></th>
+              <th>ID</th>
+              <th>Email</th>
+              <th>Actions</th>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+          </thead>
+          <tbody>
+            <% @users.each do |user| %>
+              <tr>
+                <td><%= check_box_tag "ids[]", user.id %></td>
+                <td><%= user.id %></td>
+                <td><%= user.email %></td>
+                <td><%= link_to "Edit", edit_admin_user_path(user), :class => "btn btn-default" %></td>
+                <td><%= link_to "Edit Profile", edit_admin_user_profile_path(user), :class => "btn btn-default" %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <p><%= submit_tag "批次删除", :class => "btn btn-danger", :data => { :confirm => "Are you sure?" } %></p>
+      <% end %>
      
-    <div class="text-center">
-      <%= will_paginate @users %>
-    </div> 
-        
+      <div class="text-center">
+        <%= will_paginate @users %>
+      </div> 
+    </div>    
   </div>
 </div>
+
+<script>
+  // 这个 javascript 会绑事件在 #toggle_all 核选方块上，来做全选效果
+  $("#toggle_all").click(function(){
+    if ( $(this).prop("checked") ) {
+      $("input[name='ids[]']").prop("checked", true);
+    } else {
+      $("input[name='ids[]']").prop("checked", false);
+    }
+  })
+</script>

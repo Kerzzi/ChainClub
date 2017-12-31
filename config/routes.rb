@@ -46,6 +46,9 @@ Rails.application.routes.draw do
     end
     resources :users do
       resource :profile, :controller => "user_profiles"
+      collection do
+        post :bulk_update
+      end
     end
   end
 end

@@ -17,6 +17,18 @@ class Admin::UsersController < Admin::BaseController
      end
    end
 
+   def bulk_update
+     total = 0
+     Array(params[:ids]).each do |user_id|
+       user = User.find(user_id)
+       user.destroy
+       total += 1
+     end
+
+     flash[:alert] = "成功完成 #{total} 笔"
+     redirect_to admin_users_path
+   end
+   
    protected
 
    def user_params

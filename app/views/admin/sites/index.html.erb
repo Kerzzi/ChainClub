@@ -1,47 +1,66 @@
-<div id="site_nodes">
-  <div class="panel panel-default">
-    <div class="panel-heading">网址导航管理</div>
-    <div class="panel-body">
+<div class="panel panel-default">
+  <div class="panel-heading">网址导航管理</div>
+  <div class="panel-body">
+    <p>...</p>
+    <div class="group">
       <%= link_to("新增网址", new_admin_site_path, class: "btn btn-primary pull-right") %>
     </div>
+    <p>操作说明：mark</p>
+    <hr>
     
     <!-- Table -->
     <div id="admin_sites">
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <td>#</td>
-            <td>站点名称</td>
-            <td>网址</td>
-            <td>介绍</td>
-            <td>分类</td>
-            <td class="opts">操作</td>
-          </tr>
-        </thead>
-        <tbody>
-          <% @sites.each do |site| %>
+      <%= form_tag bulk_update_admin_sites_path, :class => "form-inline" do %>
+        <table class="table table-hover">
+          <thead>
             <tr>
-              <td><%= site.id %></td>
-              <td><%= site.name %></td>
-              <td><%= site.url %></td>
-              <td><%= site.description %></td>
-              <td><%= site.site_node.name %></td>
-              <td>
-                <% if current_user %>
-                  <%= link_to("Edit", edit_admin_site_path(site), class: "btn btn-sm btn-default")%>
-                  <%= link_to("Delete", admin_site_path(site),    class: "btn btn-sm btn-default", 
-                              method: :delete, data: { confirm: "Are you sure?" } )%>
-                <% end %>
-              </td>
+              <th><%= check_box_tag "全选", "1", false, :id => "toggle_all" %></th>
+              <td>#</td>
+              <td>站点名称</td>
+              <td>网址</td>
+              <td>介绍</td>
+              <td>分类</td>
+              <td class="opts">操作</td>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="text-center">
-      <%= will_paginate @sites %>
-    </div>
-
-  </div>
+          </thead>
+          <tbody>
+            <% @sites.each do |site| %>
+              <tr>
+                <td><%= check_box_tag "ids[]", site.id %></td>
+                <td><%= site.id %></td>
+                <td><%= site.name %></td>
+                <td><%= site.url %></td>
+                <td><%= site.description %></td>
+                <td><%= site.site_node.name %></td>
+                <td>
+                  <% if current_user %>
+                    <%= link_to("Edit", edit_admin_site_path(site), class: "btn btn-sm btn-default")%>
+                    <%= link_to("Delete", admin_site_path(site),    class: "btn btn-sm btn-default", 
+                                method: :delete, data: { confirm: "Are you sure?" } )%>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table><!-- /Table -->
+        <p><%= submit_tag "批次删除", :class => "btn btn-danger", :data => { :confirm => "Are you sure?" } %></p>
+      <% end %>
+    
+      <div class="text-center">
+        <%= will_paginate @sites %>
+      </div>
+    </div><!-- /admin_site -->
+  </div><!-- /panel-body -->
 </div>
+
+
+<script>
+  // 这个 javascript 会绑事件在 #toggle_all 核选方块上，来做全选效果
+  $("#toggle_all").click(function(){
+    if ( $(this).prop("checked") ) {
+      $("input[name='ids[]']").prop("checked", true);
+    } else {
+      $("input[name='ids[]']").prop("checked", false);
+    }
+  })
+</script>
