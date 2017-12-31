@@ -39,6 +39,18 @@ class Admin::ArticleCategoriesController < Admin::BaseController
     redirect_to admin_article_categories_path, alert: "删除成功！"
   end
 
+  def bulk_update
+    total = 0
+    Array(params[:ids]).each do |article_category_id|
+      article_category = ArticleCategory.find(article_category_id)
+      article_category.destroy
+      total += 1
+    end
+
+    flash[:alert] = "成功完成 #{total} 笔"
+    redirect_to admin_article_categories_path
+  end
+
   private
  
   def article_category_params

@@ -1,4 +1,4 @@
-<div class="panel panel-primary">
+<div class="panel panel-default">
   <!-- Default panel contents -->
   <div class="panel-heading">官方文章分类管理</div>
   <div class="panel-body">
@@ -6,36 +6,57 @@
     <div class="group">
       <%= link_to("新增官方文章分类", new_admin_article_category_path, class: "btn btn-primary pull-right") %>
     </div>
-  </div>
-
-  <!-- Table -->
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <td>#</td>
-        <td>分类名</td>
-        <td>操作</td>
-      </tr>
-    </thead>
-    <tbody>
-      <% @article_categories.each do |article_category| %>
-        <tr>
-          <td>#</td>
-          <td><%= article_category.name %></td>
-          <td>
-            <% if current_user %>
-              <%= link_to("Edit", edit_admin_article_category_path(article_category), class: "btn btn-sm btn-default")%>
-              <%= link_to("Delete", admin_article_category_path(article_category),    class: "btn btn-sm btn-default", 
-                          method: :delete, data: { confirm: "Are you sure?" } )%>
+    <p>操作说明：mark</p>
+    <hr>
+    
+    <div class="admin_article_category">
+      <!-- Table -->
+      <%= form_tag bulk_update_admin_article_categories_path, :class => "form-inline" do %>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th><%= check_box_tag "全选", "1", false, :id => "toggle_all" %></th>
+              <td>#</td>
+              <td>分类名</td>
+              <td>操作</td>
+            </tr>
+          </thead>
+          <tbody>
+            <% @article_categories.each do |article_category| %>
+              <tr>
+                <td>
+                  <%= check_box_tag "ids[]", article_category.id %>
+                </td>
+                <td>#</td>
+                <td><%= article_category.name %></td>
+                <td>
+                  <% if current_user %>
+                    <%= link_to("Edit", edit_admin_article_category_path(article_category), class: "btn btn-sm btn-default")%>
+                    <%= link_to("Delete", admin_article_category_path(article_category),    class: "btn btn-sm btn-default", 
+                                method: :delete, data: { confirm: "Are you sure?" } )%>
+                  <% end %>
+                </td>
+              </tr>
             <% end %>
-          </td>
-        </tr>
+          </tbody>
+        </table><!-- /Table -->
+        <p><%= submit_tag "批次删除", :class => "btn btn-danger", :data => { :confirm => "Are you sure?" } %></p>
       <% end %>
-    </tbody>
-  </table>
-  
-  <div class="text-center">
-    <%= will_paginate @jobs %>
-  </div>
-  
+    
+      <div class="text-center">
+        <%= will_paginate @article_categories %>
+      </div>
+    </div><!-- /admin_article_category -->
+  </div><!-- /panel-body -->
 </div>
+
+<script>
+  // 这个 javascript 会绑事件在 #toggle_all 核选方块上，来做全选效果
+  $("#toggle_all").click(function(){
+    if ( $(this).prop("checked") ) {
+      $("input[name='ids[]']").prop("checked", true);
+    } else {
+      $("input[name='ids[]']").prop("checked", false);
+    }
+  })
+</script>
