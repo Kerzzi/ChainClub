@@ -16,7 +16,7 @@
 
   <div class="form-group">
     <%= f.label :deadline %>
-    <%= f.date_field :deadline, :class => "form-control" %>
+    <%= f.text_field :deadline, :class => "form-control" %>
   </div>
   
   <div class="form-group">
@@ -43,3 +43,7 @@
     <%= f.submit "Submit", :class => "btn btn-primary" %>
   </div>
 <% end %>  
+
+<script>
+  $("#job_deadline").datepicker({ format: "yyyy-mm-dd", language: "<%= I18n.locale %>" });
+</script>
