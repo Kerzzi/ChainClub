@@ -1,0 +1,27 @@
+<div class="col-md-12">
+  <div class="group">
+    <%= link_to("更新公告", edit_admin_job_path(@job), class: "btn btn-primary pull-right")%>
+  </div>
+  <h2><%= @job.title %></h2>
+  工作地点：<%= @job.city %>
+  <hr>
+  最后更新时间：<%= @job.updated_at %>
+  <hr>
+  <h3>发布方</h3>
+  <strong><%= @job.publisher %></strong>
+  <hr>
+  <h3>Benefits</h3>
+  <%= sanitize @job.try(:benefit) %>
+  <hr>
+  <h3>职位介绍</h3>
+  <%= sanitize @job.introduce %>
+  <hr>
+  <h3>申请要求</h3>
+  <%= sanitize @job.demand %>
+  <hr>
+  <h3>截止日期</h3>
+  <%= @job.demand %>
+  <hr>
+  <h3>申请流程</h3>
+  <%= sanitize @job.process %>
+</div>

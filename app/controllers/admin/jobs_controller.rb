@@ -3,7 +3,7 @@ class Admin::JobsController < Admin::BaseController
   
   def index
 
-    @jobs = Job.all
+    @jobs = Job.all.paginate(:page => params[:page], :per_page => 10) 
   end  
   
   def show
@@ -20,6 +20,7 @@ class Admin::JobsController < Admin::BaseController
 
   def create
     @job = Job.new(job_params)
+    @job.user = current_user
     
     if @job.save
       redirect_to admin_jobs_path

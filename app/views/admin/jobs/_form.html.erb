@@ -1,0 +1,45 @@
+<%= form_for [:admin,@job] do |f| %>
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, :class => "form-control" %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :publisher %>
+    <%= f.text_field :publisher, :class => "form-control" %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :city %>
+    <%= f.text_field :city, :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :deadline %>
+    <%= f.date_field :deadline, :class => "form-control" %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :benefit %>
+    <%= f.text_field :benefit, :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :introduce %>
+    <%= f.text_area :introduce, :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :demand %>
+    <%= f.text_area :demand, :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :process %>
+    <%= f.text_area :process, :class => "form-control" %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.submit "Submit", :class => "btn btn-primary" %>
+  </div>
+<% end %>  

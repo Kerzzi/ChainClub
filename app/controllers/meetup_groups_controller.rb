@@ -3,7 +3,7 @@ class MeetupGroupsController < ApplicationController
   before_action :find_meetup_group_and_check_permission, only: [:edit, :update, :destroy]  
   
   def index
-    @meetup_groups = MeetupGroup.all.paginate(:page => params[:page], :per_page => 5) 
+    @meetup_groups = MeetupGroup.all.paginate(:page => params[:page], :per_page => 10) 
   end
 
   def new
