@@ -1,0 +1,35 @@
+<%= form_for [:admin,@course] do |f| %>
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, :class => "form-control" %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :price %>
+    <%= f.text_field :price, :class => "form-control" %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :msrp %>
+    <%= f.text_field :msrp, :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :url %>
+    <%= f.text_field :url, :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :lecturer %>
+    <%= f.cktext_area :lecturer, ckeditor: { language: 'zh-CN'} %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :introduce %>
+    <%= f.cktext_area :introduce, ckeditor: { language: 'zh-CN'} %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.submit "Submit", :class => "btn btn-primary" %>
+  </div>
+<% end %>  

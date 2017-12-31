@@ -1,0 +1,19 @@
+<div class="col-md-12">
+  <div class="group">
+    <%= link_to("更新课程公告", edit_admin_course_path(@course), class: "btn btn-primary pull-right")%>
+  </div>
+  <h2><%= @course.title %></h2>
+  原价：<%= @course.msrp %>
+  现价：<%= @course.price %>
+  <hr>
+  最后更新时间：<%= @course.updated_at %>
+  <hr>
+  <h3>前往学习</h3>
+  <%= @course.url %>
+  <hr>
+  <h3>讲师介绍</h3>
+  <%= sanitize @course.lecturer %>
+  <hr>
+  <h3>课程介绍</h3>
+  <%= sanitize @course.introduce %>
+</div>

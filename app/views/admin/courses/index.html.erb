@@ -1,0 +1,71 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">课程管理</h3>
+  </div>
+  <div class="panel-body">
+    <div class="group">
+      <%= link_to("新增课程", new_admin_course_path, class: "btn btn-primary pull-right") %>
+    </div>
+    
+    <p>操作说明：mark</p>
+    <hr>
+      
+    <!-- Table -->
+    <div id="admin_courses">
+      <%= form_tag bulk_update_admin_courses_path, :class => "form-inline" do %>
+      
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th><%= check_box_tag "全选", "1", false, :id => "toggle_all" %></th>
+              <td>#</td>
+              <td>课程</td>
+              <td>原价</td>
+              <td>现价</td>
+              <td>发布者</td>
+              <td>更新时间</td>
+              <td class="opts">操作</td>
+            </tr>
+          </thead>
+          <tbody>
+            <% @courses.each do |course| %>
+              <tr>
+                <td>
+                  <%= check_box_tag "ids[]", course.id %>
+                </td>
+                <td><%= course.id %></td>
+                <td><%= link_to(course.title, admin_course_path(course)) %></td>
+                <td><%= course.msrp %></td>
+                <td><%= course.price %></td>
+                <td><%= course.user.email %></td>
+                <td><%= course.updated_at %></td>
+                <td>
+                  <% if current_user %>
+                    <%= link_to("Edit", edit_admin_course_path(course), class: "btn btn-sm btn-default")%>
+                    <%= link_to("Delete", admin_course_path(course),    class: "btn btn-sm btn-default", 
+                                method: :delete, data: { confirm: "Are you sure?" } )%>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table><!-- /Table -->
+        <p><%= submit_tag "批次删除", :class => "btn btn-danger", :data => { :confirm => "Are you sure?" } %></p>
+      <% end %>
+      <div class="text-center">
+        <%= will_paginate @courses %>
+      </div>
+    </div><!-- /admin_courses -->
+  </div><!-- /panel-body -->
+</div>
+
+<script>
+  // 这个 javascript 会绑事件在 #toggle_all 核选方块上，来做全选效果
+  $("#toggle_all").click(function(){
+    if ( $(this).prop("checked") ) {
+      $("input[name='ids[]']").prop("checked", true);
+    } else {
+      $("input[name='ids[]']").prop("checked", false);
+    }
+  })
+</script>

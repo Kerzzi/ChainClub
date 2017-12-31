@@ -14,6 +14,7 @@ class User < ApplicationRecord
   has_many :meetup_groups
   has_one :profile
   has_many :jobs
+  has_many :courses
   
   accepts_nested_attributes_for :profile
   
