@@ -6,47 +6,66 @@
     <div class="group">
       <%= link_to("新增招聘信息", new_admin_job_path, class: "btn btn-primary pull-right") %>
     </div>
-  </div>  
-  <hr>
     
+    <p>操作说明：mark</p>
+    <hr>
+      
     <!-- Table -->
     <div id="admin_jobs">
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <td>#</td>
-            <td>招聘信息</td>
-            <td>工作地点</td>
-            <td>发布方</td>
-            <td>截止时间</td>
-            <td>更新时间</td>
-            <td class="opts">操作</td>
-          </tr>
-        </thead>
-        <tbody>
-          <% @jobs.each do |job| %>
+      <%= form_tag bulk_update_admin_jobs_path, :class => "form-inline" do %>
+      
+        <table class="table table-hover">
+          <thead>
             <tr>
-              <td><%= job.id %></td>
-              <td><%= link_to(job.title, admin_job_path(job)) %></td>
-              <td><%= job.city %></td>
-              <td><%= job.publisher %></td>
-              <td><%= job.deadline %></td>
-              <td><%= job.updated_at %></td>
-              <td>
-                <% if current_user %>
-                  <%= link_to("Edit", edit_admin_job_path(job), class: "btn btn-sm btn-default")%>
-                  <%= link_to("Delete", admin_job_path(job),    class: "btn btn-sm btn-default", 
-                              method: :delete, data: { confirm: "Are you sure?" } )%>
-                <% end %>
-              </td>
+              <th><%= check_box_tag "全选", "1", false, :id => "toggle_all" %></th>
+              <td>#</td>
+              <td>招聘信息</td>
+              <td>工作地点</td>
+              <td>发布方</td>
+              <td>截止时间</td>
+              <td>更新时间</td>
+              <td class="opts">操作</td>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div><!-- /Table -->
-
-    <div class="text-center">
-      <%= will_paginate @jobs %>
-    </div>
-
+          </thead>
+          <tbody>
+            <% @jobs.each do |job| %>
+              <tr>
+                <td>
+                  <%= check_box_tag "ids[]", job.id %>
+                </td>
+                <td><%= job.id %></td>
+                <td><%= link_to(job.title, admin_job_path(job)) %></td>
+                <td><%= job.city %></td>
+                <td><%= job.publisher %></td>
+                <td><%= job.deadline %></td>
+                <td><%= job.updated_at %></td>
+                <td>
+                  <% if current_user %>
+                    <%= link_to("Edit", edit_admin_job_path(job), class: "btn btn-sm btn-default")%>
+                    <%= link_to("Delete", admin_job_path(job),    class: "btn btn-sm btn-default", 
+                                method: :delete, data: { confirm: "Are you sure?" } )%>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table><!-- /Table -->
+        <p><%= submit_tag "批次删除", :class => "btn btn-danger", :data => { :confirm => "Are you sure?" } %></p>
+      <% end %>
+      <div class="text-center">
+        <%= will_paginate @jobs %>
+      </div>
+    </div><!-- /admin_jobs -->
+  </div><!-- /panel-body -->
 </div>
+
+<script>
+  // 这个 javascript 会绑事件在 #toggle_all 核选方块上，来做全选效果
+  $("#toggle_all").click(function(){
+    if ( $(this).prop("checked") ) {
+      $("input[name='ids[]']").prop("checked", true);
+    } else {
+      $("input[name='ids[]']").prop("checked", false);
+    }
+  })
+</script>

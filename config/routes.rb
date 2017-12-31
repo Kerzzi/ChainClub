@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :meetup_groups
   resources :jobs
   resources :sites
+  
   namespace :admin do
     resources :article_categories
     resources :official_articles do
@@ -24,9 +25,21 @@ Rails.application.routes.draw do
         post :bulk_update
       end
     end
-    resources :jobs
-    resources :site_nodes
-    resources :sites
+    resources :jobs do
+      collection do
+        post :bulk_update
+      end
+    end
+    resources :site_nodes do
+      collection do
+        post :bulk_update
+      end
+    end
+    resources :sites do
+      collection do
+        post :bulk_update
+      end
+    end
     resources :users do
       resource :profile, :controller => "user_profiles"
     end
