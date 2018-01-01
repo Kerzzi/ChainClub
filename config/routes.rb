@@ -1,16 +1,16 @@
 Rails.application.routes.draw do
-  
+
   root 'official_articles#index'
   devise_for :users
   resource :user
-  
+
   resources :official_articles do
     resources :article_comments
   end
   resources :topics do
     resources :answers
   end
-  resources :comments 
+  resources :comments
   resources :groups do
     resources :posts
   end
@@ -18,8 +18,14 @@ Rails.application.routes.draw do
   resources :jobs
   resources :sites
   resources :courses
-  
+  resources :projects
+
   namespace :admin do
+    resources :projects do
+      collection do
+        post :bulk_update
+      end
+    end
     resources :article_categories do
       collection do
         post :bulk_update

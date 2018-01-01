@@ -3,20 +3,21 @@
     <head>
         <title>ChainClub</title>
         <%= csrf_meta_tags %>
-        
+
         <%= stylesheet_link_tag    'application', media: 'all' %>
         <%= javascript_include_tag 'application' %>
-        
-        
+        <link rel="shortcut icon" href="/images/favicon.ico">
+
+
     </head>
 
     <body id="<%= "#{controller_name}-#{action_name}"%>">
 
         <%= render "common/navbar" %>
         <div class="container  main-content">
-            
+
             <%= render "common/flashes" %>
-            
+
             <%= yield %>
 
         </div>
@@ -25,4 +26,3 @@
 
     </body>
 </html>
-

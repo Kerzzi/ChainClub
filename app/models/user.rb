@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  
+
   has_many :groups
   has_many :posts
   has_many :comments #小组文章post的评论
@@ -15,11 +15,12 @@ class User < ApplicationRecord
   has_one :profile
   has_many :jobs
   has_many :courses
-  
+  has_many :projects
+
   accepts_nested_attributes_for :profile
-  
+
   ROLES = ["super_admin","admin", "editor"]
-  
+
   def is_super_admin?
     self.role == "super_admin"
   end
@@ -29,7 +30,7 @@ class User < ApplicationRecord
   end
 
   def is_editor?
-    ["super_admin","admin", "editor"].include?(self.role) 
+    ["super_admin","admin", "editor"].include?(self.role)
   end
 
 end

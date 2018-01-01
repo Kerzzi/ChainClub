@@ -1,0 +1,47 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  ico_start: 2018-01-01
+  ico_end: 2018-01-01
+  ico_url: MyString
+  website: MyString
+  slack: MyString
+  facebook: MyString
+  telegram: MyString
+  twitter: MyString
+  weibo: MyString
+  github: MyString
+  whitepaper: MyString
+  ico_amount: 1
+  token_amount: 1
+  raised_ceiling: 1
+  accept_token: MyString
+  token_type: MyString
+  introduce: MyText
+  rating_report: MyText
+  grade: 9.99
+  user_id: 1
+
+two:
+  title: MyString
+  ico_start: 2018-01-01
+  ico_end: 2018-01-01
+  ico_url: MyString
+  website: MyString
+  slack: MyString
+  facebook: MyString
+  telegram: MyString
+  twitter: MyString
+  weibo: MyString
+  github: MyString
+  whitepaper: MyString
+  ico_amount: 1
+  token_amount: 1
+  raised_ceiling: 1
+  accept_token: MyString
+  token_type: MyString
+  introduce: MyText
+  rating_report: MyText
+  grade: 9.99
+  user_id: 1

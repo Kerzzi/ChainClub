@@ -6,6 +6,7 @@
 
     <%= stylesheet_link_tag    'admin', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'admin', 'data-turbolinks-track': 'reload' %>
+    <link rel="shortcut icon" href="/images/favicon.ico">
   </head>
 
   <body  id="<%= "#{controller_name}-#{action_name}"%>">
@@ -17,7 +18,7 @@
       <%= render "common/flashes" %>
       <%= yield %>
     </div>
-    
+
     <%= render "common/footer" %>
   </body>
 </html>

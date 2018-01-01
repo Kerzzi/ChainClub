@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171231152046) do
+ActiveRecord::Schema.define(version: 20180101075252) do
 
   create_table "answers", force: :cascade do |t|
     t.text "content"
@@ -143,6 +143,32 @@ ActiveRecord::Schema.define(version: 20171231152046) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string "title"
+    t.date "ico_start"
+    t.date "ico_end"
+    t.string "ico_url"
+    t.string "website"
+    t.string "slack"
+    t.string "facebook"
+    t.string "telegram"
+    t.string "twitter"
+    t.string "weibo"
+    t.string "github"
+    t.string "whitepaper"
+    t.string "ico_amount"
+    t.string "token_amount"
+    t.string "raised_ceiling"
+    t.string "accept_token"
+    t.string "token_type"
+    t.text "introduce"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["title"], name: "index_projects_on_title"
+    t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
   create_table "site_nodes", force: :cascade do |t|
