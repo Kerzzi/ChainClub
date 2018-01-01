@@ -1,47 +1,55 @@
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <a class="navbar-brand" href="/"><img src='<%= image_url 'logo.png' %>' >Chain Club</a>
-        </div>
+<div class="row">
+  <div class="col-md-12">
+    <% if current_page?('/') %>
+      <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="navbar">
+    <% else %>
+      <nav class="navbar navbar-default navbar-fixed-top show_bgcolor" role="navigation">
+    <% end %>
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/"><img src='<%= image_url 'logo.png' %>' >Chain Club</a>
+            </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-left">
-                <li><%= link_to("小组", groups_path) %></li>
-                <li><%= link_to("问达", topics_path) %></li>
-                <li><%= link_to("大讲堂", courses_path) %></li>
-                <li><%= link_to("项目评级", "#") %></li>
-                <li><%= link_to("活动", meetup_groups_path) %></li>
-                <li><%= link_to("机会", jobs_path) %></li>
-                <li><%= link_to("常用工具", sites_path) %></li>
-                <!-- <li><%= link_to("书籍", "#") %></li> -->
-            </ul>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-left">
+                    <li><%= link_to("小组", groups_path) %></li>
+                    <li><%= link_to("问达", topics_path) %></li>
+                    <li><%= link_to("大讲堂", courses_path) %></li>
+                    <li><%= link_to("项目评级", projects_path) %></li>
+                    <li><%= link_to("活动", meetup_groups_path) %></li>
+                    <li><%= link_to("机会", jobs_path) %></li>
+                    <li><%= link_to("常用工具", sites_path) %></li>
+                    <!-- <li><%= link_to("书籍", "#") %></li> -->
+                </ul>
 
-            <ul class="nav navbar-nav navbar-right">
-                <% if !current_user %>
-                  <li><%= link_to("注册", new_user_registration_path) %> </li>
-                  <li><%= link_to("登录", new_user_session_path) %></li>
-                <% else %>
-                  <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="dropdownMenu" aria-haspopup="true" aria-expanded="false">
-                      <%= t( "hello", :name => current_user.email) %>
-                      <b class="caret"></b>
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
-                      <% if current_user.is_editor? %>
-                        <li><%= link_to("后台管理", admin_site_nodes_path) %></li>
-                      <% end %>
-                      <li><%= link_to('我的个人资料', user_path) %></li>
-                      <li><%= link_to('修改个人资料', edit_user_path) %></li>
-                      <li role="separator" class="divider"></li>
-                      <li><%= link_to(content_tag(:i,"退出", class: 'fa fa-sign-out'), destroy_user_session_path, method: :delete) %></li>
-                    </ul>
-                  </li>
-                <% end %>
-            </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <% if !current_user %>
+                    <li><%= link_to("注册", new_user_registration_path) %> </li>
+                    <li><%= link_to("登入", new_user_session_path) %></li>
+                    <% else %>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="dropdownMenu" aria-haspopup="true" aria-expanded="false">
+                          <%= t( "hello", :name => current_user.email) %>
+                          <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
+                          <% if current_user.is_editor? %>
+                            <li><%= link_to("后台管理", admin_site_nodes_path) %></li>
+                          <% end %>
+                          <li><%= link_to('我的个人资料', user_path) %></li>
+                          <li><%= link_to('修改个人资料', edit_user_path) %></li>
+                          <li role="separator" class="divider"></li>
+                          <li><%= link_to(content_tag(:i,"退出", class: 'fa fa-sign-out'), destroy_user_session_path, method: :delete) %></li>
+                        </ul>
+                      </li>
+                    <% end %>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
         </div>
-        <!-- /.navbar-collapse -->
-    </div>
-    <!-- /.container-->
-</nav>
+        <!-- /.container-->
+    </nav>
+  </div>
+</div>
