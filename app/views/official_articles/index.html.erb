@@ -1,7 +1,13 @@
-<div class="col-md-12">
-  <div class="group">
-    <%= link_to("New article", new_official_article_path, class: "btn btn-primary pull-right") %>
+<div class="container-fluid show-content">
+  <div class="row">
+    <div class="heading">
+      <h1><%= link_to("官方文章", official_articles_path) %></h1>   
+    </div>
+    <div class="group">
+      <%= link_to("New article", new_official_article_path, class: "btn btn-primary pull-right") %>
+    </div>
   </div>
+
   <table class="table table-hover">
     <thead>
       <tr>
@@ -34,8 +40,9 @@
       <% end %>
     </tbody>
   </table>
-</div>
-
-<div class="text-center">
-  <%= will_paginate @official_articles %>
+  
+  <div class="text-center">
+    <%= will_paginate @official_articles %>
+  </div>
+    
 </div>

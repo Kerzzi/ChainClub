@@ -3,7 +3,9 @@
     <h3 class="panel-title">课程列表</h3>
   </div>
   <div class="panel-body">
-    <p>操作说明：mark</p>
+    <p>尚未完成：mark</p>
+    <p>课程这部分不准备自己建立课程系统，只是作为宣传页面。建议使用其他第三方平台，第三方平台的浏览更大。</p>
+    <p>这里只是介绍这些课程，放上介绍、课程二维码或者链接即可。</p>
     <hr>
       
     <!-- Table -->
@@ -16,14 +18,13 @@
               <td>原价</td>
               <td>现价</td>
               <td>更新时间</td>
-              <td class="opts">操作</td>
             </tr>
           </thead>
           <tbody>
             <% @courses.each do |course| %>
               <tr>
                 <td><%= course.id %></td>
-                <td><%= link_to(course.title, admin_course_path(course)) %></td>
+                <td><%= link_to(course.title, course_path(course)) %></td>
                 <td><%= course.msrp %></td>
                 <td><%= course.price %></td>
                 <td><%= course.updated_at %></td>

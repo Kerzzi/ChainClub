@@ -1,32 +1,43 @@
-<div class="col-md-12">
-  <div class="group">
-    <%= link_to("New group", new_group_path, class: "btn btn-primary pull-right") %>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">小组列表</h3>
   </div>
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <td>#</td>
-        <td>Title</td>
-        <td>Description</td>
-        <td>创建者</td>
-      </tr>
-    </thead>
-    <tbody>
-      <% @groups.each do |group| %>
-        <tr>
-          <td>#</td>
-          <td><%= link_to(group.title, group_path(group)) %></td>
-          <td><%= group.description %></td>
-          <td><%= group.user.email %> </td>
-          <td>
-              <% if current_user && current_user == group.user %>
-              <%= link_to("Edit", edit_group_path(group), class: "btn btn-sm btn-default")%>
-              <%= link_to("Delete", group_path(group),    class: "btn btn-sm btn-default", 
-                          method: :delete, data: { confirm: "Are you sure?" } )%>
-              <% end %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <div class="panel-body">
+    <%= link_to("新建小组", new_group_path, class: "btn btn-primary pull-right") %>
+    <p>尚未完成：mark</p>
+    <p>小组类似于论坛。</p>
+    <hr>
+      
+    <!-- Table -->
+    <div id="index_groups">    
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <td>#</td>
+            <td>Title</td>
+            <td>Description</td>
+            <td>创建者</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% @groups.each do |group| %>
+            <tr>
+              <td>#</td>
+              <td><%= link_to(group.title, group_path(group)) %></td>
+              <td><%= group.description %></td>
+              <td><%= group.user.email %> </td>
+              <td>
+                  <% if current_user && current_user == group.user %>
+                  <%= link_to("Edit", edit_group_path(group), class: "btn btn-sm btn-default")%>
+                  <%= link_to("Delete", group_path(group),    class: "btn btn-sm btn-default", 
+                              method: :delete, data: { confirm: "Are you sure?" } )%>
+                  <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table><!-- /Table -->
+    </div><!-- /index_groups -->
+  </div><!-- /panel-body -->
 </div>

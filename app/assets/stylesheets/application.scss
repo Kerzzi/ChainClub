@@ -101,7 +101,6 @@ body {
   .navbar-header {
     a {
       font-size: 20px;
-      color: #fff;
       transition: 0.35s;
     }
     a:hover {
@@ -114,8 +113,13 @@ body {
     transition: 0.35s;
   }
   .navbar-nav li a:hover {
-    color: #D0CFCE;
+    color: #FAFAFA;
     text-decoration: none
+  }
+  .dropdown li a {
+    color: #424242;
+    font-size: 16px;
+    transition: 0.35s;
   }
 }
 

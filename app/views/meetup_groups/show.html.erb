@@ -1,59 +1,123 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="dashboard-content">
+<div class="row cc-meetup">
+  <div class="col-md-9 meetup-block">
+    <div class="show-content">
+      <div class="heading">
+        <h1 class="title"><%= link_to("Meetup", meetup_groups_path) %></h1>  
+      </div>
+      <div class="heading-line">
+        <p>Meetup由区块链研习社社友自发组织！</p>
+      </div>
+      <hr/>
+
       
-      <div class="meetup-block">
-        <div class="heading">
-          <a href="/meetup_groups"><h1 class="title">Meetup</h1></a>  
-        </div>
-        <div class="heading-line">
-          <div class="right-btn-block">
-            <a class="btn btn-default" href="/meetup_groups">查看全部Meetup</a>
-          </div>
+      <div class="meetup-title">
+        <h2 class="text-center"> <%= @meetup_group.title %></h2>
+      </div>
+      
+      <div class="row meetup-detail">
+        <div class="col-md-2">
+          <p>活动期限:</p>
         </div>
 
-        <div class="meetup-detail">
-          <div class="meetup-content">
-            <div class="opt">
-            </div>
-            <h2 class="meetup-name"> @meetup_group.title</h2>
-            
-            <p class="type">
-              <span class="title">活动期限:</span><span class="show-info"><span>@meetup_group.time_limit</span></span>
-            </p>
-
-            <p>
-              <span class="title">活动类型:</span><span class="show-info"><span>@meetup_group.type</span></span>
-            </p>
-            
-            <p class="time">
-              <span class="title">举办时间:</span><span class="show-info">@meetup_group.activity_time</span>
-            </p>
-            
-            <p class="city">
-              <span class="title">城市:</span><span class="show-info">@meetup_group.city</span>
-            </p>
-            
-            <p class="location">
-              <span class="title location-title">聚会地点:</span><span class="show-info">@meetup_group.address</span>
-            </p>
-            
-            <div class="description"><span class="title">聚会详情:</span>
-              <div class="meetup-description">
-              @meetup_group.introduce
-              </div>
-            </div>
-            <p class="link">
-              <span class="title">报名入口:</span><span class="show-info"><a>@meetup_group.register</a></span>
-            </p>
-            
-            <p class="contact">
-              <span class="title">联系人:</span><span class="show-info">@meetup_group.user.email</span>
-            </p>
-          </div>  
+        <div class="col-md-10">
+          <%= @meetup_group.time_limit %>
         </div>
       </div>
-    </div>     
+
+      <div class="row">
+        <div class="col-md-2">
+          <p>活动类型:</p>
+        </div>
+
+        <div class="col-md-10">
+          <%= @meetup_group.meetup_type %>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-2">
+          <p>举办时间:</p>
+        </div>
+
+        <div class="col-md-10">
+          <%= @meetup_group.activity_time %>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-2">
+          <p>城市:</p>
+        </div>
+
+        <div class="col-md-10">
+          <%= @meetup_group.city %>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-2">
+          <p>聚会地点:</p>
+        </div>
+
+        <div class="col-md-10">
+          <%= @meetup_group.address %>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-2">
+          <p>聚会详情:</p>
+        </div>
+
+        <div class="col-md-10">
+          <%= sanitize @meetup_group.introduce %>
+        </div>
+      </div>    
+
+      <div class="row">
+        <div class="col-md-2">
+          <p>报名入口:</p>
+        </div>
+
+        <div class="col-md-10">
+          <%= @meetup_group.register %>
+        </div>
+      </div> 
+      
+      <div class="row">
+        <div class="col-md-2">
+          <p>联系人:</p>
+        </div>
+
+        <div class="col-md-10">
+          <%= @meetup_group.user.email %>
+        </div>
+      </div>   
+      
+    </div>
   </div>
-</div>    
+
+  <div class="col-md-3">
+    <% if current_user.is_editor? %>
+      <div class="side-content project-admin">
+        <h4>管理操作</h4>
+        <hr>
+        <%= link_to("更新", edit_meetup_group_path(@meetup_group), class: "btn btn-default")%> &nbsp; 
+        <%= link_to("删除", meetup_group_path(@meetup_group),    class: "btn btn-default", 
+                    method: :delete, data: { confirm: "Are you sure?" } )%> &nbsp;
+        <%= link_to("全部", meetup_groups_path, class: "btn btn-default")%>
+      </div>
+    <% end %>
+    <div class="side-content meetup_group-admin">
+      <p>更多Meetup</p>
+      <hr>
+      <%= link_to("查看全部Meetup", meetup_groups_path, class: "btn btn-default")%>
+    </div>
+    <div class="side-content meetup_group-admin">
+      <p>更多Meetup</p>
+      <hr>
+      <p>Mark:后期加入推荐Meetup</p>
+    </div>
+  </div>
+</div>
     
