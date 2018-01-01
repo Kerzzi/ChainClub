@@ -20,7 +20,6 @@
               <th><%= check_box_tag "全选", "1", false, :id => "toggle_all" %></th>
               <td>#</td>
               <td>项目名称</td>
-              <td>白皮书</td>
               <td>ICO开启时间</td>
               <td>ICO截止时间</td>
               <td>官网</td>
@@ -36,7 +35,6 @@
                 </td>
                 <td><%= project.id %></td>
                 <td><%= link_to(project.title, admin_project_path(project)) %></td>
-                <td><%= project.whitepaper %></td>
                 <td><%= project.ico_start %></td>
                 <td><%= project.ico_end %></td>
                 <td><%= project.website %></td>
@@ -45,6 +43,7 @@
                     <%= link_to("Edit", edit_admin_project_path(project), class: "btn btn-sm btn-default")%>
                     <%= link_to("Delete", admin_project_path(project),    class: "btn btn-sm btn-default",
                                 method: :delete, data: { confirm: "Are you sure?" } )%>
+                    <%= link_to "评级", edit_admin_project_project_grade_path(project), :class => "btn btn-default" %>
                 </td>
               </tr>
             <% end %>

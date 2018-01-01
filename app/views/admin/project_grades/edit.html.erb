@@ -1,0 +1,17 @@
+<h2>项目评级</h2>
+<%= form_for @project_grade, :url => admin_project_project_grade_path(@project) do |f| %>
+
+  <div class="form-group">
+    <%= f.label :grade %>
+    <%= f.text_field :grade, :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :rating_report %>
+    <%= f.cktext_area :rating_report, ckeditor: { language: 'zh-CN'} %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit "Submit", :class => "btn btn-primary" %>
+  </div>
+<% end %>

@@ -25,6 +25,7 @@ Rails.application.routes.draw do
       collection do
         post :bulk_update
       end
+      resource :project_grade, :controller => "project_grades"
     end
     resources :article_categories do
       collection do

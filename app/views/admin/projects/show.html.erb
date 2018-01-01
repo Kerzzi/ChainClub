@@ -1,70 +1,80 @@
 <div class="row cc-project">
-  <div class="show-content col-md-9">
-    <h4>项目概况</h4>
-    <hr/>
+  <div class="col-md-9">
+    <div class="show-content">
+      <h4>项目概况</h4>
+      <hr/>
 
-    <div class="row ico_start">
-      <div class="col-md-2">
-        <p>众筹开始时间</p>
+      <div class="row ico_start">
+        <div class="col-md-2">
+          <p>众筹开始时间</p>
+        </div>
+
+        <div class="col-md-10">
+          <%= @project.ico_start %>
+        </div>
       </div>
 
-      <div class="col-md-10">
-        <%= @project.ico_start %>
+      <div class="row ico_end">
+        <div class="col-md-2">
+          <p>众筹结束时间</p>
+        </div>
+
+        <div class="col-md-10">
+          <%= @project.ico_start %>
+        </div>
+      </div>
+
+      <div class="row project-information">
+        <div class="col-md-2">
+          <p>项目发行基本信息</p>
+        </div>
+
+        <div class="col-md-10">
+          <table class="table table-striped table-bordered text-center">
+            <tr>
+              <th class="text-center">ICO总量</th>
+              <th class="text-center">代币总量</th>
+            </tr>
+            <tr>
+              <td><%= @project.ico_amount %></td>
+              <td><%= @project.token_amount %></td>
+            </tr>
+            <tr>
+              <th class="text-center">募资上限</th>
+              <th class="text-center">接受币种</th>
+            </tr>
+            <tr>
+              <td><%= @project.raised_ceiling %></td>
+              <td><%= @project.accept_token %></td>
+            </tr>
+            <tr>
+              <th class="text-center">代币类型</th>
+              <th class="text-center">官网</th>
+            </tr>
+            <tr>
+              <td><%= @project.token_type %></td>
+              <td><%= @project.website %></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="row project-introduce">
+        <div class="col-md-2">
+          <p>项目说明</p>
+        </div>
+
+        <div class="col-md-10">
+            <%= sanitize @project.introduce %>
+        </div>
       </div>
     </div>
 
-    <div class="row ico_end">
-      <div class="col-md-2">
-        <p>众筹结束时间</p>
-      </div>
-
-      <div class="col-md-10">
-        <%= @project.ico_start %>
-      </div>
-    </div>
-
-    <div class="row project-information">
-      <div class="col-md-2">
-        <p>项目发行基本信息</p>
-      </div>
-
-      <div class="col-md-10">
-        <table class="table table-striped table-bordered text-center">
-          <tr>
-            <th class="text-center">ICO总量</th>
-            <th class="text-center">代币总量</th>
-          </tr>
-          <tr>
-            <td><%= @project.ico_amount %></td>
-            <td><%= @project.token_amount %></td>
-          </tr>
-          <tr>
-            <th class="text-center">募资上限</th>
-            <th class="text-center">接受币种</th>
-          </tr>
-          <tr>
-            <td><%= @project.raised_ceiling %></td>
-            <td><%= @project.accept_token %></td>
-          </tr>
-          <tr>
-            <th class="text-center">代币类型</th>
-            <th class="text-center">官网</th>
-          </tr>
-          <tr>
-            <td><%= @project.token_type %></td>
-            <td><%= @project.website %></td>
-          </tr>
-        </table>
-      </div>
-    </div>
-
-    <div class="row project-introduce">
-      <div class="col-md-2">
-        <p>项目说明</p>
-      </div>
-
-      <div class="col-md-10">
-          <%= sanitize @project.introduce %>
+    <div class="show-content">
+      <h4><%= @project.title %>评级报告————评分<%= @project.project_grade.grade %></h4>
+      <hr/>
+      <div class="row project-grade">
+        <%= sanitize @project.project_grade.rating_report %>
       </div>
     </div>
   </div>
