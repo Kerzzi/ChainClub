@@ -46,6 +46,7 @@ gem "select2-rails"
 gem 'bootstrap-datepicker-rails'
 gem 'ckeditor'
 gem 'font-awesome-rails'
+gem 'rails-erd'
 
 
 group :development, :test do
