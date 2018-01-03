@@ -18,6 +18,8 @@ class User < ApplicationRecord
   has_many :projects
   
   has_paper_trail
+  
+  mount_uploader :avatar, UserAvatarUploader
 
   accepts_nested_attributes_for :profile
 

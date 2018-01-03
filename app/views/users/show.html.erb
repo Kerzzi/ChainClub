@@ -3,7 +3,11 @@
     <h3 class="panel-title">我的个人资料</h3>
   </div>
   <div class="panel-body">
+    <% if @user.avatar.present? %>
+      <%= link_to image_tag(@user.avatar.url(:thumb)), @user.avatar.url, :target => "_blank" %>
+    <% end %>
     <p>Email: <%= @user.email %></p>
+    <p>用户名: <%= @user.username %></p>
     <p>Timezone: <%= @user.time_zone %></p>
     <p>Birthday: <%= @user.profile.birthday %></p>
     <p>City: <%= @user.profile.location %></p>

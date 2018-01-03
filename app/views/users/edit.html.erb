@@ -2,9 +2,16 @@
 
 <%= simple_form_for @user do |f| %>
 
-
-  <%= f.input :avatar, :label =>"用户头像", as: :file %>
-
+  <div class="form-group">
+    <%= f.input :avatar, :label =>"用户头像", as: :file %>
+    <% if f.object.avatar.present? %>
+      <label>
+        <%= f.check_box :remove_avatar %> 删除图档
+      </label>
+      <%= link_to f.object.avatar.filename, f.object.avatar.url, :target => "_blank" %>
+    <% end %>
+  </div>
+  
   <%= f.input :username, :label =>"用户名" %>
 
   <div class="form-group">
