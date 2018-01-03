@@ -1,7 +1,26 @@
-<%= simple_form_for @topic do |f| %>
+<%= form_for @topic do |f| %>
+
+
   <div class="form-group">
-    <%= f.input :title, input_html: { class: "form-control"} %>
-    <%= f.input :content, input_html: { class: "form-control"} %>
+    <%= f.label :node_id %>
+    <%= f.select :node_id, Node.all.map{ |c| [c.name, c.id] }, {}, :class => "form-control" %>
   </div>
-  <%= f.submit "Submit", class: "btn btn-primary", data: { disable_with: "Submiting..." } %>
+  
+  <div class="form-group">
+
+    <%= f.label :title %>
+    <%= f.text_field :title, class: "form-control", placeholder: "在这里填写标题" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :content %>
+    <%= f.cktext_area :content, ckeditor: { language: 'zh-CN'} %>
+  </div>
+
+  
+  <div class="form-group">
+    <%= f.submit "Submit", class: "btn btn-primary", data: { disable_with: "Submiting..." } %>
+
+    <div class="pull-right hide-ios"><a href="#" target="_blank"><i class="fa fa-tip"></i> 排版说明</a></div>
+  </div>
 <% end %>

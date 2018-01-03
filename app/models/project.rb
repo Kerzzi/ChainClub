@@ -1,4 +1,5 @@
 class Project < ApplicationRecord
+  has_paper_trail
   validates :title, presence: true
   validates :website, presence: true
   validates :whitepaper, presence: true

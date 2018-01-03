@@ -29,7 +29,7 @@
           <td><%= official_article.author %></td>
           <td><%= t(official_article.status, :scope => "official_article.status") %></td>
           <td><%= official_article.source %></td>
-          <td><%=official_article.article_category.try(:name) %></td>
+          <td><%= official_article.article_category.try(:name) %></td>
           <td><%= official_article.created_at.to_s %></td>
           <td>
               <%= link_to("Edit", edit_official_article_path(official_article), class: "btn btn-sm btn-default")%>

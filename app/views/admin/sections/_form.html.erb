@@ -1,0 +1,7 @@
+<%= simple_form_for([:admin, @section]) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :sort %>
+  <div class="form-group">
+    <%= f.submit "Submit", class: "btn btn-primary", data: { disable_with: "Submiting..." } %>
+  </div>
+<% end %>

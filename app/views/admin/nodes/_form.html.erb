@@ -1,0 +1,14 @@
+<%= simple_form_for([:admin,@node]) do |f| %>
+
+  <fieldset>
+    <legend></legend>
+    <%= f.input :name %>
+    <%= f.input :section_id, collection: Section.all.collect { |s| [s.name,s.id] } %>
+    <%= f.input :sort %>
+    <%= f.input :summary, as: :text, input_html: { style: "width:500px; height:200px;"} %>
+    <div class="form-group">
+      <%= f.submit "Submit", class: "btn btn-primary", data: { disable_with: "Submiting..." } %>
+      <%= link_to 'Back', admin_nodes_path %>
+    </div>
+  </fieldset>
+<% end %>

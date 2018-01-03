@@ -8,6 +8,7 @@
         <td>#</td>
         <td>Title</td>
         <td>问题描述</td>
+        <td>node</td>
       </tr>
     </thead>
     <tbody>
@@ -15,7 +16,8 @@
         <tr>
           <td>#</td>
           <td><%= link_to(topic.title, topic_path(topic)) %></td>
-          <td><%= topic.content %></td>
+          <td><%= sanitize topic.content %></td>
+          <td><%= topic.node.try(:name) %></td>
           <td>
               <%= link_to("Edit", edit_topic_path(topic), class: "btn btn-sm btn-default")%>
               <%= link_to("Delete", topic_path(topic),    class: "btn btn-sm btn-default", 

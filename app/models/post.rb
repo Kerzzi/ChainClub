@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+  has_paper_trail
   validates :title, presence: true
   validates :content, presence: true
     

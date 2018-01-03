@@ -9,13 +9,15 @@ class User < ApplicationRecord
   has_many :comments #小组文章post的评论
   has_many :official_articles
   has_many :article_comments  #官方文章official article的评论
-  has_many :answers
-  has_many :topics
+  has_many :answers, dependent: :destroy
+  has_many :topics, dependent: :destroy
   has_many :meetup_groups
   has_one :profile
   has_many :jobs
   has_many :courses
   has_many :projects
+  
+  has_paper_trail
 
   accepts_nested_attributes_for :profile
 

@@ -1,4 +1,4 @@
-<%= simple_form_for @official_article do |f| %>
+<%= simple_form_for [:admin,@official_article] do |f| %>
   <div class="form-group">
     <%= f.input :title, input_html: { class: "form-control"} %>
     <%= f.input :author, input_html: { class: "form-control"} %>

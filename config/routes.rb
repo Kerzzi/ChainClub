@@ -7,6 +7,16 @@ Rails.application.routes.draw do
   resources :official_articles do
     resources :article_comments
   end
+  
+  resources :nodes do
+    member do
+      post :block
+      post :unblock
+    end
+  end
+  
+  get 'topics/node:id', to: 'topics#node', as: 'node_topics'
+  
   resources :topics do
     resources :answers
   end
@@ -21,6 +31,13 @@ Rails.application.routes.draw do
   resources :projects
 
   namespace :admin do
+    root to: 'home#index', as: 'root'
+    resources :versions do
+      post :undo
+    end
+    resources :topics
+    resources :nodes
+    resources :sections
     resources :projects do
       collection do
         post :bulk_update

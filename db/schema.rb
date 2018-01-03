@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180101083750) do
+ActiveRecord::Schema.define(version: 20180102160920) do
 
   create_table "answers", force: :cascade do |t|
     t.text "content"
@@ -18,6 +18,12 @@ ActiveRecord::Schema.define(version: 20180101083750) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "body_html"
+    t.integer "state"
+    t.integer "liked_user_ids"
+    t.integer "likes_count"
+    t.index ["topic_id"], name: "index_answers_on_topic_id"
+    t.index ["user_id"], name: "index_answers_on_user_id"
   end
 
   create_table "article_categories", force: :cascade do |t|
@@ -101,6 +107,18 @@ ActiveRecord::Schema.define(version: 20180101083750) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "nodes", force: :cascade do |t|
+    t.string "name"
+    t.string "summary"
+    t.integer "section_id"
+    t.integer "sort", default: 0
+    t.integer "topics_count", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["section_id"], name: "index_nodes_on_section_id"
+    t.index ["sort"], name: "index_nodes_on_sort"
+  end
+
   create_table "official_articles", force: :cascade do |t|
     t.string "title"
     t.text "content"
@@ -180,6 +198,14 @@ ActiveRecord::Schema.define(version: 20180101083750) do
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
+  create_table "sections", force: :cascade do |t|
+    t.string "name"
+    t.integer "sort", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sort"], name: "index_sections_on_sort"
+  end
+
   create_table "site_nodes", force: :cascade do |t|
     t.string "name"
     t.integer "sort", default: 0
@@ -206,6 +232,21 @@ ActiveRecord::Schema.define(version: 20180101083750) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.integer "node_id"
+    t.text "content_html"
+    t.integer "last_answer_id"
+    t.integer "last_answer_user_id"
+    t.string "node_name"
+    t.string "who_deleted"
+    t.boolean "lock_node", default: false
+    t.integer "excellent", default: 0
+    t.integer "answers_count", default: 0
+    t.integer "likes_count", default: 0
+    t.integer "last_active_mark"
+    t.index ["excellent"], name: "index_topics_on_excellent"
+    t.index ["likes_count"], name: "index_topics_on_likes_count"
+    t.index ["node_id"], name: "index_topics_on_node_id"
+    t.index ["user_id"], name: "index_topics_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -225,6 +266,17 @@ ActiveRecord::Schema.define(version: 20180101083750) do
     t.string "role"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "versions", force: :cascade do |t|
+    t.string "item_type", null: false
+    t.integer "item_id", null: false
+    t.string "event", null: false
+    t.string "whodunnit"
+    t.text "object", limit: 1073741823
+    t.datetime "created_at"
+    t.text "object_changes", limit: 1073741823
+    t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end
 
 end

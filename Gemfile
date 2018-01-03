@@ -47,6 +47,7 @@ gem 'bootstrap-datepicker-rails'
 gem 'ckeditor'
 gem 'font-awesome-rails'
 gem 'rails-erd'
+gem 'paper_trail'
 
 
 group :development, :test do

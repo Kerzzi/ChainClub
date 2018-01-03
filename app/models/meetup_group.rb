@@ -1,4 +1,5 @@
 class MeetupGroup < ApplicationRecord
+  has_paper_trail
   belongs_to :user
   validates :title, presence: true
   validates :meetup_type, presence: true
