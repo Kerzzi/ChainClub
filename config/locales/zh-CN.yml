@@ -8,7 +8,7 @@ zh-CN:
       private: 私密
   admin:
     official_article: 官方文章管理
-  hello: "亲～ %{name} 你好："
+  hello: " %{name} "
   user:
     role:
       super_admin: 超级管理员
