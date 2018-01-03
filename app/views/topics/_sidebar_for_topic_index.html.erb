@@ -1,0 +1,18 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <%= link_to t('发布新话题'), new_topic_path, class: 'btn btn-primary btn-block' %>  
+  </div>
+</div>
+
+
+<%= render "sidebar_box_tips" %>
+
+
+<div class="panel panel-default">
+  <div class="panel-heading"><%= t("common.statics")%></div>
+  <ul class="list-group">
+    <li class="list-group-item">社区会员: <%= User.count %> 人</li>
+    <li class="list-group-item">帖子数: <%= Topic.count %> 个</li>
+    <li class="list-group-item">回帖数: <%= Answer.count %> 条</li>
+  </ul>
+</div>

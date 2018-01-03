@@ -1,12 +1,19 @@
 <h2>Edit User</h2>
 
-<%= form_for @user do |f| %>
+<%= simple_form_for @user do |f| %>
+
+
+  <%= f.input :avatar, :label =>"用户头像", as: :file %>
+
+  <%= f.input :username, :label =>"用户名" %>
 
   <div class="form-group">
     <%= f.label :time_zone %>
     <%= f.time_zone_select :time_zone %>
   </div>
 
+
+  
   <%= f.fields_for :profile do |ff| %>
 
     <div class="form-group">
@@ -91,7 +98,7 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.submit "Save", :class => "btn btn-primary" %>
+    <%= f.submit "Save", :class => "btn btn-primary", data: { disable_with: "Submitting..." } %>
   </div>
 
 <% end %>

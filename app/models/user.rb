@@ -34,5 +34,12 @@ class User < ApplicationRecord
   def is_editor?
     ["super_admin","admin", "editor"].include?(self.role)
   end
-
+  
+  def display_name
+    if self.username.present?
+      self.username
+    else
+      self.email.split("@").first
+    end
+  end
 end
