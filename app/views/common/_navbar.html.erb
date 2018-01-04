@@ -34,9 +34,12 @@
                           <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
+                          
                           <% if current_user.is_editor? %>
                             <li><%= link_to("后台管理", admin_root_path) %></li>
                           <% end %>
+                          <li> <%= link_to("My Groups", account_groups_path) %></li>
+                          <li class="divider"> </li>
                           <li><%= link_to('我的个人资料', user_path) %></li>
                           <li><%= link_to('修改个人资料', edit_user_path) %></li>
                           <li role="separator" class="divider"></li>

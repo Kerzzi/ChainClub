@@ -33,7 +33,11 @@ Rails.application.routes.draw do
   resources :sites
   resources :courses
   resources :projects
-
+  
+  namespace :account do
+    resources :groups
+  end
+  
   namespace :admin do
     root to: 'home#index', as: 'root'
     resources :versions do
