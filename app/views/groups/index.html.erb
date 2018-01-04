@@ -26,7 +26,7 @@
                 <tr>
                   <td>#</td>
                   <td><%= link_to(group.title, group_path(group)) %></td>
-                  <td><%= simple_format(group.description) %></td>
+                  <td><%= render_group_description(group) %></td>
                   <td><%= group.user.email %> </td>
                   <td>
                       <% if current_user && current_user == group.user %>
