@@ -22,6 +22,10 @@ Rails.application.routes.draw do
   end
   resources :comments
   resources :groups do
+    member do
+      post :join
+      post :quit
+    end
     resources :posts
   end
   resources :meetup_groups
