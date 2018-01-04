@@ -1,0 +1,51 @@
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    加上用户的头像等
+    <%= link_to t('我的小组主页'), new_group_path, class: 'btn btn-primary btn-block' %>  
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <% if current_user && current_user == @group.user %>
+      <%= link_to("编辑小组信息", edit_group_path(@group), class: "btn btn-primary btn-block")%>
+    <% end %>
+    <%= link_to t('我要发言'), new_group_post_path(@group), class: 'btn btn-primary btn-block' %>  
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">最近加入</div>
+  <div class="panel-body">
+    列出最近加入本小组的人员头像，2排即可
+    可以查看本组成员，加上链接
+  </div>
+
+</div>
+
+
+
+<%= render "common/sidebar_box_tips" %>
+
+<div class="panel panel-default">
+  <div class="panel-heading">这个小组的成员也喜欢</div>
+  <div class="panel-body">
+    做个随机推荐 
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">统计信息</div>
+  <ul class="list-group">
+    <li class="list-group-item">小组成员: <%= Group.count %> 人</li>
+    <li class="list-group-item">帖子数: <%= @group.posts.count %> 条</li>
+  </ul>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">广告位</div>
+  <div class="panel-body">
+    可以放个广告 
+  </div>
+</div>
