@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :groups
+  has_many :group_relationships
+  has_many :participated_groups, :through => :group_relationships, :source => :group  
   has_many :posts
   has_many :comments #小组文章post的评论
   has_many :official_articles
@@ -44,4 +46,8 @@ class User < ApplicationRecord
       self.email.split("@").first
     end
   end
+  
+  def is_member_of?(group)
+    participated_groups.include?(group)
+  end  
 end

@@ -14,6 +14,13 @@
           
           <div class="group">
             <%= link_to("发言", new_group_post_path(@group), class: "btn btn-default pull-right")%>
+            <span class="pull-right">
+              <% if current_user && current_user.is_member_of?(@group) %>
+                <label class="label label-success"> 群组成员 </label>
+              <% else %>
+                <label class="label label-warning"> 不是群组成员 </label>
+              <% end %>
+            </span>
           </div>
           <p><%= @group.description %></p>
         </div>
