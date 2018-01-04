@@ -1,0 +1,73 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <% if current_user && current_user == @topic.user %>
+      <%= link_to("编辑小组信息", edit_topic_path(@topic), class: "btn btn-primary btn-block")%>
+    <% end %>
+    <%= link_to t('我要发言'), new_topic_answer_path(@topic), class: 'btn btn-primary btn-block' %>  
+  </div>
+</div>
+
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <a href="#" class="btn btn-block btn-sm btn-move-page" data-type="top"><i class="fa fa-arrow-up"></i></a>
+    <div class="buttons">
+      <div class="group likes opts">
+        点赞
+      </div>
+      <div class="group">
+        <div class="btn-group" role="group">
+          关注
+          收藏
+        </div>
+      </div>
+    </div>
+    <hr />
+    <div class="group">
+      这里放分享插件
+    </div>
+    <hr />
+    <div class="reply-buttons">
+      <div class="total">
+        共收到 <b>7</b> 条回复
+      </div>
+      打赏作者
+    </div>
+    <hr />
+    <div class="group opts">
+      <% if current_user.is_editor? %>
+        <div style="margin-bottom: 8px">
+          参考rubychina,取消、置顶、加精、屏蔽、等操作
+        </div>
+      <% end %>
+
+      <% if current_user == @topic.user or current_user.is_editor? %>
+      <div>
+          参考rubychina   关闭话题、重新修改、开启话题。
+      </div>
+      <% end %>
+    </div>
+    <a href="#" class="btn btn-block btn-move-page" data-type="bottom"><i class="fa fa-arrow-down"></i></a>
+  </div>
+</div>
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">相关话题</div>
+  <div class="panel-body">
+    列出本小组的最新话题（作者名称）
+  </div>
+
+</div>
+
+
+
+<%= render "common/sidebar_box_tips" %>
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">广告位</div>
+  <div class="panel-body">
+    可以放个广告 
+  </div>
+</div>

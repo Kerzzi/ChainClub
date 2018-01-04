@@ -1,0 +1,104 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    加上用户的头像，作者的简介，比如公众号、 宣言等等
+    <hr> 
+    <%= link_to(@post.group.title, group_path(@group)) %>
+    判断当前用户是不是该小组成员，如果不是加入加入小组链接
+  </div>
+</div>
+
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <a href="#" class="btn btn-block btn-sm btn-move-page" data-type="top"><i class="fa fa-arrow-up"></i></a>
+    <div class="buttons">
+      <div class="group likes opts">
+        点赞
+      </div>
+      <div class="group">
+        <div class="btn-group" role="group">
+          关注
+          收藏
+        </div>
+      </div>
+    </div>
+    <hr />
+    <div class="group">
+      这里放分享插件
+    </div>
+    <hr />
+    <div class="reply-buttons">
+      <div class="total">
+        共收到 <b>7</b> 条回复
+      </div>
+      打赏作者
+    </div>
+    <hr />
+    <div class="group opts">
+      <% if current_user.is_editor? %>
+        <div style="margin-bottom: 8px">
+          参考rubychina,取消、置顶、加精、屏蔽、等操作
+        </div>
+      <% end %>
+
+      <% if current_user == @post.user or current_user.is_editor? %>
+      <div>
+          参考rubychina   关闭话题、重新修改、开启话题。
+      </div>
+      <% end %>
+    </div>
+    <a href="#" class="btn btn-block btn-move-page" data-type="bottom"><i class="fa fa-arrow-down"></i></a>
+  </div>
+</div>
+
+
+
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">小组信息</div>
+  <ul class="list-group">
+    <li class="list-group-item"><%= link_to(@post.group.title, group_path(@group)) %></li>
+    <li class="list-group-item">小组成员: <%= Group.count %> 人</li>
+    <li class="list-group-item">帖子数: <%= @group.posts.count %> 条</li>
+  </ul>
+</div>
+
+
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <% if current_user && current_user == @group.user %>
+      <%= link_to("编辑小组信息", edit_group_path(@group), class: "btn btn-primary btn-block")%>
+    <% end %>
+    <%= link_to t('我要发言'), new_group_post_path(@group), class: 'btn btn-primary btn-block' %>  
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">最新话题</div>
+  <div class="panel-body">
+    列出本小组的最新话题（作者名称）
+  </div>
+
+</div>
+
+
+
+<%= render "common/sidebar_box_tips" %>
+
+<div class="panel panel-default">
+  <div class="panel-heading">喜欢本文的读者也喜欢</div>
+  <div class="panel-body">
+    做个随机推荐 
+  </div>
+</div>
+
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">广告位</div>
+  <div class="panel-body">
+    可以放个广告 
+  </div>
+</div>

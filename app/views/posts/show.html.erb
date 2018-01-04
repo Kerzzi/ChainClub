@@ -1,12 +1,41 @@
-<div class="col-md-12">
-  <div class="group">  
-    <% if current_user && current_user == @post.user %>
-      <%= link_to("更新文章", edit_group_post_path(@group,@post), class: "btn btn-primary pull-right")%>
-    <% end %>
-  </div>
-  <h2><%= @post.title %></h2>
-  <p><%= @post.content %></p>
-  <br>
-  <%= render partial: "comments/template", locals: {commentable: @post, new_comment: @comment} %>  
+<div class="row">
+  <div class="col-md-9">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= @post.title %></h3>
+        <p>本文由 <%= @post.user.display_name %> · 发布于<%= @post.created_at %> · 最后由XX回复于天前 · 1281次阅读</p>
+        <p>点击作者的名字可以到达作者的主页，作者头像置于右方</p>
+      </div>
+      <div class="panel-body">
+        
+        <div class="col-md-12">
+          <div class="group">  
+            <% if current_user && current_user == @post.user %>
+              <%= link_to("更新文章", edit_group_post_path(@group,@post), class: "btn btn-primary pull-right")%>
+            <% end %>
+          </div>
+          
+          <p><%= @post.content %></p>
+          <br>
+          <%= render partial: "comments/template", locals: {commentable: @post, new_comment: @comment} %>  
 
-</div>
+        </div>
+        
+      </div>
+    </div> 
+    
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">相关话题</h3>
+      </div>
+      <div class="panel-body">
+      <p>推荐5个相似话题</p>
+      </div>
+    </div>  
+    
+  </div>    
+    
+  <div class="sidebar col-md-3">
+    <%= render "sidebar_for_post_show" %>
+  </div>
+</div>  
