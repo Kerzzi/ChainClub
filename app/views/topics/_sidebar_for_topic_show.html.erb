@@ -1,12 +1,10 @@
+<% if current_user && current_user == @topic.user %>
 <div class="panel panel-default">
   <div class="panel-body">
-    <% if current_user && current_user == @topic.user %>
-      <%= link_to("编辑小组信息", edit_topic_path(@topic), class: "btn btn-primary btn-block")%>
-    <% end %>
-    <%= link_to t('我要发言'), new_topic_answer_path(@topic), class: 'btn btn-primary btn-block' %>  
+    <%= link_to("更新该话题", edit_topic_path(@topic), class: "btn btn-primary btn-block")%>
   </div>
 </div>
-
+<% end %> 
 
 <div class="panel panel-default">
   <div class="panel-body">
@@ -29,12 +27,14 @@
       <%= social_share_button_tag(@topic.title) %><!-- 社交分享 -->
     </div>
     <hr />
-    <div class="reply-buttons">
-      <div class="total">
-        共收到 <b>7</b> 条回复
-      </div>
-      打赏作者
+    
+    <div class="total text-center">
+      共收到 <b>7</b> 条回复
     </div>
+    
+    <hr />
+      打赏作者
+
     <hr />
     <div class="group opts">
       <!-- 这里目前存在bug -->
@@ -58,7 +58,7 @@
 <div class="panel panel-default">
   <div class="panel-heading">相关话题</div>
   <div class="panel-body">
-    列出本小组的最新话题（作者名称）
+    <p>列出本小组的最新话题（作者名称）</p>
   </div>
 
 </div>

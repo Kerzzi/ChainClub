@@ -2,9 +2,16 @@
   <div class="col-md-9">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title"><%= @topic.title %></h3>
-        <p>本文由 <%= @topic.user.display_name %> · 发布于<%= @topic.created_at %> · 最后由XX回复于天前 · 1281次阅读</p>
-        <p>点击作者的名字可以到达作者的主页，作者头像置于右方</p>
+        <div class="row">
+          <div class="col-md-11">
+            <h1 class="panel-title"><strong><%= @topic.node.name %></strong> · <%= @topic.title %></h1>
+          </div>
+          
+          <div class="col-md-1">
+            <div class="avatar pull-right"><img src= "<%= render_user_avatar(@topic.user, 50) %>" style="width:50px; hight:50px; border-radius:25px;"></div>
+          </div>
+        </div>
+        <p>本文由 <%= @topic.user.display_name %> · 发布于<%= time_tag(@topic.created_at) %> · 最后由XX回复于天前 · 1281次阅读</p>
         <% if @topic.excellent? %>
           <div class="label-awesome">
             <i class="fa fa-diamond awesome"></i> 本帖已被设为精华帖！
@@ -18,35 +25,30 @@
       </div>
       
       <div class="panel-body">
-
         <div class="col-md-12">
-          <div class="group">
-            <%= link_to("直接回答", new_topic_answer_path(@topic), class: "btn btn-default pull-right")%>
-            <% if current_user && current_user == @topic.user %>
-              <%= link_to("更新问题", edit_topic_path(@topic), class: "btn btn-primary pull-right")%>
-            <% end %>
-          </div>
-          <h2><%= @topic.title %></h2>
-          <p><%= @topic.content %></p>
+          <%= @topic.content %>
         </div>
+      </div>
+        
+      <div class="panel-footer">关注 / 喜欢 / 收藏</div>
+      
+    </div>  
 
-        <div class="row">
-          <div class="col-sm-12 ">
-            <h4>
-              <%= @topic.answers.count %> 个回复
-            </h4>
-            <hr>
-            <div >
-              <%= render @topic.answers %>
-            </div>
-          </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title"><%= @topic.answers.count %> 个回复</h4>
+      </div>
+      <div class="panel-body">
+        <div >
+          <%= render @topic.answers %>
         </div>
-
+        
         <div class="text-center">
           <%= will_paginate @answers %>
-        </div>
-      </div>  
-    </div> 
+        </div>        
+      </div>
+    </div>
+
     <%= render "answers/form"%>
     <%= render 'related_topics' %> 
     
