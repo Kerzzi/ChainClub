@@ -17,14 +17,16 @@
       </div>
       <div class="group">
         <div class="btn-group" role="group">
+          
+          
           关注
           收藏
         </div>
       </div>
     </div>
     <hr />
-    <div class="group">
-      这里放分享插件
+    <div class="group share text-center">
+      <%= social_share_button_tag(@topic.title) %><!-- 社交分享 -->
     </div>
     <hr />
     <div class="reply-buttons">
@@ -35,6 +37,7 @@
     </div>
     <hr />
     <div class="group opts">
+      <!-- 这里目前存在bug -->
       <% if current_user.is_editor? %>
         <div style="margin-bottom: 8px">
           参考rubychina,取消、置顶、加精、屏蔽、等操作

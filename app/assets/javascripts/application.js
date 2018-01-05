@@ -17,6 +17,8 @@
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN
 //= require select2
 //= require ckeditor/init
+//= require social-share-button
+//= require social-share-button/wechat
 //= require_tree .
 
 

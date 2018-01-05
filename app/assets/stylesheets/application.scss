@@ -11,6 +11,7 @@
  * It is generally better to create a new file per style scope.
  *
  *= require font-awesome
+ *= require social-share-button
  *= require_tree .
  *= require_self
  */
@@ -21,6 +22,7 @@
  @import "font-awesome";
  @import "select2";
  @import "select2-bootstrap";
+ @import "social-share-button";
 
 
 html{

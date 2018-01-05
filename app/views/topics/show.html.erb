@@ -5,7 +5,18 @@
         <h3 class="panel-title"><%= @topic.title %></h3>
         <p>本文由 <%= @topic.user.display_name %> · 发布于<%= @topic.created_at %> · 最后由XX回复于天前 · 1281次阅读</p>
         <p>点击作者的名字可以到达作者的主页，作者头像置于右方</p>
+        <% if @topic.excellent? %>
+          <div class="label-awesome">
+            <i class="fa fa-diamond awesome"></i> 本帖已被设为精华帖！
+            <% if admin? %>
+            <div class="pull-right">
+              <%= link_to icon_tag("close"), action_topic_path(@topic.id, type: 'unexcellent'), data: { method: "post", remote: true } %>
+            </div>
+            <% end %>
+          </div>
+        <% end %>
       </div>
+      
       <div class="panel-body">
 
         <div class="col-md-12">

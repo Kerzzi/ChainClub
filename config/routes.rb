@@ -18,6 +18,20 @@ Rails.application.routes.draw do
   get 'topics/node:id', to: 'topics#node', as: 'node_topics'
   
   resources :topics do
+    member do
+      post :favorite
+      delete :unfavorite
+      post :follow
+      delete :unfollow
+      get :ban
+      post :action
+    end
+    collection do
+      get :popular
+      get :excellent
+      get :favorites
+      post :preview
+    end
     resources :answers
   end
   resources :comments
