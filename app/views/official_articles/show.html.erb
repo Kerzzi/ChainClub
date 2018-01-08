@@ -1,39 +1,182 @@
-<div class="col-md-12">
-  <div class="group">
-    <%= link_to("更新文章", edit_official_article_path(@official_article), class: "btn btn-primary pull-right")%>
+<div class="container">
+  <div class="row">
+
+    <div class="article-show">
+
+      <div class="col-md-8 article-show-box">
+
+        <!-- 标题 -->
+        <div class="article-title">
+          <h3><%= @official_article.title %></h3>
+        </div>
+
+        <!-- 作者、发布时间 -->
+        <div class="article-author">
+          
+          <span> <%= @official_article.user.display_name %></span> · 
+          于<span> <%= @official_article.created_at.strftime("%Y-%m-%d %H:%M:%S") %></span> · 
+          发布在 · <span> <%= @official_article.article_category.try(:name) %></span>栏目 ·
+          <span> <%= t(@official_article.status, :scope => "official_article.status") %></span>
+        </div>
+
+        <!-- 摘要 -->
+        <div class="article-summary">
+          <p>
+            <blockquote>
+                <%= simple_format(@official_article.summary) %>
+            </blockquote>
+          </p>
+        </div>
+
+        <!-- 主图 -->
+        <% if @official_article.image.present? %>
+          <div class="article-image">
+            <%= image_tag(@official_article.image.articleimg.url, class: "img-rounded img-responsive center-block") %>
+          </div>
+        <% end %>
+        <hr>
+
+        <!-- 内容 -->
+        <div class="article-content">
+          <%= simple_format(@official_article.content) %>
+        </div>
+
+        <!-- 文章收藏功能 -->
+        <div class="article-collection text-center">
+          <% if current_user && current_user.is_fan_of?(@official_article) %>
+            <div class="article-collection-btn">
+              <%= link_to unlike_official_article_path(@official_article), method: :post, class: "btn btn-lg btn-danger" do %>
+              <i class="fa fa-thumbs-up fa-1x">  赞  (<span><%= @official_article.fans.count %></span>) </i><% end %>
+            </div>
+          <% else %>
+            <div class="article-collection-btn">
+              <%= link_to like_official_article_path(@official_article), method: :post, class: "btn btn-lg btn-default" do %>
+              <i class="fa fa-thumbs-o-up fa-1x">  赞  (<span><%= @official_article.fans.count %></span>) </i><% end %>
+            </div>
+          <% end %>
+        </div>
+        <hr>
+
+        <!-- 文章评论 -->
+        <div class="article-review-box">
+          <%= simple_form_for ([@official_article, @article_comment]) do |f| %>
+            <div class="">
+              <%= f.input :content, :label => "发表评论" %>
+            </div>
+            <div class="">
+              <%= f.submit "提交评论", class: "btn btn-sm btn-default ", data: {disable_with: "Submiting"} %>
+            </div>
+          <% end %>
+          <hr>
+          <% if @article_comments.blank? %>
+            <p class="text-center">这篇文章还没有人评论，来为ta添加一个吧！</p>
+          <% else %>
+
+          <div class="article-reviews ">
+            <% @article_comments.each do |article_comment| %>
+              <div class="row">
+
+                <!-- 评论者头像 -->
+                <div class="col-sm-1 col-xs-2">
+                  <div class="avatar"><img src= "<%= render_user_avatar(article_comment.user, 50) %>" style="width:50px; hight:50px; border-radius:25px;"></div>
+                </div>
+
+                <!-- 评论内容 -->
+                <div class="col-sm-11 ccol-xs-10">
+                  <div class="article-review-username">
+                    <div>
+                      <span><%= article_comment.user.display_name %></span> ·  
+                      <span><%= article_comment.created_at.strftime("%Y-%m-%d %H:%M:%S") %></span>
+                      <span class="pull-right">
+                        <% if current_user && current_user == article_comment.user %>
+                        <%= link_to("Delete", official_article_article_comment_path(@official_article,article_comment), 
+                                  method: :delete, data: { confirm: "确定删除该评论?" } )%> 
+                        <% end %>
+                      </span>
+                    </div>  
+                  </div>
+
+                  <div>
+                    <%= simple_format(article_comment.content) %>
+                  </div>
+
+                </div>
+
+              </div>
+              <hr>
+            <% end %>
+          </div>
+
+          <% end %>
+
+        </div>
+
+      </div>
+
+      <!-- 有侧边栏 -->
+      <div class="col-md-4">
+
+        <!-- 文章作者 -->
+        <div class="article-side-author">
+          <!-- 头像 -->
+          <div class="article-avatar text-center">
+            <img src= "<%= render_user_avatar(@official_article.user, 50) %>" style="width:80px; hight:80px; border-radius:40px;">
+          </div>
+          <!-- 用户名 -->
+          <div class="article-username text-center">
+            <%= @official_article.user.display_name %>
+          </div>
+          <!-- 简介 -->
+          <div class="article-author-summary">
+            <%= simple_format(@official_article.user.summary) %>
+            <span>共发表文章：<%= @official_article.user.official_articles.count %> 篇</span>
+            <hr>
+          </div>
+
+          <!-- 最近文章 -->
+          <div class="article-author-title-list">
+            <h5>最近文章</h5>
+            <% @userarticles.each do |userarticle| %>
+              <p>· <%= link_to(userarticle.title, official_article_path(userarticle)) %><span class="article-author-title-list-time">(<%= userarticle.created_at.strftime("%Y-%m-%d %H:%M:%S") %>)</span></p>
+            <% end %>
+          </div>
+
+        </div>
+
+        <!-- 热评文章 -->
+
+        <div class=" article-author-title-list">
+          <h5>热评文章</h5>
+
+
+          <% @article_hots.each do |article_hot| %>
+            <hr>
+            <div class="row article-show-hot">
+              <div class="col-xs-4 all_image_css">
+                <% if article_hot.image.present? %>
+                  <%= link_to image_tag(article_hot.image.thumb.url, class: "img-rounded img-responsive center-block"), official_article_path(article_hot) %>
+                <% else %>
+                  <%= link_to image_tag("http://placehold.it/80x80&text=No Pic", class: "img-circle img-responsive center-block"), official_article_path(article_hot) %>
+                <% end %>
+              </div>
+              <div class="col-xs-8">
+                  <p><%= link_to(article_hot.title, official_article_path(article_hot)) %></p>
+              </div>
+            </div>
+          <% end %>
+          <hr>
+
+        </div>
+
+        <!-- 投稿按钮 -->
+        <div class="">
+          <%= link_to("我要投稿", new_official_article_path, class: "btn btn-danger center-block") %>
+        </div>
+
+
+      </div>
+
+    </div>
+
   </div>
-  <h2><%= @official_article.title %></h2>
-  <p><%= t(@official_article.status, :scope => "official_article.status") %></p>
-  <p> 分类：<%= @official_article.article_category.try(:name) %></p>
-  <p> 作者：<%= @official_article.author %> 文章来源：<%= @official_article.source %></p>
-  <p> 最后更新时间：<%= @official_article.updated_at %></p>
-  <hr>
-  <%= sanitize @official_article.content %>
-  
-  <hr>
-  <%= link_to("写评论", new_official_article_article_comment_path(@official_article), class: "btn btn-default pull-right")%>
-  <table class="table">
-    <thead>
-     <tr>
-        <th>评论内容</th>
-        <th>发表者</th>
-        <th>发表时间</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @article_comments.each do |article_comment| %>
-        <tr>
-          <td><%= article_comment.content %></td>
-          <td><%= article_comment.user.email %></td>
-          <td><%= article_comment.created_at.to_s %></td>
-          <td>
-              <% if current_user && current_user == article_comment.user %>
-              <%= link_to("Delete", official_article_article_comment_path(@official_article,article_comment),    class: "btn btn-sm btn-default", 
-                          method: :delete, data: { confirm: "确定删除该评论?" } )%>
-              <% end %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
 </div>

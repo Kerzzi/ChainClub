@@ -18,6 +18,8 @@ class User < ApplicationRecord
   has_many :jobs
   has_many :courses
   has_many :projects
+  has_many :official_articles
+   
   
   has_paper_trail
   
@@ -58,5 +60,21 @@ class User < ApplicationRecord
   def quit!(group)
     participated_groups.delete(group)
   end
-    
+
+  # ---赞赏官方文章功能三方关系代码块---
+  has_many :official_article_relationships
+  has_many :liked_official_articles, :through => :official_article_relationships, :source => :official_article
+  
+  def is_fan_of?(official_article)
+    liked_official_articles.include?(official_article)
+  end
+  
+  def like_official_article!(official_article)
+    liked_official_articles << official_article
+  end
+
+  def unlike_official_article!(official_article)
+    liked_official_articles.delete(official_article)
+  end
+  
 end

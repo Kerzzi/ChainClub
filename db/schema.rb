@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180104123218) do
+ActiveRecord::Schema.define(version: 20180108125550) do
 
   create_table "answers", force: :cascade do |t|
     t.text "content"
@@ -126,6 +126,13 @@ ActiveRecord::Schema.define(version: 20180104123218) do
     t.index ["sort"], name: "index_nodes_on_sort"
   end
 
+  create_table "official_article_relationships", force: :cascade do |t|
+    t.integer "official_article_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "official_articles", force: :cascade do |t|
     t.string "title"
     t.text "content"
@@ -135,6 +142,9 @@ ActiveRecord::Schema.define(version: 20180104123218) do
     t.datetime "updated_at", null: false
     t.integer "article_category_id"
     t.string "status", default: "draft"
+    t.string "image"
+    t.string "summary"
+    t.integer "user_id"
     t.index ["article_category_id"], name: "index_official_articles_on_article_category_id"
   end
 
@@ -273,6 +283,7 @@ ActiveRecord::Schema.define(version: 20180104123218) do
     t.string "role"
     t.string "username"
     t.string "avatar"
+    t.string "summary"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

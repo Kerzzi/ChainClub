@@ -6,6 +6,10 @@ Rails.application.routes.draw do
 
   resources :official_articles do
     resources :article_comments
+    member do
+      post :like
+      post :unlike
+    end
   end
   
   resources :nodes do

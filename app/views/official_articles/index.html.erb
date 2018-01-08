@@ -13,7 +13,6 @@
       <tr>
         <td>#</td>
         <td>Title</td>
-        <td>content</td>
         <td>author</td>
         <td>status</td>
         <td>source</td>
@@ -25,7 +24,6 @@
         <tr>
           <td>#</td>
           <td><%= link_to(official_article.title, official_article_path(official_article)) %></td>
-          <td><%= sanitize official_article.content %></td>
           <td><%= official_article.author %></td>
           <td><%= t(official_article.status, :scope => "official_article.status") %></td>
           <td><%= official_article.source %></td>

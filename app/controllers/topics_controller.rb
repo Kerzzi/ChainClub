@@ -11,7 +11,7 @@ class TopicsController < ApplicationController
   
   def show
     @topic = Topic.find(params[:id])
-    @answers = @topic.answers.paginate(:page => params[:page], :per_page => 5)
+    @answers = @topic.answers
   end
     
   def new 
