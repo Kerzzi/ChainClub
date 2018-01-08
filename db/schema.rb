@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180108125550) do
+ActiveRecord::Schema.define(version: 20180108151521) do
 
   create_table "answers", force: :cascade do |t|
     t.text "content"
@@ -241,6 +241,13 @@ ActiveRecord::Schema.define(version: 20180108125550) do
     t.datetime "updated_at", null: false
     t.index ["site_node_id"], name: "index_sites_on_site_node_id"
     t.index ["url"], name: "index_sites_on_url"
+  end
+
+  create_table "topic_relationships", force: :cascade do |t|
+    t.integer "topic_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "topics", force: :cascade do |t|

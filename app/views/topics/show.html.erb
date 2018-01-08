@@ -26,7 +26,23 @@
       
       <div class="panel-body">
         <div class="col-md-12">
-          <%= @topic.content %>
+          <%= sanitize @topic.content %>
+          
+          <!-- 社区文章收藏功能 -->
+          <div class="article-collection text-center">
+            <% if current_user && current_user.is_fan_of?(@topic) %>
+              <div class="article-collection-btn">
+                <%= link_to unlike_topic_path(@topic), method: :post, class: "btn btn-lg btn-danger" do %>
+                <i class="fa fa-thumbs-up fa-1x">  赞  (<span><%= @topic.fans.count %></span>) </i><% end %>
+              </div>
+            <% else %>
+              <div class="article-collection-btn">
+                <%= link_to like_topic_path(@topic), method: :post, class: "btn btn-lg btn-default" do %>
+                <i class="fa fa-thumbs-o-up fa-1x">  赞  (<span><%= @topic.fans.count %></span>) </i><% end %>
+              </div>
+            <% end %>
+            
+          </div>
         </div>
       </div>
         

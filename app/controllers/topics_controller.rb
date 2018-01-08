@@ -11,6 +11,7 @@ class TopicsController < ApplicationController
   
   def show
     @topic = Topic.find(params[:id])
+    @user = @topic.user
     @answers = @topic.answers
   end
     
@@ -57,7 +58,25 @@ class TopicsController < ApplicationController
   
     redirect_to topics_path, alert: "该提问已被删除！"
   end
+  
+  # ---topic收藏文章---
+  def like
+    @topic = Topic.find(params[:id])
 
+    if !current_user.is_fan_of?(@topic)
+      current_user.like_topic!(@topic)
+    end
+      redirect_to topic_path(@topic)
+  end
+
+  def unlike
+    @topic = Topic.find(params[:id])
+
+    if current_user.is_fan_of?(@topic)
+      current_user.unlike_topic!(@topic)
+    end
+      redirect_to topic_path(@topic)
+  end
 
   def node
     @node = Node.find(params[:id])

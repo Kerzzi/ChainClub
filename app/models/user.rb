@@ -61,7 +61,7 @@ class User < ApplicationRecord
     participated_groups.delete(group)
   end
 
-  # ---赞赏官方文章功能三方关系代码块---
+  # ---收藏官方文章功能三方关系代码块---
   has_many :official_article_relationships
   has_many :liked_official_articles, :through => :official_article_relationships, :source => :official_article
   
@@ -76,5 +76,22 @@ class User < ApplicationRecord
   def unlike_official_article!(official_article)
     liked_official_articles.delete(official_article)
   end
+
+  # ---收藏社区文章功能三方关系代码块---
+  has_many :topic_relationships
+  has_many :liked_topics, :through => :topic_relationships, :source => :topic
+  
+  def is_fan_of?(topic)
+    liked_topics.include?(topic)
+  end
+  
+  def like_topic!(topic)
+    liked_topics << topic
+  end
+
+  def unlike_topic!(topic)
+    liked_topics.delete(topic)
+  end
+  
   
 end

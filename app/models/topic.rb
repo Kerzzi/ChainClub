@@ -5,6 +5,9 @@ class Topic < ApplicationRecord
   has_many :answers, dependent: :destroy
   belongs_to :user
   belongs_to :node, :optional => true
+  
+  has_many :topic_relationships
+  has_many :fans, through: :topic_relationships, source: :user
 
   scope :last_actived,       -> { order(last_active_mark: :desc) }
   scope :high_likes,         -> { order(likes_count: :desc).order(id: :desc) }
