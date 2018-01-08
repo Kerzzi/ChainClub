@@ -113,68 +113,7 @@
 
       </div>
 
-      <!-- 有侧边栏 -->
-      <div class="col-md-4">
-
-        <!-- 文章作者 -->
-        <div class="article-side-author">
-          <!-- 头像 -->
-          <div class="article-avatar text-center">
-            <img src= "<%= render_user_avatar(@official_article.user, 50) %>" style="width:80px; hight:80px; border-radius:40px;">
-          </div>
-          <!-- 用户名 -->
-          <div class="article-username text-center">
-            <%= @official_article.user.display_name %>
-          </div>
-          <!-- 简介 -->
-          <div class="article-author-summary">
-            <%= simple_format(@official_article.user.summary) %>
-            <span>共发表文章：<%= @official_article.user.official_articles.count %> 篇</span>
-            <hr>
-          </div>
-
-          <!-- 最近文章 -->
-          <div class="article-author-title-list">
-            <h5>最近文章</h5>
-            <% @userarticles.each do |userarticle| %>
-              <p>· <%= link_to(userarticle.title, official_article_path(userarticle)) %><span class="article-author-title-list-time">(<%= userarticle.created_at.strftime("%Y-%m-%d %H:%M:%S") %>)</span></p>
-            <% end %>
-          </div>
-
-        </div>
-
-        <!-- 热评文章 -->
-
-        <div class=" article-author-title-list">
-          <h5>热评文章</h5>
-
-
-          <% @article_hots.each do |article_hot| %>
-            <hr>
-            <div class="row article-show-hot">
-              <div class="col-xs-4 all_image_css">
-                <% if article_hot.image.present? %>
-                  <%= link_to image_tag(article_hot.image.thumb.url, class: "img-rounded img-responsive center-block"), official_article_path(article_hot) %>
-                <% else %>
-                  <%= link_to image_tag("http://placehold.it/80x80&text=No Pic", class: "img-circle img-responsive center-block"), official_article_path(article_hot) %>
-                <% end %>
-              </div>
-              <div class="col-xs-8">
-                  <p><%= link_to(article_hot.title, official_article_path(article_hot)) %></p>
-              </div>
-            </div>
-          <% end %>
-          <hr>
-
-        </div>
-
-        <!-- 投稿按钮 -->
-        <div class="">
-          <%= link_to("我要投稿", new_official_article_path, class: "btn btn-danger center-block") %>
-        </div>
-
-
-      </div>
+    <%= render "sidebar_for_article_show.html.erb" %>
 
     </div>
 
