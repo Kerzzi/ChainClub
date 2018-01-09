@@ -23,23 +23,24 @@
  @import "select2";
  @import "select2-bootstrap";
  @import "social-share-button";
-
+ @import "bootstrap-wysihtml5/bootstrap3-wysihtml5";                       //文本编辑器的支持样式
+ @import url('https://fonts.googleapis.com/earlyaccess/notosanssc.css');   //引入google思源黑简在线字体 需要使用VPN才可生效
 
 html{
-  height: 100%;
+  height: 100%;                                      // footer固定底部
 }
 
 body {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-
-  padding: 70px 0 0 0;
+  display: flex;                                     // footer固定底部
+  flex-direction: column;                            // footer固定底部
+  height: 100%;                                      // footer固定底部
+  font-family: 'Noto Sans SC', sans-serif;           // google思源黑简作为主字体
+  padding: 70px 0 0 0;                               // 腾出navbar的遮挡空间
   position: relative;
   background-color: #F5F5F5;
-
-  color: #333;
-  font-size: 14px;
+  font-size: 1.2em;                                   // 网站所有字体缩小比例
+  color: #666;                                        // 修改全站的 字体主色
+  
   letter-spacing: 0.1em;
   a {                                                 // 所有a标签统一样式
     color: #666;                                      // 链接反转的样式
@@ -81,6 +82,20 @@ body {
    }
  }
 
+  /* 通用的图片格式 */
+   .all_image_css {
+     transition: 0.8s;
+   }
+
+
+   .all_image_css:hover {
+     filter:alpha(Opacity=100);
+     -moz-opacity:0.4;
+     opacity: 0.7;
+     transition: 0.8s;
+   }
+
+  // navbar设置
  nav{
    /* 我们希望 navbar 采用固定的高度，只占用必须的空间 */
    /* 0 flex-grow, 0 flex-shrink, auto flex-basis */
@@ -88,11 +103,10 @@ body {
 
   }
 .navbar-default{
-  // border-color: #212121; //边框色
-  // margin-bottom: 0; //底部 margin 不撑开距离
   color: #000 !important;
   background: rgba(0,0,0,0.3);
   font-size: 1.2em;
+  border-color: transparent;                          //边框颜色设置为 透明
 
   a:focus {
     color: #eb5424 !important;
@@ -104,10 +118,11 @@ body {
   .navbar-header {
     a {
       font-size: 20px;
-      transition: 0.35s;
+      transition: 0.35s;  // 鼠标移开时 0.35秒渐变
     }
     a:hover {
       color: #D0CFCE;
+      transition: 0.5s;                                 // 鼠标指向时 0.5面渐变
     }
   }
   .navbar-nav li a {
@@ -147,7 +162,7 @@ body {
      height: 32px; //定制图片高度
  }
 
- /* footer */
+ //footer样式设置
 
  .footer{
      /* 和 navbar 一样，footer 也采用固定高度*/
