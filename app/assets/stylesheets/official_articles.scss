@@ -62,13 +62,14 @@
   margin: 50px auto 30px;
 }
 
-.article-description {
+.article-content {
   margin: 30px auto;
-  font-size: 1.2em;
-  line-height: 1.8em;                   //拉开行高
-  text-align: justify;                  //文本两端对齐
+  color: #101010;
+  font-size: 1.1em;
+  line-height: 1.4em;                   //拉开行高
+  text-align: justify;                  //文本两端对齐,可以实现文本排版的工整对齐，避免出现掉字、掉标点这样的低级排版错误，影响页面美观度。
   img {
-    max-width:100%;height:auto;         //重要样式代码，需要配合application.js的自适应代码块一起使用
+    max-width:100%; height:auto;         //重要样式代码，需要配合application.js的自适应代码块一起使用。可以实现图片按照divbox大小自动伸缩，从而实现响应式布局。
     border-radius: 6px;                 //为所有图片设置6px的圆角
     }
 }
