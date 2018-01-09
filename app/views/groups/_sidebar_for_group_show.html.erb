@@ -38,7 +38,7 @@
 <div class="panel panel-default">
   <div class="panel-heading">统计信息</div>
   <ul class="list-group">
-    <li class="list-group-item">小组成员: <%= Group.count %> 人</li>
+    <li class="list-group-item">小组成员: <%= @group.members.count %> 人</li>
     <li class="list-group-item">帖子数: <%= @group.posts.count %> 条</li>
   </ul>
 </div>
