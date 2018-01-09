@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180108151521) do
+ActiveRecord::Schema.define(version: 20180109122049) do
 
   create_table "answers", force: :cascade do |t|
     t.text "content"
@@ -130,6 +130,16 @@ ActiveRecord::Schema.define(version: 20180108151521) do
     t.string "summary"
     t.integer "user_id"
     t.index ["article_category_id"], name: "index_official_articles_on_article_category_id"
+  end
+
+  create_table "post_comments", force: :cascade do |t|
+    t.text "content"
+    t.integer "post_id"
+    t.integer "user_id"
+    t.boolean "is_hidden", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_post_comments_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|

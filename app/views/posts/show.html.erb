@@ -2,9 +2,16 @@
   <div class="col-md-9">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title"><%= @post.title %></h3>
+        <div class="row">
+          <div class="col-md-11">
+            <h3 class="panel-title"><%= @post.title %></h3>
+          </div>
+          
+          <div class="col-md-1">
+            <div class="avatar pull-right"><img src= "<%= render_user_avatar(@post.user, 50) %>" style="width:50px; hight:50px; border-radius:25px;"></div>
+          </div>
+        </div>
         <p>本文由 <%= @post.user.display_name %> · 发布于<%= @post.created_at %> · 最后由XX回复于天前 · 1281次阅读</p>
-        <p>点击作者的名字可以到达作者的主页，作者头像置于右方</p>
       </div>
       <div class="panel-body">
         
@@ -23,6 +30,19 @@
         
       </div>
     </div> 
+    
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title"><%= @post.post_comments.count %> 个回复</h4>
+      </div>
+      <div class="panel-body">
+        <div >
+          <%= render @post.post_comments %>
+        </div>      
+      </div>
+    </div>
+    
+    <%= render "post_comments/form"%>
     
     <div class="panel panel-default">
       <div class="panel-heading">

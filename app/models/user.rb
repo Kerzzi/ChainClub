@@ -14,11 +14,12 @@ class User < ApplicationRecord
   has_many :answers, dependent: :destroy
   has_many :topics, dependent: :destroy
   has_many :meetup_groups
-  has_one :profile
+  has_one :profile, dependent: :destroy
   has_many :jobs
   has_many :courses
   has_many :projects
   has_many :official_articles
+  has_many :post_comments, dependent: :destroy
    
   
   has_paper_trail

@@ -40,13 +40,15 @@ Rails.application.routes.draw do
     end
     resources :answers
   end
-  resources :comments
+  resources :post_comments
   resources :groups do
     member do
       post :join
       post :quit
     end
-    resources :posts
+    resources :posts do
+      resources :post_comments
+    end
   end
   resources :meetup_groups
   resources :jobs
