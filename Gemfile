@@ -39,7 +39,6 @@ gem 'bootstrap-sass'
 gem 'simple_form'
 gem 'devise'
 gem 'will_paginate'
-gem 'acts_as_commentable_with_threading'
 gem 'rails-i18n'
 gem "devise-i18n"
 gem "select2-rails"

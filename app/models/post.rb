@@ -8,6 +8,5 @@ class Post < ApplicationRecord
 
   scope :recent, -> { order("created_at DESC")}
   
-  acts_as_commentable
   
 end
