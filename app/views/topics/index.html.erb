@@ -1,35 +1,48 @@
+
 <div class="row">
   <div class="col-md-9">
     <div class="panel panel-default">
-      <div class="panel-heading">小帖士</div>
+
       
       <div class="panel-body item-list">
+        <% @topics.each do |topic| %>  
+          <div class="topic media topic-<%= topic.id %>">
+            <div class="avatar media-left">
+              <img src= "<%= render_user_avatar(topic.user, 180) %>" style="width:50px; hight:50px; border-radius:50%;">
+            </div>
+            <div class="infos media-body">
+              <div class="title media-heading">
 
-        <table class="table table-hover">
-          <thead>
-            <tr>
-              <td>#</td>
-              <td>Title</td>
-              <td>问题描述</td>
-              <td>node</td>
-            </tr>
-          </thead>
-          <tbody>
-            <% @topics.each do |topic| %>
-              <tr>
-                <td>#</td>
-                <td><%= link_to(topic.title, topic_path(topic)) %></td>
-                <td><%= sanitize topic.content %></td>
-                <td><%= topic.node.try(:name) %></td>
-                <td>
-                    <%= link_to("Edit", edit_topic_path(topic), class: "btn btn-sm btn-default")%>
-                    <%= link_to("Delete", topic_path(topic),    class: "btn btn-sm btn-default", 
-                                method: :delete, data: { confirm: "Are you sure?" } )%>
-                </td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
+                  <%= topic.node.name %>
+                  <%= link_to(topic.title, topic_path(topic)) %>
+
+                
+                  <i class="fa fa-angle-double-up" title="置顶"></i>
+                
+
+              </div>
+              <div class="info">
+                <span class="name">
+                  <%= topic.user.display_name %>
+                </span> •
+                最后由 XXX 回复于 
+                <span><%= time_tag(topic.created_at) %></span>
+              </div>
+            </div>
+            <div class="count media-right">
+              <% if topic.answers.count > 0 %>
+              <span class="badge"><%= topic.answers.count %></span>
+                
+              <% end %>
+            </div>
+          </div>
+          <hr/>
+        <% end %>
+
+        <div class="text-center">
+          <%= will_paginate @topics %>
+        </div>
+      
       </div><!-- /panel-body -->
     </div>
   </div>
@@ -38,3 +51,4 @@
     <%= render "sidebar_for_topic_index" %>
   </div>
 </div>
+

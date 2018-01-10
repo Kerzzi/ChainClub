@@ -18,6 +18,15 @@ Rails.application.routes.draw do
       post :unblock
     end
   end
+
+  resource :setting do
+    member do
+      get :account
+      get :password
+      get :profile
+      get :reward
+    end
+  end
   
   get 'topics/node:id', to: 'topics#node', as: 'node_topics'
   

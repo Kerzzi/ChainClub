@@ -28,6 +28,9 @@ class User < ApplicationRecord
 
   accepts_nested_attributes_for :profile
 
+  ACCESSABLE_ATTRS = [:username, :email, :avatar, :summary, :current_password, :password, :password_confirmation]
+  REWARD_FIELDS  = [:alipay, :wechat]
+
   ROLES = ["super_admin","admin", "editor"]
 
   def is_super_admin?

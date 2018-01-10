@@ -1,0 +1,30 @@
+<div class="row">
+  <%= render 'menu' %>
+
+  <div class="col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <%= simple_form_for(@user, url: setting_path, html: { method: :put, enctype:  "multipart/form-data" }) do |f| %>
+
+        <div class="row">
+          <div class="col-sm-9">
+            <%= f.input :username, input_html: { style: 'width: 200px' } %>
+            
+
+            <%= f.input :avatar %>
+            <%= f.input :summary, as: :text, input_html: { class: "xxlarge", rows: "6" } %>
+          </div>
+          <div class="col-sm-3">
+            <div class="form-group avatar-preview" style="text-align: center;">
+              <img src= "<%= render_user_avatar(current_user, 50) %>" style="width:50px; hight:50px; border-radius:25px;">
+            </div>
+          </div>
+        </div>
+        <div class="form-actions hide-ios">
+          <%= f.submit "Submit", disable_with: "Submiting...", class: "btn btn-primary"%>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

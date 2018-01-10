@@ -1,46 +1,44 @@
-<div class="container-fluid show-content">
-  <div class="row">
-    <div class="heading">
-      <h1><%= link_to("官方文章", official_articles_path) %></h1>   
-    </div>
-    <div class="group">
-      <%= link_to("New article", new_official_article_path, class: "btn btn-primary pull-right") %>
-    </div>
-  </div>
 
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <td>#</td>
-        <td>Title</td>
-        <td>author</td>
-        <td>status</td>
-        <td>source</td>
-        <td>category</td>
-      </tr>
-    </thead>
-    <tbody>
-      <% @official_articles.each do |official_article| %>
-        <tr>
-          <td>#</td>
-          <td><%= link_to(official_article.title, official_article_path(official_article)) %></td>
-          <td><%= official_article.author %></td>
-          <td><%= t(official_article.status, :scope => "official_article.status") %></td>
-          <td><%= official_article.source %></td>
-          <td><%= official_article.article_category.try(:name) %></td>
-          <td><%= official_article.created_at.to_s %></td>
-          <td>
-              <%= link_to("Edit", edit_official_article_path(official_article), class: "btn btn-sm btn-default")%>
-              <%= link_to("Delete", official_article_path(official_article),    class: "btn btn-sm btn-default", 
-                          method: :delete, data: { confirm: "Are you sure?" } )%>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-  
-  <div class="text-center">
-    <%= will_paginate @official_articles %>
-  </div>
+
+<div class="container">
+
+  <div class="row">
     
+
+    
+    <% @official_articles.each do |official_article| %>
+      <div class="article-all col-md-6 container">
+        <div class="article-box row">
+
+            <div class="">
+              <!-- 文章列表图片 -->
+              <div class="col-md-5 all_image_css">
+                <% if official_article.image.present? %>
+                  <%= link_to image_tag(official_article.image.articleimg.url, class: "product-list-style-img img-responsive"), official_article_path(official_article) %>
+                <% else %>
+                  <%= link_to image_tag("http://placehold.it/600x400&text=No Pic", class: "product-list-style-img img-responsive"), official_article_path(article)%>
+                <% end %>
+              </div>
+
+              <!-- 文章列表标题、作者、日期 -->
+              <div class="col-md-7">
+                <%= link_to(official_article.title,official_article_path(official_article), class: "article-index-title") %>
+                <div class="article-user row">
+                  <div class="col-md-6">
+                    <span> <%= official_article.user.display_name %></span>
+                  </div>
+                  <div class="col-md-6">
+                    <span> <%= official_article.created_at.strftime("%Y-%m-%d %H:%M:%S") %></span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+        </div>
+        <hr>
+      </div>
+
+    <% end %>
+  </div>
 </div>
