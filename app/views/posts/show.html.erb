@@ -21,8 +21,9 @@
               <%= link_to("更新文章", edit_group_post_path(@group,@post), class: "btn btn-primary pull-right")%>
             <% end %>
           </div>
-          
-          <p><%= @post.content %></p>
+          <div class="article-content">
+            <%= simple_format(@post.content) %>
+          </div>
           <br>
 
 
