@@ -6,6 +6,21 @@
     <div class="group">
       <%= link_to("发布招聘信息", new_job_path, class: "btn btn-primary pull-right") %>
     </div>
+  </div>
+  
+  <div class="dropdown clearfix pull-right">
+      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuDivider" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        排序
+          <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuDivider">
+          <li>
+            <%= link_to("截止时间", jobs_path(:order => "by_deadline")) %>
+          </li>
+          <li>
+            <%= link_to("最新发布", jobs_path ) %>
+          </li>
+      </ul>
   </div>  
   <hr>
     

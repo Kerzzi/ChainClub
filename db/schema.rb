@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180109135006) do
+ActiveRecord::Schema.define(version: 20180111113803) do
 
   create_table "answers", force: :cascade do |t|
     t.text "content"
@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(version: 20180109135006) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "is_hidden", default: true
     t.index ["user_id"], name: "index_jobs_on_user_id"
   end
 

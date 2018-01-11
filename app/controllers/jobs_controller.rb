@@ -2,11 +2,21 @@ class JobsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   
   def index
-    @jobs = Job.all.paginate(:page => params[:page], :per_page => 10) 
+    @jobs = case params[:order]
+            when 'by_deadline'
+              Job.where(is_hidden: false).order('deadline DESC').paginate(:page => params[:page], :per_page => 10)
+            else
+              Job.where(is_hidden: false).order('created_at DESC').paginate(:page => params[:page], :per_page => 10)
+            end 
   end  
   
   def show
     @job = Job.find(params[:id])
+    
+    if @job.is_hidden
+      flash[:warning] = "This Job already archived"
+      redirect_to root_path
+    end    
   end
 
   def edit
@@ -47,6 +57,6 @@ class JobsController < ApplicationController
   private
  
   def job_params
-    params.require(:job).permit(:title, :city, :publisher, :benefit, :introduce, :demand, :deadline, :process, :user_id)
+    params.require(:job).permit(:title, :is_hidden, :city, :publisher, :benefit, :introduce, :demand, :deadline, :process, :user_id)
   end
 end

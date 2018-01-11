@@ -1,17 +1,14 @@
-<%= form_for @job do |f| %>
+<%= simple_form_for @job do |f| %>
+
   <div class="form-group">
-    <%= f.label :title %>
-    <%= f.text_field :title, :class => "form-control" %>
-  </div>
-  
-  <div class="form-group">
-    <%= f.label :publisher %>
-    <%= f.text_field :publisher, :class => "form-control" %>
-  </div>
-  
-  <div class="form-group">
-    <%= f.label :city %>
-    <%= f.text_field :city, :class => "form-control" %>
+    <%= f.input :title, input_html: { class: "form-control"}, :label => "标题" %>
+    <%= f.input :is_hidden, :label => "隐藏" %>
+    <%= f.input :publisher, input_html: { class: "form-control"}, :label => "发布方" %>
+    <%= f.input :city, input_html: { class: "form-control"}, :label => "工作地点" %>
+    <%= f.input :benefit, as: :wysihtml5, :label => "福利" %>
+    <%= f.input :introduce, as: :wysihtml5, :label => "公司介绍" %>
+    <%= f.input :demand, as: :wysihtml5, :label => "要求" %>
+    <%= f.input :process, as: :wysihtml5, :label => "申请流程" %>
   </div>
 
   <div class="form-group">
@@ -20,27 +17,7 @@
   </div>
   
   <div class="form-group">
-    <%= f.label :benefit %>
-    <%= f.cktext_area :benefit, ckeditor: { language: 'zh-CN'} %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :introduce %>
-    <%= f.cktext_area :introduce, ckeditor: { language: 'zh-CN'} %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :demand %>
-    <%= f.cktext_area :demand, ckeditor: { language: 'zh-CN'} %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :process %>
-    <%= f.cktext_area :process, ckeditor: { language: 'zh-CN'} %>
-  </div>
-  
-  <div class="form-group">
-    <%= f.submit "Submit", :class => "btn btn-primary" %>
+    <%= f.submit "Submit", class: "btn btn-primary", data: { disable_with: "Submiting..." } %>
   </div>
 <% end %>  
 

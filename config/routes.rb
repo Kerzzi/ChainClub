@@ -98,6 +98,10 @@ Rails.application.routes.draw do
       collection do
         post :bulk_update
       end
+      member do
+        post :publish
+        post :hide
+      end
     end
     resources :site_nodes do
       collection do

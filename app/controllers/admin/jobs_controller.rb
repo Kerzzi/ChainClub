@@ -56,10 +56,24 @@ class Admin::JobsController < Admin::BaseController
     flash[:alert] = "成功完成 #{total} 笔"
     redirect_to admin_jobs_path
   end
+
+  def publish
+    @job = Job.find(params[:id])
+    @job.is_hidden = false
+    @job.save
+    redirect_to admin_jobs_path
+  end
+
+  def hide
+    @job = Job.find(params[:id])
+    @job.is_hidden = true
+    @job.save
+    redirect_to admin_jobs_path
+  end
   
   private
  
   def job_params
-    params.require(:job).permit(:title, :city, :publisher, :benefit, :introduce, :demand, :deadline, :process, :user_id)
+    params.require(:job).permit(:title, :is_hidden, :city, :publisher, :benefit, :introduce, :demand, :deadline, :process, :user_id)
   end
 end

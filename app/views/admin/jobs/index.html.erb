@@ -34,17 +34,28 @@
                   <%= check_box_tag "ids[]", job.id %>
                 </td>
                 <td><%= job.id %></td>
-                <td><%= link_to(job.title, admin_job_path(job)) %></td>
+                <td>
+                  <%= render_job_status(job) %>
+                  <%= link_to(job.title, admin_job_path(job)) %>
+                </td>
                 <td><%= job.city %></td>
                 <td><%= job.publisher %></td>
                 <td><%= job.deadline %></td>
                 <td><%= job.updated_at %></td>
                 <td>
-                  <% if current_user %>
-                    <%= link_to("Edit", edit_admin_job_path(job), class: "btn btn-sm btn-default")%>
-                    <%= link_to("Delete", admin_job_path(job),    class: "btn btn-sm btn-default", 
-                                method: :delete, data: { confirm: "Are you sure?" } )%>
+                  
+                  <%= link_to("Edit", edit_admin_job_path(job), class: "btn btn-sm btn-default")%>
+                  <%= link_to("Delete", admin_job_path(job),    class: "btn btn-sm btn-default", 
+                              method: :delete, data: { confirm: "Are you sure?" } )%>
+                              
+                  <% if job.is_hidden %>
+
+                    <%= link_to("Publish", publish_admin_job_path(job) , :method => :post, :class => "btn btn-xs btn-default") %>
+                  <% else %>
+                    <%= link_to("Hide", hide_admin_job_path(job), :method => :post,  :class => "btn btn-xs btn-default") %>
                   <% end %>
+
+                  
                 </td>
               </tr>
             <% end %>
