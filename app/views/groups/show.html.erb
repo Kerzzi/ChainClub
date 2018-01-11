@@ -36,8 +36,9 @@
           </div>
           <p><%= render_group_description(@group) %></p>
         </div>
-          
-          最新话题/最热话题/推荐话题/精华帖
+          <span><%= link_to("最新话题", group_path(@group) ) %></span>/
+          <span><%= link_to("热门话题", group_path(@group, :order => "by_hot")) %></span>/
+          <span>推荐话题</span>/<span>精华帖</span>
         <hr/>
         <table class="table">
           <thead>
@@ -66,9 +67,7 @@
           </tbody>
         </table>
 
-        <div class="text-center">
-          <%= will_paginate @posts %>
-        </div>
+
         
       </div>
     </div> 
