@@ -182,7 +182,6 @@ ActiveRecord::Schema.define(version: 20180111113803) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "project_id"
-    t.index ["project_id"], name: "index_project_grades_on_project_id"
   end
 
   create_table "projects", force: :cascade do |t|
