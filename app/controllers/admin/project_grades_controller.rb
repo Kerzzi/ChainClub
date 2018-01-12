@@ -22,6 +22,6 @@ class Admin::ProjectGradesController < Admin::BaseController
   end
 
   def project_grade_params
-    params.require(:project_grade).permit(:rating_report, :grade)
+    params.require(:project_grade).permit(:rating_report, :grade,:project_id)
   end
 end
