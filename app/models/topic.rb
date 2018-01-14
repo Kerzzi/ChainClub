@@ -8,6 +8,8 @@ class Topic < ApplicationRecord
   
   has_many :topic_relationships
   has_many :fans, through: :topic_relationships, source: :user
+  
+  
 
   scope :last_actived,       -> { order(last_active_mark: :desc) }
   scope :high_likes,         -> { order(likes_count: :desc).order(id: :desc) }
@@ -27,11 +29,27 @@ class Topic < ApplicationRecord
     exclude_column_ids("node_id", ids)
   }
   
-  # 删除并记录删除人
-  def destroy_by(user)
-    return false if user.blank?
-    update_attribute(:who_deleted, user.email)
-    destroy
+
+
+  def related_topics(size = 5)
+    opts = {
+      query: {
+        more_like_this: {
+          fields: [:title, :content],
+          like: [
+            {
+              _index: self.class.index_name,
+              _type: self.class.document_type,
+              _id: id
+            }
+          ],
+          min_term_freq: 2,
+          min_doc_freq: 5
+        }
+      },
+      size: size
+    }
+    self.class.__elasticsearch__.search(opts).records.to_a
   end
   
   def self.fields_for_list
@@ -39,17 +57,80 @@ class Topic < ApplicationRecord
     select(column_names - columns.map(&:to_s))
   end  
   
-  def self.topic_index_hide_node_ids
-    Setting.node_ids_hide_in_topics_index.to_s.split(",").collect(&:to_i)
+  def full_content
+    ([self.content] + self.answers.pluck(:content)).join('\n\n')
+  end
+    
+  before_create :init_last_active_mark_on_create
+  def init_last_active_mark_on_create
+    self.last_active_mark = Time.now.to_i
   end
   
   before_create :init_last_active_mark_on_create
   def init_last_active_mark_on_create
     self.last_active_mark = Time.now.to_i
   end  
-  
+
+  def update_last_answer(answer, opts = {})
+    # replied_at 用于最新回复的排序，如果帖着创建时间在一个月以前，就不再往前面顶了
+    return false if answer.blank? && !opts[:force]
+
+    self.last_active_mark = Time.now.to_i if created_at > 1.month.ago
+    self.answered_at = answer.try(:created_at)
+    self.answers_count = answers.without_system.count
+    self.last_reply_id = answer.try(:id)
+    self.last_reply_user_id = answer.try(:user_id)
+    self.last_reply_user_login = answer.try(:user_login)
+
+    save
+  end
+
+  # 删除并记录删除人
+  def destroy_by(user)
+    return false if user.blank?
+    update_attribute(:who_deleted, user.email)
+    destroy
+  end
+
+  # 所有的回复编号
+  def answer_ids
+    Rails.cache.fetch([self, "answer_ids"]) do
+      self.answers.order("id asc").pluck(:id)
+    end
+  end
+    
   def excellent?
     excellent >= 1
   end    
+
+  def excellent!
+    
+      
+      self.update!(excellent: 1)
+    
+  end
+
+  def unexcellent!
+    transaction do
+      Answer.create_system_event(action: "unexcellent", topic_id: self.id)
+      update!(excellent: 0)
+    end
+  end
+
+  def floor_of_answer(answer)
+    answer_index = answer_ids.index(answer.id)
+    answer_index + 1
+  end
+
+  def self.notify_topic_created(topic_id)
+    topic = Topic.find_by_id(topic_id)
+    return unless topic && topic.user
+
+    follower_ids = topic.user.follow_by_user_ids
+    return if follower_ids.empty?
+
+    # 给关注者发通知,尚未完成
+
+  end
 
 end

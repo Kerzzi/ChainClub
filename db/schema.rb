@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180111113803) do
+ActiveRecord::Schema.define(version: 20180113054713) do
+
+  create_table "actions", force: :cascade do |t|
+    t.string "action_type", null: false
+    t.string "action_option"
+    t.string "target_type"
+    t.integer "target_id"
+    t.string "user_type"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["target_type", "target_id", "action_type"], name: "index_actions_on_target_type_and_target_id_and_action_type"
+    t.index ["user_type", "user_id", "action_type"], name: "index_actions_on_user_type_and_user_id_and_action_type"
+  end
 
   create_table "answers", force: :cascade do |t|
     t.text "content"
@@ -262,6 +275,7 @@ ActiveRecord::Schema.define(version: 20180111113803) do
     t.integer "answers_count", default: 0
     t.integer "likes_count", default: 0
     t.integer "last_active_mark"
+    t.integer "stars_count", default: 0
     t.index ["excellent"], name: "index_topics_on_excellent"
     t.index ["likes_count"], name: "index_topics_on_likes_count"
     t.index ["node_id"], name: "index_topics_on_node_id"
@@ -286,6 +300,9 @@ ActiveRecord::Schema.define(version: 20180111113803) do
     t.string "username"
     t.string "avatar"
     t.string "summary"
+    t.integer "star_topics_count", default: 0
+    t.integer "followers_count", default: 0
+    t.integer "following_count", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

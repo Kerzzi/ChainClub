@@ -29,23 +29,24 @@
     <hr />
     
     <div class="total text-center">
-      共收到 <b>7</b> 条回复
+      共收到 <b><%= @topic.answers.count %></b> 条回复
     </div>
     
-    <hr />
+  
       打赏作者
 
     <hr />
     
     <% if current_user  %>
       <div class="group opts">
-        <!-- 这里目前存在bug -->
+        
         <% if current_user.is_editor? %>
           <div style="margin-bottom: 8px">
-            参考rubychina,取消、置顶、加精、屏蔽、等操作
+            
+            <%= render "buttons" %>
           </div>
         <% end %>
-
+        <hr />
         <% if current_user == @topic.user || current_user.is_editor? %>
         <div>
             参考rubychina   关闭话题、重新修改、开启话题。

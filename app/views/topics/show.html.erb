@@ -12,20 +12,23 @@
           </div>
         </div>
         <p>本文由 <%= @topic.user.display_name %> · 发布于<%= time_tag(@topic.created_at) %> · 最后由XX回复于天前 · 1281次阅读</p>
-        <% if @topic.excellent? %>
-          <div class="label-awesome">
-            <i class="fa fa-diamond awesome"></i> 本帖已被设为精华帖！
-            <% if admin? %>
-            <div class="pull-right">
-              <%= link_to icon_tag("close"), action_topic_path(@topic.id, type: 'unexcellent'), data: { method: "post", remote: true } %>
-            </div>
-            <% end %>
-          </div>
-        <% end %>
+        
       </div>
       
       <div class="panel-body">
         <div class="col-md-12">
+          
+          <% if @topic.excellent? %>
+            <div class="label-awesome">
+              <i class="fa fa-diamond awesome"></i> 本帖已被设为精华帖！
+              <% if current_user && current_user.is_editor?%>
+              <div class="pull-right">
+                <%= link_to icon_tag("close"), action_topic_path(@topic.id, type: 'unexcellent'), data: { method: "post", remote: true } %>
+              </div>
+              <% end %>
+            </div>
+          <% end %>
+          
           <%= sanitize @topic.content %>
           
           <!-- 社区文章收藏功能 -->

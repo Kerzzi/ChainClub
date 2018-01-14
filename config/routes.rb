@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   
   resources :topics do
     member do
+      post :answer
       post :favorite
       delete :unfavorite
       post :follow
@@ -42,12 +43,17 @@ Rails.application.routes.draw do
       post :unlike
     end
     collection do
+      get :no_answer
       get :popular
       get :excellent
       get :favorites
       post :preview
     end
-    resources :answers
+    resources :answers do
+      member do
+        get :answer_to
+      end
+    end
   end
   resources :post_comments
   resources :groups do
@@ -75,7 +81,13 @@ Rails.application.routes.draw do
     resources :versions do
       post :undo
     end
-    resources :topics
+    resources :topics do
+      member do
+        post :suggest
+        post :unsuggest
+        post :undestroy
+      end
+    end
     resources :nodes
     resources :sections
     resources :projects do

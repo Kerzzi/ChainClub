@@ -9,10 +9,38 @@ class TopicsController < ApplicationController
     @topics = Topic.all.paginate(:page => params[:page], :per_page => 10)
   end
   
+  def node
+    @node = Node.find(params[:id])
+    @topics = @node.topics.all
+    @topics = @topics.includes(:user).page(params[:page])
+    @page_title = "#{@node.name} &raquo; #{t('menu.topics')}"
+    @page_title = [@node.name, t("menu.topics")].join(" · ")
+    render action: "index"
+  end  
+  
+  # GET /topics/favorites
+  def favorites
+    @topics = current_user.favorite_topics.includes(:user)
+    @topics = @topics.page(params[:page])
+    render action: "index"
+  end
+
+  def excellent
+    @topics = Topic.excellent.recent.fields_for_list.includes(:user)
+    @topics = @topics.page(params[:page])
+
+    @page_title = [t("topics.topic_list.excellent"), t("menu.topics")].join(" · ")
+    render action: "index"
+  end
+  
   def show
-    @topic = Topic.find(params[:id])
+    @topic = Topic.unscoped.includes(:user).find(params[:id])
+    
+    
+    @node = @topic.node
     @user = @topic.user
-    @answers = @topic.answers
+    # @answers = @topic.answers
+    @answers = Answer.unscoped.where(topic_id: @topic.id).order(:id).all
   end
     
   def new 
@@ -22,6 +50,11 @@ class TopicsController < ApplicationController
       @node = Node.find_by_id(params[:node])
       render_404 if @node.blank?
     end
+  end
+  
+  def edit
+    @topic = Topic.find(params[:id])
+    @node = @topic.node
   end
   
   def create
@@ -36,29 +69,33 @@ class TopicsController < ApplicationController
     end
   end
   
-  def edit
-    @topic = Topic.find(params[:id])
-    @node = @topic.node
-  end
+  def preview
+    @content = params[:content]
 
+    respond_to do |format|
+      format.json
+    end
+  end
+  
   def update
     @topic = Topic.find(params[:id])
     
     @topic.node_id = topic_params[:node_id]
 
     if @topic.update(topic_params)
-      redirect_to topics_path, notice: "该提问已更新成功!"
+      redirect_to topic_path(@topic), notice: "该提问已更新成功!"
     else 
       render :edit 
     end
   end
 
   def destroy
-    @topic.destroy
+    @topic.destroy_by(current_user)
   
     redirect_to topics_path, alert: "该提问已被删除！"
   end
-  
+
+
   # ---topic收藏文章---
   def like
     @topic = Topic.find(params[:id])
@@ -78,29 +115,6 @@ class TopicsController < ApplicationController
       redirect_to topic_path(@topic)
   end
 
-  def node
-    @node = Node.find(params[:id])
-    @topics = @node.topics.all
-    @topics = @topics.includes(:user).page(params[:page])
-    @page_title = "#{@node.name} &raquo; #{t('menu.topics')}"
-    @page_title = [@node.name, t("menu.topics")].join(" · ")
-    render action: "index"
-  end
-
-
-  def favorites
-    @topics = current_user.favorite_topics.includes(:user)
-    @topics = @topics.page(params[:page])
-    render action: "index"
-  end
-
-  def excellent
-    @topics = Topic.excellent.recent.fields_for_list.includes(:user)
-    @topics = @topics.page(params[:page])
-
-    @page_title = [t("topics.topic_list.excellent"), t("menu.topics")].join(" · ")
-    render action: "index"
-  end
 
 
   def favorite
@@ -157,5 +171,15 @@ class TopicsController < ApplicationController
  
   def topic_params
     params.require(:topic).permit(:title, :content, :node_id)
-  end  
+  end 
+  
+  def check_current_user_status_for_topic
+    return false unless current_user
+
+    # 是否关注过
+    @has_followed = current_user.follow_topic?(@topic)
+    # 是否收藏
+    @has_favorited = current_user.favorite_topic?(@topic)
+  end
+     
 end

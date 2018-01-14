@@ -21,6 +21,11 @@ class User < ApplicationRecord
   has_many :official_articles
   has_many :post_comments, dependent: :destroy
    
+  action_store :like, :topic, counter_cache: true
+  action_store :star, :topic, counter_cache: true, user_counter_cache: true
+  action_store :follow, :topic
+  action_store :like, :answers, counter_cache: true
+  action_store :follow, :user, counter_cache: 'followers_count', user_counter_cache: 'following_count'
   
   has_paper_trail
   
