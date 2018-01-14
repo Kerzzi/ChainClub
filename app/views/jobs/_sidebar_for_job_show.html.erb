@@ -1,8 +1,30 @@
 <div class="panel panel-default">
-  <div class="panel-body">
+  <div class="panel-body job-show">
+    <h4>相似机会</h4>
+    <hr>
+    <div class="commend-job">
+      <% @commends.each do |job| %>
+        <div class="commend-content">
+          <h4>
+            <%= link_to job_path(job), target: "_blank" do %>
+              <%= job.title %> [<%= job.city %>]
+            <% end %>
+          </h4>
+          <span><i class="fa fa-building" aria-hidden="true"></i> <%= job.publisher %></span>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-body job-show">
     <h4>更多机会</h4>
+    <hr>
     <div class="more-job">
-      推荐更多机会
+      <span class="label label-success"><%= link_to("实习机会", jobs_path(:order => "by_internship")) %></span>
+      <span class="label label-info"><%= link_to("全职工作", jobs_path(:order => "by_fulltime")) %></span>
+      <span class="label label-danger"><%= link_to("全部机会", jobs_path ) %></span>
     </div>
   </div>
 </div>

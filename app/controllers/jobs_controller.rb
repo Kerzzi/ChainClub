@@ -4,18 +4,24 @@ class JobsController < ApplicationController
   def index
     @jobs = case params[:order]
             when 'by_deadline'
-              Job.where(is_hidden: false).order('deadline DESC').paginate(:page => params[:page], :per_page => 10)
+              Job.published.deadline.paginate(:page => params[:page], :per_page => 10)
+            when 'by_internship'
+              Job.published.recent.internship_job.paginate(:page => params[:page], :per_page => 10)
+            when 'by_fulltime'
+              Job.published.recent.fulltime_job.paginate(:page => params[:page], :per_page => 10)
             else
-              Job.where(is_hidden: false).order('created_at DESC').paginate(:page => params[:page], :per_page => 10)
+              Job.published.recent.paginate(:page => params[:page], :per_page => 10)
             end
   end
 
   def show
     @job = Job.find(params[:id])
+    # 随机推荐5个相同类型的职位（去除当前职位） #
+    @commends = Job.published.where.not(:id => @job.id ).random5
 
     if @job.is_hidden
-      flash[:warning] = "This Job already archived"
-      redirect_to root_path
+      flash[:warning] = "该项目已归档！"
+      redirect_to jobs_path
     end
   end
 

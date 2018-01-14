@@ -8,12 +8,18 @@
               <span class="caret"></span>
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuDivider">
-              <li>
-                <%= link_to("截止时间", jobs_path(:order => "by_deadline")) %>
-              </li>
-              <li>
-                <%= link_to("最新发布", jobs_path ) %>
-              </li>
+            <li>
+              <%= link_to("全职工作", jobs_path(:order => "by_fulltime")) %>
+            </li>
+            <li>
+              <%= link_to("实习机会", jobs_path(:order => "by_internship")) %>
+            </li>
+            <li>
+              <%= link_to("截止时间", jobs_path(:order => "by_deadline")) %>
+            </li>
+            <li>
+              <%= link_to("最新发布", jobs_path ) %>
+            </li>
           </ul>
       </div>
 

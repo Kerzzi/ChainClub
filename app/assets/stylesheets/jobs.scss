@@ -7,16 +7,24 @@
   font-size: 1.2em;                                   // 网站所有字体缩小比例
   line-height: 25px; //文字行高
   color: #777; //字体颜色
-  h4,i{
+  h4,a,i{
     color: #03A9F4; //字体颜色
   }
 }
 
-.job-body{
+.job-show{
   font-size: 1.4em;                                   // 网站所有字体缩小比例
   line-height: 30px; //文字行高
   color: #777; //字体颜色
   i{
     color: #03A9F4; //字体颜色
+  }
+  h5, a{
+    color: #03A9F4; //字体颜色
+  }
+  .more-job{
+    a{
+      color: #fff; //字体颜色
+    }
   }
 }

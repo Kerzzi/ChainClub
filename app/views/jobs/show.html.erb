@@ -1,11 +1,13 @@
 <div class="row">
   <div class="col-md-9">
     <div class="panel panel-default">
-      <div class="panel-body job-body">
+      <div class="panel-body job-show">
         <div class="col-md-12">
-          <div class="group">
-            <%= link_to("更新公告", edit_job_path(@job), class: "btn btn-primary pull-right")%>
-          </div>
+          <% if current_user && current_user.is_editor? %>
+            <div class="group">
+              <%= link_to("更新公告", edit_job_path(@job), class: "btn btn-default pull-right")%>
+            </div>
+          <% end %>
           <h3><%= @job.title %></h3>
 
           <i class="fa fa-street-view" aria-hidden="true"></i> <%= @job.city %>
