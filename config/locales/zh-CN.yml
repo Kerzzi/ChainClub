@@ -14,3 +14,7 @@ zh-CN:
       super_admin: 超级管理员
       admin: 管理员
       editor: 编辑部
+  job:
+    category:
+      fulltime: 全职工作
+      internship: 兼职工作

@@ -41,7 +41,11 @@ body {
   background-color: #F5F5F5;
   font-size: 1.2em;                                   // 网站所有字体缩小比例
   color: #666;                                        // 修改全站的 字体主色
-  
+
+  h1,h2,h3,h4,h5{
+    color: #000;
+  }
+
   letter-spacing: 0.1em;
   a {                                                 // 所有a标签统一样式
     color: #666;                                      // 链接反转的样式
@@ -140,7 +144,7 @@ body {
      right: 30px;
      left: inherit;
    }
-   .carousel-control .glyphicon-chevron-left, 
+   .carousel-control .glyphicon-chevron-left,
    .carousel-control .glyphicon-chevron-right {
      font-size: 12px;
      background-color: #fff;
@@ -292,4 +296,3 @@ body {
        color: #9E9E9E;
      }
  }
-

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180113054713) do
+ActiveRecord::Schema.define(version: 20180114120718) do
 
   create_table "actions", force: :cascade do |t|
     t.string "action_type", null: false
@@ -96,6 +96,7 @@ ActiveRecord::Schema.define(version: 20180113054713) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "is_hidden", default: true
+    t.string "category"
     t.index ["user_id"], name: "index_jobs_on_user_id"
   end
 

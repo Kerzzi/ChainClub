@@ -1,27 +1,43 @@
-<div class="col-md-12">
-  <div class="group">
-    <%= link_to("更新公告", edit_job_path(@job), class: "btn btn-primary pull-right")%>
+<div class="row">
+  <div class="col-md-9">
+    <div class="panel panel-default">
+      <div class="panel-body job-body">
+        <div class="col-md-12">
+          <div class="group">
+            <%= link_to("更新公告", edit_job_path(@job), class: "btn btn-primary pull-right")%>
+          </div>
+          <h3><%= @job.title %></h3>
+
+          <i class="fa fa-street-view" aria-hidden="true"></i> <%= @job.city %>
+
+          <br>
+          <span class="label label-success"><%= t(@job.category) %></span>
+          <hr>
+          最后更新时间：<%= @job.updated_at %>
+          <hr>
+          <h4>发布方</h4>
+          <strong><%= @job.publisher %></strong>
+          <hr>
+          <h4>福利</h4>
+          <%= sanitize @job.try(:benefit) %>
+          <hr>
+          <h4>职位介绍</h4>
+          <%= sanitize @job.introduce %>
+          <hr>
+          <h4>申请要求</h4>
+          <%= sanitize @job.demand %>
+          <hr>
+          <h4>截止日期</h4>
+          <%= @job.deadline %>
+          <hr>
+          <h4>申请流程</h4>
+          <%= sanitize @job.process %>
+        </div>
+      </div>
+    </div>
   </div>
-  <h2><%= @job.title %></h2>
-  工作地点：<%= @job.city %>
-  <hr>
-  最后更新时间：<%= @job.updated_at %>
-  <hr>
-  <h3>发布方</h3>
-  <strong><%= @job.publisher %></strong>
-  <hr>
-  <h3>Benefits</h3>
-  <%= sanitize @job.try(:benefit) %>
-  <hr>
-  <h3>职位介绍</h3>
-  <%= sanitize @job.introduce %>
-  <hr>
-  <h3>申请要求</h3>
-  <%= sanitize @job.demand %>
-  <hr>
-  <h3>截止日期</h3>
-  <%= @job.deadline %>
-  <hr>
-  <h3>申请流程</h3>
-  <%= sanitize @job.process %>
+
+  <div class="col-md-3">
+    <%= render "sidebar_for_job_show.html.erb" %>
+  </div>
 </div>

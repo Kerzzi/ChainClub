@@ -3,12 +3,17 @@
     <%= f.label :title %>
     <%= f.text_field :title, :class => "form-control" %>
   </div>
-  
+
   <div class="form-group">
     <%= f.label :publisher %>
     <%= f.text_field :publisher, :class => "form-control" %>
   </div>
-  
+
+  <div class="form-group">
+    <%= f.label :category %>
+    <%= f.select :category, Job::CATEGORYS.map{ |x| [t(x, :scope => "job.category"), x] }, { :include_blank => true }, :class => "form-control" %>
+  </div>
+
   <div class="form-group">
     <%= f.label :city %>
     <%= f.text_field :city, :class => "form-control" %>
@@ -18,7 +23,7 @@
     <%= f.label :deadline %>
     <%= f.text_field :deadline, :class => "form-control" %>
   </div>
-  
+
   <div class="form-group">
     <%= f.label :benefit %>
     <%= f.cktext_area :benefit, ckeditor: { language: 'zh-CN'} %>
@@ -38,11 +43,11 @@
     <%= f.label :process %>
     <%= f.cktext_area :process, ckeditor: { language: 'zh-CN'} %>
   </div>
-  
+
   <div class="form-group">
     <%= f.submit "Submit", :class => "btn btn-primary" %>
   </div>
-<% end %>  
+<% end %>
 
 <script>
   $("#job_deadline").datepicker({ format: "yyyy-mm-dd", language: "<%= I18n.locale %>" });

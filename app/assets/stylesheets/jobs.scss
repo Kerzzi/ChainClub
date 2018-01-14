@@ -1,3 +1,22 @@
 // Place all the styles related to the jobs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.job-item{
+  font-size: 1.2em;                                   // 网站所有字体缩小比例
+  line-height: 25px; //文字行高
+  color: #777; //字体颜色
+  h4,i{
+    color: #03A9F4; //字体颜色
+  }
+}
+
+.job-body{
+  font-size: 1.4em;                                   // 网站所有字体缩小比例
+  line-height: 30px; //文字行高
+  color: #777; //字体颜色
+  i{
+    color: #03A9F4; //字体颜色
+  }
+}
