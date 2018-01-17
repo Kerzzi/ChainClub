@@ -1,32 +1,35 @@
 <div class="panel panel-default col-md-10 col-md-offset-1">
+  
   <div class="panel-body">
 
     <div class="group">
-      <div class="dropdown clearfix pull-left">
-          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuDivider" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-            排序
-              <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuDivider">
-            <li>
-              <%= link_to("全职工作", jobs_path(:order => "by_fulltime")) %>
-            </li>
-            <li>
-              <%= link_to("实习机会", jobs_path(:order => "by_internship")) %>
-            </li>
-            <li>
-              <%= link_to("截止时间", jobs_path(:order => "by_deadline")) %>
-            </li>
-            <li>
-              <%= link_to("最新发布", jobs_path ) %>
-            </li>
-          </ul>
-      </div>
-
-      <div class="group">
-        <%= link_to("发布招聘信息", new_job_path, class: "btn btn-primary pull-right") %>
+      <div class="row">
+        <div class="col-sm-2 col-lg-1 ">
+          <div class="dropdown clearfix pull-left">
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuDivider" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                排序
+                  <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuDivider">
+                <li>
+                  <%= link_to("全职工作", jobs_path(:order => "by_fulltime")) %>
+                </li>
+                <li>
+                  <%= link_to("实习机会", jobs_path(:order => "by_internship")) %>
+                </li>
+                <li>
+                  <%= link_to("截止时间", jobs_path(:order => "by_deadline")) %>
+                </li>
+                <li>
+                  <%= link_to("最新发布", jobs_path ) %>
+                </li>
+              </ul>
+          </div>
+        </div>
+        <%= render :partial => "jobs/search_bar" %>
       </div>
     </div>
+    
     <br>
     <br>
     <hr>

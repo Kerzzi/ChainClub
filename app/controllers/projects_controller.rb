@@ -31,7 +31,7 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:title, :ico_start, :ico_end, :ico_url, :website, :slack, :facebook, :telegram,
+    params.require(:project).permit(:title, :logo, :remove_logo, :ico_start, :ico_end, :ico_url, :website, :slack, :facebook, :telegram,
       :twitter, :weibo, :github, :ico_amount, :whitepaper, :token_amount, :raised_ceiling, :grade, :accept_token,
         :token_type,  :introduce,  :rating_report,  :user_id)
   end

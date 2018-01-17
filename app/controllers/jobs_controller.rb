@@ -1,5 +1,6 @@
 class JobsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :validate_search_key, only: [:search]
 
   def index
     @jobs = case params[:order]
@@ -60,9 +61,29 @@ class JobsController < ApplicationController
     redirect_to jobs_path, alert: "删除成功！"
   end
 
+  def search
+    if @query_string.present?
+      search_result = Job.published.ransack(@search_criteria).result(:distinct => true)
+      @jobs = search_result.paginate(:page => params[:page], :per_page => 10 )
+    end
+  end
+  
+  protected
+
+  def validate_search_key
+    @query_string = params[:q].gsub(/\\|\'|\/|\?/, "") if params[:q].present?
+    @search_criteria = search_criteria(@query_string)
+  end
+
+
+  def search_criteria(query_string)
+    { :title_cont => query_string }
+  end
+  
   private
 
   def job_params
     params.require(:job).permit(:title, :is_hidden, :category, :city, :publisher, :benefit, :introduce, :demand, :deadline, :process, :user_id)
   end
+  
 end

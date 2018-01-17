@@ -62,7 +62,7 @@ class Admin::ProjectsController < Admin::BaseController
   private
 
   def project_params
-    params.require(:project).permit(:title, :ico_start, :ico_end, :ico_url, :website, :slack, :facebook, :telegram,
+    params.require(:project).permit(:title, :logo, :remove_logo, :ico_start, :ico_end, :ico_url, :website, :slack, :facebook, :telegram,
       :twitter, :weibo, :github, :ico_amount, :whitepaper, :token_amount, :raised_ceiling, :accept_token,
         :token_type, :introduce, :user_id, :project_grade_attributes => [:id, :rating_report, :grade, :project_id])
   end

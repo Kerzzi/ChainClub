@@ -1,3 +1,23 @@
 // Place all the styles related to the projects controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+
+
+
+.project-card{
+  height:300px;
+  
+  .secondbase {
+      background-color: rgba(255,255,255,.9); 
+      margin-top: -50px;
+  }
+    
+  img {
+  max-width:100%; height:auto;         //重要样式代码，需要配合application.js的自适应代码块一起使用。可以实现图片按照divbox大小自动伸缩，从而实现响应式布局。
+  border-radius: 6px;                 //为所有图片设置6px的圆角
+  transition: 0.8s;
+  }
+}

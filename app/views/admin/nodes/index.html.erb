@@ -19,8 +19,11 @@
     <td><%= node.section.name %></td>
     <td><%= node.sort %></td>
     <td><%= node.topics_count %></td>
-    <td><%= link_to '', edit_admin_node_path(node), class: "fa fa-pencil" %>
-    <%= link_to '', admin_node_path(node), 'data-confirm' => 'Are you sure?' , method: :delete, class: "fa fa-trash" %></td>
+    <td>
+      <%= link_to("Edit", edit_admin_node_path(node), :class => "btn btn-xs btn-info") %>
+      <%= link_to("Destroy", admin_node_path(node), :method => :delete, :class => "btn btn-xs btn-danger", :data => { :confirm => "Are you sure?" }) %>
+
+    </td>
   </tr>
 <% end %>
 </table>

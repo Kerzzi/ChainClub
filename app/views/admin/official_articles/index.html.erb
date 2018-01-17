@@ -36,9 +36,8 @@
                 <td><%=official_article.article_category.try(:name) %></td>
                 <td><%= official_article.created_at.to_s %></td>
                 <td>
-                    <%= link_to("Edit", edit_admin_official_article_path(official_article), class: "btn btn-sm btn-default")%>
-                    <%= link_to("Delete", admin_official_article_path(official_article),    class: "btn btn-sm btn-default", 
-                                method: :delete, data: { confirm: "Are you sure?" } )%>
+                  <%= link_to '', edit_admin_official_article_path(official_article), class: "fa fa-pencil" %>
+                  <%= link_to '', admin_official_article_path(official_article), 'data-confirm' => 'Are you sure?' , method: :delete, class: "fa fa-trash" %>
                 </td>
               </tr>
             <% end %>

@@ -31,9 +31,9 @@
                 <td><%= article_category.name %></td>
                 <td>
                   <% if current_user %>
-                    <%= link_to("Edit", edit_admin_article_category_path(article_category), class: "btn btn-sm btn-default")%>
-                    <%= link_to("Delete", admin_article_category_path(article_category),    class: "btn btn-sm btn-default", 
-                                method: :delete, data: { confirm: "Are you sure?" } )%>
+                    <%= link_to("Edit", edit_admin_article_category_path(article_category), :class => "btn btn-xs btn-info") %>
+                    <%= link_to("Destroy", admin_article_category_path(article_category), :method => :delete, :class => "btn btn-xs btn-danger", :data => { :confirm => "Are you sure?" }) %>
+
                   <% end %>
                 </td>
               </tr>

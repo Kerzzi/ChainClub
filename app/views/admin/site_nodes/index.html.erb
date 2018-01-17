@@ -33,11 +33,8 @@
                 <td><%= site_node.name %></td>
                 <td><%= site_node.sort %></td>
                 <td>
-                  <% if current_user %>
-                    <%= link_to("Edit", edit_admin_site_node_path(site_node), class: "btn btn-sm btn-default")%>
-                    <%= link_to("Delete", admin_site_node_path(site_node),    class: "btn btn-sm btn-default", 
-                                method: :delete, data: { confirm: "Are you sure?" } )%>
-                  <% end %>
+                    <%= link_to '', edit_admin_site_node_path(site_node), class: "fa fa-pencil" %>
+                    <%= link_to '', admin_site_node_path(site_node), 'data-confirm' => 'Are you sure?' , method: :delete, class: "fa fa-trash" %>
                 </td>
               </tr>
             <% end %>

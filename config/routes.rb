@@ -66,7 +66,11 @@ Rails.application.routes.draw do
     end
   end
   resources :meetup_groups
-  resources :jobs
+  resources :jobs do
+    collection do
+      get :search
+    end
+  end
   resources :sites
   resources :courses
   resources :projects

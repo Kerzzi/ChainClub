@@ -40,10 +40,10 @@
                 <td><%= project.website %></td>
                 <td><%= project.user.email %></td>
                 <td>
-                    <%= link_to("Edit", edit_admin_project_path(project), class: "btn btn-sm btn-default")%>
-                    <%= link_to("Delete", admin_project_path(project),    class: "btn btn-sm btn-default",
-                                method: :delete, data: { confirm: "Are you sure?" } )%>
-                    <%= link_to "评级", edit_admin_project_project_grade_path(project), :class => "btn btn-default" %>
+                  <%= link_to '', edit_admin_project_path(project), class: "fa fa-pencil" %>
+                  <%= link_to '', admin_project_path(project), 'data-confirm' => 'Are you sure?' , method: :delete, class: "fa fa-trash" %>
+
+                  <%= link_to "评级", edit_admin_project_project_grade_path(project), :class => "btn btn-xs btn-success" %>
                 </td>
               </tr>
             <% end %>

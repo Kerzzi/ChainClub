@@ -181,14 +181,12 @@ body {
     display: table;
     table-layout: fixed;
     width: 100%;
-    a {
-      color: #fff;
-    }
+
     a:hover {
-      color: #fff;
       transition: 0.5s;                                 // 鼠标指向时 0.5面渐变
       text-decoration: none;                            // 移除下划线
-    }    
+    }
+        
 }
 .mail-box aside {
     display: table-cell;

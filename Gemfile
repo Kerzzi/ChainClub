@@ -39,6 +39,7 @@ gem 'bootstrap-sass'
 gem 'simple_form'
 gem 'devise'
 gem 'will_paginate'
+gem 'will_paginate-bootstrap'
 gem 'rails-i18n'
 gem "devise-i18n"
 gem "select2-rails"
@@ -52,6 +53,8 @@ gem "mini_magick"
 gem 'social-share-button'
 gem 'bootstrap-wysihtml5-rails'
 gem 'action-store'
+gem 'ransack'
+gem 'seo_helper'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

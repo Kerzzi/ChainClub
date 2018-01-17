@@ -1,7 +1,4 @@
 <div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">项目评级管理</h3>
-  </div>
   <div class="panel-body">
     <div class="group">
       <%= link_to("新增项目信息", new_project_path, class: "btn btn-primary pull-right") %>
@@ -10,36 +7,35 @@
     <p>操作说明：mark</p>
     <hr>
 
-    <!-- Table -->
-    <div id="admin_projects">
-        <table class="table table-hover">
-          <thead>
-            <tr>
-              <td>#</td>
-              <td>项目名称</td>
-              <td>ICO开启时间</td>
-              <td>ICO截止时间</td>
-              <td>官网</td>
-              <td>查看</td>
-            </tr>
-          </thead>
-          <tbody>
-            <% @projects.each do |project| %>
-              <tr>
-                <td><%= project.id %></td>
-                <td><%= link_to(project.title, project_path(project)) %></td>
-                <td><%= project.ico_start %></td>
-                <td><%= project.ico_end %></td>
-                <td><%= project.website %></td>
-                <td><%= link_to("查看", project_path(project)) %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table><!-- /Table -->
-
-      <div class="text-center">
-        <%= will_paginate @projects %>
-      </div>
-    </div><!-- /admin_projects -->
   </div><!-- /panel-body -->
 </div>
+
+
+<div class="container-fluid">
+    <div class="row">
+      搜索框与 <%= link_to("新增项目信息", new_project_path, class: "btn btn-primary pull-right") %>
+    </div>  
+    
+    <div class="row">
+      <% @projects.each do |project| %>
+        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <div class="project-card">
+
+                <% if project.logo.present? %>
+                  <%= link_to image_tag(project.logo.url(:thumb)),project_path(project), :target => "_blank" %>
+                <% else %>
+                  <img src="https://inst.eecs.berkeley.edu/~cs194-26/fa14/upload/files/proj3/cs194-fi/images/warm_sky.jpg" alt="Ver post">
+                <% end %>
+                <div class="card-body secondbase">
+                    <h4 class="card-title"><span class="label label-danger">已评级  92分</b></span></h4>
+                    <br>          
+                    <div class="text-center d-flex">
+                        <h4><%= link_to(project.title, project_path(project)) %></h4>
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+      <% end %>
+    </div>  
+</div>      

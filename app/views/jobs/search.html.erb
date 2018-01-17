@@ -1,0 +1,38 @@
+<div class="panel panel-default col-md-10 col-md-offset-1">
+  
+  <div class="panel-body">
+    
+    <div class="group">
+      <div class="row">
+        <div class="col-sm-2 col-lg-1 ">
+        </div>
+        <%= render :partial => "jobs/search_bar" %>
+      </div>
+    </div> 
+
+    <br>
+    <% if @query_string.blank? %>
+        <h4 class="search-info-title">搜索信息不能为空，请输入关键字搜索</h4>
+    <% elsif @jobs.blank? %>
+        <br>
+        <h4 class="search-info-title">亲，没有搜索到相关工作信息哦，要不换个关键词试试？</h4>
+    <% else %>
+        <h4 class="search-info-title"> 有关"<%= @query_string %>"的工作信息 </h4>
+        <hr>
+
+        <div class="search-result">
+
+          <% @jobs.each do |job| %>
+           <div class="job-item">
+             <p><span><%= job.publisher %></span><span class="pull-right">更新于 <%= job.updated_at %></span></p>
+             <h4><%= link_to(render_highlight_content(job,@query_string), job_path(job)) %></h4>
+             <p><i class="fa fa-street-view" aria-hidden="true"></i> <%= job.city %></p>
+             <p><i class="fa fa-clock-o" aria-hidden="true"></i> <%= job.deadline %></p>
+             <p><span class="label label-success"><%= t(job.category) %></span></p>
+             <hr>
+           </div>
+          <% end %>
+        </div>
+    <% end %>
+  </div>
+</div>
