@@ -64,8 +64,15 @@ Rails.application.routes.draw do
     resources :posts do
       resources :post_comments
     end
+    collection do
+      get :search
+    end
   end
-  resources :meetup_groups
+  resources :meetup_groups do
+    collection do
+      get :search
+    end
+  end
   resources :jobs do
     collection do
       get :search
@@ -73,7 +80,11 @@ Rails.application.routes.draw do
   end
   resources :sites
   resources :courses
-  resources :projects
+  resources :projects do
+    collection do
+      get :search
+    end
+  end
   
   namespace :account do
     resources :groups

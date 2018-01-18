@@ -33,6 +33,11 @@
            </div>
           <% end %>
         </div>
+        <% if @jobs.present? %>
+        <div class="text-center">
+          <%= will_paginate(@jobs, renderer: BootstrapPagination::Rails) %>
+        </div>
+        <% end %>
     <% end %>
   </div>
 </div>
