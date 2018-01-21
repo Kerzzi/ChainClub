@@ -4,6 +4,7 @@ class TopicsController < ApplicationController
 
   before_action :find_topic, only: [ :ban, :edit, :update, :destroy, :follow,
                                    :unfollow, :action,]
+  before_action :validate_search_key, only: [:search]
 
   def index
     @topics = Topic.all.paginate(:page => params[:page], :per_page => 10)
@@ -163,6 +164,28 @@ class TopicsController < ApplicationController
   def ban
     authorize! :ban, @topic
   end
+
+
+   def search
+     if @query_string.present?
+       search_result = Topic.ransack(@search_criteria).result(:distinct => true)
+       @topics = search_result.paginate(:page => params[:page], :per_page => 15 )
+     end
+   end
+
+
+   protected
+
+   # 取到params[:q]的内容并去掉非法的内容
+   def validate_search_key
+     @query_string = params[:q].gsub(/\\|\'|\/|\?/, "") if params[:q].present?
+     @search_criteria = search_criteria(@query_string)
+   end
+
+
+   def search_criteria(query_string)
+     { :title_cont => query_string }
+   end
 
   private
   def find_topic
