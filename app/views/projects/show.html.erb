@@ -1,118 +1,97 @@
-<div class="row cc-project">
+<div class="row">
   <div class="col-md-9">
-    <div class="show-content">
-      <h4>项目概况</h4>
-      <hr/>
+    <div class="panel panel-default">
+      <div class="panel-body topic-content">
 
-      <div class="row ico_start">
-        <div class="col-md-2">
-          <p>众筹开始时间</p>
+        <h4>项目概况</h4>
+        <hr/>
+
+        <div class="row ico_start">
+          <div class="col-md-2">
+            <p>众筹开始时间</p>
+          </div>
+
+          <div class="col-md-10">
+            <%= @project.ico_start %>
+          </div>
         </div>
 
-        <div class="col-md-10">
-          <%= @project.ico_start %>
-        </div>
-      </div>
+        <div class="row ico_end">
+          <div class="col-md-2">
+            <p>众筹结束时间</p>
+          </div>
 
-      <div class="row ico_end">
-        <div class="col-md-2">
-          <p>众筹结束时间</p>
-        </div>
-
-        <div class="col-md-10">
-          <%= @project.ico_start %>
-        </div>
-      </div>
-
-      <div class="row project-information">
-        <div class="col-md-2">
-          <p>项目发行基本信息</p>
+          <div class="col-md-10">
+            <%= @project.ico_start %>
+          </div>
         </div>
 
-        <div class="col-md-10">
-          <table class="table table-striped table-bordered text-center">
-            <tr>
-              <th class="text-center">ICO总量</th>
-              <th class="text-center">代币总量</th>
-            </tr>
-            <tr>
-              <td><%= @project.ico_amount %></td>
-              <td><%= @project.token_amount %></td>
-            </tr>
-            <tr>
-              <th class="text-center">募资上限</th>
-              <th class="text-center">接受币种</th>
-            </tr>
-            <tr>
-              <td><%= @project.raised_ceiling %></td>
-              <td><%= @project.accept_token %></td>
-            </tr>
-            <tr>
-              <th class="text-center">代币类型</th>
-              <th class="text-center">官网</th>
-            </tr>
-            <tr>
-              <td><%= @project.token_type %></td>
-              <td><%= @project.website %></td>
-            </tr>
-          </table>
-        </div>
-      </div>
+        <div class="row project-information">
+          <div class="col-md-2">
+            <p>项目发行基本信息</p>
+          </div>
 
-      <div class="row project-introduce">
-        <div class="col-md-2">
-          <p>项目说明</p>
+          <div class="col-md-10">
+            <table class="table table-striped table-bordered text-center">
+              <tr>
+                <th class="text-center">ICO总量</th>
+                <th class="text-center">代币总量</th>
+              </tr>
+              <tr>
+                <td><%= @project.ico_amount %></td>
+                <td><%= @project.token_amount %></td>
+              </tr>
+              <tr>
+                <th class="text-center">募资上限</th>
+                <th class="text-center">接受币种</th>
+              </tr>
+              <tr>
+                <td><%= @project.raised_ceiling %></td>
+                <td><%= @project.accept_token %></td>
+              </tr>
+              <tr>
+                <th class="text-center">代币类型</th>
+                <th class="text-center">官网</th>
+              </tr>
+              <tr>
+                <td><%= @project.token_type %></td>
+                <td><%= @project.website %></td>
+              </tr>
+            </table>
+          </div>
         </div>
 
-        <div class="col-md-10">
-            <%= sanitize @project.introduce %>
+        <div class="row project-introduce">
+          <div class="col-md-2">
+            <p>项目说明</p>
+          </div>
+
+          <div class="col-md-10">
+              <%= sanitize @project.introduce %>
+          </div>
         </div>
-      </div>
+      </div><!-- /panel-body -->
     </div>
 
     <% if @project.project_grade %>
-    <div class="show-content">
-      <h4><%= @project.title %>评级报告————评分<%= @project.project_grade.grade %></h4>
-      <hr/>
-      <div class="row project-grade">
-        <%= sanitize @project.project_grade.rating_report %>
+    <div class="panel panel-default">
+      <div class="panel-body topic-content">
+        <div class="panel-body topic-content">
+
+          <h4><%= @project.title %>评级报告————评分<%= @project.project_grade.grade %></h4>
+          <hr/>
+          <div class="row project-grade">
+            <%= sanitize @project.project_grade.rating_report %>
+          </div>
+
+        </div>
       </div>
     </div>
     <% end %>
-  </div>
+  </div><!-- /col-md-9 -->
 
-  <div class="col-md-3">
-    <div class="side-content project-website ">
-      <h4>链接</h4>
-      <hr>
-      <table class="table table-hover">
-        <tr>
-          <td><%= link_to(content_tag(:i," 官网", class: 'fa fa-home'), @project.website) %></td>
-          <td><%= link_to(content_tag(:i," Slack", class: 'fa fa-slack'), @project.slack) %></td>
-        </tr>
-        <tr>
-          <td><%= link_to(content_tag(:i," Facebook", class: 'fa fa-facebook-official'), @project.facebook) %></td>
-          <td><%= link_to(content_tag(:i," Telegram", class: 'fa fa-telegram'), @project.telegram) %></td>
-        </tr>
-        <tr>
-          <td><%= link_to(content_tag(:i," Twitter", class: 'fa fa-twitter'), @project.twitter) %></td>
-          <td><%= link_to(content_tag(:i," 微博", class: 'fa fa-weibo'), @project.weibo) %></td>
-        </tr>
-        <tr>
-          <td><%= link_to(content_tag(:i," Github", class: 'fa fa-github'), @project.github) %></td>
-          <td><%= link_to(content_tag(:i," 白皮书", class: 'fa fa-book'), @project.whitepaper) %></td>
-        </tr>
-      </table>
-    </div>
-    <div class="side-content project-admin">
-      <h4>更多项目</h4>
-      <hr>
-      <%= link_to("项目列表", projects_path, class: "btn btn-default")%>
-    </div>
-    <div class="side-content project-admin">
-      <h4>相关新闻</h4>
-      <hr>
-      <p>Mark</p>
-    </div>
-  </div>
+  <div class="sidebar col-md-3">
+    <%= render "sidebar_for_project_show" %>
+
+  </div><!-- /sidebar -->
 </div>

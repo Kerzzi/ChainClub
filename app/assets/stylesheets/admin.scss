@@ -174,7 +174,7 @@ body {
  /* end of footer */
 
 
-// home/index 
+// home/index
 .mail-box {
     border-collapse: collapse;
     border-spacing: 0;
@@ -186,7 +186,7 @@ body {
       transition: 0.5s;                                 // 鼠标指向时 0.5面渐变
       text-decoration: none;                            // 移除下划线
     }
-        
+
 }
 .mail-box aside {
     display: table-cell;
@@ -198,12 +198,12 @@ body {
 .mail-box .sm-side {
     background: none repeat scroll 0 0 #e5e8ef;
     border-radius: 4px 0 0 4px;
-    width: 25%;
+    width: 20%;
 }
 .mail-box .lg-side {
     background: none repeat scroll 0 0 #fff;
     border-radius: 0 4px 4px 0;
-    width: 75%;
+    width: 80%;
 }
 .mail-box .sm-side .user-head {
     background: none repeat scroll 0 0 #00a8b3;
@@ -546,4 +546,3 @@ ul {
     padding: 0px;
     margin: 0px;
 }
- 

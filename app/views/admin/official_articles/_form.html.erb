@@ -1,12 +1,25 @@
 <%= simple_form_for [:admin,@official_article] do |f| %>
+
+  <div class="form-group">
+    <%= f.label :image %>
+    <%= f.file_field :image, :class => "form-control" %>
+    <% if f.object.image.present? %>
+      <label>
+        <%= f.check_box :remove_image %> 删除图档
+      </label>
+      <%= link_to f.object.image.filename, f.object.image.url, :target => "_blank" %>
+    <% end %>
+  </div>
+
   <div class="form-group">
     <%= f.input :title, input_html: { class: "form-control"} %>
     <%= f.input :author, input_html: { class: "form-control"} %>
     <%= f.input :source, input_html: { class: "form-control"} %>
+    <%= f.input :summary, input_html: { class: "form-control"} %>
     <%= f.association :article_category %>
     <%= f.input :content, as: :ckeditor %>
   </div>
-  
+
   <div class="form-group">
     <div class="btn-group" data-toggle="buttons">
       <% OfficialArticle::STATUS.each do |status| %>
@@ -15,8 +28,8 @@
           <%= t(status, :scope => "official_article.status") %>
         </label>
       <% end %>
-    </div> 
-  </div>  
+    </div>
+  </div>
   <%= f.submit "Submit", class: "btn btn-primary", data: { disable_with: "Submiting..." } %>
 <% end %>
 

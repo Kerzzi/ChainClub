@@ -13,12 +13,13 @@
 
     <%= render "admin/common/navbar" %>
 
-    <div class="container  main-content">
+    <div class="row main-content">
 
-      <%= render "common/flashes" %>
+
       <div class="container">
+        <%= render "common/flashes" %>
        <div class="mail-box">
-         
+
           <aside class="sm-side">
               <div class="user-head">
                   <a class="inbox-avatar" href="javascript:;">
@@ -26,7 +27,7 @@
                   </a>
                   <div class="user-name">
                       <h5><a href="#">你好，<%= current_user.display_name %></a></h5>
-                      <span><a href="#"><%= current_user.email %></a></span>
+                      <span><a href="#"><%= t(current_user.role) %></a></span>
                   </div>
                   <a class="mail-dropdown pull-right" href="javascript:;">
                       <i class="fa fa-chevron-down"></i>
@@ -34,7 +35,7 @@
               </div>
               <div class="inbox-body">
                   <a href="#myModal" data-toggle="modal"  title="Compose"    class="btn btn-compose">
-                      留言功能尚未完成
+                      留言
                   </a>
                   <!-- Modal -->
                   <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade" style="display: none;">
@@ -87,55 +88,53 @@
                       </div><!-- /.modal-dialog -->
                   </div><!-- /.modal -->
               </div>
-              
-              <ul class="inbox-nav inbox-divider">
-                  <li class="active">
-                      <a href="<%= admin_official_articles_path %>"><i class="fa fa-inbox"></i> 官方文章 </a>
-                  </li>
-                  <li>
-                      <a href="<%= admin_article_categories_path %>"><i class="fa fa-envelope-o"></i> 文章分类 </a>
-                  </li>
-                  <li>
-                      <a href="<%= admin_article_categories_path %>"><i class="fa fa-bookmark-o"></i> 小组管理</a>
-                  </li>
-                  <li>
-                      <a href="<%= admin_courses_path %>"><i class=" fa fa-external-link"></i> 课程管理 <span class="label label-info pull-right">30</span></a>
-                  </li>
-                  <li>
-                      <a href="<%= admin_jobs_path %>"><i class=" fa fa-trash-o"></i> 招聘管理</a>
-                  </li>
-                  <li>
-                      <a href="<%= admin_projects_path %>"><i class="fa fa-bookmark-o"></i> 项目管理</a>
-                  </li>
-                  <li>
-                      <a href="<%= admin_versions_path %>"><i class="fa fa-bookmark-o"></i> 版本控制</a>
-                  </li>
-                  <% if current_user.is_super_admin? %>
-                    <li>
-                        <a href="<%= admin_users_path %>"><i class="fa fa-bookmark-o"></i> 用户管理</a>
-                    </li>
-                  <% end %>
-              </ul>
-              
+
+
               <ul class="nav nav-pills nav-stacked labels-info inbox-divider">
-                  <li> <h4>网址导航</h4> </li>
-                  <li> <a href="<%= admin_site_nodes_path %>"> <i class=" fa fa-sign-blank text-danger"></i> 网址分类 </a> </li>
-                  <li> <a href="<%= admin_sites_path %>"> <i class=" fa fa-sign-blank text-success"></i> 网址管理 </a> </li>
+                  <li> <h4>官方文章</h4> </li>
+                  <li> <a href="<%= admin_article_categories_path %>"><i class="fa fa-folder"></i> 文章分类 </a> </li>
+                  <li> <a href="<%= admin_official_articles_path %>"><i class="fa fa-inbox"></i> 官方文章管理 </a></li>
               </ul>
               <ul class="nav nav-pills nav-stacked labels-info inbox-divider">
                   <li> <h4>社区管理</h4> </li>
-                  <li> <a href="<%= admin_sections_path %>"> <i class=" fa fa-sign-blank text-danger"></i> 话题一级分类 </a> </li>
-                  <li> <a href="<%= admin_nodes_path %>"> <i class=" fa fa-sign-blank text-success"></i> 子节点管理 </a> </li>
-                  <li> <a href="<%= admin_topics_path %>"> <i class=" fa fa-sign-blank text-success"></i> 话题管理 </a> </li>
+                  <li> <a href="<%= admin_sections_path %>"> <i class="fa fa-folder"></i> 话题一级分类 </a> </li>
+                  <li> <a href="<%= admin_nodes_path %>"> <i class="fa fa-folder-open"></i> 子节点管理 </a> </li>
+                  <li> <a href="<%= admin_topics_path %>"> <i class="fa fa-comments-o"></i> 话题管理 </a> </li>
               </ul>
-              <ul class="nav nav-pills nav-stacked labels-info ">
-                  <li> <h4>Buddy online</h4> </li>
-                  <li> <a href="#"> <i class=" fa fa-circle text-success"></i>Alireza Zare <p>I do not think</p></a>  </li>
-                  <li> <a href="#"> <i class=" fa fa-circle text-danger"></i>Dark Coders<p>Busy with coding</p></a> </li>
-                  <li> <a href="#"> <i class=" fa fa-circle text-muted "></i>Mentaalist <p>I out of control</p></a>
-                  </li><li> <a href="#"> <i class=" fa fa-circle text-muted "></i>H3s4m<p>I am not here</p></a>
-                  </li><li> <a href="#"> <i class=" fa fa-circle text-muted "></i>Dead man<p>I do not think</p></a>
+              <ul class="nav nav-pills nav-stacked labels-info inbox-divider">
+                  <li> <h4>网址导航</h4> </li>
+                  <li> <a href="<%= admin_site_nodes_path %>"> <i class="fa fa-calendar"></i> 网址分类 </a> </li>
+                  <li> <a href="<%= admin_sites_path %>"> <i class="fa fa-flag"></i> 网址管理 </a> </li>
+              </ul>
+
+              <ul class="inbox-nav inbox-divider">
+                  <li>
+                      <a href="<%= admin_article_categories_path %>"><i class="fa fa-users"></i> 小组管理</a>
                   </li>
+                  <li>
+                      <a href="<%= admin_courses_path %>"><i class="fa fa-graduation-cap"></i> 课程管理 <span class="label label-info pull-right">30</span></a>
+                  </li>
+                  <li>
+                      <a href="<%= admin_jobs_path %>"><i class="fa fa-address-book-o"></i> 招聘管理</a>
+                  </li>
+                  <li>
+                      <a href="<%= admin_projects_path %>"><i class="fa fa-list"></i> 项目管理</a>
+                  </li>
+                  <li>
+                      <a href="<%= admin_versions_path %>"><i class="fa fa-exclamation-triangle"></i> 版本控制</a>
+                  </li>
+                  <% if current_user.is_super_admin? %>
+                    <li>
+                        <a href="<%= admin_users_path %>"><i class="fa fa-user-circle-o"></i> 用户管理</a>
+                    </li>
+                  <% end %>
+              </ul>
+
+              <ul class="nav nav-pills nav-stacked labels-info ">
+                  <li> <h4>后台管理指南</h4> </li>
+                  <li> <a href="#"> <i class=" fa fa-circle text-success"></i>最新通知<p>管理组通知</p></a>  </li>
+                  <li> <a href="#"> <i class=" fa fa-circle text-danger"></i>重要提示<p>重要提示信息</p></a> </li>
+                  <li> <a href="#"> <i class=" fa fa-circle text-muted "></i>操作规范 <p>后者管理操作规范</p></a></li>
               </ul>
 
               <div class="inbox-body text-center">
@@ -159,7 +158,7 @@
           </aside>
           <aside class="lg-side">
               <div class="inbox-head">
-                  <h3>后台管理/名字后期动态变化</h3>
+                  <h3>后台管理</h3>
                   <form action="#" class="pull-right position">
                     <div class="input-append">
                         <button  class="btn sr-btn" type="button"><a href="<%= root_path %>"><i class="fa fa-search"></i>返回前台</a></button>
@@ -171,9 +170,9 @@
               </div>
           </aside>
       </div>
-                    
+
       </div>
-      
+
     </div>
 
     <%= render "common/footer" %>

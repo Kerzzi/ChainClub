@@ -4,45 +4,45 @@
     <%= link_to("更新该话题", edit_topic_path(@topic), class: "btn btn-primary btn-block")%>
   </div>
 </div>
-<% end %> 
+<% end %>
 
 <div class="panel panel-default">
   <div class="panel-body">
     <a href="#" class="btn btn-block btn-sm btn-move-page" data-type="top"><i class="fa fa-arrow-up"></i></a>
-    <div class="buttons">
+    <!-- <div class="buttons">
       <div class="group likes opts">
         点赞
       </div>
       <div class="group">
         <div class="btn-group" role="group">
-          
-          
+
+
           关注
           收藏
         </div>
       </div>
-    </div>
+    </div> -->
     <hr />
     <div class="group share text-center">
       <%= social_share_button_tag(@topic.title) %><!-- 社交分享 -->
     </div>
     <hr />
-    
+
     <div class="total text-center">
       共收到 <b><%= @topic.answers.count %></b> 条回复
     </div>
-    
-  
-      打赏作者
+
+<!--
+      打赏作者 -->
 
     <hr />
-    
-    <% if current_user  %>
+
+    <!-- <% if current_user  %>
       <div class="group opts">
-        
+
         <% if current_user.is_editor? %>
           <div style="margin-bottom: 8px">
-            
+
             <%= render "buttons" %>
           </div>
         <% end %>
@@ -53,20 +53,19 @@
         </div>
         <% end %>
       </div>
-    <% end %>
-    
+    <% end %> -->
+
     <a href="#" class="btn btn-block btn-move-page" data-type="bottom"><i class="fa fa-arrow-down"></i></a>
   </div>
 </div>
 
 
-<div class="panel panel-default">
+<!-- <div class="panel panel-default">
   <div class="panel-heading">相关话题</div>
   <div class="panel-body">
     <p>列出本小组的最新话题（作者名称）</p>
   </div>
-
-</div>
+</div> -->
 
 
 
@@ -76,6 +75,6 @@
 <div class="panel panel-default">
   <div class="panel-heading">广告位</div>
   <div class="panel-body">
-    可以放个广告 
+    可以放个广告
   </div>
 </div>

@@ -1,0 +1,59 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+
+    <div class="project-website ">
+      <h4>链接</h4>
+      <!-- <hr> -->
+      <table class="table table-hover">
+        <tr>
+          <td><%= link_to(content_tag(:i," 官网", class: 'fa fa-home'), @project.website) %></td>
+          <td><%= link_to(content_tag(:i," Slack", class: 'fa fa-slack'), @project.slack) %></td>
+        </tr>
+        <tr>
+          <td><%= link_to(content_tag(:i," Facebook", class: 'fa fa-facebook-official'), @project.facebook) %></td>
+          <td><%= link_to(content_tag(:i," Telegram", class: 'fa fa-telegram'), @project.telegram) %></td>
+        </tr>
+        <tr>
+          <td><%= link_to(content_tag(:i," Twitter", class: 'fa fa-twitter'), @project.twitter) %></td>
+          <td><%= link_to(content_tag(:i," 微博", class: 'fa fa-weibo'), @project.weibo) %></td>
+        </tr>
+        <tr>
+          <td><%= link_to(content_tag(:i," Github", class: 'fa fa-github'), @project.github) %></td>
+          <td><%= link_to(content_tag(:i," 白皮书", class: 'fa fa-book'), @project.whitepaper) %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+
+    <div class="project-sidebar">
+      <h4>更多项目</h4>
+      <hr>
+      <%= link_to("项目列表", projects_path, class: "btn btn-default")%>
+    </div>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+
+    <div class=" project-sidebar">
+      <h4>热门话题</h4>
+      <hr>
+      <img src= "https://ww4.sinaimg.cn/large/006tKfTcgy1fnlx8qqpcnj30g00ls40d.jpg" >
+    </div>
+  </div>
+</div>
+
+
+<div class="panel panel-default">
+  <div class="panel-body">
+
+    <div class=" project-sidebar project-ads">
+      <img src= "https://ww1.sinaimg.cn/large/006tKfTcgy1fnlwz16c54j307i0ar74i.jpg" >
+    </div>
+  </div>
+</div>

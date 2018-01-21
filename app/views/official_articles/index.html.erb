@@ -3,9 +3,12 @@
 <div class="container">
 
   <div class="row">
-    
 
-    
+    <div class="group">
+      <%= link_to("New article", new_official_article_path, class: "btn btn-primary pull-right") %>
+    </div>
+    <hr>
+
     <% @official_articles.each do |official_article| %>
       <div class="article-all col-md-6 container">
         <div class="article-box row">

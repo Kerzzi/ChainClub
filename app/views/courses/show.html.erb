@@ -1,95 +1,130 @@
-<div class="row cc-course">
-  <div class="col-md-9">
-    <div class="show-content">
-      <div class="heading">
-        <h1 class="title"><%= link_to(@course.title, course_path(@course)) %></h1>  
+<div class="show-page">
+
+    <ol class="breadcrumb">
+      <li><a href="<%= root_path %>">首页</a></li>
+      <li><a href="<%= courses_path %>">课程列表</a></li>
+      <li class="active"><%= @course.title %></li>
+    </ol>
+  <!-- Start of product card -->
+  <div class="container card">
+    <!-- Start of left card -->
+    <div class="preview col-md-7 " style="">
+      <div class="preview-pic tab-content" >
+        <% if @course.logo.present? %>
+          <%= link_to image_tag(@course.logo.url(:medium)), @course.logo.url, :target => "_blank" %>
+        <% end %>
       </div>
-      
-      <hr/>
-
-      <div class="row">
-        <div class="col-md-2">
-          <p>原价：</p>
-        </div>
-
-        <div class="col-md-10">
-          <%= @course.msrp %>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-2">
-          <p>现价：</p>
-        </div>
-
-        <div class="col-md-10">
-          <%= @course.price %>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-2">
-          <p>前往学习：</p>
-        </div>
-
-        <div class="col-md-10">
-          <%= @course.url %>
-        </div>
-      </div>
-      
-      <div class="row">
-        <div class="col-md-2">
-          <p>讲师介绍</p>
-        </div>
-
-        <div class="col-md-10">
-          <%= sanitize @course.lecturer %>
-        </div>
-      </div>
-      
-      <div class="row">
-        <div class="col-md-2">
-          <p>课程介绍</p>
-        </div>
-
-        <div class="col-md-10">
-            <%= sanitize @course.introduce %>
-        </div>
-      </div>
-      
-      <div class="row">
-        <div class="col-md-2">
-          <p>最后更新时间：</p>
-        </div>
-
-        <div class="col-md-10">
-          <%= @course.updated_at %>
-        </div>
-      </div>
-      
     </div>
-
-  </div>
-
-  <div class="col-md-3">
-    <% if current_user.is_editor? %>
-      <div class="side-content course-admin">
-        <h4>管理操作</h4>
-        <hr>
-        <%= link_to("更新课程", edit_admin_course_path(@course), class: "btn btn-default")%> &nbsp; &nbsp;
-        <%= link_to("删除课程", admin_course_path(@course),    class: "btn btn-default", 
-                    method: :delete, data: { confirm: "Are you sure?" } )%> 
+    <!-- End of left card -->
+    <!-- Start of right cart -->
+    <div class="details col-md-5" style="margin-top:50px;">
+      <h3 class="product-title"><%= @course.title %></h3>
+      <div class="price-service">
+        <p class="price">原价 <span class="rmb">￥ </span><span class="msrp"><%= @course.msrp %></span> 元</p>
+        <p class="price">现价 <span class="rmb">￥ </span><span class="price"><%= @course.price %></span> 元</p>
+        <p class="service">服务 <span class="service-detail"> 赠送QYB | 支持重复学习 | 讲师答疑</span></p>
       </div>
-    <% end %>
-    <div class="side-content course-admin">
-      <h4>更多课程</h4>
-      <hr>
-      <%= link_to("课程列表", courses_path, class: "btn btn-default")%>
-    </div>
-    <div class="side-content course-admin">
-      <h4>课程推荐</h4>
-      <hr>
-      <p>Mark</p>
-    </div>
-  </div>
-</div>
+      <div class="quantity-size">
+        <p class="delivery">其他 <span class="delivery">电子产品，不支持退款</span></p>
+        <p class="quantity">库存 <span class="quantity"><%= @course.quantity %></span> 件 </p>
+        <!-- <p>购买: &nbsp &nbsp &nbsp<input type="text" style="width:50px" name="quantity" value="1" />&nbsp件</p> -->
+      </div>
+      <div class="action">
+        <div class="col-md-10" >
+             <% if @course.quantity.present? && @course.quantity > 0 %>
+                <%= link_to("前往学习", "#", method: :post,
+                            class: "add-to-cart btn btn-block") %>
+             <% else %>
+               课程已下线，无法购买
+             <% end %>
+        </div>
+        <div class="col-md-2"  >
+
+           <%= link_to "#", :class => "like btn btn-default",method: :post do %>
+             <i class="fa fa-heart fa-lg"></i>
+           <% end %>
+
+        </div>
+
+      </div>
+      <div class="row share">
+        <hr />
+        <div class="col-md-6">
+            <p> 收藏人气（3） </p>
+        </div>
+
+        <div class="col-md-6">
+          <%= link_to '#', method: :put do %>
+            <div class="pi-thumbs-up">
+              <!-- <i class="fa fa-thumbs-up fa-2x" , style="color:#ff5722;"></i> -->
+              点赞（5）
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="row share">
+        <div class="col-md-6 ">
+            <p><i class="fa fa-share-alt" aria-hidden="true"></i> 分享 </p>
+        </div>
+        <div class="col-md-6" style="margin-left:-40px;">
+          <%= social_share_button_tag(@course.title) %><!-- 社交分享 -->
+        </div>
+      </div>
+    </div><!-- End of left card -->
+  </div><!-- End of product card -->
+
+  <!-- Start of product description & reviews -->
+  <div class="row course_description col-md-12">
+    <div class="tabs" >
+      <div class="tabbable-panel">
+        <div class="tabbable-line">
+          <ul class="nav nav-tabs">
+            <li role="presentation" class="active">
+              <a href="#tab_default_1" data-toggle="tab">课程详情</a>
+            </li>
+            <li>
+              <a href="#tab_default_2" data-toggle="tab">课程评价(1) </a>
+            </li>
+          </ul>
+          <br />
+          <div class="tab-content container">
+            <div class="tab-pane active" id="tab_default_1">
+                <p class="product-description2 text-center">讲师介绍</p>
+               <p class="product-description"><%= sanitize @course.lecturer %></p>
+               <p class="product-description2 text-center">课程介绍</p>
+                <!--商品大图展示 -->
+               <div class="container">
+                  <p class="product-description"><%= sanitize @course.introduce %></p>
+               </div>
+               <div class="faq container">
+                 <p class="faq-title text-center">常见问题</p>
+                 <p class="question">大讲堂说明</p>
+                 <p class="answer">区块链研习社大讲堂只提供相关课程介绍，具体课程问题请联系相应课程平台。</p>
+                 <p class="question">如何申请退货？</p>
+                 <p class="answer">
+                   1.电子产品，一经付款不支持退款；<br />
+                 </p>
+                 <p class="question">如何开具发票？</p>
+                 <p class="answer">区块链研习社大讲堂只提供相关课程介绍，如需开具发票，请联系具体课程平台。</p>
+               </div>
+            </div><!-- End of tab_default_1 -->
+
+            <div class="tab-pane" id="tab_default_2">
+                <div class="row">
+                  <div class="col-sm-12 ">
+                    <h4>
+                      共 3 条评论
+                    </h4>
+                    <hr>
+                    <div class="course-reviews" >
+                      <p >mark</p>
+                    </div>
+                  </div>
+                </div>
+              </div><!-- End of tab_default_2 -->
+            </div><!-- End of tab-content -->
+          </div><!-- End of tabbable-line -->
+        </div><!-- End of tabbable-panel -->
+      </div><!-- End of tabs -->
+    </div><!-- End of product description & reviews -->
+</div><!-- End of product show page -->

@@ -6,18 +6,18 @@
           <div class="col-md-11">
             <h1 class="panel-title"><strong><%= @topic.node.name %></strong> · <%= @topic.title %></h1>
           </div>
-          
+
           <div class="col-md-1">
             <div class="avatar pull-right"><img src= "<%= render_user_avatar(@topic.user, 50) %>" style="width:50px; hight:50px; border-radius:25px;"></div>
           </div>
         </div>
-        <p>本文由 <%= @topic.user.display_name %> · 发布于<%= time_tag(@topic.created_at) %> · 最后由XX回复于天前 · 1281次阅读</p>
-        
+        <p>本文由 <%= @topic.user.display_name %> · 发布于<%= time_tag(@topic.created_at) %> · 最后由 admin 回复于 1 天前 · 12次阅读</p>
+
       </div>
-      
-      <div class="panel-body">
-        <div class="col-md-12">
-          
+
+      <div class="panel-body topic-content">
+        <div class="col-md-12 ">
+
           <% if @topic.excellent? %>
             <div class="label-awesome">
               <i class="fa fa-diamond awesome"></i> 本帖已被设为精华帖！
@@ -28,9 +28,9 @@
               <% end %>
             </div>
           <% end %>
-          
+
           <%= sanitize @topic.content %>
-          
+
           <!-- 社区文章收藏功能 -->
           <div class="article-collection text-center">
             <% if current_user && current_user.is_fan_of?(@topic) %>
@@ -44,14 +44,14 @@
                 <i class="fa fa-thumbs-o-up fa-1x">  赞  (<span><%= @topic.fans.count %></span>) </i><% end %>
               </div>
             <% end %>
-            
+
           </div>
         </div>
       </div>
-        
+
       <div class="panel-footer">关注 / 喜欢 / 收藏</div>
-      
-    </div>  
+
+    </div>
 
     <div class="panel panel-default">
       <div class="panel-heading">
@@ -60,17 +60,17 @@
       <div class="panel-body">
         <div >
           <%= render @topic.answers %>
-        </div>      
+        </div>
       </div>
     </div>
 
     <%= render "answers/form"%>
-    <%= render 'related_topics' %> 
-    
-  </div>     
-     
-        
+    <%= render 'related_topics' %>
+
+  </div>
+
+
   <div class="sidebar col-md-3">
     <%= render "sidebar_for_topic_show" %>
   </div>
-</div>  
+</div>

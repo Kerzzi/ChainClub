@@ -9,6 +9,8 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
+    # 随机推荐5个相同类型的话题（去除当前话题），后期修改为真正的相关话题
+    @commends = Group.where.not(:id => @group.id ).random5
     @posts = case params[:order]
              when 'by_hot'
                #按评论数量排序

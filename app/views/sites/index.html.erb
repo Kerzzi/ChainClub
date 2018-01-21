@@ -1,15 +1,24 @@
-<div id="site_nodes">
-  <% @site_nodes.each do |node| %>
-    <div class="panel panel-default">
-      <div class="panel-heading"><%= node.name %></div>
-      <div class="panel-body row">
-        <% node.sites.each do |site| %>
-        <div class="col-md-2 site">
-          <%= link_to site.name, site.url, target: "_blank" %>
+<div class="row">
+  <div class="col-md-8">
 
+    <div id="site_nodes" class="site-body" >
+      <% @site_nodes.each do |node| %>
+        <div class="panel panel-default">
+          <div class="panel-body">
+
+            <h4><%= node.name %></h4>
+            <hr>
+
+            <% node.sites.each do |site| %>
+              <span> <%= link_to site.name, site.url, target: "_blank" %>  </span>
+              &nbsp; &nbsp;
+            <% end %>
+          </div>
         </div>
-        <% end %>
-      </div>
+      <% end %>
     </div>
-  <% end %>  
+  </div>
+  <div class="col-md-4">
+    <%= render "sidebar_for_site_show" %>
+  </div>
 </div>

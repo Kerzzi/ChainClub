@@ -3,12 +3,12 @@ class TopicsController < ApplicationController
                                             :action, :favorites]
 
   before_action :find_topic, only: [ :ban, :edit, :update, :destroy, :follow,
-                                   :unfollow, :action,] 
-   
+                                   :unfollow, :action,]
+
   def index
     @topics = Topic.all.paginate(:page => params[:page], :per_page => 10)
   end
-  
+
   def node
     @node = Node.find(params[:id])
     @topics = @node.topics.all
@@ -16,8 +16,8 @@ class TopicsController < ApplicationController
     @page_title = "#{@node.name} &raquo; #{t('menu.topics')}"
     @page_title = [@node.name, t("menu.topics")].join(" · ")
     render action: "index"
-  end  
-  
+  end
+
   # GET /topics/favorites
   def favorites
     @topics = current_user.favorite_topics.includes(:user)
@@ -32,18 +32,18 @@ class TopicsController < ApplicationController
     @page_title = [t("topics.topic_list.excellent"), t("menu.topics")].join(" · ")
     render action: "index"
   end
-  
+
   def show
     @topic = Topic.unscoped.includes(:user).find(params[:id])
-    
-    
+    @commends = Topic.where.not(:id => @topic.id ).random5
+
     @node = @topic.node
     @user = @topic.user
     # @answers = @topic.answers
     @answers = Answer.unscoped.where(topic_id: @topic.id).order(:id).all
   end
-    
-  def new 
+
+  def new
     @topic = Topic.new(user_id: current_user.id)
     unless params[:node].blank?
       @topic.node_id = params[:node]
@@ -51,12 +51,12 @@ class TopicsController < ApplicationController
       render_404 if @node.blank?
     end
   end
-  
+
   def edit
     @topic = Topic.find(params[:id])
     @node = @topic.node
   end
-  
+
   def create
     @topic = Topic.new(topic_params)
     @topic.user_id = current_user.id
@@ -65,10 +65,10 @@ class TopicsController < ApplicationController
     if @topic.save
       redirect_to topics_path
     else
-      render :new  
+      render :new
     end
   end
-  
+
   def preview
     @content = params[:content]
 
@@ -76,22 +76,22 @@ class TopicsController < ApplicationController
       format.json
     end
   end
-  
+
   def update
     @topic = Topic.find(params[:id])
-    
+
     @topic.node_id = topic_params[:node_id]
 
     if @topic.update(topic_params)
       redirect_to topic_path(@topic), notice: "该提问已更新成功!"
-    else 
-      render :edit 
+    else
+      render :edit
     end
   end
 
   def destroy
     @topic.destroy_by(current_user)
-  
+
     redirect_to topics_path, alert: "该提问已被删除！"
   end
 
@@ -136,7 +136,7 @@ class TopicsController < ApplicationController
     current_user.unfollow_topic(@topic)
     render plain: "1"
   end
-  
+
   def action
     authorize! params[:type].to_sym, @topic
 
@@ -162,17 +162,17 @@ class TopicsController < ApplicationController
 
   def ban
     authorize! :ban, @topic
-  end  
+  end
 
   private
   def find_topic
     @topic ||= Topic.find(params[:id])
-  end  
- 
+  end
+
   def topic_params
     params.require(:topic).permit(:title, :content, :node_id)
-  end 
-  
+  end
+
   def check_current_user_status_for_topic
     return false unless current_user
 
@@ -181,5 +181,5 @@ class TopicsController < ApplicationController
     # 是否收藏
     @has_favorited = current_user.favorite_topic?(@topic)
   end
-     
+
 end

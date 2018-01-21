@@ -14,12 +14,12 @@
           <thead>
             <tr>
               <th><%= check_box_tag "全选", "1", false, :id => "toggle_all" %></th>
-              <td>#</td>
-              <td>Title</td>
-              <td>author</td>
-              <td>status</td>
-              <td>source</td>
-              <td>category</td>
+              <td>标题</td>
+              <td>作者</td>
+              <td>状态</td>
+              <td>来源</td>
+              <td>分类</td>
+              <td>操作</td>
             </tr>
           </thead>
           <tbody>
@@ -28,13 +28,11 @@
                 <td>
                   <%= check_box_tag "ids[]", official_article.id %>
                 </td>
-                <td>#</td>
                 <td><%= link_to(official_article.title, admin_official_article_path(official_article)) %></td>
                 <td><%= official_article.author %></td>
                 <td><%= t(official_article.status, :scope => "official_article.status") %></td>
                 <td><%= official_article.source %></td>
                 <td><%=official_article.article_category.try(:name) %></td>
-                <td><%= official_article.created_at.to_s %></td>
                 <td>
                   <%= link_to '', edit_admin_official_article_path(official_article), class: "fa fa-pencil" %>
                   <%= link_to '', admin_official_article_path(official_article), 'data-confirm' => 'Are you sure?' , method: :delete, class: "fa fa-trash" %>
@@ -45,7 +43,7 @@
         </table>
         <p>
         <%= select_tag :official_article_status, options_for_select( OfficialArticle::STATUS.map{ |s| [t(s, :scope => + "official_article.status"), s] }), :class => "form-control" %>
-        
+
         <%= submit_tag t(:bulk_update), :class => "btn btn-primary" %>
         <%= submit_tag t(:bulk_delete), :class => "btn btn-danger", :data => { :confirm => "Are you + sure?" } %>
         </p>

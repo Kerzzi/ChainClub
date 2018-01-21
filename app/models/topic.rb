@@ -1,16 +1,17 @@
 class Topic < ApplicationRecord
   has_paper_trail
-  
+
   validates :user_id, :title, :content, :node_id, presence: true
   has_many :answers, dependent: :destroy
   belongs_to :user
   belongs_to :node, :optional => true
-  
+
   has_many :topic_relationships
   has_many :fans, through: :topic_relationships, source: :user
-  
-  
 
+
+  # Scope #
+  scope :random5, -> { limit(5).order("RANDOM()") }
   scope :last_actived,       -> { order(last_active_mark: :desc) }
   scope :high_likes,         -> { order(likes_count: :desc).order(id: :desc) }
   scope :high_replies,       -> { order(replies_count: :desc).order(id: :desc) }
@@ -21,14 +22,14 @@ class Topic < ApplicationRecord
 
   scope :without_node_ids,   ->(ids) { exclude_column_ids("node_id", ids) }
   scope :without_users,      ->(ids) { exclude_column_ids("user_id", ids) }
-  scope :exclude_column_ids, ->(column, ids) { ids.empty? ? all : where.not(column => ids) }  
-  
+  scope :exclude_column_ids, ->(column, ids) { ids.empty? ? all : where.not(column => ids) }
+
   scope :without_nodes, lambda { |node_ids|
     ids = node_ids + Topic.topic_index_hide_node_ids
     ids.uniq!
     exclude_column_ids("node_id", ids)
   }
-  
+
 
 
   def related_topics(size = 5)
@@ -51,25 +52,25 @@ class Topic < ApplicationRecord
     }
     self.class.__elasticsearch__.search(opts).records.to_a
   end
-  
+
   def self.fields_for_list
     columns = %w(content who_deleted)
     select(column_names - columns.map(&:to_s))
-  end  
-  
+  end
+
   def full_content
     ([self.content] + self.answers.pluck(:content)).join('\n\n')
   end
-    
+
   before_create :init_last_active_mark_on_create
   def init_last_active_mark_on_create
     self.last_active_mark = Time.now.to_i
   end
-  
+
   before_create :init_last_active_mark_on_create
   def init_last_active_mark_on_create
     self.last_active_mark = Time.now.to_i
-  end  
+  end
 
   def update_last_answer(answer, opts = {})
     # replied_at 用于最新回复的排序，如果帖着创建时间在一个月以前，就不再往前面顶了
@@ -98,16 +99,16 @@ class Topic < ApplicationRecord
       self.answers.order("id asc").pluck(:id)
     end
   end
-    
+
   def excellent?
     excellent >= 1
-  end    
+  end
 
   def excellent!
-    
-      
+
+
       self.update!(excellent: 1)
-    
+
   end
 
   def unexcellent!
