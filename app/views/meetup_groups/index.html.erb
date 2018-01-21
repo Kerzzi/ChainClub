@@ -1,58 +1,60 @@
-<div class="container-fluid show-content">
-  <div class="row">
-    <div class="heading">
-      <a href="/meetup_groups"><h1 class="title">Meetup</h1></a>    
+<div class="container">
+  <div class="container-fluid show-content">
+    <div class="row">
+      <div class="heading">
+        <a href="/meetup_groups"><h1 class="title">Meetup</h1></a>    
+      </div>
+      <div class="heading-inline">
+        <div class="left-info-block">
+           <%= render "meetup_groups/search_bar" %>
+          <span class="title">Meetup类型</span>&nbsp; |
+          <a class="selection-link" href="/meetup_groups">全部</a>
+          <a class="selection-link" href="#">线下</a>
+          <a class="selection-link" href="#">线上</a>
+        </div>
+        <div class="right-btn-block pull-right">
+          <%= link_to("关于Meetup", "#", class: "btn btn-default btn-guide") %>
+          <%= link_to("新建Meetup", new_meetup_group_path, class: "btn btn-default btn-guide") %>
+        </div>
+      </div> 
+      <div class="heading-line sub-heading">
+        <div class="lift-info-block">
+          <span class="title">Meetup周期</span>&nbsp; |
+          <a class="selection-link" href="/meetup_groups">全部</a>
+          <a class="selection-link" href="#">单次</a>
+          <a class="selection-link" href="#">长期</a>
+        </div>
+      </div>
     </div>
-    <div class="heading-inline">
-      <div class="left-info-block">
-         <%= render "meetup_groups/search_bar" %>
-        <span class="title">Meetup类型</span>&nbsp; |
-        <a class="selection-link" href="/meetup_groups">全部</a>
-        <a class="selection-link" href="#">线下</a>
-        <a class="selection-link" href="#">线上</a>
-      </div>
-      <div class="right-btn-block pull-right">
-        <%= link_to("关于Meetup", "#", class: "btn btn-default btn-guide") %>
-        <%= link_to("新建Meetup", new_meetup_group_path, class: "btn btn-default btn-guide") %>
-      </div>
-    </div> 
-    <div class="heading-line sub-heading">
-      <div class="lift-info-block">
-        <span class="title">Meetup周期</span>&nbsp; |
-        <a class="selection-link" href="/meetup_groups">全部</a>
-        <a class="selection-link" href="#">单次</a>
-        <a class="selection-link" href="#">长期</a>
-      </div>
-    </div>
-  </div>
 
-  <table class="table table-striped">
-    <thead>
-     <tr>
-        <th>活动名称</th>
-        <th>城市</th>
-        <th>时间</th>
-        <th>联系人</th>
-        <th>查看</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @meetup_groups.each do |meetup_group| %>
-        <tr>
-          <td><%= meetup_group.title %></td>
-          <td><%= meetup_group.city %></td>
-          <td><%= meetup_group.activity_time %></td>
-          <td><%= meetup_group.user.email %></td>
-          <td><%= link_to("查看", meetup_group_path(meetup_group), class: "btn btn-default") %></td>
+    <table class="table table-striped">
+      <thead>
+       <tr>
+          <th>活动名称</th>
+          <th>城市</th>
+          <th>时间</th>
+          <th>联系人</th>
+          <th>查看</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-  
-  <div class="text-center">
-    <%= will_paginate @meetup_groups, renderer: BootstrapPagination::Rails, :previous_label => t('上一页'), :next_label => t('下一页') %>
-  </div>
+      </thead>
+      <tbody>
+        <% @meetup_groups.each do |meetup_group| %>
+          <tr>
+            <td><%= meetup_group.title %></td>
+            <td><%= meetup_group.city %></td>
+            <td><%= meetup_group.activity_time %></td>
+            <td><%= meetup_group.user.email %></td>
+            <td><%= link_to("查看", meetup_group_path(meetup_group), class: "btn btn-default") %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
     
+    <div class="text-center">
+      <%= will_paginate @meetup_groups, renderer: BootstrapPagination::Rails, :previous_label => t('上一页'), :next_label => t('下一页') %>
+    </div>
+      
+  </div>
 </div>
 
 

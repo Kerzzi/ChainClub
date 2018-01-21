@@ -1,29 +1,27 @@
 // article/index CSS
 
 .article-all {
-  margin: 30px auto 0;
+  margin: 10px 20px 0 20px;
 }
 
 .article-box {
+  .article-summary{
+    // 下面4句，限制只显示几行文章，超出部分显示省略号
+    display: -webkit-box;
+    -webkit-line-clamp:2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
 }
 
 .article-index-title {
   font-size: 1.6em;
   font-weight: normal;
-  a {
-    color: #666;                                      // 链接反转的样式
-    transition: 0.5s;
-  }
-  a:hover {
-    color: #7f8c8d;
-    transition: 0.5s;                                 // 鼠标指向时 0.5面渐变
-    text-decoration: none;
-  }
 }
 
 .article-user {
   color: #999;
-  margin-top: 70px;
+  margin-top: 10px;
 }
 
 

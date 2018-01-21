@@ -1,41 +1,43 @@
-<div class="panel panel-default col-md-10 col-md-offset-1">
-  
-  <div class="panel-body">
+<div class="container">
+  <div class="panel panel-default col-md-10 col-md-offset-1">
     
-    <div class="group">
-      <div class="row">
-        <div class="col-sm-2 col-lg-1 ">
+    <div class="panel-body">
+      
+      <div class="group">
+        <div class="row">
+          <div class="col-sm-2 col-lg-1 ">
+          </div>
+          <%= render :partial => "official_articles/search_bar" %>
         </div>
-        <%= render :partial => "official_articles/search_bar" %>
-      </div>
-    </div> 
+      </div> 
 
-    <br>
-    <% if @query_string.blank? %>
-        <h4 class="search-info-title">搜索信息不能为空，请输入关键字搜索</h4>
-    <% elsif @official_articles.blank? %>
-        <br>
-        <h4 class="search-info-title">亲，没有搜索到相关工作信息哦，要不换个关键词试试？</h4>
-    <% else %>
-        <h4 class="search-info-title"> 有关"<%= @query_string %>"的工作信息 </h4>
-        <hr>
+      <br>
+      <% if @query_string.blank? %>
+          <h4 class="search-info-title">搜索信息不能为空，请输入关键字搜索</h4>
+      <% elsif @official_articles.blank? %>
+          <br>
+          <h4 class="search-info-title">亲，没有搜索到相关工作信息哦，要不换个关键词试试？</h4>
+      <% else %>
+          <h4 class="search-info-title"> 有关"<%= @query_string %>"的工作信息 </h4>
+          <hr>
 
-        <div class="search-result">
+          <div class="search-result">
 
-          <% @official_articles.each do |official_article| %>
-           <div class="job-item">
+            <% @official_articles.each do |official_article| %>
+             <div class="job-item">
 
-             <h4><%= link_to(render_highlight_content(official_article,@query_string), official_article_path(official_article)) %></h4>
-             
-             <hr>
-           </div>
+               <h4><%= link_to(render_highlight_content(official_article,@query_string), official_article_path(official_article)) %></h4>
+               
+               <hr>
+             </div>
+            <% end %>
+          </div>
+          <% if @official_articles.present? %>
+          <div class="text-center">
+             <%= will_paginate @official_articles, renderer: BootstrapPagination::Rails, :previous_label => t('上一页'), :next_label => t('下一页') %>
+          </div>
           <% end %>
-        </div>
-        <% if @official_articles.present? %>
-        <div class="text-center">
-           <%= will_paginate @official_articles, renderer: BootstrapPagination::Rails, :previous_label => t('上一页'), :next_label => t('下一页') %>
-        </div>
-        <% end %>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>

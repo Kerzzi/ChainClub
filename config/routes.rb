@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'official_articles#index'
+  root 'welcome#index'
   devise_for :users
   resource :user
 

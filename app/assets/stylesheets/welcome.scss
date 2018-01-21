@@ -1,3 +1,307 @@
 // Place all the styles related to the welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+// 首页轮播图
+
+.slideshow {
+    list-style: none;
+    z-index: 1;
+		height: 550px;
+}
+.slideshow li span {
+    width: 100%;
+    height: 550px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    color: transparent;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: none;
+    opacity: 0;
+    z-index: 2;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-animation: imageAnimation 24s linear infinite 0s;
+    -moz-animation: imageAnimation 24s linear infinite 0s;
+    animation: imageAnimation 24s linear infinite 0s;
+}
+.slideshow li h3 {
+    position: absolute;
+    text-align: center;
+    z-index: 2;
+    bottom: 150px;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    font-size: 4.0625em;
+    font-family: 'Josefin Sans', sans-serif;
+    text-transform: uppercase;
+    color: #fff;
+    -webkit-animation: titleAnimation 24s linear 0.2 0s;
+    -moz-animation: titleAnimation 24s linear 0.2 0s;
+    animation: titleAnimation 24s linear 0.2 0s;
+}
+@media only screen and (min-width: 768px) {
+    .slideshow li h3 {
+        bottom: 30px;
+        font-size: 8.125em;
+    }
+}
+@media only screen and (min-width: 1024px) {
+    .slideshow li h3 {
+        font-size: 10.9375em;
+    }
+}
+.slideshow li:nth-child(1) span {
+    background-image: url(https://ww4.sinaimg.cn/large/006tNc79gy1fnoi97a3x9j31hc0e6dg0.jpg);
+}
+.slideshow li:nth-child(2) span {
+    background-image: url(https://ww4.sinaimg.cn/large/006tNc79gy1fnoi9basz5j31hc0e60uz.jpg);
+    -webkit-animation-delay: 6s;
+    -moz-animation-delay: 6s;
+    animation-delay: 6s;
+}
+.slideshow li:nth-child(3) span {
+    background-image: url(https://ww4.sinaimg.cn/large/006tNc79gy1fnoi9el5c7j31hc0e675a.jpg);
+    -webkit-animation-delay: 12s;
+    -moz-animation-delay: 12s;
+    animation-delay: 12s;
+}
+.slideshow li:nth-child(4) span {
+    background-image: url(https://ww4.sinaimg.cn/large/006tNc79gy1fnoi9basz5j31hc0e60uz.jpg);
+    -webkit-animation-delay: 18s;
+    -moz-animation-delay: 18s;
+    animation-delay: 18s;
+}
+@-webkit-keyframes imageAnimation {
+    0% {
+        opacity: 0;
+        -webkit-animation-timing-function: ease-in;
+    }
+    12.5% {
+        opacity: 1;
+        -webkit-animation-timing-function: ease-out;
+    }
+    25% {
+        opacity: 1;
+    }
+    37.5% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@-moz-keyframes imageAnimation {
+    0% {
+        opacity: 0;
+        -moz-animation-timing-function: ease-in;
+    }
+    12.5% {
+        opacity: 1;
+        -moz-animation-timing-function: ease-out;
+    }
+    25% {
+        opacity: 1;
+    }
+    37.5% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@keyframes imageAnimation {
+    0% {
+        opacity: 0;
+        -webkit-animation-timing-function: ease-in;
+        -moz-animation-timing-function: ease-in;
+        animation-timing-function: ease-in;
+    }
+    12.5% {
+        opacity: 1;
+        -webkit-animation-timing-function: ease-out;
+        -moz-animation-timing-function: ease-out;
+        animation-timing-function: ease-out;
+    }
+    25% {
+        opacity: 1;
+    }
+    37.5% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@-webkit-keyframes titleAnimation {
+    0% {
+        opacity: 0;
+    }
+    12.5% {
+        opacity: 1;
+    }
+    25% {
+        opacity: 1;
+    }
+    37.5% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@-moz-keyframes titleAnimation {
+    0% {
+        opacity: 0;
+    }
+    12.5% {
+        opacity: 1;
+    }
+    25% {
+        opacity: 1;
+    }
+    37.5% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@keyframes titleAnimation {
+    0% {
+        opacity: 0;
+    }
+    12.5% {
+        opacity: 1;
+    }
+    25% {
+        opacity: 1;
+    }
+    37.5% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+.no-cssanimations .slideshow li span {
+    opacity: 1;
+}
+
+// 首页搜索栏
+
+.index-search{
+	position: absolute;
+	z-index: 3;
+	margin-top: -210px;
+	margin-left: 15px;
+	height: 130px;
+	width: 100%;
+	background: rgba(0,0,0,0.3);  //背景颜色设置为黑色透明
+  border-color: transparent;         //边框颜色设置为 透明
+}
+
+
+// 首页二级tool
+.home-tool{
+	margin-top: -75px;
+	height: 170px;
+	width: 100%;
+	background-color: #fff;
+	text-align: center;
+	.tool-item{
+		width: 11.11%;
+		float: left;
+		padding: 25px 15px;
+		
+	}
+	a{
+		background: transparent;
+	}
+	img{
+		border: 0;
+		width: 60px;
+		vertical-align: middle;
+		display: inline-block;
+		background: transparent;
+	}
+	.title{
+		color: #000;
+    margin: 0;
+    font-size: 22px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+	}
+}
+
+
+.panel-header{
+	height: 60px;
+	padding: 12px 20px;
+	border-bottom: solid 1.2px #DD2C00;
+	img{
+		border: 0;
+		width: 40px;
+		vertical-align: middle;
+		display: inline-block;
+		background: transparent;
+	}
+}
+
+// 首页小轮播图
+.showbox{
+	position: relative;
+	height: 550px;
+	width: 600px;
+	overflow: hidden;
+	border: 10px solid #eee;
+	background-color: #eee;
+}
+
+.imagebox{
+	position: relative;
+	height: 550px;
+	width: 600px;
+	top: 0;
+	left: 5px;
+	overflow: hidden;
+}
+
+.imagebox img{
+	display: block;
+	width: inherit;
+	height: 550px;
+	float: left;
+}
+
+.icobox{
+	position: absolute;
+	border: none;
+	width: 120px;
+	height: 12px;
+	left: 220px;
+	bottom: 10px;
+	text-align: center;
+	line-height: 40px;
+	overflow: hidden;
+}
+
+// 将icobox隐藏
+// .icobox span{
+// 	background: url("http://www.itxueyuan.org/uploads/javascript/demo/lunbo/zuoyou_title/images/ico.png") 0px 0px no-repeat;
+// 	width: 12px;
+// 	height: 12px;
+// 	cursor: pointer;
+// 	float: left;
+// 	margin-left: 3px;
+// }
+// 
+// .icobox span.active{
+// 	background: url("http://www.itxueyuan.org/uploads/javascript/demo/lunbo/zuoyou_title/images/ico.png") 0px -12px no-repeat;
+// 	cursor: default;
+// }
+
