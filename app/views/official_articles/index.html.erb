@@ -3,10 +3,11 @@
 <div class="container">
 
   <div class="row">
-
+    <%= render "official_articles/search_bar" %>
     <div class="group">
       <%= link_to("New article", new_official_article_path, class: "btn btn-primary pull-right") %>
     </div>
+    
     <hr>
 
     <% @official_articles.each do |official_article| %>
