@@ -8,8 +8,6 @@
          <%= render "meetup_groups/search_bar" %>
         <span class="title">Meetup类型</span>&nbsp; |
         <a class="selection-link" href="/meetup_groups">全部</a>
-        <a class="selection-link" href="#">线下</a>
-        <a class="selection-link" href="#">线上</a>
       </div>
       <div class="right-btn-block pull-right">
         <%= link_to("关于Meetup", "#", class: "btn btn-default btn-guide") %>
@@ -39,7 +37,7 @@
     <tbody>
       <% @meetup_groups.each do |meetup_group| %>
         <tr>
-          <td><%= meetup_group.title %></td>
+          <td><%= link_to(render_highlight_content(meetup_group,@query_string), meetup_group_path(meetup_group)) %></td>
           <td><%= meetup_group.city %></td>
           <td><%= meetup_group.activity_time %></td>
           <td><%= meetup_group.user.email %></td>
@@ -50,9 +48,7 @@
   </table>
   
   <div class="text-center">
-    <%= will_paginate @meetup_groups %>
+    <%= will_paginate @meetup_groups, renderer: BootstrapPagination::Rails, :previous_label => t('上一页'), :next_label => t('下一页') %>
   </div>
     
 </div>
-
-

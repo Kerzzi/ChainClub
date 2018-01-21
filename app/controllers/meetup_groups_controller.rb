@@ -1,6 +1,7 @@
 class MeetupGroupsController < ApplicationController
   before_action :authenticate_user!, :only => [:new, :create]
   before_action :find_meetup_group_and_check_permission, only: [:edit, :update, :destroy]  
+  before_action :validate_search_key, only: [:search]
   
   def index
     @meetup_groups = MeetupGroup.all.paginate(:page => params[:page], :per_page => 10) 
@@ -39,8 +40,29 @@ class MeetupGroupsController < ApplicationController
   def destroy  
     @meetup_group.destroy
     redirect_to meetup_groups_path, alert: "删除成功！"
-  end  
+  end 
+   
+   def search
+     if @query_string.present?
+       search_result = MeetupGroup.ransack(@search_criteria).result(:distinct => true)
+       @meetup_groups = search_result.paginate(:page => params[:page], :per_page => 15 )
+     end
+   end
 
+
+   protected
+
+   # 取到params[:q]的内容并去掉非法的内容
+   def validate_search_key
+     @query_string = params[:q].gsub(/\\|\'|\/|\?/, "") if params[:q].present?
+     @search_criteria = search_criteria(@query_string)
+   end
+
+
+   def search_criteria(query_string)
+     { :title_cont => query_string }
+   end
+   
   private
   def find_meetup_group_and_check_permission
     @meetup_group = MeetupGroup.find(params[:id])
