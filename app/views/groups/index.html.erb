@@ -9,7 +9,11 @@
         <br>
 
         <%= render :partial => "group_item", :collection => @groups, :as => :group %>
+        <div class="text-center">
+          <%= will_paginate @groups, renderer: BootstrapPagination::Rails, :previous_label => t('上一页'), :next_label => t('下一页') %>
+        </div>
       </div><!-- /panel-body -->
+      
     </div>
   </div>
 

@@ -4,7 +4,7 @@ class GroupsController < ApplicationController
   before_action :validate_search_key, only: [:search]
 
   def index
-    @groups = Group.all
+    @groups = Group.all.paginate(:page => params[:page], :per_page => 10)
   end
 
   def show
