@@ -11,9 +11,9 @@
       <div class="heading-inline">
         <div class="left-info-block">
           <span class="title">Meetup类型</span>&nbsp; |
-          <a class="selection-link" href="/meetup_groups">全部</a>
-          <a class="selection-link" href="#">线下</a>
-          <a class="selection-link" href="#">线上</a>
+          <%= link_to("全部", meetup_groups_path) %>
+          <%= link_to("线下", meetup_groups_path(:order => "by_offline")) %>
+          <%= link_to("线上", meetup_groups_path(:order => "by_online")) %>
         </div>
         <div class="right-btn-block pull-right">
           <%= link_to("关于Meetup", "#", class: "btn btn-default btn-guide") %>

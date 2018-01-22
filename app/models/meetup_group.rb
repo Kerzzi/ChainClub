@@ -9,7 +9,12 @@ class MeetupGroup < ApplicationRecord
   validates :address, presence: true  
   validates :register, presence: true
   validates :introduce, presence: true  
-  
 
+  MEETUPTYPES = ["online", "offline"]
+  validates_inclusion_of :meetup_type, :in => MEETUPTYPES
+
+  # Scope #
+  scope :online_meetup, -> { where(:meetup_type => "online")}
+  scope :offline_meetup, -> { where(:meetup_type => "offline")}
     
 end

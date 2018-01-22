@@ -18,3 +18,7 @@ zh-CN:
     category:
       fulltime: 全职工作
       internship: 兼职工作
+  meetup_group:
+    meetup_type:
+      online: 线上活动
+      offline: 线下活动

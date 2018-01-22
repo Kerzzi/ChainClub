@@ -3,8 +3,16 @@ class MeetupGroupsController < ApplicationController
   before_action :find_meetup_group_and_check_permission, only: [:edit, :update, :destroy]  
   before_action :validate_search_key, only: [:search]
   
-  def index
-    @meetup_groups = MeetupGroup.all.paginate(:page => params[:page], :per_page => 10) 
+  def index    
+    @meetup_groups = case params[:order]
+                      when 'by_offline'
+                        MeetupGroup.all.offline_meetup.paginate(:page => params[:page], :per_page => 10)
+                      when 'by_online'
+                        MeetupGroup.all.online_meetup.paginate(:page => params[:page], :per_page => 10)
+                      else
+                        MeetupGroup.all.paginate(:page => params[:page], :per_page => 10)
+                      end
+            
   end
 
   def new

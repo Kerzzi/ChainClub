@@ -4,8 +4,12 @@
       <%= f.input :title, input_html: { class: "form-control"} %>
     </div>
     <div class="form-group">
-      <%= f.input :meetup_type, input_html: { class: "form-control"} %>
+      <%= f.label :meetup_type %>
+ 
+      <%= f.select :meetup_type, MeetupGroup::MEETUPTYPES.map{ |s| [t(s, :scope => "meetup_group.meetup_type"), s] }, {}, :class => "form-control" %>
+
     </div>
+    
     <div class="form-group">
       <%= f.input :time_limit, input_html: { class: "form-control"} %>
     </div>
