@@ -18,41 +18,42 @@
           <hr>
 
           <div class="search-result">
-          <% @official_articles.each do |official_article| %>
-            <div class="article-all">
-              <div class="article-box row">
+            <% @official_articles.each do |official_article| %>
+              <div class="article-all">
+                <div class="article-box row">
 
-                <!-- 文章列表图片 -->
-                <div class="col-md-3 all_image_css">
-                  <% if official_article.image.present? %>
-                    <%= link_to image_tag(official_article.image.articleimg.url, class: "product-list-style-img img-responsive"), official_article_path(official_article) %>
-                  <% else %>
-                    <%= link_to image_tag("http://placehold.it/600x400&text=No Pic", class: "product-list-style-img img-responsive"), official_article_path(article)%>
-                  <% end %>
-                </div>
+                  <!-- 文章列表图片 -->
+                  <div class="col-md-3 all_image_css">
+                    <% if official_article.image.present? %>
+                      <%= link_to image_tag(official_article.image.articleimg.url, class: "product-list-style-img img-responsive"), official_article_path(official_article) %>
+                    <% else %>
+                      <%= link_to image_tag("http://placehold.it/600x400&text=No Pic", class: "product-list-style-img img-responsive"), official_article_path(article)%>
+                    <% end %>
+                  </div>
 
-                <!-- 文章列表标题、作者、日期 -->
-                <div class="col-md-9">
-                  <div class="row">
-                    <%= link_to(official_article.title,official_article_path(official_article), class: "article-index-title") %>
-                  </div>
-                  <div class="row article-summary">
-                    <%= official_article.summary %>
-                  </div>
-                  <div class="article-user row">
-                    <div class="col-md-6">
-                      <span> <%= official_article.user.display_name %></span>
+                  <!-- 文章列表标题、作者、日期 -->
+                  <div class="col-md-9">
+                    <div class="row">
+                      <%= link_to(official_article.title,official_article_path(official_article), class: "article-index-title") %>
                     </div>
-                    <div class="col-md-6">
-                      <span> <%= official_article.created_at.strftime("%Y-%m-%d %H:%M:%S") %></span>
+                    <div class="row article-summary">
+                      <%= official_article.summary %>
+                    </div>
+                    <div class="article-user row">
+                      <div class="col-md-6">
+                        <span> <%= official_article.user.display_name %></span>
+                      </div>
+                      <div class="col-md-6">
+                        <span> <%= official_article.created_at.strftime("%Y-%m-%d %H:%M:%S") %></span>
+                      </div>
                     </div>
                   </div>
-                </div>
 
+                </div>
+                <hr>
               </div>
-              <hr>
-            </div>
-          <% end %>
+            <% end %>
+          </div>
         <% end %>
       <% if @official_articles.present? %>  
         <div class="text-center">

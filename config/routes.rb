@@ -82,7 +82,11 @@ Rails.application.routes.draw do
       get :search
     end
   end
-  resources :sites
+  resources :sites do
+    collection do
+      get :search
+    end
+  end
   resources :courses do
     collection do
       get :search

@@ -17,41 +17,42 @@
             <hr>
 
             <div class="search-result">
-            <% @topics.each do |topic| %>
+              <% @topics.each do |topic| %>
 
-              <div class="topic media topic-<%= topic.id %>">
-                <div class="avatar media-left">
-                  <img src= "<%= render_user_avatar(topic.user, 180) %>" style="width:50px; hight:50px; border-radius:50%;">
-                </div>
-                <div class="infos media-body">
-                  <div class="title media-heading">
-
-                      <%= topic.node.name %>
-                      <%= link_to(topic.title, topic_path(topic)) %>
-
-
-                      <i class="fa fa-angle-double-up" title="置顶"></i>
-
-
+                <div class="topic media topic-<%= topic.id %>">
+                  <div class="avatar media-left">
+                    <img src= "<%= render_user_avatar(topic.user, 180) %>" style="width:50px; hight:50px; border-radius:50%;">
                   </div>
-                  <div class="info">
-                    <span class="name">
-                      <%= topic.user.display_name %>
-                    </span> •
-                    最后由 admin 回复于
-                    <span><%= time_tag(topic.created_at) %></span>
+                  <div class="infos media-body">
+                    <div class="title media-heading">
+
+                        <%= topic.node.name %>
+                        <%= link_to(render_highlight_content(topic,@query_string), topic_path(topic)) %>
+
+
+                        <i class="fa fa-angle-double-up" title="置顶"></i>
+
+
+                    </div>
+                    <div class="info">
+                      <span class="name">
+                        <%= topic.user.display_name %>
+                      </span> •
+                      最后由 admin 回复于
+                      <span><%= time_tag(topic.created_at) %></span>
+                    </div>
                   </div>
-                </div>
-                <div class="count media-right">
-                  <% if topic.answers.count > 0 %>
-                  <span class="badge"><%= topic.answers.count %></span>
+                  <div class="count media-right">
+                    <% if topic.answers.count > 0 %>
+                    <span class="badge"><%= topic.answers.count %></span>
 
-                  <% end %>
-                </div>
-              </div><!-- /上述内容应该可以做出partial -->
+                    <% end %>
+                  </div>
+                </div><!-- /上述内容应该可以做出partial -->
 
-              <hr/>
-            <% end %>
+                <hr/>
+              <% end %>
+            </div>
           <% end %>
         <div class="text-center">
           <%= will_paginate @topics, renderer: BootstrapPagination::Rails, :previous_label => t('上一页'), :next_label => t('下一页') %>

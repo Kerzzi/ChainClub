@@ -16,7 +16,23 @@
         <% else %>
             <h4 class="search-info-title"> 有关"<%= @query_string %>"的小组 </h4>
             <hr>
-            <%= render :partial => "group_item", :collection => @groups, :as => :group %>
+            <% @groups.each do |group| %>
+              <div class="row"> 
+                <div class="col-md-3">
+                  <% if group.logo.present? %>
+                    <%= link_to image_tag(group.logo.url(:medium)),group_path(group) %>
+                  <% end %>
+                </div>
+                <div class="col-md-9">
+                  <h4><%= link_to render_highlight_content(group,@query_string),group_path(group) %></h4>
+                  <div class="row">
+                    组长：<%= group.user.display_name %>，成员数：<%= group.members.count %>
+                    主题：<%= group.posts.count %>
+                  </div>  
+                </div>
+              </div> 
+              <hr/>
+            <% end %>
         <% end %>
         <% if @groups.present? %>
           <div class="text-center">
