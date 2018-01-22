@@ -1,7 +1,7 @@
 <div class="">
 	<ul class="slideshow">
 			<li>
-					<h3>The Seasons</h3>
+					<!-- <h3>The Seasons</h3> -->
 					<span>Summer</span>
 			</li>
 			<li>
@@ -116,18 +116,7 @@
 		<hr>
 	</div>
 	
-	<div class="panel panel-default">
-		<div class="panel-header">
-			<div class="row">
-				<span><a href="/groups"><img src="/images/home_tool3.png"></a> </span><span>  课程 </span>
-			</div>
-		</div>
-		
-		<div class="panel-body">
-			最新或者推荐课程
-			<hr>
-		</div>
-	</div>
+
 	
 	<div class="panel panel-default">
 		<div class="panel-header">
@@ -139,18 +128,49 @@
 		<div class="panel-body">
 			<div class="row home-meetup">
 				<div class="col-md-6">
-					
-				
-				<p class="text-center"><%= link_to("更多线下活动", jobs_path(:order => "by_internship")) %></p>	
+					<% @offline_meetups.each do |meetup_group| %>
+						<div class="job-item">
+							<p><span class="pull-right">更新于 <%= meetup_group.updated_at %></span></p>
+							<h4><%= link_to(meetup_group.title, meetup_group_path(meetup_group)) %></h4>
+							<p><i class="fa fa-street-view" aria-hidden="true"></i> <%= meetup_group.city %></p>
+							<p><i class="fa fa-clock-o" aria-hidden="true"></i> <%= meetup_group.activity_time %></p>
+							<p><span class="label label-success"><%= t(meetup_group.meetup_type) %></span></p>
+						</div>	
+						<hr>
+	        <% end %>
+					<p class="text-center"><%= link_to("更多线下活动", meetup_groups_path(:order => "by_offline")) %></p>	
 				</div>	
 					
 					
 				<div class="col-md-6">
-					
-				<p class="text-center"><%= link_to("更多线上活动", jobs_path(:order => "by_internship")) %></p>	
+					<% @offline_meetups.each do |meetup_group| %>
+						<div class="job-item">
+							<p><span class="pull-right">更新于 <%= meetup_group.updated_at %></span></p>
+							<h4><%= link_to(meetup_group.title, meetup_group_path(meetup_group)) %></h4>
+							<p><i class="fa fa-street-view" aria-hidden="true"></i> <%= meetup_group.city %></p>
+							<p><i class="fa fa-clock-o" aria-hidden="true"></i> <%= meetup_group.activity_time %></p>
+							<p><span class="label label-success"><%= t(meetup_group.meetup_type) %></span></p>
+						</div>	
+						<hr>
+	        <% end %>
+					<p class="text-center"><%= link_to("更多线上活动", meetup_groups_path(:order => "by_online")) %></p>	
 				</div>
 			</div>
 
+		</div>
+	</div>
+
+
+	<div class="panel panel-default">
+		<div class="panel-header">
+			<div class="row">
+				<span><a href="/groups"><img src="/images/home_tool3.png"></a> </span><span>  课程 </span>
+			</div>
+		</div>
+		
+		<div class="panel-body">
+			最新或者推荐课程
+			<hr>
 		</div>
 	</div>
 
