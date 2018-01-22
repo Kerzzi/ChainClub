@@ -17,8 +17,9 @@
           于<span> <%= @official_article.created_at.strftime("%Y-%m-%d %H:%M:%S") %></span> · 
           发布在 · <span> <%= @official_article.article_category.try(:name) %></span>栏目 ·
           <span> <%= t(@official_article.status, :scope => "official_article.status") %></span>
+          <hr>
         </div>
-
+        
         <!-- 摘要 -->
         <div class="article-summary">
           <p>

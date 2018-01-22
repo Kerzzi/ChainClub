@@ -1,15 +1,11 @@
+<div class="row search-for-project search-secticon">
+  <%= render "projects/search_bar" %>
+</div>
+
 <div class="container">
   <div class="panel panel-default col-md-10 col-md-offset-1">
     
     <div class="panel-body">
-      
-      <div class="group">
-        <div class="row">
-          <div class="col-sm-2 col-lg-1 ">
-          </div>
-          <%= render :partial => "projects/search_bar" %>
-        </div>
-      </div> 
 
       <br>
       <% if @query_string.blank? %>

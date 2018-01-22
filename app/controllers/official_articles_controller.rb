@@ -4,7 +4,8 @@ class OfficialArticlesController < ApplicationController
   
   # ---CRUD---
   def index
-    @official_articles = OfficialArticle.where(:status => "public").order("created_at DESC").paginate(:page => params[:page], :per_page => 5) 
+    @official_articles = OfficialArticle.where(:status => "public").order("created_at DESC").paginate(:page => params[:page], :per_page => 15) 
+    @article_hots = OfficialArticle.where(:status => "public").sort_by{|official_article| -official_article.article_comments.count}    #按数据要求排序
   end
   
   def show
@@ -84,6 +85,7 @@ class OfficialArticlesController < ApplicationController
        search_result = OfficialArticle.ransack(@search_criteria).result(:distinct => true)
        @official_articles = search_result.paginate(:page => params[:page], :per_page => 15 )
      end
+     @article_hots = OfficialArticle.where(:status => "public").sort_by{|official_article| -official_article.article_comments.count}    #按数据要求排序
    end
 
 

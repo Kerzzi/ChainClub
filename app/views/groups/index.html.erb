@@ -1,12 +1,12 @@
+<div class="row search-for-topic search-secticon">
+  <%= render "groups/search_bar" %>
+</div>
+
 <div class="container">
   <div class="col-md-9">
     <div class="panel panel-default">
 
       <div class="panel-body">
-        <div class="group">
-          <%= render :partial => "groups/search_bar" %>
-        </div>
-        <br>
 
         <%= render :partial => "group_item", :collection => @groups, :as => :group %>
         <div class="text-center">

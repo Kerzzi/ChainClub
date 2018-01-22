@@ -1,54 +1,30 @@
-<div class="row">
-  <div class="col-md-9">
 
+<div class="row search-for-topic search-secticon">
+  <%= render "groups/search_bar" %>
+</div>
+
+<div class="container">
+  <div class="col-md-9">
     <div class="panel panel-default">
 
       <div class="panel-body">
-
-        <div class="group">
-          <%= render :partial => "groups/search_bar" %>
-        </div>
-
-        <br>
         <% if @query_string.blank? %>
             <h4 class="search-info-title">搜索信息不能为空，请输入关键字搜索</h4>
         <% elsif @groups.blank? %>
             <br>
-            <h4 class="search-info-title">亲，没有搜索到相关工作信息哦，要不换个关键词试试？</h4>
+            <h4 class="search-info-title">亲，没有搜索到相关小组信息哦，要不换个关键词试试？</h4>
         <% else %>
             <h4 class="search-info-title"> 有关"<%= @query_string %>"的小组 </h4>
             <hr>
-
-            <div class="search-result">
-
-              <% @groups.each do |group| %>
-
-
-               <div class="row">
-                 <div class="col-md-3">
-                   <% if group.logo.present? %>
-                     <%= link_to image_tag(group.logo.url(:medium)),group_path(group) %>
-                   <% end %>
-                 </div>
-                 <div class="col-md-9">
-                   <h4><%= link_to render_highlight_content(group,@query_string),group_path(group) %></h4>
-                   <div class="row">
-                     组长：<%= group.user.display_name %>，成员数：<%= group.members.count %>
-                     主题：<%= group.posts.count %>
-                   </div>
-                 </div>
-               </div>
-               <hr/>
-
-              <% end %>
-            </div>
-            <% if @groups.present? %>
-            <div class="text-center">
-              <%= will_paginate(@groups, renderer: BootstrapPagination::Rails) %>
-            </div>
-            <% end %>
+            <%= render :partial => "group_item", :collection => @groups, :as => :group %>
         <% end %>
-      </div>
+        <% if @groups.present? %>
+          <div class="text-center">
+            <%= will_paginate @groups, renderer: BootstrapPagination::Rails, :previous_label => t('上一页'), :next_label => t('下一页') %>
+          </div>
+        <% end %>
+      </div><!-- /panel-body -->
+      
     </div>
   </div>
 

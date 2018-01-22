@@ -1,7 +1,7 @@
 // article/index CSS
 
 .article-all {
-  margin: 10px 20px 0 20px;
+  margin: 10px 10px 0 10px;
 }
 
 .article-box {
@@ -14,8 +14,13 @@
   }
 }
 
+.article-index-box {
+  background-color: #fff;
+  padding-top: 10px;
+}
+
 .article-index-title {
-  font-size: 1.6em;
+  font-size: 1.3em;
   font-weight: normal;
 }
 
@@ -33,6 +38,7 @@
 
 .article-show-box {
   margin-bottom: 60px;
+  background-color: #fff;
 }
 
 .article-title {
@@ -103,13 +109,15 @@
 
 // 侧边栏
 .article-side-author {
-  margin: 25px auto;
-  border: 1px #e3e3e3 solid;
-  border-radius: 6px;
+  margin: -19px 0 0 0 ;
+  // border: 1px #e3e3e3 solid;
+  // border-radius: 6px;
+  background-color: #fff;
 }
 
 .article-avatar {
   margin: 20px auto 10px;
+  padding: 20px 0 0 0 ;
 }
 
 .article-username {
@@ -132,6 +140,7 @@
   font-size: 1.2em;
   line-height: 1.8em;
   list-style: none;
+  background-color: #fff;
 }
 
 .article-author-title-list-time {
@@ -139,6 +148,14 @@
   color: #7f8c8d;
 }
 
+.article-show-hot-list {
+  padding: 10px 20px 0 10px;
+  color: #7f8c8d;
+  font-size: 1.2em;
+  line-height: 1.8em;
+  list-style: none;
+  background-color: #fff;
+}
 .article-show-hot {
   height: 65px;
 }

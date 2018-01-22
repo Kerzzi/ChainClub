@@ -1,60 +1,57 @@
+<div class="row search-for-article search-secticon">
+  
+  <%= render "official_articles/search_bar" %>
+  
+</div>
+
 <div class="container">
-  <div class="container">
-    <%= render "official_articles/search_bar" %>
-  </div>
 
   <div class="row">  
-    <div class="col-md-9">
+    <div class="col-md-8 article-index-box">
 
-      <div class="panel panel-default">
+      <% @official_articles.each do |official_article| %>
+        <div class="article-all">
+          <div class="article-box row">
 
-        <div class="panel-body">
-
-          <% @official_articles.each do |official_article| %>
-            <div class="article-all">
-              <div class="article-box row">
-
-                <!-- 文章列表图片 -->
-                <div class="col-md-3 all_image_css">
-                  <% if official_article.image.present? %>
-                    <%= link_to image_tag(official_article.image.articleimg.url, class: "product-list-style-img img-responsive"), official_article_path(official_article) %>
-                  <% else %>
-                    <%= link_to image_tag("http://placehold.it/600x400&text=No Pic", class: "product-list-style-img img-responsive"), official_article_path(article)%>
-                  <% end %>
-                </div>
-
-                <!-- 文章列表标题、作者、日期 -->
-                <div class="col-md-9">
-                  <div class="row">
-                    <%= link_to(official_article.title,official_article_path(official_article), class: "article-index-title") %>
-                  </div>
-                  <div class="row article-summary">
-                    <%= official_article.summary %>
-                  </div>
-                  <div class="article-user row">
-                    <div class="col-md-6">
-                      <span> <%= official_article.user.display_name %></span>
-                    </div>
-                    <div class="col-md-6">
-                      <span> <%= official_article.created_at.strftime("%Y-%m-%d %H:%M:%S") %></span>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-              <hr>
+            <!-- 文章列表图片 -->
+            <div class="col-md-3 all_image_css">
+              <% if official_article.image.present? %>
+                <%= link_to image_tag(official_article.image.articleimg.url, class: "product-list-style-img img-responsive"), official_article_path(official_article) %>
+              <% else %>
+                <%= link_to image_tag("http://placehold.it/600x400&text=No Pic", class: "product-list-style-img img-responsive"), official_article_path(article)%>
+              <% end %>
             </div>
-          <% end %>
-          
-          <div class="text-center">
-            <%= will_paginate @official_articles, renderer: BootstrapPagination::Rails, :previous_label => t('上一页'), :next_label => t('下一页') %>
+
+            <!-- 文章列表标题、作者、日期 -->
+            <div class="col-md-9">
+              <div class="row">
+                <%= link_to(official_article.title,official_article_path(official_article), class: "article-index-title") %>
+              </div>
+              <div class="row article-summary">
+                <%= official_article.summary %>
+              </div>
+              <div class="article-user row">
+                <div class="col-md-6">
+                  <span> <%= official_article.user.display_name %></span>
+                </div>
+                <div class="col-md-6">
+                  <span> <%= official_article.created_at.strftime("%Y-%m-%d %H:%M:%S") %></span>
+                </div>
+              </div>
+            </div>
+
           </div>
-        </div><!-- panel-body -->
-      </div>
+          <hr>
+        </div>
+      <% end %>
       
+      <div class="text-center">
+        <%= will_paginate @official_articles, renderer: BootstrapPagination::Rails, :previous_label => t('上一页'), :next_label => t('下一页') %>
+      </div>
+
     </div>
     
-    <div class="col-md-3 sidebar">
+    <div class="col-md-4 sidebar">
       <%= render "sidebar_for_article_index" %>
     </div>  
   </div>

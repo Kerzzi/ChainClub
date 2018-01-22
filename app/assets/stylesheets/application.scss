@@ -38,7 +38,7 @@ body {
   font-family: 'Noto Sans SC', sans-serif;           // google思源黑简作为主字体
   padding: 70px 0 0 0;                               // 腾出navbar的遮挡空间
   position: relative;
-  background-color: #FAFAFA;
+  background-color: #F5F5F5;
   font-size: 1.4em;                                   // 网站所有字体缩小比例
   line-height: 1.8em;                   //拉开行高
   color: #666;                                        // 修改全站的 字体主色
@@ -91,6 +91,25 @@ body {
      background : #263238;// 背景色，一般来说设置了高度之后背景色默认白色了，所以加一个背景色为黑色
    }
  }
+
+.search-secticon{
+  margin-top: -20px;
+  margin-bottom: 20px;
+
+  height: 170px;
+	width: 100%;
+	
+  background-image: url(https://ww4.sinaimg.cn/large/006tNc79gy1fnoi97a3x9j31hc0e6dg0.jpg);
+  background-repeat:no-repeat;  //背景图片不重复
+  background-size: cover; //背景全覆盖，相当于宽度100%
+  border-color: transparent;         //边框颜色设置为 透明
+  color: #fff;
+  .search-input{
+    position:relative;
+    top: 35%; 
+    transform: translateY(-10%);  //垂直居中
+  }
+}
 
   /* 通用的图片格式 */
    .all_image_css {
