@@ -1,0 +1,81 @@
+<div class='home-page home-search'>
+    <div class='container'>
+        <div class='row'>
+            <div class='col-lg-2'></div>
+            <div class='col-lg-8'>
+                <div class='search-nav js-home-search-nav'>
+                    <ul class='nav dropup'>
+                        <li class='active' data-search_link='/official_articles/' data-placeholder='搜索你感兴趣的资讯信息' data-kind='official_article'>
+                            <a href='#'>
+                                资讯
+                            </a>
+                            <span class='caret'></span>
+                        </li>
+                        <li data-search_link='/topics/' data-placeholder='你的问题是什么' data-kind='topic'>
+                            <a href='#'>
+                                话题
+                            </a>
+                            <span class='caret'></span>
+                        </li>
+                        <li data-search_link='/courses/' data-placeholder='输入关键词搜索相关课程' data-kind='course'>
+                            <a href='#'>
+                                课程
+                            </a>
+                            <span class='caret'></span>
+                        </li>
+                        <li data-search_link='/groups/' data-placeholder='搜索你感兴趣的小组信息' data-kind='group'>
+                            <a href='#'>
+                                小组
+                            </a>
+                            <span class='caret'></span>
+                        </li>
+                        <li data-search_link='#' data-placeholder='搜索主办方、类别或机会关键词' data-kind='post'>
+                            <a href='#'>
+                                文章
+                            </a>
+                            <span class='caret'></span>
+                        </li>
+                        <li data-search_link='/projects/' data-placeholder='搜索项目的全称或简称' data-kind='project'>
+                            <a href='#'>
+                                项目
+                            </a>
+                            <span class='caret'></span>
+                        </li>
+                        <li data-search_link='/jobs/' data-placeholder='搜索需求方、类别或工作关键词' data-kind='job'>
+                            <a href='#'>
+                                机会
+                            </a>
+                            <span class='caret'></span>
+                        </li>
+                        <li data-search_link='#' data-placeholder='输入关键词搜索相关网站' data-kind='site'>
+                            <a href='#'>
+                                网站
+                            </a>
+                            <span class='caret'></span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <form class='js-search-preview search-preview' action='/official_articles/' role='search' method='GET'>
+                    <div class='form-group'>
+                      
+                      <input class='hide' type='hidden' name='utf8' value='✓'/>
+                      <div class='input-group'>
+                        <input class='form-control search-preview-input' autocomplete='off' data-kind='official_article' style='width: 100%' data-search_link='/official_articles/' name='q' placeholder='搜索你感兴趣的资讯信息' type='search' value='' data-get-action='search/preview'/>
+                          <a class='input-group-addon' href='#'>
+                              <span class='ellipsis'>
+                                  <i class='fa fa-search'></i>
+                                  搜索
+                              </span>
+                          </a>
+                      </div>
+                      <div class='js-search-preview-dropdown'></div>
+                    </div>
+
+                </form>
+                
+            </div>
+            <div class='clearfix'></div>
+        </div>
+    </div>
+</div>

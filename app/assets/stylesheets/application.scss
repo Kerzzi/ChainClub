@@ -53,11 +53,14 @@ body {
     transition: 0.5s;                                 // 鼠标移开时 0.5秒渐变
   }
   a:hover {
-    color: #7f8c8d;
+    // color: #7f8c8d;
+    background-color: transparent;
     transition: 0.5s;                                 // 鼠标指向时 0.5面渐变
     text-decoration: none;                            // 移除下划线
   }
-
+  a:focus {
+    background-color: transparent;
+  }
  }
 
  .main-content{
