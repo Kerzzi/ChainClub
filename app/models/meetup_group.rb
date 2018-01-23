@@ -13,8 +13,11 @@ class MeetupGroup < ApplicationRecord
   MEETUPTYPES = ["online", "offline"]
   validates_inclusion_of :meetup_type, :in => MEETUPTYPES
 
+  STATUS = ["draft", "public", "private"]
+  validates_inclusion_of :status, :in => STATUS
+
   # Scope #
   scope :online_meetup, -> { where(:meetup_type => "online")}
   scope :offline_meetup, -> { where(:meetup_type => "offline")}
-    
+  scope :published, -> { where(:status => "public")}
 end

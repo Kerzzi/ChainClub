@@ -1,16 +1,15 @@
-class MeetupGroupsController < ApplicationController
-  before_action :authenticate_user!, :only => [:new, :create]
+class Admin::MeetupGroupsController < Admin::BaseController
   before_action :find_meetup_group_and_check_permission, only: [:edit, :update, :destroy]  
   before_action :validate_search_key, only: [:search]
   
   def index    
     @meetup_groups = case params[:order]
                       when 'by_offline'
-                        MeetupGroup.published.offline_meetup.paginate(:page => params[:page], :per_page => 10)
+                        MeetupGroup.all.offline_meetup.paginate(:page => params[:page], :per_page => 10)
                       when 'by_online'
-                        MeetupGroup.published.online_meetup.paginate(:page => params[:page], :per_page => 10)
+                        MeetupGroup.all.online_meetup.paginate(:page => params[:page], :per_page => 10)
                       else
-                        MeetupGroup.published.paginate(:page => params[:page], :per_page => 10)
+                        MeetupGroup.all.paginate(:page => params[:page], :per_page => 10)
                       end
             
   end
@@ -24,7 +23,7 @@ class MeetupGroupsController < ApplicationController
     @meetup_group.user = current_user
 
     if @meetup_group.save
-      redirect_to meetup_groups_path
+      redirect_to admin_meetup_groups_path
     else
       render :new
     end
@@ -39,7 +38,7 @@ class MeetupGroupsController < ApplicationController
     
   def update  
     if @meetup_group.update(meetup_group_params)
-      redirect_to meetup_groups_path, notice:"更新成功！"
+      redirect_to admin_meetup_groups_path, notice:"更新成功！"
     else
       render :edit 
     end
@@ -47,7 +46,7 @@ class MeetupGroupsController < ApplicationController
   
   def destroy  
     @meetup_group.destroy
-    redirect_to meetup_groups_path, alert: "删除成功！"
+    redirect_to admin_meetup_groups_path, alert: "删除成功！"
   end 
    
    def search
@@ -57,7 +56,18 @@ class MeetupGroupsController < ApplicationController
      end
    end
 
+   def bulk_update
+     total = 0
+     Array(params[:ids]).each do |meetup_group_id|
+       meetup_group = MeetupGroup.find(meetup_group_id)
+       meetup_group.destroy
+       total += 1
+     end
 
+     flash[:alert] = "成功完成 #{total} 笔"
+     redirect_to admin_meetup_groups_path
+   end
+   
    protected
 
    # 取到params[:q]的内容并去掉非法的内容
@@ -74,10 +84,6 @@ class MeetupGroupsController < ApplicationController
   private
   def find_meetup_group_and_check_permission
     @meetup_group = MeetupGroup.find(params[:id])
-
-    if current_user != @meetup_group.user
-      redirect_to meetup_group_path, alert: "抱歉，您没有相应的权限！"
-    end
   end
   
   def meetup_group_params

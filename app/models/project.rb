@@ -10,6 +10,10 @@ class Project < ApplicationRecord
   
   mount_uploader :logo, ProjectLogoUploader
   
+  STATUS = ["draft", "public", "private"]
+  validates_inclusion_of :status, :in => STATUS
 
-  
+  # Scope #
+  scope :published, -> { where(:status => "public")}
+
 end

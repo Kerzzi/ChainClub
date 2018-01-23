@@ -1,0 +1,31 @@
+<%= form_for [:admin,@topic] do |f| %>
+
+
+  <div class="form-group">
+    <%= f.label :node_id %>
+    <%= f.select :node_id, Node.all.map{ |c| [c.name, c.id] }, {}, :class => "form-control" %>
+  </div>
+  
+  <div class="form-group">
+
+    <%= f.label :title %>
+    <%= f.text_field :title, class: "form-control", placeholder: "在这里填写标题" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :status %>
+    <%= f.select :status, Topic::STATUS.map{ |s| [t(s, :scope => "topic.status"), s] }, {}, :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :content %>
+    <%= f.cktext_area :content, ckeditor: { language: 'zh-CN'} %>
+  </div>
+
+  
+  <div class="form-group">
+    <%= f.submit "Submit", class: "btn btn-primary", data: { disable_with: "Submiting..." } %>
+
+    <div class="pull-right hide-ios"><a href="#" target="_blank"><i class="fa fa-tip"></i> 排版说明</a></div>
+  </div>
+<% end %>

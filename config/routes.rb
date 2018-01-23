@@ -123,6 +123,11 @@ Rails.application.routes.draw do
     end
     resources :nodes
     resources :sections
+    resources :meetup_groups do
+      collection do
+        post :bulk_update
+      end
+    end
     resources :projects do
       collection do
         post :bulk_update

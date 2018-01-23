@@ -1,0 +1,43 @@
+<div class="container-fluid">
+  <%= simple_form_for [:admin,@meetup_group] do |f| %>
+    <div class="form-group">
+      <%= f.input :title, input_html: { class: "form-control"} %>
+    </div>
+    <div class="form-group">
+      <%= f.label :meetup_type %>
+ 
+      <%= f.select :meetup_type, MeetupGroup::MEETUPTYPES.map{ |s| [t(s, :scope => "meetup_group.meetup_type"), s] }, {}, :class => "form-control" %>
+
+    </div>
+    
+    <div class="form-group">
+      <%= f.label :status %>
+      <%= f.select :status, MeetupGroup::STATUS.map{ |s| [t(s, :scope => "meetup_group.status"), s] }, {}, :class => "form-control" %>
+    </div>
+    
+    <div class="form-group">
+      <%= f.input :time_limit, input_html: { class: "form-control"} %>
+    </div>
+    <div class="form-group">
+      <%= f.input :activity_time, input_html: { class: "form-control"} %>
+    </div>
+    <div class="form-group">
+      <%= f.input :city, input_html: { class: "form-control"} %>
+    </div>
+    <div class="form-group">
+      <%= f.input :address, input_html: { class: "form-control"} %>
+    </div>
+    <div class="form-group">
+      <%= f.input :register, input_html: { class: "form-control"} %>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label :introduce %>
+      <%= f.cktext_area :introduce, ckeditor: { language: 'zh-CN'} %>
+    </div>
+    
+    <div class="form-actions">
+      <%= f.submit "Submit", disable_with: "Submiting...", class: "btn btn-primary"%>
+    </div>
+  <% end %>
+</div>

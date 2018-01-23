@@ -7,7 +7,7 @@ class TopicsController < ApplicationController
   before_action :validate_search_key, only: [:search]
 
   def index
-    @topics = Topic.all.paginate(:page => params[:page], :per_page => 10)
+    @topics = Topic.published.paginate(:page => params[:page], :per_page => 10)
   end
 
   def node
@@ -193,7 +193,7 @@ class TopicsController < ApplicationController
   end
 
   def topic_params
-    params.require(:topic).permit(:title, :content, :node_id)
+    params.require(:topic).permit(:title, :status, :content, :node_id)
   end
 
   def check_current_user_status_for_topic

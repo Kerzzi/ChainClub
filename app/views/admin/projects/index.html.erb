@@ -34,7 +34,7 @@
                   <%= check_box_tag "ids[]", project.id %>
                 </td>
                 <td><%= project.id %></td>
-                <td><%= link_to(project.title, admin_project_path(project)) %></td>
+                <td><%= t(project.status, :scope => "project.status") %><%= link_to(project.title, admin_project_path(project)) %></td>
                 <td><%= project.ico_start %></td>
                 <td><%= project.ico_end %></td>
                 <td><%= project.website %></td>

@@ -21,9 +21,10 @@
   </tr>
 
 <% @topics.each do |topic| %>
-  <tr class="<%= 'deleted' if !topic.deleted_at.blank? %>">
+  <tr class="">
     <td class="first"><%= topic.id %></td>
     <td>
+      <%= t(topic.status, :scope => "topic.status") %> · 
       <%= link_to truncate(topic.title, length: 30), topic, target: "_blank" %>
     </td>
     <td><%= topic.node_name %></td>

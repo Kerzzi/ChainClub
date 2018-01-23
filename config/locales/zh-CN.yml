@@ -11,6 +11,21 @@ zh-CN:
       draft: 待审核
       public: 公开
       private: 隐藏
+  course:
+    status:
+      draft: 草稿
+      public: 公开
+      private: 隐藏
+  project:
+    status:
+      draft: 草稿
+      public: 公开
+      private: 隐藏
+  topic:
+    status:
+      draft: 草稿
+      public: 公开
+      private: 隐藏
   admin:
     official_article: 官方文章管理
   hello: " %{name} "
@@ -27,3 +42,7 @@ zh-CN:
     meetup_type:
       online: 线上活动
       offline: 线下活动
+    status:
+      draft: 草稿
+      public: 公开
+      private: 隐藏

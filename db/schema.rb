@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180123140528) do
+ActiveRecord::Schema.define(version: 20180123150753) do
 
   create_table "actions", force: :cascade do |t|
     t.string "action_type", null: false
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 20180123140528) do
     t.datetime "updated_at", null: false
     t.string "logo"
     t.integer "quantity"
+    t.string "status", default: "draft"
     t.index ["title"], name: "index_courses_on_title"
     t.index ["user_id"], name: "index_courses_on_user_id"
   end
@@ -115,6 +116,7 @@ ActiveRecord::Schema.define(version: 20180123140528) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "status", default: "public"
   end
 
   create_table "nodes", force: :cascade do |t|
@@ -224,6 +226,7 @@ ActiveRecord::Schema.define(version: 20180123140528) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "logo"
+    t.string "status", default: "draft"
     t.index ["title"], name: "index_projects_on_title"
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
@@ -281,6 +284,7 @@ ActiveRecord::Schema.define(version: 20180123140528) do
     t.integer "likes_count", default: 0
     t.integer "last_active_mark"
     t.integer "stars_count", default: 0
+    t.string "status", default: "public"
     t.index ["excellent"], name: "index_topics_on_excellent"
     t.index ["likes_count"], name: "index_topics_on_likes_count"
     t.index ["node_id"], name: "index_topics_on_node_id"

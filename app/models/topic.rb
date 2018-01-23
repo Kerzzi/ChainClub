@@ -9,8 +9,11 @@ class Topic < ApplicationRecord
   has_many :topic_relationships
   has_many :fans, through: :topic_relationships, source: :user
 
+  STATUS = ["draft", "public", "private"]
+  validates_inclusion_of :status, :in => STATUS
 
   # Scope #
+  scope :published, -> { where(:status => "public")}
   scope :random5, -> { limit(5).order("RANDOM()") }
   scope :last_actived,       -> { order(last_active_mark: :desc) }
   scope :high_likes,         -> { order(likes_count: :desc).order(id: :desc) }
