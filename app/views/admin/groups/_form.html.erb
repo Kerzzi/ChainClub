@@ -11,6 +11,11 @@
     <% end %>
   </div>
   
+   <div class="form-group">
+     <%= f.label :status %>
+     <%= f.select :status, Group::STATUS.map{ |s| [t(s, :scope => "group.status"), s] }, {}, :class => "form-control" %>
+   </div>
+    
   <div class="form-group">
     <%= f.input :title, input_html: { class: "form-control"} %>
     <%= f.input :description, as: :wysihtml5, :label => "内容" %>

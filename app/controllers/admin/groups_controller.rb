@@ -80,7 +80,7 @@ class Admin::GroupsController < Admin::BaseController
   end
 
   def group_params
-    params.require(:group).permit(:title, :logo, :remove_logo, :description)
+    params.require(:group).permit(:title, :logo, :remove_logo, :description, :status)
   end
 
 end

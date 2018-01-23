@@ -6,6 +6,11 @@ zh-CN:
       draft: 草稿
       public: 公开
       private: 私密
+  group:
+    status:
+      draft: 待审核
+      public: 公开
+      private: 隐藏
   admin:
     official_article: 官方文章管理
   hello: " %{name} "

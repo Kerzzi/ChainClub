@@ -7,10 +7,10 @@ class User < ApplicationRecord
   has_many :groups
   has_many :group_relationships
   has_many :participated_groups, :through => :group_relationships, :source => :group  
-  has_many :posts
-  has_many :comments #小组文章post的评论
-  has_many :official_articles
-  has_many :article_comments  #官方文章official article的评论
+  has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :destroy #小组文章post的评论
+  has_many :official_articles, dependent: :destroy
+  has_many :article_comments, dependent: :destroy  #官方文章official article的评论
   has_many :answers, dependent: :destroy
   has_many :topics, dependent: :destroy
   has_many :meetup_groups
@@ -18,7 +18,6 @@ class User < ApplicationRecord
   has_many :jobs
   has_many :courses
   has_many :projects
-  has_many :official_articles
   has_many :post_comments, dependent: :destroy
    
   action_store :like, :topic, counter_cache: true

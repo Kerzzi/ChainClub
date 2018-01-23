@@ -32,7 +32,7 @@
                 </td>
                 <td><%= group.id %></td>
                 <td>
-                  <%= link_to(group.title, group_path(group)) %>
+                  <%= t(group.status, :scope => "group.status") %>·<%= link_to(group.title, group_path(group)) %>
                 </td>
                 <td><%= group.created_at %></td>
                 <td>

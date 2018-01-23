@@ -134,7 +134,7 @@
 							<h4><%= link_to(meetup_group.title, meetup_group_path(meetup_group)) %></h4>
 							<p><i class="fa fa-street-view" aria-hidden="true"></i> <%= meetup_group.city %></p>
 							<p><i class="fa fa-clock-o" aria-hidden="true"></i> <%= meetup_group.activity_time %></p>
-							<p><span class="label label-success"><%= t(meetup_group.meetup_type) %></span></p>
+							<p><span class="label label-success"><%= t(meetup_group.meetup_type, :scope => "meetup_group.meetup_type") %></span></p>
 						</div>	
 						<hr>
 	        <% end %>
@@ -149,7 +149,7 @@
 							<h4><%= link_to(meetup_group.title, meetup_group_path(meetup_group)) %></h4>
 							<p><i class="fa fa-street-view" aria-hidden="true"></i> <%= meetup_group.city %></p>
 							<p><i class="fa fa-clock-o" aria-hidden="true"></i> <%= meetup_group.activity_time %></p>
-							<p><span class="label label-success"><%= t(meetup_group.meetup_type) %></span></p>
+							<p><span class="label label-success"><%= t(meetup_group.meetup_type, :scope => "meetup_group.meetup_type") %></span></p>
 						</div>	
 						<hr>
 	        <% end %>

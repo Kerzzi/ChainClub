@@ -4,7 +4,7 @@ class GroupsController < ApplicationController
   before_action :validate_search_key, only: [:search]
 
   def index
-    @groups = Group.all.paginate(:page => params[:page], :per_page => 10)
+    @groups = Group.published.paginate(:page => params[:page], :per_page => 10)
     @joined_groups = current_user.participated_groups.all.paginate(:page => params[:page], :per_page => 10)
     
     @posts = case params[:order]
@@ -119,7 +119,7 @@ class GroupsController < ApplicationController
   end
 
   def group_params
-    params.require(:group).permit(:title, :logo, :remove_logo, :description)
+    params.require(:group).permit(:title, :logo, :remove_logo, :description, :status)
   end
 
 end
