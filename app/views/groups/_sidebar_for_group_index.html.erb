@@ -16,9 +16,9 @@
         
       </div>
       <hr>
-      <!-- 我的小组 -->
+      <!-- 我创建的小组 -->
 
-      <div class="row">
+      <div class="row my-group">
         <% @current_user.groups.each do |group| %>
           <div class="col-md-4">
             <% if group.logo.present? %>
@@ -27,9 +27,26 @@
             <%= link_to(group.title, group_path(group)) %>(<%= group.members.count %>)
           </div>
         <% end %>  
+      </div> 
+      
+      <div class="row joined-group">
+        <h5>爱逛的小组</h5>
+        <hr>
+        
+        <% @joined_groups.each do |group| %>
+          <div class="col-md-6">
+            <button type="button" class="btn btn-default btn-block">
+              <span class="text-left"><%= link_to(group.title, group_path(group)) %></span>
+              <span class="badge text-right"><%= group.members.count %></span>
+            </button>
+          </div>
+        <% end %> 
+        <br>
+        <br>
+        <div class="row text-center">
+          <%= link_to '查看更多', new_group_path, class: 'btn btn-default btn-sm' %>
+        </div>
       </div>          
-    
-      <%= link_to t('我的小组主页'), new_group_path, class: 'btn btn-primary btn-block' %>  
     </div>
   </div>
 <% end %>
@@ -41,6 +58,12 @@
   </div>
 </div>
 
+<div class="panel panel-default">
+  <div class="panel-heading">小组分类</div>
+  <div class="panel-body">
+    该功能尚未完成，重构为2级分类
+  </div>
+</div>
 
 
 <%= render "common/sidebar_box_tips" %>

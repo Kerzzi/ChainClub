@@ -105,6 +105,12 @@ Rails.application.routes.draw do
   
   namespace :admin do
     root to: 'home#index', as: 'root'
+    resources :groups do
+      collection do
+        post :bulk_update
+      end
+      resources :posts
+    end
     resources :versions do
       post :undo
     end

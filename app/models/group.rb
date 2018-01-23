@@ -2,6 +2,7 @@ class Group < ApplicationRecord
   has_paper_trail
   validates :title, presence: true
   validates :description, presence: true
+  validates :logo, presence: true
 
   belongs_to :user
   has_many :posts

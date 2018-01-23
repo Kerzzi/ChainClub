@@ -1,0 +1,19 @@
+<%= simple_form_for  [:admin,@group] do |f| %>
+
+  <div class="form-group">
+    <%= f.label :logo %>
+    <%= f.file_field :logo, :class => "form-control" %>
+    <% if f.object.logo.present? %>
+      <label>
+        <%= f.check_box :remove_logo %> 删除logo
+      </label>
+      <%= link_to f.object.logo.filename, f.object.logo.url, :target => "_blank" %>
+    <% end %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.input :title, input_html: { class: "form-control"} %>
+    <%= f.input :description, as: :wysihtml5, :label => "内容" %>
+  </div>
+  <%= f.submit "Submit", class: "btn btn-primary", data: { disable_with: "Submiting..." } %>
+<% end %>

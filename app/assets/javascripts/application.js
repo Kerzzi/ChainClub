@@ -39,7 +39,7 @@ $(document).ready(function(){
 
 //navbar 由透明变其他颜色的相关代码
 $(window).scroll(function () {
-    if ($(this).scrollTop() > 125) {
+    if ($(this).scrollTop() > 550) {
         $('#navbar').addClass('show_bgcolor') 
     } else {
         $('#navbar').removeClass('show_bgcolor')

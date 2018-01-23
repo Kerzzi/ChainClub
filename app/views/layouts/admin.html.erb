@@ -109,7 +109,7 @@
 
               <ul class="inbox-nav inbox-divider">
                   <li>
-                      <a href="<%= admin_article_categories_path %>"><i class="fa fa-users"></i> 小组管理</a>
+                      <a href="<%= admin_groups_path %>"><i class="fa fa-users"></i> 小组管理</a>
                   </li>
                   <li>
                       <a href="<%= admin_courses_path %>"><i class="fa fa-graduation-cap"></i> 课程管理 <span class="label label-info pull-right">30</span></a>
@@ -159,11 +159,6 @@
           <aside class="lg-side">
               <div class="inbox-head">
                   <h3>后台管理</h3>
-                  <form action="#" class="pull-right position">
-                    <div class="input-append">
-                        <button  class="btn sr-btn" type="button"><a href="<%= root_path %>"><i class="fa fa-search"></i>返回前台</a></button>
-                    </div>
-                  </form>
               </div>
               <div class="inbox-body">
                 <%= yield %>
