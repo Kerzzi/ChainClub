@@ -12,7 +12,7 @@
         <span class='floor'>#23</span> ·
         <a class="time" href="#"><%= time_tag(post_comment.created_at) %></a>
         <span class="opts pull-right">
-          <% if post_comment.user == current_user %>
+          <% if (current_user && post_comment.user == current_user) || can_editor? %>
             <%= link_to("Delete", group_post_post_comment_path(@group, @post, post_comment), method: :delete, data: {
               confirm: "Are you sure?"},class: "btn btn-sm pull-right") %>
           <% end %>

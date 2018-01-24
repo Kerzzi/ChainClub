@@ -56,11 +56,11 @@
                 <td><%= post.user.display_name %></td>
                 <td><%= post.created_at %></td>
                 <td>
-                    <% if current_user && current_user == post.user %>
+                  <% if (current_user && current_user == post.user) || can_editor? %>
                     <%= link_to("Edit", edit_group_post_path(@group,post), class: "btn btn-sm btn-default")%>
                     <%= link_to("Delete", group_post_path(@group,post),    class: "btn btn-sm btn-default", 
                                 method: :delete, data: { confirm: "Are you sure?" } )%>
-                    <% end %>
+                  <% end %>
                 </td>
               </tr>
             <% end %>

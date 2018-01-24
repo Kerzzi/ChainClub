@@ -21,4 +21,7 @@ module ApplicationHelper
     highlight(excerpt_cont, query_string)
   end  
 
+  def can_editor?
+    current_user && current_user.is_editor?
+  end 
 end

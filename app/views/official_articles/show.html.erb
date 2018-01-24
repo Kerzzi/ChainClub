@@ -89,7 +89,7 @@
                       <span><%= article_comment.user.display_name %></span> ·  
                       <span><%= article_comment.created_at.strftime("%Y-%m-%d %H:%M:%S") %></span>
                       <span class="pull-right">
-                        <% if current_user && current_user == article_comment.user %>
+                        <% if (current_user && current_user == article_comment.user) || can_editor? %>
                         <%= link_to("Delete", official_article_article_comment_path(@official_article,article_comment), 
                                   method: :delete, data: { confirm: "确定删除该评论?" } )%> 
                         <% end %>

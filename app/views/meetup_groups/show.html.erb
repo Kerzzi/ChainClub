@@ -98,7 +98,7 @@
   </div>
 
   <div class="col-md-3">
-    <% if current_user.is_editor? %>
+    <% if can_editor? %>
       <div class="side-content project-admin">
         <h4>管理操作</h4>
         <hr>
