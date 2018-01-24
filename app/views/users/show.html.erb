@@ -1,28 +1,30 @@
-<div class="panel panel-primary">
-  <div class="panel-heading">
-    <h3 class="panel-title">我的个人资料</h3>
-  </div>
-  <div class="panel-body">
-    <% if @user.avatar.present? %>
-      <%= link_to image_tag(@user.avatar.url(:thumb)), @user.avatar.url, :target => "_blank" %>
-    <% end %>
-    <p>Email: <%= @user.email %></p>
-    <p>用户名: <%= @user.username %></p>
-    <p>简介: <%= @user.summary %></p>
-    <p>Timezone: <%= @user.time_zone %></p>
-    <p>Birthday: <%= @user.profile.birthday %></p>
-    <p>City: <%= @user.profile.location %></p>
-    <p>School: <%= @user.profile.school %></p>
-    <p>Education: <%= @user.profile.education %></p>
-    <p>Company: <%= @user.profile.company %></p>
-    <p>Occupation: <%= @user.profile.occupation %></p>
-    <p>Position: <%= @user.profile.position %></p>
-    <p>Address: <%= @user.profile.address %></p>
-    <p>QQ: <%= @user.profile.qq %></p>
-    <p>Weibo: <%= @user.profile.weibo %></p>
-    <p>Wechat: <%= @user.profile.wechat %></p>
-    <p>Bio: <%= simple_format @user.profile.bio %></p>
-    <p>Specialty: <%= @user.profile.specialty %></p>
-    <p>Introduce: <%= @user.profile.introduce %></p>
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">我的个人资料</h3>
+    </div>
+    <div class="panel-body">
+      <% if @user.avatar.present? %>
+        <%= link_to image_tag(@user.avatar.url(:avatar)), @user.avatar.url, :target => "_blank" %>
+      <% end %>
+      <p>Email: <%= @user.email %></p>
+      <p>用户名: <%= @user.username %></p>
+      <p>简介: <%= @user.summary %></p>
+      <p>Timezone: <%= @user.time_zone %></p>
+      <p>Birthday: <%= @user.profile.birthday %></p>
+      <p>City: <%= @user.profile.location %></p>
+      <p>School: <%= @user.profile.school %></p>
+      <p>Education: <%= @user.profile.education %></p>
+      <p>Company: <%= @user.profile.company %></p>
+      <p>Occupation: <%= @user.profile.occupation %></p>
+      <p>Position: <%= @user.profile.position %></p>
+      <p>Address: <%= @user.profile.address %></p>
+      <p>QQ: <%= @user.profile.qq %></p>
+      <p>Weibo: <%= @user.profile.weibo %></p>
+      <p>Wechat: <%= @user.profile.wechat %></p>
+      <p>Bio: <%= simple_format @user.profile.bio %></p>
+      <p>Specialty: <%= @user.profile.specialty %></p>
+      <p>Introduce: <%= @user.profile.introduce %></p>
+    </div>
   </div>
 </div>

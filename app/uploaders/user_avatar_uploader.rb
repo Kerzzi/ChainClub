@@ -13,11 +13,16 @@ class UserAvatarUploader < CarrierWave::Uploader::Base
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
-
-  process resize_to_fit: [20, 20]
   
-  version :thumb do
-    process resize_to_fit: [50, 50]
+  # 默认图片一定要设置的大一点
+  process resize_to_fit: [800, 800]
+
+  version :small do
+    process resize_to_fit: [20, 20]
+  end  
+  
+  version :avatar do
+    process resize_to_fit: [80, 80]
   end
 
   version :medium do

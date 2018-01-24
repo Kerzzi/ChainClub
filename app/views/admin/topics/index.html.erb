@@ -1,44 +1,55 @@
-<div class="toolbar">
-  <form class="form-inline" action="<%= admin_topics_path %>">
-    <div class="form-group">
-      <input type="text" name="q" class="form-control" value="<%= params[:q] %>" placeholder="标题" />
+<div class="panel panel-default">
+  <div class="panel-heading">网址导航管理</div>
+  <div class="panel-body">
+    <p>简单说明</p>
+    <br>
+    <div class="toolbar">
+      <form class="form-inline" action="<%= admin_topics_path %>">
+        <div class="form-group">
+          <input type="text" name="q" class="form-control" value="<%= params[:q] %>" placeholder="标题" />
+        </div>
+        <div class="form-group">
+          <input type="text" name="login" class="form-control" value="<%= params[:login] %>" placeholder="用户名" />
+        </div>
+        <button class="btn btn-default">搜索</button>
+        <%= link_to("新增话题", new_admin_topic_path, class: "btn btn-success") %>
+      </form>
     </div>
-    <div class="form-group">
-      <input type="text" name="login" class="form-control" value="<%= params[:login] %>" placeholder="用户名" />
+
+    <br>
+
+    <table class="table table-bordered table-striped table-condensed">
+      <tr class="head">
+        <td class="first">#</td>
+        <td style="width:300px">标题</td>
+        <td>节点</td>
+        <td>发帖人</td>
+        <td>回帖</td>
+        <td style="width:100px"></td>
+      </tr>
+
+    <% @topics.each do |topic| %>
+      <tr class="">
+        <td class="first"><%= topic.id %></td>
+        <td>
+          <%= t(topic.status, :scope => "topic.status") %> · 
+          <%= link_to truncate(topic.title, length: 30), topic, target: "_blank" %>
+        </td>
+        <td><%= topic.node_name %></td>
+        <td><%= topic.user.email %></td>
+        <td><%= topic.answers_count %></td>
+        <td>
+          <%= link_to "", edit_admin_topic_path(topic), class: "fa fa-pencil" %>
+          <%= link_to "", admin_topic_path(topic), 'data-confirm' => 'Are you sure?', method: :delete, class: "fa fa-trash" %>
+        </td>
+
+      </tr>
+    <% end %>
+    </table>
+
+    <div class="text-center">
+      <%= will_paginate @topics %>
     </div>
-    <button class="btn btn-default">搜索</button>
-  </form>
-</div>
 
-<table class="table table-bordered table-striped table-condensed">
-  <tr class="head">
-    <td class="first">#</td>
-    <td style="width:300px">标题</td>
-    <td>节点</td>
-    <td>发帖人</td>
-    <td>回帖</td>
-    <td style="width:100px"></td>
-  </tr>
-
-<% @topics.each do |topic| %>
-  <tr class="">
-    <td class="first"><%= topic.id %></td>
-    <td>
-      <%= t(topic.status, :scope => "topic.status") %> · 
-      <%= link_to truncate(topic.title, length: 30), topic, target: "_blank" %>
-    </td>
-    <td><%= topic.node_name %></td>
-    <td><%= topic.user.email %></td>
-    <td><%= topic.answers_count %></td>
-    <td>
-      <%= link_to "", edit_admin_topic_path(topic), class: "fa fa-pencil" %>
-      <%= link_to "", admin_topic_path(topic), 'data-confirm' => 'Are you sure?', method: :delete, class: "fa fa-trash" %>
-    </td>
-
-  </tr>
-<% end %>
-</table>
-
-<div class="text-center">
-  <%= will_paginate @topics %>
+  </div><!-- /panel-body -->
 </div>

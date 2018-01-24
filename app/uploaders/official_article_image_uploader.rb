@@ -14,7 +14,7 @@ class OfficialArticleImageUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
-  process resize_to_fit: [800, 800]
+  # process resize_to_fit: [800, 800]
 
   version :avatarminixs do
     process resize_to_fit: [40, 40]
@@ -22,10 +22,6 @@ class OfficialArticleImageUploader < CarrierWave::Uploader::Base
 
   version :avatarmini do
     process resize_to_fit: [60, 60]
-  end
-
-  version :avatar do
-    process resize_to_fit: [80, 80]
   end
 
   version :thumb do

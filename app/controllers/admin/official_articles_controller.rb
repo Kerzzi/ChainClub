@@ -17,7 +17,7 @@ class Admin::OfficialArticlesController < Admin::BaseController
   def create
     @official_article = OfficialArticle.new(official_article_params)
     if @official_article.save
-      redirect_to official_articles_path
+      redirect_to admin_official_articles_path
     else
       render :new
     end

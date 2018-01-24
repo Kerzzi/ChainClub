@@ -2,8 +2,12 @@
   <div class="panel panel-default">
     <div class="panel-body">
       <!-- 头像 -->
-      <div class="article-avatar text-center">
-        <img src= "<%= render_user_avatar(@current_user, 50) %>" style="width:80px; hight:80px; border-radius:40px;">
+      <div class="text-center">
+        <div class="avatar-80">
+          <div class="avatar-group-index">
+            <img src= "<%= render_user_avatar(@current_user, 80) %>">
+          </div>
+        </div>
       </div>
       <!-- 用户名 -->
       <div class="article-username text-center">

@@ -115,8 +115,31 @@ body {
    .all_image_css {
      transition: 0.8s;
    }
+   
+  
+  /* 头像的圆形图片格式 */ 
+  .avatar-80{
+    width: 80px;
+  }
+  .avatar-50{
+    width: 50px;
+  }
+  .avatar-group-index{
+    position:relative;  
+    width:100%;  
+    height:0;  
+    padding-top:100%;  
+    img{
+      position:absolute;  
+      top:0;  
+      left:0;  
+      width:100%;  
+      height:100%; 
+      border-radius:50%;
+    }
+  }
 
-
+  /* 面包屑导航样式 */
  .breadcrumb{
    width: auto;
    background: #fff;
@@ -188,7 +211,7 @@ body {
      border: 1px solid #ddd;
    }
 
-  // navbar设置
+  // navbar设置，目前采用该套
  nav{
    /* 我们希望 navbar 采用固定的高度，只占用必须的空间 */
    /* 0 flex-grow, 0 flex-shrink, auto flex-basis */
@@ -214,7 +237,7 @@ body {
       transition: 0.35s;  // 鼠标移开时 0.35秒渐变
     }
     a:hover {
-      color: #D0CFCE;
+      // color: #D0CFCE;
       transition: 0.5s;                                 // 鼠标指向时 0.5面渐变
     }
   }
@@ -224,7 +247,7 @@ body {
     transition: 0.35s;
   }
   .navbar-nav li a:hover {
-    color: #FAFAFA;
+    color: #FF5722;
     text-decoration: none
   }
   .dropdown li a {
@@ -245,7 +268,7 @@ body {
 
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
-  color: #FAFAFA; //鼠标放置在链接上的文字颜色
+  color: #FF5722; //鼠标放置在链接上的文字颜色
 
   background-color: transparent; //鼠标放置在链接上的背景颜色，这里设为透明
 }

@@ -12,15 +12,6 @@
   </div>
 
   <div class="form-group">
-    <%= f.input :title, input_html: { class: "form-control"} %>
-    <%= f.input :author, input_html: { class: "form-control"} %>
-    <%= f.input :source, input_html: { class: "form-control"} %>
-    <%= f.input :summary, input_html: { class: "form-control"} %>
-    <%= f.association :article_category %>
-    <%= f.input :content, as: :ckeditor %>
-  </div>
-
-  <div class="form-group">
     <div class="btn-group" data-toggle="buttons">
       <% OfficialArticle::STATUS.each do |status| %>
         <label class="btn btn-default <%= (status == f.object.status)? 'active' : '' %>">
@@ -30,7 +21,22 @@
       <% end %>
     </div>
   </div>
-  <%= f.submit "Submit", class: "btn btn-primary", data: { disable_with: "Submiting..." } %>
+
+  <div class="form-group">
+    <%= f.input :title, input_html: { class: "form-control"} %>
+    <%= f.input :author, input_html: { class: "form-control"} %>
+    <%= f.input :source, input_html: { class: "form-control"} %>
+    <%= f.input :summary, input_html: { style: "width:100%; height:100px;"} %>
+    <%= f.association :article_category %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.input :content, as: :ckeditor %>
+  </div>
+  
+  <%= f.submit "发布官方文章", class: "btn btn-primary", data: { disable_with: "Submiting..." } %>
+  <div class="pull-right"><a href="#" target="_blank">点击右下角拉升文本框</a><i class="fa fa-arrows-v" aria-hidden="true"></i></div>
+  <div class="pull-right "><a href="#" target="_blank"><i class="fa fa-tip"></i> 排版说明</a>&nbsp; · &nbsp;</div>
 <% end %>
 
 

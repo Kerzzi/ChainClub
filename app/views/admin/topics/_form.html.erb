@@ -19,13 +19,13 @@
 
   <div class="form-group">
     <%= f.label :content %>
-    <%= f.cktext_area :content, ckeditor: { language: 'zh-CN'} %>
+    <%= f.cktext_area :content, ckeditor: { language: 'zh-CN'}  %>
   </div>
 
   
   <div class="form-group">
-    <%= f.submit "Submit", class: "btn btn-primary", data: { disable_with: "Submiting..." } %>
-
-    <div class="pull-right hide-ios"><a href="#" target="_blank"><i class="fa fa-tip"></i> 排版说明</a></div>
+    <%= f.submit "发布话题", class: "btn btn-primary", data: { disable_with: "Submiting..." } %>
+    <div class="pull-right"><a href="#" target="_blank">点击右下角拉升文本框</a><i class="fa fa-arrows-v" aria-hidden="true"></i></div>
+    <div class="pull-right "><a href="#" target="_blank"><i class="fa fa-tip"></i> 排版说明</a>&nbsp; · &nbsp;</div>
   </div>
 <% end %>

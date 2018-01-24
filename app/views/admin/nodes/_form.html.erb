@@ -5,10 +5,12 @@
     <%= f.input :name %>
     <%= f.input :section_id, collection: Section.all.collect { |s| [s.name,s.id] } %>
     <%= f.input :sort %>
-    <%= f.input :summary, as: :text, input_html: { style: "width:500px; height:200px;"} %>
+    <%= f.input :summary, as: :text, input_html: { style: "width:100%; height:200px;"} %>
     <div class="form-group">
       <%= f.submit "Submit", class: "btn btn-primary", data: { disable_with: "Submiting..." } %>
       <%= link_to 'Back', admin_nodes_path %>
+      <div class="pull-right"><a href="#" target="_blank">点击右下角拉升文本框</a><i class="fa fa-arrows-v" aria-hidden="true"></i></div>
+      <div class="pull-right "><a href="#" target="_blank"><i class="fa fa-tip"></i> 排版说明</a>&nbsp; · &nbsp;</div>
     </div>
   </fieldset>
 <% end %>
