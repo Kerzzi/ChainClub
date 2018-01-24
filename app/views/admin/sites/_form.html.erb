@@ -3,12 +3,12 @@
   <div class="panel-body">
     <%= simple_form_for [:admin,@site] do |f| %>
       <div class="form-group">
-        <%= f.association :site_node %>
-        <%= f.input :name, input_html: { class: "form-control"} %>
-        <%= f.input :url, input_html: { class: "form-control" }, placeholder: "http://"  %>
-        <%= f.input :description, as: :text, input_html: { class: "form-control" } %>
+        <%= f.association :site_node , :label =>"选择分类节点" %>
+        <%= f.input :name, input_html: { class: "form-control"}, :label =>"网站名称"  %>
+        <%= f.input :url, input_html: { class: "form-control" }, placeholder: "http://", :label =>"网址"   %>
+        <%= f.input :description, as: :text, input_html: { class: "form-control" } , :label =>"简单介绍" %>
       </div>
-      <%= f.submit "Submit", class: "btn btn-primary", data: { disable_with: "Submiting..." } %>
+      <%= f.submit "提交", class: "btn btn-primary", data: { disable_with: "Submiting..." } %>
     <% end %>
   </div>
 </div>

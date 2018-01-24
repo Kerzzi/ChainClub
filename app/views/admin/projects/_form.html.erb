@@ -1,43 +1,43 @@
 <%= form_for [:admin,@project] do |f| %>
 
   <div class="form-group">
-    <%= f.label :logo %>
+    <%= f.label "项目logo" %>
     <%= f.file_field :logo, :class => "form-control" %>
     <% if f.object.logo.present? %>
       <label>
-        <%= f.check_box :remove_logo %> 删除图档
+        <%= f.check_box :remove_logo %> 删除logo
       </label>
       <%= link_to f.object.logo.filename, f.object.logo.url, :target => "_blank" %>
     <% end %>
   </div>
 
   <div class="form-group">
-    <%= f.label :title %>
+    <%= f.label "项目名称" %>
     <%= f.text_field :title, :class => "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :status %>
+    <%= f.label "当前状态" %>
     <%= f.select :status, Project::STATUS.map{ |s| [t(s, :scope => "project.status"), s] }, {}, :class => "form-control" %>
   </div>
   
   <div class="form-group">
-    <%= f.label :ico_start %>
+    <%= f.label "ico开始时间" %>
     <%= f.text_field :ico_start, :class => "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :ico_end %>
+    <%= f.label "ico截止时间" %>
     <%= f.text_field :ico_end, :class => "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :ico_url %>
+    <%= f.label "众筹网站" %>
     <%= f.text_field :ico_url, :class => "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :website %>
+    <%= f.label "官网" %>
     <%= f.text_field :website, :class => "form-control" %>
   </div>
 
@@ -72,54 +72,54 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :whitepaper %>
+    <%= f.label "白皮书" %>
     <%= f.text_field :whitepaper, :class => "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :ico_amount %>
+    <%= f.label "ico代币数量" %>
     <%= f.text_field :ico_amount, :class => "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :token_amount %>
+    <%= f.label "代币总量" %>
     <%= f.text_field :token_amount, :class => "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :raised_ceiling %>
+    <%= f.label "硬顶" %>
     <%= f.text_field :raised_ceiling, :class => "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :accept_token %>
+    <%= f.label "接受币种" %>
     <%= f.text_field :accept_token, :class => "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :token_type %>
+    <%= f.label "代币类型" %>
     <%= f.text_field :token_type, :class => "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :introduce %>
+    <%= f.label "项目介绍" %>
     <%= f.cktext_area :introduce, ckeditor: { language: 'zh-CN'} %>
   </div>
 
   <%= f.fields_for :project_grade do |ff| %>
     <div class="form-group">
-      <%= ff.label :grade %>
+      <%= ff.label "测评得分" %>
       <%= ff.text_field :grade, :class => "form-control" %>
     </div>
 
     <div class="form-group">
-      <%= ff.label :rating_report %>
+      <%= ff.label "测评报告" %>
       <%= ff.cktext_area :rating_report, ckeditor: { language: 'zh-CN'} %>
     </div>
   <% end %>
 
   <div class="form-group">
-    <%= f.submit "Submit", :class => "btn btn-primary" %>
+    <%= f.submit "提交", :class => "btn btn-primary" %>
   </div>
 <% end %>
 

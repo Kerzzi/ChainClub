@@ -16,12 +16,12 @@
     <%= f.input :username, :label =>"用户名" %>
 
     <div class="form-group">
-      <%= f.label :summary %>
+      <%= f.label "简介" %>
       <%= f.text_field :summary, :class => "form-control" %>
     </div>
 
     <div class="form-group">
-      <%= f.label :time_zone %>
+      <%= f.label "时区" %>
       <%= f.time_zone_select :time_zone %>
     </div>
 
@@ -29,89 +29,91 @@
     
     <%= f.fields_for :profile do |ff| %>
 
-      <div class="form-group">
-        <%= ff.label :name %>
-        <%= ff.text_field :name, :class => "form-control" %>
-      </div>
-
-      <div class="form-group">
-        <%= ff.label :city %>
-        <%= ff.text_field :location, :class => "form-control" %>
-      </div>
-
-      <div class="form-group">
-        <%= ff.label :birthday %>
-        <%= ff.text_field :birthday, :class => "form-control" %>
-      </div>
-      
-      <div class="form-group">
-        <%= ff.label :education %>
-        <%= ff.text_field :education, :class => "form-control" %>
-      </div>
-
-      <div class="form-group">
-        <%= ff.label :school %>
-        <%= ff.text_field :school, :class => "form-control" %>
-      </div>
-
-      <div class="form-group">
-        <%= ff.label :company %>
-        <%= ff.text_field :company, :class => "form-control" %>
-      </div>
-
-      <div class="form-group">
-        <%= ff.label :occupation %>
-        <%= ff.text_field :occupation, :class => "form-control" %>
-      </div>
-      
-      <div class="form-group">
-        <%= ff.label :position %>
-        <%= ff.text_field :position, :class => "form-control" %>
-      </div>
-      
-      <div class="form-group">
-        <%= ff.label :address %>
-        <%= ff.text_field :address, :class => "form-control" %>
-      </div>
-      
-      <div class="form-group">
-        <%= ff.label :qq %>
-        <%= ff.text_field :qq, :class => "form-control" %>
-      </div>
-      
-      <div class="form-group">
-        <%= ff.label :github %>
-        <%= ff.text_field :github, :class => "form-control" %>
-      </div>
-      
-      <div class="form-group">
-        <%= ff.label :weibo %>
-        <%= ff.text_field :weibo, :class => "form-control" %>
-      </div>
-      
-      <div class="form-group">
-        <%= ff.label :wechat %>
-        <%= ff.text_field :wechat, :class => "form-control" %>
-      </div>  
-      
-      <div class="form-group">
-        <%= ff.label :bio %>
-        <%= ff.text_area :bio, :class => "form-control" %>
-      </div>
-
-      <div class="form-group">
-        <%= ff.label :specialty %>
-        <%= ff.text_area :specialty, :class => "form-control" %>
-      </div>
-
-      <div class="form-group">
-        <%= ff.label :introduce %>
-        <%= ff.text_area :introduce, :class => "form-control" %>
-      </div>  
-    <% end %>
+    <div class="form-group">
+      <%= ff.label "名称" %>
+      <%= ff.text_field :name, :class => "form-control" %>
+    </div>
 
     <div class="form-group">
-      <%= f.submit "Save", :class => "btn btn-primary", data: { disable_with: "Submitting..." } %>
+      <%= ff.label "城市" %>
+      <%= ff.text_field :location, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= ff.label "生日" %>
+      <%= ff.text_field :birthday, :class => "form-control" %>
+    </div>
+
+
+
+    <div class="form-group">
+      <%= ff.label "教育程度" %>
+      <%= ff.text_field :education, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= ff.label "毕业学校" %>
+      <%= ff.text_field :school, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= ff.label "公司" %>
+      <%= ff.text_field :company, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= ff.label "职业" %>
+      <%= ff.text_field :occupation, :class => "form-control" %>
+    </div>
+    
+    <div class="form-group">
+      <%= ff.label "职位" %>
+      <%= ff.text_field :position, :class => "form-control" %>
+    </div>
+    
+    <div class="form-group">
+      <%= ff.label "礼品接收地址" %>
+      <%= ff.text_field :address, :class => "form-control" %>
+    </div>
+    
+    <div class="form-group">
+      <%= ff.label "QQ" %>
+      <%= ff.text_field :qq, :class => "form-control" %>
+    </div>
+    
+    <div class="form-group">
+      <%= ff.label "Github" %>
+      <%= ff.text_field :github, :class => "form-control" %>
+    </div>
+    
+    <div class="form-group">
+      <%= ff.label "微博" %>
+      <%= ff.text_field :weibo, :class => "form-control" %>
+    </div>
+    
+    <div class="form-group">
+      <%= ff.label "微信" %>
+      <%= ff.text_field :wechat, :class => "form-control" %>
+    </div>  
+    
+    <div class="form-group">
+      <%= ff.label "博客" %>
+      <%= ff.text_area :bio, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= ff.label "技能" %>
+      <%= ff.text_area :specialty, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= ff.label "个人简介" %>
+      <%= ff.text_area :introduce, :class => "form-control" %>
+    </div>  
+  <% end %>
+  
+    <div class="form-group">
+      <%= f.submit "保存", :class => "btn btn-primary", data: { disable_with: "Submitting..." } %>
     </div>
 
   <% end %>

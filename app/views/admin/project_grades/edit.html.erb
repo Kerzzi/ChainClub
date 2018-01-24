@@ -2,16 +2,16 @@
 <%= form_for @project_grade, :url => admin_project_project_grade_path(@project) do |f| %>
 
   <div class="form-group">
-    <%= f.label :grade %>
+    <%= f.label "得分" %>
     <%= f.text_field :grade, :class => "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :rating_report %>
+    <%= f.label "评级报告" %>
     <%= f.cktext_area :rating_report, ckeditor: { language: 'zh-CN'} %>
   </div>
 
   <div class="form-group">
-    <%= f.submit "Submit", :class => "btn btn-primary" %>
+    <%= f.submit "提交评级报告", :class => "btn btn-primary" %>
   </div>
 <% end %>

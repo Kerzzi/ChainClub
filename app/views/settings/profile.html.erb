@@ -4,64 +4,84 @@
   <div class="col-md-8">
     <div class="panel panel-default">
       <div class="panel-body">
-        <%= simple_form_for(@user, url: setting_path, html: { method: :put, enctype:  "multipart/form-data" }) do |f| %>
-        
-        <input type="hidden" name="by" value="profile" />
-        <% if Setting.has_profile_field? :location %>
-          <%= f.input :location, input_html: { style: 'width: 200px' }  %>
-        <% end %>
-        <% if Setting.has_profile_field? :company %>
-          <%= f.input :company, input_html: { style: 'width: 400px' } %>
-        <% end %>
-        <% if Setting.has_module? :github %>
-        <div class="form-group">
-          <%= f.label :github, class: 'control-label' %>
-          <div class="input-group">
-            <span class="input-group-addon">https://github.com/</span>
-            <%= f.text_field :github, class: "form-control", placeholder: I18n.t('simple_form.placeholders.user.yourname') %>
-          </div>
-        </div>
-        <% end %>
-        <% if Setting.has_profile_field? :twitter %>
-        <div class="form-group">
-          <%= f.label :twitter, class: 'control-label' %>
-          <div class="input-group">
-            <span class="input-group-addon">https://twitter.com/</span>
-            <%= f.text_field :twitter, class: "form-control", placeholder: I18n.t('simple_form.placeholders.user.yourname') %>
-          </div>
-        </div>
-        <% end %>
-        <% if Setting.has_profile_field? :website %>
-          <%= f.input :website, type: :url, input_html: { placeholder: "http://" } %>
-        <% end %>
 
-        <% User::PROFILE_FIELDS.each do |field| %>
-          <%
-          next if !Setting.has_profile_field? field
-          %>
-          <%
-          field_prefix = User.profile_field_prefix(field)
-          %>
-        <div class="form-group form-group-profile-field-<%= field %>">
-          <label class="control-label" for="user_profile_<%= field %>"><%= User.profile_field_label(field) %></label>
-          <% if field_prefix %>
-            <div class="input-group">
-              <span class="input-group-addon"><%= field_prefix %></span>
+        <div class="container">
+
+          <%= simple_form_for @user do |f| %>
+
+            <div class="form-group">
+              <%= f.label "简介" %>
+              <%= f.text_field :summary, :class => "form-control" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label "时区" %>
+              <%= f.time_zone_select :time_zone %>
+            </div>
+          
+            <%= f.fields_for :profile do |ff| %>
+
+            <div class="form-group">
+              <%= ff.label "城市" %>
+              <%= ff.text_field :location, :class => "form-control" %>
+            </div>
+
+            <div class="form-group">
+              <%= ff.label "生日" %>
+              <%= ff.text_field :birthday, :class => "form-control" %>
+            </div>
+
+            <div class="form-group">
+              <%= ff.label "教育程度" %>
+              <%= ff.text_field :education, :class => "form-control" %>
+            </div>
+
+            <div class="form-group">
+              <%= ff.label "毕业学校" %>
+              <%= ff.text_field :school, :class => "form-control" %>
+            </div>
+
+            <div class="form-group">
+              <%= ff.label "公司" %>
+              <%= ff.text_field :company, :class => "form-control" %>
+            </div>
+
+            <div class="form-group">
+              <%= ff.label "职业" %>
+              <%= ff.text_field :occupation, :class => "form-control" %>
+            </div>
+            
+            <div class="form-group">
+              <%= ff.label "职位" %>
+              <%= ff.text_field :position, :class => "form-control" %>
+            </div>
+            
+
+            <div class="form-group">
+              <%= ff.label "技能" %>
+              <%= ff.text_area :specialty, :class => "form-control" %>
+            </div>
+
+            <div class="form-group">
+              <%= ff.label "个人简介" %>
+              <%= ff.text_area :introduce, :class => "form-control" %>
+            </div>  
           <% end %>
-          <input class="form-control" type="text" value="<%= @user.profile_field(field) %>" name="user[profiles][<%= field %>]" id="user_profile_<%= field %>">
-          <% if field_prefix %></div><% end %>
-        </div>
-        <% end %>
+          
+            <div class="form-group">
+              <%= f.submit "保存", :class => "btn btn-primary", data: { disable_with: "Submitting..." } %>
+            </div>
 
-        <% if Setting.has_profile_field? :tagline %>
-          <%= f.input :tagline %>
-        <% end %>
-        <div class="form-actions hide-ios">
-          <button type="submit" class="btn btn-lg btn-primary" data-disable-with="<%= t("common.saving") %>"><%= t("users.update_profile")%></button>
+          <% end %>
+          
         </div>
-        <% end %>
+
       </div>
     </div>
     </div>
   </div>
 </div>
+
+<script>
+  $("#user_profile_attributes_birthday").datepicker({ format: "yyyy-mm-dd", language: "<%= I18n.locale %>" });
+</script>
