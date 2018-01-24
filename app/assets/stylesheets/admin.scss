@@ -24,6 +24,10 @@ body {
 
  }
 
+.admin-body{
+  padding: 5px 56px 5px 65px;
+}
+
  .main-content{
    /* 将 flex-grow 设置为1，该元素会占用全部可使用空间
       而其他元素该属性值为0，因此不会得到多余的空间*/
@@ -73,7 +77,9 @@ body {
   margin-bottom: 0; //底部 margin 不撑开距离
   color: #FAFAFA;
 }
-
+ .navbar-body{
+  padding: 0px 40px; 
+ }
 .navbar-default .navbar-brand {
   color: #EF6C00; //字体颜色
 

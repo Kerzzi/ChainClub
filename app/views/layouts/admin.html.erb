@@ -11,12 +11,10 @@
 
   <body  id="<%= "#{controller_name}-#{action_name}"%>">
 
-    <%= render "admin/common/navbar" %>
-
     <div class="row main-content">
 
-
-      <div class="container">
+      <div class="admin-body">
+        <%= render "admin/common/navbar" %>
         <%= render "common/flashes" %>
        <div class="mail-box">
 
