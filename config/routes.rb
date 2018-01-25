@@ -120,6 +120,9 @@ Rails.application.routes.draw do
         post :unsuggest
         post :undestroy
       end
+      collection do
+        post :bulk_update
+      end
     end
     resources :nodes
     resources :sections

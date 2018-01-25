@@ -7,7 +7,7 @@ class TopicsController < ApplicationController
   before_action :validate_search_key, only: [:search]
 
   def index
-    @topics = Topic.published.paginate(:page => params[:page], :per_page => 10)
+    @topics = Topic.published.paginate(:page => params[:page], :per_page => 20)
   end
 
   def node

@@ -1,76 +1,78 @@
 <div class="container">
-  <div class="col-md-9">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <div class="row">
-          <div class="col-md-11">
-            <h1 class="panel-title"><strong><%= @topic.node.name %></strong> · <%= @topic.title %></h1>
-          </div>
-
-          <div class="col-md-1">
-            <div class="avatar pull-right"><img src= "<%= render_user_avatar(@topic.user, 50) %>" style="width:50px; height:50px; border-radius: 50%;"</div>
-          </div>
-        </div>
-        <p>本文由 <%= @topic.user.display_name %> · 发布于<%= time_tag(@topic.created_at) %> · 最后由 admin 回复于 1 天前 · 12次阅读</p>
-
-      </div>
-
-      <div class="panel-body topic-content">
-        <div class="col-md-12 ">
-
-          <% if @topic.excellent? %>
-            <div class="label-awesome">
-              <i class="fa fa-diamond awesome"></i> 本帖已被设为精华帖！
-              <% if current_user && current_user.is_editor?%>
-              <div class="pull-right">
-                <%= link_to icon_tag("close"), action_topic_path(@topic.id, type: 'unexcellent'), data: { method: "post", remote: true } %>
-              </div>
-              <% end %>
+  <div class="row">
+    <div class="col-md-9">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-md-11">
+              <h1 class="panel-title"><strong><%= @topic.node.name %></strong> · <%= @topic.title %></h1>
             </div>
-          <% end %>
 
-          <%= sanitize @topic.content %>
+            <div class="col-md-1">
+              <div class="avatar pull-right"><img src= "<%= render_user_avatar(@topic.user, 50) %>" style="width:50px; height:50px; border-radius: 50%;"</div>
+            </div>
+          </div>
+          <p>本文由 <%= @topic.user.display_name %> · 发布于<%= time_tag(@topic.created_at) %> · 最后由 admin 回复于 1 天前 · 12次阅读</p>
 
-          <!-- 社区文章收藏功能 -->
-          <div class="article-collection text-center">
-            <% if current_user && current_user.is_fan_of?(@topic) %>
-              <div class="article-collection-btn">
-                <%= link_to unlike_topic_path(@topic), method: :post, class: "btn btn-lg btn-danger" do %>
-                <i class="fa fa-thumbs-up fa-1x">  赞  (<span><%= @topic.fans.count %></span>) </i><% end %>
-              </div>
-            <% else %>
-              <div class="article-collection-btn">
-                <%= link_to like_topic_path(@topic), method: :post, class: "btn btn-lg btn-default" do %>
-                <i class="fa fa-thumbs-o-up fa-1x">  赞  (<span><%= @topic.fans.count %></span>) </i><% end %>
+        </div>
+
+        <div class="panel-body topic-content">
+          <div class="col-md-12 ">
+
+            <% if @topic.excellent? %>
+              <div class="label-awesome">
+                <i class="fa fa-diamond awesome"></i> 本帖已被设为精华帖！
+                <% if current_user && current_user.is_editor?%>
+                <div class="pull-right">
+                  <%= link_to icon_tag("close"), action_topic_path(@topic.id, type: 'unexcellent'), data: { method: "post", remote: true } %>
+                </div>
+                <% end %>
               </div>
             <% end %>
 
+            <%= sanitize @topic.content %>
+
+            <!-- 社区文章收藏功能 -->
+            <div class="article-collection text-center">
+              <% if current_user && current_user.is_fan_of?(@topic) %>
+                <div class="article-collection-btn">
+                  <%= link_to unlike_topic_path(@topic), method: :post, class: "btn btn-lg btn-danger" do %>
+                  <i class="fa fa-thumbs-up fa-1x">  赞  (<span><%= @topic.fans.count %></span>) </i><% end %>
+                </div>
+              <% else %>
+                <div class="article-collection-btn">
+                  <%= link_to like_topic_path(@topic), method: :post, class: "btn btn-lg btn-default" do %>
+                  <i class="fa fa-thumbs-o-up fa-1x">  赞  (<span><%= @topic.fans.count %></span>) </i><% end %>
+                </div>
+              <% end %>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="panel-footer">关注 / 喜欢 / 收藏</div>
+
+      </div>
+    </div>
+    
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title"><%= @topic.answers.count %> 个回复</h4>
+        </div>
+        <div class="panel-body">
+          <div >
+            <%= render @topic.answers %>
           </div>
         </div>
       </div>
 
-      <div class="panel-footer">关注 / 喜欢 / 收藏</div>
+      <%= render "answers/form"%>
+      <%= render 'related_topics' %>
 
+  </div>  
+  
+    <div class="sidebar col-md-3">
+      <%= render "sidebar_for_topic_show" %>
     </div>
-
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4 class="panel-title"><%= @topic.answers.count %> 个回复</h4>
-      </div>
-      <div class="panel-body">
-        <div >
-          <%= render @topic.answers %>
-        </div>
-      </div>
-    </div>
-
-    <%= render "answers/form"%>
-    <%= render 'related_topics' %>
-
-  </div>
-
-
-  <div class="sidebar col-md-3">
-    <%= render "sidebar_for_topic_show" %>
-  </div>
 </div>
+
