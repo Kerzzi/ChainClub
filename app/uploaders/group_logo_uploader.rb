@@ -18,7 +18,7 @@ class GroupLogoUploader < CarrierWave::Uploader::Base
     process resize_to_fit: [70, 70]
   end
 
-  version :medium do
+  version :group_index_logo do
     process resize_to_fit: [180, 180]
   end
   

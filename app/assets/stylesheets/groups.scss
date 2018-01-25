@@ -6,10 +6,25 @@
   font-size: 0.9em;
 }
 
-.group-item{
+.group-card{
   background-color: #F5F5F5 ;
   border: 1px solid;
   border-radius:  3px;
-  margin: 0 5px;
+  .group-card-title {
+      background-color: rgba(255,255,255,.9);
+      
+    p{
+      padding: 0px 3px;
+      line-height: 1em;
+      margin-top:  2px;
+      margin-bottom: -1px;
+    }
+  }
+
+  img {
+  width:100%; height:90px;    
+  transition: 0.8s;
+  }
 }
+  
 

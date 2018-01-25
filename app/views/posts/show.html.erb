@@ -16,16 +16,11 @@
       <div class="panel-body">
         
         <div class="col-md-12">
-          <div class="group">  
-            <% if current_user && current_user == @post.user %>
-              <%= link_to("更新文章", edit_group_post_path(@group,@post), class: "btn btn-primary pull-right")%>
-            <% end %>
-          </div>
+
           <div class="article-content">
             <%= simple_format(@post.content) %>
           </div>
           <br>
-
 
         </div>
         

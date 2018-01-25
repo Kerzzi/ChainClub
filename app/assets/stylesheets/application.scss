@@ -120,7 +120,13 @@ body {
      transition: 0.8s;
    }
    
-  
+   .ads_image_css{
+     img {
+       max-width:100%; height:auto;         //重要样式代码，需要配合application.js的自适应代码块一起使用。可以实现图片按照divbox大小自动伸缩，从而实现响应式布局。
+       }
+   }
+
+
   /* 头像的圆形图片格式 */ 
   .avatar-80{
     width: 80px;
