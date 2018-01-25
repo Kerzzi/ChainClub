@@ -36,8 +36,8 @@
                 </td>
                 <td><%= group.created_at %></td>
                 <td>
-                  <%= link_to("Edit", edit_admin_group_path(group), :class => "btn btn-xs btn-info") %>
-                  <%= link_to("Destroy", admin_group_path(group), :method => :delete, :class => "btn btn-xs btn-danger", :data => { :confirm => "Are you sure?" }) %>            
+                  <%= link_to "", edit_admin_group_path(group), class: "fa fa-pencil" %>
+                  <%= link_to "", admin_group_path(group), 'data-confirm' => '确定删除?', method: :delete, class: "fa fa-trash" %>            
                 </td>
               </tr>
             <% end %>

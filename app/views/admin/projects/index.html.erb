@@ -24,7 +24,7 @@
               <td>ICO截止时间</td>
               <td>官网</td>
               <td>提交人</td>
-              <td class="opts">操作</td>
+              <td class="opts">管理操作</td>
             </tr>
           </thead>
           <tbody>
@@ -41,7 +41,7 @@
                 <td><%= project.user.email %></td>
                 <td>
                   <%= link_to '', edit_admin_project_path(project), class: "fa fa-pencil" %>
-                  <%= link_to '', admin_project_path(project), 'data-confirm' => 'Are you sure?' , method: :delete, class: "fa fa-trash" %>
+                  <%= link_to '', admin_project_path(project), 'data-confirm' => '确认删除?' , method: :delete, class: "fa fa-trash" %>
 
                   <%= link_to "评级", edit_admin_project_project_grade_path(project), :class => "btn btn-xs btn-success" %>
                 </td>

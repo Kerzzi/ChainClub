@@ -9,7 +9,7 @@
     <td>分类</td>
     <td>排序</td>
     <td>帖子数量</td>
-    <td></td>
+    <td>管理操作</td>
   </tr>
 
 <% @nodes.each do |node| %>
@@ -20,9 +20,8 @@
     <td><%= node.sort %></td>
     <td><%= node.topics_count %></td>
     <td>
-      <%= link_to("Edit", edit_admin_node_path(node), :class => "btn btn-xs btn-info") %>
-      <%= link_to("Destroy", admin_node_path(node), :method => :delete, :class => "btn btn-xs btn-danger", :data => { :confirm => "Are you sure?" }) %>
-
+      <%= link_to "", edit_admin_node_path(node), class: "fa fa-pencil" %>
+      <%= link_to "", admin_node_path(node), 'data-confirm' => '确定删除?', method: :delete, class: "fa fa-trash" %>
     </td>
   </tr>
 <% end %>

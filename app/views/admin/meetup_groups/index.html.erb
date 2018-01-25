@@ -39,10 +39,10 @@
                 </td>          
                 <td><%= meetup_group.city %></td>
                 <td><%= meetup_group.user.display_name %></td>
-                <td>                
-                  <%= link_to("Edit", edit_admin_meetup_group_path(meetup_group), :class => "btn btn-xs btn-info") %>
-                  <%= link_to("Destroy", admin_meetup_group_path(meetup_group), :method => :delete, :class => "btn btn-xs btn-danger", :data => { :confirm => "Are you sure?" }) %>
-                  
+                <td>   
+                  <%= link_to "", edit_admin_meetup_group_path(meetup_group), class: "fa fa-pencil" %>
+                  <%= link_to "", admin_meetup_group_path(meetup_group), 'data-confirm' => '确定删除?', method: :delete, class: "fa fa-trash" %>
+                                               
                 </td>
               </tr>
             <% end %>

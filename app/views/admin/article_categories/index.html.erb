@@ -30,11 +30,10 @@
                 <td>#</td>
                 <td><%= article_category.name %></td>
                 <td>
-                  <% if current_user %>
-                    <%= link_to("Edit", edit_admin_article_category_path(article_category), :class => "btn btn-xs btn-info") %>
-                    <%= link_to("Destroy", admin_article_category_path(article_category), :method => :delete, :class => "btn btn-xs btn-danger", :data => { :confirm => "Are you sure?" }) %>
 
-                  <% end %>
+                  <%= link_to "", edit_admin_article_category_path(article_category), class: "fa fa-pencil" %>
+                  <%= link_to "", admin_article_category_path(article_category), 'data-confirm' => '确定删除?', method: :delete, class: "fa fa-trash" %>
+                  
                 </td>
               </tr>
             <% end %>

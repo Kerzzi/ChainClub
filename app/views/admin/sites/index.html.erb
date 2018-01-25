@@ -15,12 +15,12 @@
           <thead>
             <tr>
               <th><%= check_box_tag "全选", "1", false, :id => "toggle_all" %></th>
-              <td>#</td>
-              <td>站点名称</td>
-              <td>网址</td>
-              <td>介绍</td>
-              <td>分类</td>
-              <td class="opts">操作</td>
+              <th>#</td>
+              <th>站点名称</th>
+              <th>网址</th>
+              <th>介绍</th>
+              <th>分类</th>
+              <th class="opts">操作</th>
             </tr>
           </thead>
           <tbody>
@@ -30,14 +30,13 @@
                 <td><%= site.id %></td>
                 <td><%= site.name %></td>
                 <td><%= site.url %></td>
-                <td><%= site.description %></td>
+                <td  style="width:600px; overflow: hidden;text-overflow: ellipsis;"><%= site.description %></td>
                 <td><%= site.site_node.name %></td>
                 <td>
-                  <% if current_user %>
-                    <%= link_to("Edit", edit_admin_site_path(site), class: "btn btn-sm btn-default")%>
-                    <%= link_to("Delete", admin_site_path(site),    class: "btn btn-sm btn-default", 
-                                method: :delete, data: { confirm: "Are you sure?" } )%>
-                  <% end %>
+
+                  <%= link_to "", edit_admin_site_path(site), class: "fa fa-pencil" %>
+                  <%= link_to "", admin_site_path(site), 'data-confirm' => '确定删除?', method: :delete, class: "fa fa-trash" %>
+
                 </td>
               </tr>
             <% end %>
