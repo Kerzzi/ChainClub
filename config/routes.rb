@@ -51,7 +51,7 @@ Rails.application.routes.draw do
       get :popular
       get :excellent
       get :favorites
-      post :preview
+      # post :preview
     end
     resources :answers do
       member do

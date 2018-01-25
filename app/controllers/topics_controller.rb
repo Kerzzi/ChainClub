@@ -10,6 +10,7 @@ class TopicsController < ApplicationController
     @topics = Topic.published.paginate(:page => params[:page], :per_page => 20)
   end
 
+  # node这部分还是存在问题
   def node
     @node = Node.find(params[:id])
     @topics = @node.topics.all
@@ -27,7 +28,7 @@ class TopicsController < ApplicationController
   end
 
   def excellent
-    @topics = Topic.excellent.recent.fields_for_list.includes(:user)
+    @topics = Topic.excellent.recent.includes(:user)
     @topics = @topics.page(params[:page])
 
     @page_title = [t("topics.topic_list.excellent"), t("menu.topics")].join(" · ")
@@ -69,14 +70,8 @@ class TopicsController < ApplicationController
       render :new
     end
   end
+  
 
-  def preview
-    @content = params[:content]
-
-    respond_to do |format|
-      format.json
-    end
-  end
 
   def update
     @topic = Topic.find(params[:id])
@@ -103,6 +98,7 @@ class TopicsController < ApplicationController
 
     if !current_user.is_fan_of?(@topic)
       current_user.like_topic!(@topic)
+      @topic.likes_count += 1
     end
       redirect_to topic_path(@topic)
   end
@@ -112,12 +108,14 @@ class TopicsController < ApplicationController
 
     if current_user.is_fan_of?(@topic)
       current_user.unlike_topic!(@topic)
+      @topic.likes_count -= 1
     end
       redirect_to topic_path(@topic)
   end
 
 
-
+  #下面这些操作暂时未完成
+  # ---预览功能尚未完成，后期安装markdown编辑器---
   def favorite
     current_user.favorite_topic(params[:id])
     render plain: "1"
@@ -164,7 +162,7 @@ class TopicsController < ApplicationController
   def ban
     authorize! :ban, @topic
   end
-
+  #上述这些操作暂时未完成
 
    def search
      if @query_string.present?

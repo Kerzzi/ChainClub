@@ -17,8 +17,8 @@ class Topic < ApplicationRecord
   scope :random5, -> { limit(5).order("RANDOM()") }
   scope :last_actived,       -> { order(last_active_mark: :desc) }
   scope :high_likes,         -> { order(likes_count: :desc).order(id: :desc) }
-  scope :high_replies,       -> { order(replies_count: :desc).order(id: :desc) }
-  scope :no_reply,           -> { where(replies_count: 0) }
+  scope :high_replies,       -> { order(answers_count: :desc).order(id: :desc) }
+  scope :no_reply,           -> { where(answers_count: 0) }
   scope :popular,            -> { where("likes_count > 5") }
   scope :excellent,          -> { where("excellent >= 1") }
   scope :without_hide_nodes, -> { exclude_column_ids("node_id", Topic.topic_index_hide_node_ids) }
@@ -34,7 +34,7 @@ class Topic < ApplicationRecord
   }
 
 
-
+  # 相似文字这个还没有搞明白
   def related_topics(size = 5)
     opts = {
       query: {
@@ -56,24 +56,12 @@ class Topic < ApplicationRecord
     self.class.__elasticsearch__.search(opts).records.to_a
   end
 
-  def self.fields_for_list
-    columns = %w(content who_deleted)
-    select(column_names - columns.map(&:to_s))
-  end
-
-  def full_content
-    ([self.content] + self.answers.pluck(:content)).join('\n\n')
-  end
 
   before_create :init_last_active_mark_on_create
   def init_last_active_mark_on_create
     self.last_active_mark = Time.now.to_i
   end
 
-  before_create :init_last_active_mark_on_create
-  def init_last_active_mark_on_create
-    self.last_active_mark = Time.now.to_i
-  end
 
   def update_last_answer(answer, opts = {})
     # replied_at 用于最新回复的排序，如果帖着创建时间在一个月以前，就不再往前面顶了
@@ -84,7 +72,7 @@ class Topic < ApplicationRecord
     self.answers_count = answers.without_system.count
     self.last_reply_id = answer.try(:id)
     self.last_reply_user_id = answer.try(:user_id)
-    self.last_reply_user_login = answer.try(:user_login)
+    self.last_reply_username = answer.try(:username)
 
     save
   end
@@ -108,10 +96,7 @@ class Topic < ApplicationRecord
   end
 
   def excellent!
-
-
-      self.update!(excellent: 1)
-
+    self.update!(excellent: 1)
   end
 
   def unexcellent!
@@ -126,15 +111,6 @@ class Topic < ApplicationRecord
     answer_index + 1
   end
 
-  def self.notify_topic_created(topic_id)
-    topic = Topic.find_by_id(topic_id)
-    return unless topic && topic.user
-
-    follower_ids = topic.user.follow_by_user_ids
-    return if follower_ids.empty?
-
-    # 给关注者发通知,尚未完成
-
-  end
+  # 给关注者发通知,尚未完成
 
 end

@@ -1,5 +1,8 @@
 require "digest/md5"
 module TopicsHelper
+  
+  
+  # 下面功能均为完成，有待开发
   def topic_favorite_tag(topic, opts = {})
     return "" if current_user.blank?
     opts[:class] ||= ""
