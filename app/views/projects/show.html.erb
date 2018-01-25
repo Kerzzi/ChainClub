@@ -73,7 +73,7 @@
       </div><!-- /panel-body -->
     </div>
 
-    <% if @project.project_grade %>
+    <% if @project.project_grade.grade.present? %>
     <div class="panel panel-default">
       <div class="panel-body topic-content">
         <div class="panel-body topic-content">

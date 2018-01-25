@@ -4,39 +4,35 @@
 
 <div class="container">
   
-  <ol class="breadcrumb">
-    <li><a href="<%= root_path %>">首页</a></li>
-    <li><a href="<%= projects_path %>">项目列表</a></li>
-  </ol>
-  
-  <div class="container-fluid">
-      <div class="row">
-        <%= link_to("新增项目信息", new_project_path, class: "btn btn-primary pull-right") %>
-      </div>  
-      
-      <div class="row">
-        <% @projects.each do |project| %>
-          <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
-              <div class="project-card">
-
-                  <% if project.logo.present? %>
-                    <%= link_to image_tag(project.logo.url(:thumb)),project_path(project), :target => "_blank" %>
-                  <% else %>
-                    <img src="https://inst.eecs.berkeley.edu/~cs194-26/fa14/upload/files/proj3/cs194-fi/images/warm_sky.jpg" alt="Ver post">
-                  <% end %>
-                  <div class="card-body secondbase">
-                      <h4 class="card-title"><span class="label label-danger">已评级  92分</b></span></h4>
-                      <br>          
-                      <div class="text-center d-flex">
-                          <h4><%= link_to(project.title, project_path(project)) %></h4>
-                      </div>
-                      <br>
+  <div class="col-md-9 project-index-box">
+    <% @projects.each do |project| %>
+      <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
+          <div class="project-card">
+              <% if project.logo.present? %>
+                <%= link_to image_tag(project.logo.url(:projectlogo)),project_path(project), :target => "_blank" %>
+              <% else %>
+                <img src="https://inst.eecs.berkeley.edu/~cs194-26/fa14/upload/files/proj3/cs194-fi/images/warm_sky.jpg" alt="Ver post">
+              <% end %>
+              <div class="card-body secondbase">
+                  <h4 class="card-project-grade">
+                    <% if project.project_grade.grade.present? %>
+                      <span class="label label-danger"><b>项目评分 <%=  project.project_grade.grade %>分</b></span>
+                    <% else %>
+                      <span class="label label-warning"><b>待评级</b></span>
+                    <% end %>
+                  </h4>
+                  
+                  <div class="card-project-title">
+                    <h5 class="text-center"><%= link_to(project.title, project_path(project)) %></h5>
                   </div>
               </div>
           </div>
-        <% end %>
-      </div>  
-  </div> 
+      </div>
+    <% end %>
+  </div>  
+
+  <div class="col-md-3">
+    <%= render "sidebar_for_project_index" %>
+  </div>  
   
-   
 </div>     

@@ -3,22 +3,27 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-
+// project-index
+.project-index-box{
+  // background-color: #fff;
+}
 
 
 
 .project-card{
-  height:300px;
+  // height:300px;
 
   .secondbase {
       background-color: rgba(255,255,255,.9);
-      margin-top: -50px;
+      margin-top: -35px;
   }
 
   img {
-  max-width:100%; height:auto;         //重要样式代码，需要配合application.js的自适应代码块一起使用。可以实现图片按照divbox大小自动伸缩，从而实现响应式布局。
-  border-radius: 6px;                 //为所有图片设置6px的圆角
+  width:100%; height:100px;   
   transition: 0.8s;
+  }
+  .card-project-title{
+    padding: 5px 0;
   }
 }
 
@@ -27,5 +32,10 @@
   max-width:100%; height:auto;         //重要样式代码，需要配合application.js的自适应代码块一起使用。可以实现图片按照divbox大小自动伸缩，从而实现响应式布局。
   border-radius: 6px;                 //为所有图片设置6px的圆角
   transition: 0.8s;
+  }
+  span{
+    a{
+      color: #fff; //字体颜色
+    }
   }
 }

@@ -70,6 +70,10 @@ body {
    flex: 1 0 auto;
  }
 
+ .app-body{
+   padding: 0px 56px 0px 65px; //前台页面统一宽度
+ }  
+
  .show-content{
    margin: 10px auto;
    padding: 15px 60px;
@@ -218,6 +222,11 @@ body {
    flex: 0 0 auto;
 
   }
+
+.app-navbar{
+  padding: 0px 56px 0px 65px; //拉宽前台navbar
+}  
+
 .navbar-default{
   color: #000 !important;
   background: rgba(0,0,0,0.3);

@@ -1,12 +1,12 @@
-<div class="row">
-  <div class="col-md-12">
+
+  <div class="row">
     <% if current_page?('/') %>
       <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="navbar">
     <% else %>
       <nav class="navbar navbar-default navbar-fixed-top show_bgcolor" role="navigation">
     <% end %>
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="container ">
+            <!-- 后期采用app-navbar 样式-->
             <div class="navbar-header">
                 <a class="navbar-brand" href="/"><img src='<%= image_url 'logo.png' %>' >Chain Club</a>
             </div>
@@ -132,4 +132,3 @@
         <!-- /.container-->
     </nav>
   </div>
-</div>

@@ -14,7 +14,7 @@ class ProjectLogoUploader < CarrierWave::Uploader::Base
   end
 
 
-  version :thumb do
+  version :projectlogo do
     process resize_to_fit: [300, 150]
   end
 

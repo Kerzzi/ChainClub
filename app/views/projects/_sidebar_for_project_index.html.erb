@@ -1,0 +1,29 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+
+    <div class="project-sidebar">
+      <h4>项目分类</h4>
+      <hr>
+      <span class="label label-success"><%= link_to("已评级", "#") %></span>
+      <span class="label label-warning"><%= link_to("待评级", "#") %></span>
+      <span class="label label-info"><%= link_to("全部项目", projects_path ) %></span>
+    </div>
+  </div>
+</div>
+
+
+<div class="panel panel-default">
+  <div class="panel-body">
+
+    <div class=" project-sidebar project-ads">
+      <h4>关于我们</h4>
+      <hr>
+      <img src= "https://ww4.sinaimg.cn/large/006tKfTcly1fnt6b3yncgj30ik0t8dhw.jpg" >
+    </div>
+  </div>
+</div>
+
+
+<div class="">
+  <%= link_to("提交新项目", new_project_path, class: "btn btn-danger btn-block") %>
+</div>

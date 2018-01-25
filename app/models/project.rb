@@ -15,5 +15,5 @@ class Project < ApplicationRecord
 
   # Scope #
   scope :published, -> { where(:status => "public")}
-
+  scope :recent, -> { order("created_at DESC")}
 end
