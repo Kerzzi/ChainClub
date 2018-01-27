@@ -279,15 +279,10 @@ ActiveRecord::Schema.define(version: 20180123150753) do
     t.string "node_name"
     t.string "who_deleted"
     t.boolean "lock_node", default: false
-
     t.integer "answers_count", default: 0
-
     t.integer "last_active_mark"
     t.integer "stars_count", default: 0
     t.string "status", default: "public"
-
-
-    t.index ["node_id"], name: "index_topics_on_node_id"
     t.index ["user_id"], name: "index_topics_on_user_id"
   end
 

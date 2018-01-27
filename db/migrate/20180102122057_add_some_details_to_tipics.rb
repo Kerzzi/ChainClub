@@ -12,7 +12,5 @@ class AddSomeDetailsToTipics < ActiveRecord::Migration[5.1]
 
   end
 
-
-  add_index :topics, :node_id
   add_index :topics, :user_id
 end

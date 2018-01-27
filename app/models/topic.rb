@@ -21,17 +21,8 @@ class Topic < ApplicationRecord
   scope :no_reply,           -> { where(answers_count: 0) }
 
 
-  scope :without_hide_nodes, -> { exclude_column_ids("node_id", Topic.topic_index_hide_node_ids) }
-
-  scope :without_node_ids,   ->(ids) { exclude_column_ids("node_id", ids) }
   scope :without_users,      ->(ids) { exclude_column_ids("user_id", ids) }
   scope :exclude_column_ids, ->(column, ids) { ids.empty? ? all : where.not(column => ids) }
-
-  scope :without_nodes, lambda { |node_ids|
-    ids = node_ids + Topic.topic_index_hide_node_ids
-    ids.uniq!
-    exclude_column_ids("node_id", ids)
-  }
 
 
   # 相似文字这个还没有搞明白
