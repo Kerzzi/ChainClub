@@ -8,11 +8,19 @@
 
         <div class="row">
           <div class="col-sm-9">
-            <%= f.input :username, input_html: { style: 'width: 200px' } %>
+            <%= f.input :username, input_html: { style: 'width: 200px' }, :label =>"用户名" %>
             
-
-            <%= f.input :avatar %>
-            <%= f.input :summary, as: :text, input_html: { class: "xxlarge", rows: "6" } %>
+            <div class="form-group">
+              <%= f.input :avatar, :label =>"头像", as: :file %>
+              <% if f.object.avatar.present? %>
+                <label>
+                  <%= f.check_box :remove_avatar %> 删除图档
+                </label>
+                <%= link_to f.object.avatar.filename, f.object.avatar.url, :target => "_blank" %>
+              <% end %>
+            </div>
+            
+            <%= f.input :summary, as: :text, input_html: { class: "xxlarge", rows: "6" }, :label =>"简介" %>
           </div>
           <div class="col-sm-3">
             <div class="form-group avatar-preview" style="text-align: center;">

@@ -1,10 +1,11 @@
 <div class="container">
-  <h2>Edit User</h2>
+  <h2>个人资料</h2>
+
 
   <%= simple_form_for @user do |f| %>
 
     <div class="form-group">
-      <%= f.input :avatar, :label =>"用户头像", as: :file %>
+      <%= f.input :avatar, :label =>"头像", as: :file %>
       <% if f.object.avatar.present? %>
         <label>
           <%= f.check_box :remove_avatar %> 删除图档
@@ -12,13 +13,10 @@
         <%= link_to f.object.avatar.filename, f.object.avatar.url, :target => "_blank" %>
       <% end %>
     </div>
+    <%= f.input :username, input_html: { style: 'width: 200px; display: inline-block;' }, :label =>"用户名" %>
     
-    <%= f.input :username, :label =>"用户名" %>
-
-    <div class="form-group">
-      <%= f.label "简介" %>
-      <%= f.text_field :summary, :class => "form-control" %>
-    </div>
+    <%= f.input :summary, as: :text, input_html: { class: "xxlarge", rows: "3" }, :label =>"简介" %>
+    
 
     <div class="form-group">
       <%= f.label "时区" %>
@@ -34,11 +32,8 @@
       <%= ff.text_field :name, :class => "form-control" %>
     </div>
 
-    <div class="form-group">
-      <%= ff.label "城市" %>
-      <%= ff.text_field :location, :class => "form-control" %>
-    </div>
-
+    <%= ff.input :location, input_html: { style: 'width: 200px; display: inline-block;' }, :label =>"城市" %>
+    
     <div class="form-group">
       <%= ff.label "生日" %>
       <%= ff.text_field :birthday, :class => "form-control" %>
