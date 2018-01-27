@@ -14,6 +14,9 @@ class MeetupGroupsController < ApplicationController
                       end
             
   end
+  
+  def about
+  end
 
   def new
     @meetup_group = MeetupGroup.new

@@ -205,10 +205,10 @@
   border-color: transparent;         //边框颜色设置为 透明
   color: #fff;
   
+  
   .search-preview{
-    margin-top: -9px;
-    padding-top: -20px;
-    
+    margin-top: -24px;
+        
     .search-preview-input{
       height: 40px;
     }
@@ -221,6 +221,9 @@
       color: #212121;
       background-color: #fff;
     }
+    .input{
+      width: 100%;
+    }
   }
 
 
@@ -228,6 +231,10 @@
     float:left;
     display: block;
     margin-left:10px;
+    span{
+      margin-left:25px;
+      margin-top: -30px;
+    }
     
     a{ 
       color: #fff;                                      // 链接反转的样式

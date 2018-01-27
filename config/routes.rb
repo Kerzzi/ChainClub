@@ -75,6 +75,7 @@ Rails.application.routes.draw do
   resources :meetup_groups do
     collection do
       get :search
+      get :about
     end
   end
   resources :jobs do
