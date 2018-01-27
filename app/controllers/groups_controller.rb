@@ -5,7 +5,6 @@ class GroupsController < ApplicationController
 
   def index
     @groups = Group.published.paginate(:page => params[:page], :per_page => 10)
-    @joined_groups = current_user.participated_groups.all.paginate(:page => params[:page], :per_page => 10)
     
     @posts = case params[:order]
              when 'by_hot'

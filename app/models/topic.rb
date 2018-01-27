@@ -20,7 +20,7 @@ class Topic < ApplicationRecord
   scope :high_replies,       -> { order(answers_count: :desc).order(id: :desc) }
   scope :no_reply,           -> { where(answers_count: 0) }
   scope :popular,            -> { where("likes_count > 5") }
-  scope :excellent,          -> { where("excellent >= 1") }
+
   scope :without_hide_nodes, -> { exclude_column_ids("node_id", Topic.topic_index_hide_node_ids) }
 
   scope :without_node_ids,   ->(ids) { exclude_column_ids("node_id", ids) }
@@ -91,20 +91,6 @@ class Topic < ApplicationRecord
     end
   end
 
-  def excellent?
-    excellent >= 1
-  end
-
-  def excellent!
-    self.update!(excellent: 1)
-  end
-
-  def unexcellent!
-    transaction do
-      Answer.create_system_event(action: "unexcellent", topic_id: self.id)
-      update!(excellent: 0)
-    end
-  end
 
   def floor_of_answer(answer)
     answer_index = answer_ids.index(answer.id)

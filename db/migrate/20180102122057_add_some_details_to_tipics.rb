@@ -7,11 +7,11 @@ class AddSomeDetailsToTipics < ActiveRecord::Migration[5.1]
     add_column :topics, :node_name, :string
     add_column :topics, :who_deleted, :string
     add_column :topics, :lock_node, :boolean, default: false
-    add_column :topics, :excellent, :integer, default: 0
+
     add_column :topics, :answers_count, :integer, default: 0
     add_column :topics, :likes_count, :integer,        default: 0
   end
-  add_index :topics, :excellent
+
   add_index :topics, :likes_count
   add_index :topics, :node_id
   add_index :topics, :user_id

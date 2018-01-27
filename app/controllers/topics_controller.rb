@@ -27,13 +27,6 @@ class TopicsController < ApplicationController
     render action: "index"
   end
 
-  def excellent
-    @topics = Topic.excellent.recent.includes(:user)
-    @topics = @topics.page(params[:page])
-
-    @page_title = [t("topics.topic_list.excellent"), t("menu.topics")].join(" · ")
-    render action: "index"
-  end
 
   def show
     @topic = Topic.unscoped.includes(:user).find(params[:id])
@@ -140,12 +133,6 @@ class TopicsController < ApplicationController
     authorize! params[:type].to_sym, @topic
 
     case params[:type]
-    when "excellent"
-      @topic.excellent!
-      redirect_to @topic, notice: "加精成功。"
-    when "unexcellent"
-      @topic.unexcellent!
-      redirect_to @topic, notice: "加精已经取消。"
     when "ban"
       params[:reason_text] ||= params[:reason] || ""
       @topic.ban!(reason: params[:reason_text].strip)

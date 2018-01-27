@@ -49,7 +49,7 @@ Rails.application.routes.draw do
       get :search
       get :no_answer
       get :popular
-      get :excellent
+      
       get :favorites
       # post :preview
     end

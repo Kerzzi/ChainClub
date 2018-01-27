@@ -46,10 +46,7 @@ module TopicsHelper
     link_to(topic.title, path, title: topic.title)
   end
 
-  def topic_excellent_tag(topic)
-    return "" unless topic.excellent?
-    content_tag(:i, "", title: "精华帖", class: "fa fa-diamond", data: { toggle: "tooltip" })
-  end
+
 
   def topic_close_tag(topic)
     return "" unless topic.closed?
