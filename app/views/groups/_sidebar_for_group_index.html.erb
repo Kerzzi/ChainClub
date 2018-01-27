@@ -20,38 +20,9 @@
         
       </div>
       <hr>
-      <!-- 我创建的小组 -->
-
-      <!-- <div class="row my-group">
-        <% @current_user.groups.each do |group| %>
-          <div class="col-md-4">
-            <% if group.logo.present? %>
-              <%= link_to image_tag(group.logo.url(:thumb)), group_path(group), :target => "_blank" %>
-            <% end %>  
-            <%= link_to(group.title, group_path(group)) %>(<%= group.members.count %>)
-          </div>
-        <% end %>  
-      </div> 
       
-      <div class="row joined-group">
-        <h5>爱逛的小组</h5>
-        <hr>
-        
-        <% @joined_groups.each do |group| %>
-          <div class="col-md-6">
-            <button type="button" class="btn btn-default btn-block">
-              <span class="text-left"><%= link_to(group.title, group_path(group)) %></span>
-              <span class="badge text-right"><%= group.members.count %></span>
-            </button>
-          </div>
-        <% end %> 
-        <br>
-        <br>
-        <div class="row text-center">
-          <%= link_to '查看更多', new_group_path, class: 'btn btn-default btn-sm' %>
-        </div>
-      </div>     -->
-            
+      <!-- 我创建的小组 -->
+          
     </div>
   </div>
 <% end %>

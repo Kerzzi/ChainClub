@@ -19,16 +19,6 @@
     <%= f.input :content, as: :wysihtml5, input_html: { class: "form-control",  style: "height:900px"}, :label => "内容" %>
   </div>
   
-  <div class="form-group">
-    <div class="btn-group" data-toggle="buttons">
-      <% OfficialArticle::STATUS.each do |status| %>
-        <label class="btn btn-default <%= (status == f.object.status)? 'active' : '' %>">
-          <%= f.radio_button :status, status %>
-          <%= t(status, :scope => "official_article.status") %>
-        </label>
-      <% end %>
-    </div> 
-  </div>  
   <%= f.submit "发布文章", class: "btn btn-primary", data: { disable_with: "Submiting..." } %>
 <% end %>
 
