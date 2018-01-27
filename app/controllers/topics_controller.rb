@@ -91,7 +91,7 @@ class TopicsController < ApplicationController
 
     if !current_user.is_fan_of?(@topic)
       current_user.like_topic!(@topic)
-      @topic.likes_count += 1
+      
     end
       redirect_to topic_path(@topic)
   end
@@ -101,7 +101,7 @@ class TopicsController < ApplicationController
 
     if current_user.is_fan_of?(@topic)
       current_user.unlike_topic!(@topic)
-      @topic.likes_count -= 1
+      
     end
       redirect_to topic_path(@topic)
   end

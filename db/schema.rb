@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20180123150753) do
     t.text "body_html"
     t.integer "state"
     t.integer "liked_user_ids"
-    t.integer "likes_count"
+
     t.index ["topic_id"], name: "index_answers_on_topic_id"
     t.index ["user_id"], name: "index_answers_on_user_id"
   end
@@ -281,12 +281,12 @@ ActiveRecord::Schema.define(version: 20180123150753) do
     t.boolean "lock_node", default: false
 
     t.integer "answers_count", default: 0
-    t.integer "likes_count", default: 0
+
     t.integer "last_active_mark"
     t.integer "stars_count", default: 0
     t.string "status", default: "public"
 
-    t.index ["likes_count"], name: "index_topics_on_likes_count"
+
     t.index ["node_id"], name: "index_topics_on_node_id"
     t.index ["user_id"], name: "index_topics_on_user_id"
   end
