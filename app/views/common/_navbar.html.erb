@@ -14,94 +14,95 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-left">
-                    <li><%= link_to("社区", topics_path) %></li>
-                    <li><%= link_to("资讯", official_articles_path) %></li>
-                    <li><%= link_to("小组", groups_path) %></li>
-                    <li><%= link_to("大讲堂", courses_path) %></li>
-                    <li><%= link_to("项目评级", projects_path) %></li>
-                    <li><%= link_to("活动", meetup_groups_path) %></li>
-                    <li><%= link_to("机会", jobs_path) %></li>
-                    <li><%= link_to("导航", sites_path) %></li>
+                  <li><%= link_to("社区", topics_path) %></li>
+                  <li><%= link_to("资讯", official_articles_path) %></li>
+                  <li><%= link_to("小组", groups_path) %></li>
+                  <li><%= link_to("大讲堂", courses_path) %></li>
+                  <li><%= link_to("项目评级", projects_path) %></li>
+                  <li><%= link_to("活动", meetup_groups_path) %></li>
+                  <li><%= link_to("机会", jobs_path) %></li>
+                  <li><%= link_to("导航", sites_path) %></li>
                                     
 
-                    <li class="dropdown mega-dropdown">
-                    <a href="<%= sites_path %>" class="dropdown-toggle" data-toggle="dropdown">推广 <span class="caret"></span></a>				
+                  <li class="dropdown mega-dropdown">
+                    <a href="<%= sites_path %>" class="dropdown-toggle" data-toggle="dropdown">推广<span class="caret"></span></a>				
                     <ul class="dropdown-menu mega-dropdown-menu">
-                    <li class="col-sm-3">
+                      <li class="col-sm-3">
+                        <ul>
+                        <li class="dropdown-header">交易所</li>
+                        <li><a href="https://www.binance.com/">币安 Binance</a></li>
+                          <li><a href="https://big.one/">BigOne</a></li>
+                          <li><a href="https://www.okex.com/">OKEX</a></li>
+                          <li><a href="https://www.huobi.pro/">火币Pro</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">课程</li>
+                          <li><a href="#">问道区块链</a></li>
+                          <li><a href="#">布鲁斯投资课</a></li>
+                          <li><a href="#">研习社大讲堂</a></li>
+                      </ul>
+                      </li>
+                      <li class="col-sm-3">
                       <ul>
-                      <li class="dropdown-header">Features</li>
-                      <li><a href="#">Auto Carousel</a></li>
-                                    <li><a href="#">Carousel Control</a></li>
-                                    <li><a href="#">Left & Right Navigation</a></li>
-                      <li><a href="#">Four Columns Grid</a></li>
-                      <li class="divider"></li>
-                      <li class="dropdown-header">Fonts</li>
-                                    <li><a href="#">Glyphicon</a></li>
-                      <li><a href="#">Google Fonts</a></li>
-                    </ul>
-                    </li>
-                    <li class="col-sm-3">
-                    <ul>
-                      <li class="dropdown-header">Plus</li>
-                      <li><a href="#">Navbar Inverse</a></li>
-                      <li><a href="#">Pull Right Elements</a></li>
-                      <li><a href="#">Coloured Headers</a></li>                            
-                      <li><a href="#">Primary Buttons & Default</a></li>							
-                    </ul>
-                    </li>
-                    <li class="col-sm-3">
-                    <ul>
-                      <li class="dropdown-header">Much more</li>
-                                    <li><a href="#">Easy to Customize</a></li>
-                      <li><a href="#">Calls to action</a></li>
-                      <li><a href="#">Custom Fonts</a></li>
-                      <li><a href="#">Slide down on Hover</a></li>                         
-                    </ul>
-                    </li>
-                            <li class="col-sm-3">
+                        <li class="dropdown-header">项目</li>
+                        <li><a href="https://loopring.org">路印:新一代区块链资产交易协议和交易所</a></li>
+                        <li><a href="http://www.asch.so/">阿希 XAS:分布式的区块链应用平台</a></li>
+                        <li><a href="http://oraclechain.io/">欧链:全球第一个区块链生态Oracle(预言机)</a></li>                            
+                        <li><a href="https://eos.io/">柚子 EOS</a></li>							
+                      </ul>
+                      </li>
+                      <li class="col-sm-3">
                       <ul>
-                      <li class="dropdown-header">广告</li>                            
-                                    <div id="womenCollection" class="carousel slide" data-ride="carousel">
-                                      <div class="carousel-inner">
-                                        <div class="item active">
-                                            <a href="#"><img src="http://placehold.it/254x150/3498db/f5f5f5/&text=New+Collection" class="img-responsive" alt="product 1"></a>
-                                            <h4><small>Summer dress floral prints</small></h4>                                        
-                                            <button class="btn btn-primary" type="button">49,99 €</button> <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-heart"></span> Add to Wishlist</button>       
-                                        </div><!-- End Item -->
-                                        <div class="item">
-                                            <a href="#"><img src="http://placehold.it/254x150/ff3546/f5f5f5/&text=New+Collection" class="img-responsive" alt="product 2"></a>
-                                            <h4><small>Gold sandals with shiny touch</small></h4>                                        
-                                            <button class="btn btn-primary" type="button">9,99 €</button> <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-heart"></span> Add to Wishlist</button>        
-                                        </div><!-- End Item -->
-                                        <div class="item">
-                                            <a href="#"><img src="http://placehold.it/254x150/2ecc71/f5f5f5/&text=New+Collection" class="img-responsive" alt="product 3"></a>
-                                            <h4><small>Denin jacket stamped</small></h4>                                        
-                                            <button class="btn btn-primary" type="button">49,99 €</button> <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-heart"></span> Add to Wishlist</button>      
-                                        </div><!-- End Item -->                                
-                                      </div><!-- End Carousel Inner -->
-                                      <!-- Controls -->
-                                      <a class="left carousel-control" href="#womenCollection" role="button" data-slide="prev">
-                                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                                        <span class="sr-only">Previous</span>
-                                      </a>
-                                      <a class="right carousel-control" href="#womenCollection" role="button" data-slide="next">
-                                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                                        <span class="sr-only">Next</span>
-                                      </a>
-                                    </div><!-- /.carousel -->
-                                    <li class="divider"></li>
-                                    <li><a href="<%= sites_path %>">全部网址 <span class="glyphicon glyphicon-chevron-right pull-right"></span></a></li>
-                    </ul>
-                    </li>
+                        <li class="dropdown-header">网站</li>
+                          <li><a href="https://blockchain.info/">比特币BTC区块查询</a></li>
+                          <li><a href="https://etherscan.io/">以太坊ETH区块查询</a></li>
+                          <li><a href="https://blockdozer.com/">BCC BCH区块查询</a></li>
+                          <li><a href="https://neotracker.io/">小蚁股NEO区块查询</a></li>                         
+                      </ul>
+                      </li>
+                      
+                      <li class="col-sm-3">
+                        <ul>
+                          <li class="dropdown-header">广告</li>                            
+                            <div id="womenCollection" class="carousel slide" data-ride="carousel">
+                              <div class="carousel-inner">
+                                <div class="item active">
+                                    <a href="#"><img src="http://placehold.it/254x150/3498db/f5f5f5/&text=New+Collection" class="img-responsive" alt="product 1"></a>
+                                    <h4><small>问道区块链</small></h4>                                        
+                                    <button class="btn btn-primary" type="button">199 元</button> <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-heart"></span> 立即报名</button>       
+                                </div><!-- End Item -->
+                                <div class="item">
+                                    <a href="#"><img src="http://placehold.it/254x150/ff3546/f5f5f5/&text=New+Collection" class="img-responsive" alt="product 2"></a>
+                                    <h4><small>广告口号，图片大小254x150</small></h4>                                        
+                                    <button class="btn btn-danger" type="button">9,99 元</button> <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-heart"></span> 立即报名</button>        
+                                </div><!-- End Item -->
+                                <div class="item">
+                                    <a href="#"><img src="http://placehold.it/254x150/2ecc71/f5f5f5/&text=New+Collection" class="img-responsive" alt="product 3"></a>
+                                    <h4><small>广告口号，图片大小254x150</small></h4>                                        
+                                    <button class="btn btn-success" type="button">49 元</button> <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-heart"></span> 立即报名</button>      
+                                </div><!-- End Item -->                                
+                              </div><!-- End Carousel Inner -->
+                              <!-- Controls -->
+                              <a class="left carousel-control" href="#womenCollection" role="button" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                              </a>
+                              <a class="right carousel-control" href="#womenCollection" role="button" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                              </a>
+                            </div><!-- /.carousel -->
+                            <li class="divider"></li>
+                            <li><a href="<%= sites_path %>">全部网址 <span class="glyphicon glyphicon-chevron-right pull-right"></span></a></li>
+                        </ul>
+                      </li>
                     </ul>				
-                    </li>
-                    
+                  </li><!-- mega-dropdown -->
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
                     <% if !current_user %>
                     <li><%= link_to("注册", new_user_registration_path) %> </li>
-                    <li><%= link_to("登入", new_user_session_path) %></li>
+                    <li><%= link_to("登录", new_user_session_path) %></li>
                     <% else %>
                       <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="dropdownMenu" aria-haspopup="true" aria-expanded="false">
