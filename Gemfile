@@ -55,6 +55,7 @@ gem 'bootstrap-wysihtml5-rails'
 gem 'action-store'
 gem 'ransack'
 gem 'seo_helper'
+gem 'pg'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -62,7 +63,8 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
-  gem 'sqlite3'
+  gem 'capistrano-rails'
+  gem 'capistrano-passenger'
 end
 
 group :development do
@@ -76,7 +78,3 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-group :production do 
-  gem 'pg', '~> 0.1'
-end 
