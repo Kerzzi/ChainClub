@@ -3,7 +3,7 @@
 </div>
 
 <div class="container">
-  
+
   <div class="col-md-9 project-index-box">
     <% @projects.each do |project| %>
       <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
@@ -15,13 +15,13 @@
               <% end %>
               <div class="card-body secondbase">
                   <h4 class="card-project-grade">
-                    <% if project.project_grade.grade.present? %>
+                    <% if project.project_grade.present? %>
                       <span class="label label-danger"><b>项目评分 <%=  project.project_grade.grade %>分</b></span>
                     <% else %>
                       <span class="label label-warning"><b>待评级</b></span>
                     <% end %>
                   </h4>
-                  
+
                   <div class="card-project-title">
                     <h5 class="text-center"><%= link_to(project.title, project_path(project)) %></h5>
                   </div>
@@ -29,10 +29,10 @@
           </div>
       </div>
     <% end %>
-  </div>  
+  </div>
 
   <div class="col-md-3">
     <%= render "sidebar_for_project_index" %>
-  </div>  
-  
-</div>     
+  </div>
+
+</div>

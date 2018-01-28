@@ -49,9 +49,14 @@
 					</div>
 				</div>
 
-
 				<div class="panel-body">
-
+					<% @official_articles.each do |official_article| %>
+						<div class="official_article-item">
+							<h4><%= link_to(official_article.title, official_article_path(official_article)) %></h4>
+						</div>
+	        <% end %>
+					<hr>
+					<p class="text-center"><%= link_to("更多最新资讯", official_articles_path) %></p>
 				</div>
 			</div>
 		</div>
@@ -60,13 +65,18 @@
 			<div class="panel panel-default">
 				<div class="panel-header">
 					<div class="row">
-						<span><a href="/topics"><img src="/images/home_tool2.png"></a> </span><span>  热门话题 </span><a class="pull-right" href="/topics">更多</a>
+						<span><a href="/topics"><img src="/images/home_tool2.png"></a> </span><span>  热门资讯 </span><a class="pull-right" href="/topics">更多</a>
 					</div>
 				</div>
 
-
 				<div class="panel-body">
-
+					<% @article_hots.each do |article_hot| %>
+						<div class="official_article-item">
+							<h4><%= link_to(article_hot.title, official_article_path(article_hot)) %></h4>
+						</div>
+	        <% end %>
+					<hr>
+					<p class="text-center"><%= link_to("更多热门资讯", official_articles_path) %></p>
 				</div>
 			</div>
 		</div>
@@ -80,8 +90,37 @@
 		</div>
 
 		<div class="panel-body">
-			社区话题
+			<% @topics.each do |topic| %>
+				<div class="topic media topic-<%= topic.id %>">
+					<div class="avatar media-left">
+						<img src= "<%= render_user_avatar(topic.user, 50) %>" style="width:50px; height:50px; border-radius: 50%;">
+					</div>
+					<div class="infos media-body">
+						<div class="title media-heading">
+
+								<%= topic.node.name %>
+								<%= link_to(topic.title, topic_path(topic)) %>
+
+
+								<i class="fa fa-angle-double-up" title="置顶"></i>
+
+						</div>
+						<div class="info">
+							<span class="name">
+								<%= topic.user.display_name %>
+							</span> • 发布于 <span><%= time_tag(topic.created_at) %></span>
+						</div>
+					</div>
+					<div class="count media-right">
+						<% if topic.answers.count > 0 %>
+						<span class="badge"><%= topic.answers.count %></span>
+
+						<% end %>
+					</div>
+				</div>
+			<% end %>
 			<hr>
+			<p class="text-center"><%= link_to("更多话题", topics_path) %></p>
 		</div>
 	</div>
 
@@ -93,9 +132,28 @@
 		</div>
 
 		<div class="panel-body">
-			社区话题
-			<hr>
+			<% @groups.each do |group| %>
+				<div class="col-md-2 group-item">
+				  <div class="group-card">
+				    <% if group.logo.present? %>
+				      <%= link_to image_tag(group.logo.url(:group_index_logo)),group_path(group), :target => "_blank" %>
+				    <% else %>
+				      <img src="https://ww2.sinaimg.cn/large/006tKfTcly1fnt7p9w5h6j306o06owec.jpg" alt="group_logo">
+				    <% end %>
+
+				    <div class="group-card-title text-center">
+				      <p style="overflow:hidden;"><%= link_to(group.title,group_path(group)) %></p>
+				      <span>
+				        <i class="fa fa-user-circle-o" aria-hidden="true"></i> <%= group.members.count %>
+				      </span>
+				    </div>
+
+				  </div>
+				</div>
+			<% end %>
 		</div>
+		<hr>
+		<p class="text-center"><%= link_to("更多小组", groups_path) %></p>
 	</div>
 
 	<div class="panel panel-default">
@@ -106,9 +164,33 @@
 		</div>
 
 		<div class="panel-body">
-			社区话题
-			<hr>
+			<% @projects.each do |project| %>
+	      <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
+	          <div class="project-card">
+	              <% if project.logo.present? %>
+	                <%= link_to image_tag(project.logo.url(:projectlogo)),project_path(project), :target => "_blank" %>
+	              <% else %>
+	                <img src="https://inst.eecs.berkeley.edu/~cs194-26/fa14/upload/files/proj3/cs194-fi/images/warm_sky.jpg" alt="Ver post">
+	              <% end %>
+	              <div class="card-body secondbase">
+	                  <h4 class="card-project-grade">
+	                    <% if project.project_grade.present? %>
+	                      <span class="label label-danger"><b>项目评分 <%=  project.project_grade.grade %>分</b></span>
+	                    <% else %>
+	                      <span class="label label-warning"><b>待评级</b></span>
+	                    <% end %>
+	                  </h4>
+
+	                  <div class="card-project-title">
+	                    <h5 class="text-center"><%= link_to(project.title, project_path(project)) %></h5>
+	                  </div>
+	              </div>
+	          </div>
+	      </div>
+	    <% end %>
 		</div>
+		<hr>
+		<p class="text-center"><%= link_to("更多项目", projects_path) %></p>
 	</div>
 
 	<div class="index-ads">
