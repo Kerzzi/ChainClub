@@ -1,12 +1,12 @@
 class Admin::TopicsController < Admin::BaseController
   def index
-    @topics = Topic.all.paginate(:page => params[:page], :per_page => 20) 
+    @topics = Topic.all.paginate(:page => params[:page], :per_page => 20)
   end
 
   def show
     @topic = Topic.find(params[:id])
   end
-  
+
   def node
     @node = Node.find(params[:id])
     @topics = @node.topics.all
@@ -31,9 +31,11 @@ class Admin::TopicsController < Admin::BaseController
 
   def create
     @topic = Topic.new(params[:topic].permit!)
+    @topic.user_id = current_user.id
+    @topic.node_id = params[:node] || topic_params[:node_id]
 
     if @topic.save
-      redirect_to(admin_topics_path, notice: "Topic was successfully created.")
+      redirect_to(admin_topics_path, notice: "话题创建成功！")
     else
       render action: "new"
     end
@@ -42,7 +44,7 @@ class Admin::TopicsController < Admin::BaseController
   def update
     @topic = Topic.find(params[:id])
     if @topic.update(params[:topic].permit!)
-      redirect_to(admin_topics_path, notice: "Topic was successfully updated.")
+      redirect_to(admin_topics_path, notice: "该话题已更新成功!")
     else
       render action: "edit"
     end

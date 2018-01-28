@@ -12,12 +12,12 @@
           <input type="text" name="login" class="form-control" value="<%= params[:login] %>" placeholder="用户名" />
         </div>
         <button class="btn btn-default">搜索</button>
-        <!-- <%= link_to("新增话题", new_admin_topic_path, class: "btn btn-success") %> -->
+        <%= link_to("新增话题", new_admin_topic_path, class: "btn btn-success") %>
       </form>
     </div>
 
     <br>
-    
+
     <%= form_tag bulk_update_admin_topics_path, :class => "form-inline" do %>
       <table class="table table-bordered table-striped table-condensed">
         <tr class="head">
@@ -35,7 +35,7 @@
           <td><%= check_box_tag "ids[]", topic.id %></td>
           <td class="first"><%= topic.id %></td>
           <td>
-            <%= t(topic.status, :scope => "topic.status") %> · 
+            <%= t(topic.status, :scope => "topic.status") %> ·
             <%= link_to truncate(topic.title, length: 30), topic, target: "_blank" %>
           </td>
           <td><%= topic.node_name %></td>
@@ -51,7 +51,7 @@
       </table>
       <p><%= submit_tag "批次删除", :class => "btn btn-danger", :data => { :confirm => "Are you sure?" } %></p>
     <% end %>
-    
+
     <div class="text-center">
       <%= will_paginate @topics %>
     </div>

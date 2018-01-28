@@ -58,12 +58,12 @@ class TopicsController < ApplicationController
     @topic.node_id = params[:node] || topic_params[:node_id]
 
     if @topic.save
-      redirect_to topics_path
+      redirect_to topics_path, notice: "话题创建成功！"
     else
       render :new
     end
   end
-  
+
 
 
   def update
@@ -72,7 +72,7 @@ class TopicsController < ApplicationController
     @topic.node_id = topic_params[:node_id]
 
     if @topic.update(topic_params)
-      redirect_to topic_path(@topic), notice: "该提问已更新成功!"
+      redirect_to topic_path(@topic), notice: "该话题已更新成功!"
     else
       render :edit
     end
@@ -91,7 +91,7 @@ class TopicsController < ApplicationController
 
     if !current_user.is_fan_of?(@topic)
       current_user.like_topic!(@topic)
-      
+
     end
       redirect_to topic_path(@topic)
   end
@@ -101,7 +101,7 @@ class TopicsController < ApplicationController
 
     if current_user.is_fan_of?(@topic)
       current_user.unlike_topic!(@topic)
-      
+
     end
       redirect_to topic_path(@topic)
   end

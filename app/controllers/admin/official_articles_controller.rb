@@ -2,7 +2,7 @@ class Admin::OfficialArticlesController < Admin::BaseController
   before_action :require_editor!
 
   def index
-    @official_articles = OfficialArticle.all.paginate(:page => params[:page], :per_page => 5)
+    @official_articles = OfficialArticle.all.paginate(:page => params[:page], :per_page => 15)
   end
 
   def show
@@ -16,6 +16,8 @@ class Admin::OfficialArticlesController < Admin::BaseController
 
   def create
     @official_article = OfficialArticle.new(official_article_params)
+    @official_article.user = current_user
+
     if @official_article.save
       redirect_to admin_official_articles_path
     else
