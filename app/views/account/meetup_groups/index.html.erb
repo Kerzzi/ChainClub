@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="row show-content">
+    <table class="table">
+      <%= render "common/account_menu" %>
+    </table>
+    <div class="col-md-12">
+      <table class="table table-hover ">
+        <thead>
+          <tr>
+            <th colspan="5" class="text-center">我发起的活动</th>
+          </tr>
+          <tr class="warning">
+            <th>活动名称</th>
+            <th>线上/线下</th>
+            <th>活动城市</th>
+            <th>活动地点</th>
+            <th>活动时间</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @meetup_groups.each do |meetup_group| %>
+            <tr>
+              <td> <%= link_to(meetup_group.title, meetup_group_path(meetup_group)) %> </td>
+              <td> <%= t(meetup_group.meetup_type, :scope => "meetup_group.meetup_type") %></td>
+              <td> <%= meetup_group.city %> </td>
+              <td> <%= meetup_group.address %> </td>
+              <td> <%= meetup_group.activity_time %> </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    </div>
+
+    <div class="col-md-12">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th colspan="5" class="text-center">我收藏的活动</th>
+          </tr>
+          <tr class="warning">
+            <tr class="warning">
+              <th>活动名称</th>
+              <th>线上/线下</th>
+              <th>活动城市</th>
+              <th>活动地点</th>
+              <th>活动时间</th>
+            </tr>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @meetup_groups.each do |meetup_group| %>
+            <tr>
+              <td> <%= link_to(meetup_group.title, meetup_group_path(meetup_group)) %> </td>
+              <td> <%= t(meetup_group.meetup_type, :scope => "meetup_group.meetup_type") %></td>
+              <td> <%= meetup_group.city %> </td>
+              <td> <%= meetup_group.address %> </td>
+              <td> <%= meetup_group.activity_time %> </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
