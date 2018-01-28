@@ -6,10 +6,9 @@ class WelcomeController < ApplicationController
     @internship_jobs = Job.published.recent.internship_job.paginate(:page => params[:page], :per_page => 3)
     @fulltime_jobs = Job.published.recent.fulltime_job.paginate(:page => params[:page], :per_page => 3)
 
-
   end
 
   def about
-
+    # render layout: false
   end
 end
