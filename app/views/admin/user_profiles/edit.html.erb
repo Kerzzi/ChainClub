@@ -35,37 +35,37 @@
     <%= f.label "职业" %>
     <%= f.text_field :occupation, :class => "form-control" %>
   </div>
-  
+
   <div class="form-group">
     <%= f.label "职位" %>
     <%= f.text_field :position, :class => "form-control" %>
   </div>
-  
+
   <div class="form-group">
     <%= f.label "礼品接收地址" %>
     <%= f.text_field :address, :class => "form-control" %>
   </div>
-  
+
   <div class="form-group">
     <%= f.label "QQ" %>
     <%= f.text_field :qq, :class => "form-control" %>
   </div>
-  
+
   <div class="form-group">
     <%= f.label "Github" %>
     <%= f.text_field :github, :class => "form-control" %>
   </div>
-  
+
   <div class="form-group">
     <%= f.label "微博" %>
     <%= f.text_field :weibo, :class => "form-control" %>
   </div>
-  
+
   <div class="form-group">
     <%= f.label "微信" %>
     <%= f.text_field :wechat, :class => "form-control" %>
-  </div>  
-  
+  </div>
+
   <div class="form-group">
     <%= f.label "博客" %>
     <%= f.text_area :bio, :class => "form-control" %>
@@ -77,9 +77,14 @@
   </div>
 
   <div class="form-group">
-    <%= f.label "个人简介" %>
-    <%= f.text_area :introduce, :class => "form-control" %>
-  </div>  
+    <%= f.label "手机号码" %>
+    <%= f.text_area :phone, :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label "邮政编码" %>
+    <%= f.text_area :postal_code, :class => "form-control" %>
+  </div>
 
   <div class="form-group">
     <%= f.submit "提交", :class => "btn btn-primary" %>
