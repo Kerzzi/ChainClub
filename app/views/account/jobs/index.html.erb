@@ -1,0 +1,66 @@
+<div class="container">
+  <div class="row show-content">
+    <table class="table">
+      <%= render "common/account_menu" %>
+    </table>
+    <div class="col-md-12">
+      <table class="table table-hover ">
+        <thead>
+          <tr>
+            <th colspan="5" class="text-center">我发布的工作</th>
+          </tr>
+          <tr class="warning">
+            <th>工作名称</th>
+            <th>工作类型</th>
+            <th>发布方</th>
+            <th>发布时间</th>
+            <th>截止日期</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @jobs.each do |job| %>
+            <tr>
+              <td> <%= link_to(job.title, job_path(job)) %> </td>
+              <td><span class="label label-success"><%= t(job.category, :scope => "job.category") %></span></td>
+              <td> <%= job.publisher %> </td>
+              <td> <%= job.created_at %> </td>
+              <td> <%= job.deadline %> </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    </div>
+
+    <div class="col-md-12">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th colspan="5" class="text-center">我收藏的工作</th>
+          </tr>
+          <tr class="warning">
+            <th>工作名称</th>
+            <th>工作类型</th>
+            <th>发布方</th>
+            <th>发布时间</th>
+            <th>截止日期</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @jobs.each do |job| %>
+            <tr>
+              <td> <%= link_to(job.title, job_path(job)) %> </td>
+              <td><span class="label label-success"><%= t(job.category, :scope => "job.category") %></span></td>
+              <td> <%= job.publisher %> </td>
+              <td> <%= job.created_at %> </td>
+              <td> <%= job.deadline %> </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>

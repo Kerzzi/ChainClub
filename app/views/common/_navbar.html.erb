@@ -22,10 +22,10 @@
                   <li><%= link_to("活动", meetup_groups_path) %></li>
                   <li><%= link_to("机会", jobs_path) %></li>
                   <li><%= link_to("导航", sites_path) %></li>
-                                    
+
 
                   <li class="dropdown mega-dropdown">
-                    <a href="<%= sites_path %>" class="dropdown-toggle" data-toggle="dropdown">推广<span class="caret"></span></a>				
+                    <a href="<%= sites_path %>" class="dropdown-toggle" data-toggle="dropdown">推广<span class="caret"></span></a>
                     <ul class="dropdown-menu mega-dropdown-menu">
                       <li class="col-sm-3">
                         <ul>
@@ -46,8 +46,8 @@
                         <li class="dropdown-header">项目</li>
                         <li><a href="https://loopring.org">路印:新一代区块链资产交易协议和交易所</a></li>
                         <li><a href="http://www.asch.so/">阿希 XAS:分布式的区块链应用平台</a></li>
-                        <li><a href="http://oraclechain.io/">欧链:全球第一个区块链生态Oracle(预言机)</a></li>                            
-                        <li><a href="https://eos.io/">柚子 EOS</a></li>							
+                        <li><a href="http://oraclechain.io/">欧链:全球第一个区块链生态Oracle(预言机)</a></li>
+                        <li><a href="https://eos.io/">柚子 EOS</a></li>
                       </ul>
                       </li>
                       <li class="col-sm-3">
@@ -56,30 +56,30 @@
                           <li><a href="https://blockchain.info/">比特币BTC区块查询</a></li>
                           <li><a href="https://etherscan.io/">以太坊ETH区块查询</a></li>
                           <li><a href="https://blockdozer.com/">BCC BCH区块查询</a></li>
-                          <li><a href="https://neotracker.io/">小蚁股NEO区块查询</a></li>                         
+                          <li><a href="https://neotracker.io/">小蚁股NEO区块查询</a></li>
                       </ul>
                       </li>
-                      
+
                       <li class="col-sm-3">
                         <ul>
-                          <li class="dropdown-header">广告</li>                            
+                          <li class="dropdown-header">广告</li>
                             <div id="womenCollection" class="carousel slide" data-ride="carousel">
                               <div class="carousel-inner">
                                 <div class="item active">
                                     <a href="#"><img src="http://placehold.it/254x150/3498db/f5f5f5/&text=New+Collection" class="img-responsive" alt="product 1"></a>
-                                    <h4><small>问道区块链</small></h4>                                        
-                                    <button class="btn btn-primary" type="button">199 元</button> <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-heart"></span> 立即报名</button>       
+                                    <h4><small>问道区块链</small></h4>
+                                    <button class="btn btn-primary" type="button">199 元</button> <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-heart"></span> 立即报名</button>
                                 </div><!-- End Item -->
                                 <div class="item">
                                     <a href="#"><img src="http://placehold.it/254x150/ff3546/f5f5f5/&text=New+Collection" class="img-responsive" alt="product 2"></a>
-                                    <h4><small>广告口号，图片大小254x150</small></h4>                                        
-                                    <button class="btn btn-danger" type="button">9,99 元</button> <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-heart"></span> 立即报名</button>        
+                                    <h4><small>广告口号，图片大小254x150</small></h4>
+                                    <button class="btn btn-danger" type="button">9,99 元</button> <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-heart"></span> 立即报名</button>
                                 </div><!-- End Item -->
                                 <div class="item">
                                     <a href="#"><img src="http://placehold.it/254x150/2ecc71/f5f5f5/&text=New+Collection" class="img-responsive" alt="product 3"></a>
-                                    <h4><small>广告口号，图片大小254x150</small></h4>                                        
-                                    <button class="btn btn-success" type="button">49 元</button> <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-heart"></span> 立即报名</button>      
-                                </div><!-- End Item -->                                
+                                    <h4><small>广告口号，图片大小254x150</small></h4>
+                                    <button class="btn btn-success" type="button">49 元</button> <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-heart"></span> 立即报名</button>
+                                </div><!-- End Item -->
                               </div><!-- End Carousel Inner -->
                               <!-- Controls -->
                               <a class="left carousel-control" href="#womenCollection" role="button" data-slide="prev">
@@ -95,7 +95,7 @@
                             <li><a href="<%= sites_path %>">全部网址 <span class="glyphicon glyphicon-chevron-right pull-right"></span></a></li>
                         </ul>
                       </li>
-                    </ul>				
+                    </ul>
                   </li><!-- mega-dropdown -->
                 </ul>
 
@@ -110,17 +110,14 @@
                           <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
-                          
+
                           <% if current_user.is_editor? %>
                             <li><%= link_to("后台管理", admin_root_path) %></li>
+                            <li role="separator" class="divider"></li>
                           <% end %>
-                          <li><%= link_to('我的个人资料', user_path) %></li>
-                          <li><%= link_to('个人资料设置', setting_path) %></li>
-                          <li><%= link_to('修改个人资料', edit_user_path) %></li>
+                          <li><%= link_to('个人主页', user_path) %></li>
+                          <li><%= link_to('账户设置', account_users_path) %></li>
                           <li role="separator" class="divider"></li>
-                          <li> <%= link_to("My Groups", account_groups_path) %></li>
-                          <li> <%= link_to("My Posts", account_posts_path) %></li>
-                          <li class="divider"> </li>
 
                           <li><%= link_to(content_tag(:i,"退出", class: 'fa fa-sign-out'), destroy_user_session_path, method: :delete) %></li>
                         </ul>

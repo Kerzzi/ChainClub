@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180123150753) do
+ActiveRecord::Schema.define(version: 20180128102836) do
 
   create_table "actions", force: :cascade do |t|
     t.string "action_type", null: false
@@ -34,7 +34,6 @@ ActiveRecord::Schema.define(version: 20180123150753) do
     t.text "body_html"
     t.integer "state"
     t.integer "liked_user_ids"
-
     t.index ["topic_id"], name: "index_answers_on_topic_id"
     t.index ["user_id"], name: "index_answers_on_user_id"
   end
@@ -189,9 +188,10 @@ ActiveRecord::Schema.define(version: 20180123150753) do
     t.integer "qq"
     t.text "bio"
     t.text "specialty"
-    t.text "introduce"
+    t.text "postal_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "phone"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
@@ -283,6 +283,7 @@ ActiveRecord::Schema.define(version: 20180123150753) do
     t.integer "last_active_mark"
     t.integer "stars_count", default: 0
     t.string "status", default: "public"
+    t.index ["node_id"], name: "index_topics_on_node_id"
     t.index ["user_id"], name: "index_topics_on_user_id"
   end
 

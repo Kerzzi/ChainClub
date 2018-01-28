@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
   root 'welcome#index'
+
+  get 'welcome/about'
+
   devise_for :users
   resource :user
 
@@ -101,7 +104,6 @@ Rails.application.routes.draw do
 
   namespace :account do
     resources :users
-    resources :profiles
     resources :groups
     resources :posts
     resources :topics

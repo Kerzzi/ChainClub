@@ -1,12 +1,11 @@
 <thead class="account-menu">
   <tr>
-    <th><%= link_to(content_tag(:i," 基本信息", class: 'fa fa-user-circle-o'), account_users_path) %></th>
-    <th><%= link_to(content_tag(:i," 详细资料", class: 'fa fa-address-card-o'), account_profiles_path) %></th>
+    <th><%= link_to(content_tag(:i," 个人资料", class: 'fa fa-address-card-o'), account_users_path) %></th>
     <th><%= link_to(content_tag(:i," 修改密码", class: 'fa fa-key'), account_passwords_path) %></th>
     <th><%= link_to(content_tag(:i," 我的小组", class: 'fa fa-users'), account_groups_path) %></th>
     <th><%= link_to(content_tag(:i," 我的小组文章", class: 'fa fa-file-text-o'), account_posts_path) %></th>
     <th><%= link_to(content_tag(:i," 我的话题", class: 'fa fa-comments-o'), topics_path) %></th>
-    <th><%= link_to(content_tag(:i," 我的工作", class: 'fa fa-suitcase'), topics_path) %></th>
+    <th><%= link_to(content_tag(:i," 我的工作", class: 'fa fa-suitcase'), account_jobs_path) %></th>
     <th><%= link_to(content_tag(:i," 我的活动", class: 'fa fa-life-ring'), topics_path) %></th>
   </tr>
 </thead>

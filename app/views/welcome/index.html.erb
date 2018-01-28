@@ -32,7 +32,7 @@
 			<a class="tool-item" href="/meetup_groups"><img src="/images/home_tool9.png"><p class="title ellipsis">活动</p></a>
 			<a class="tool-item" href="/jobs"><img src="/images/home_tool4.png"><p class="title ellipsis">机会</p></a>
 			<a class="tool-item" href="/sites"><img src="/images/home_tool6.png"><p class="title ellipsis">导航</p></a>
-			<a class="tool-item" href="/"><img src="/images/home_tool8.png"><p class="title ellipsis">QYB</p></a>
+			<a class="tool-item" href="/welcome/about"><img src="/images/home_tool8.png"><p class="title ellipsis">关于</p></a>
 		</div>
 	</div>
 </div>
@@ -48,14 +48,14 @@
 						<span><a href="/official_articles"><img src="/images/home_tool2.png"></a> </span><span>  最新资讯 </span><a class="pull-right" href="/official_articles">更多</a>
 					</div>
 				</div>
-			
-			
+
+
 				<div class="panel-body">
-					
+
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="col-md-6">
 			<div class="panel panel-default">
 				<div class="panel-header">
@@ -63,22 +63,22 @@
 						<span><a href="/topics"><img src="/images/home_tool2.png"></a> </span><span>  热门话题 </span><a class="pull-right" href="/topics">更多</a>
 					</div>
 				</div>
-			
-			
+
+
 				<div class="panel-body">
 
 				</div>
 			</div>
 		</div>
 	</div>
-		
+
 	<div class="panel panel-default">
 		<div class="panel-header">
 			<div class="row">
 				<span><a href="/topics"><img src="/images/home_tool5.png"></a> </span><span>  社区 </span>
 			</div>
 		</div>
-		
+
 		<div class="panel-body">
 			社区话题
 			<hr>
@@ -91,40 +91,40 @@
 				<span><a href="/groups"><img src="/images/home_tool7.png"></a> </span><span>  小组 </span>
 			</div>
 		</div>
-		
+
 		<div class="panel-body">
 			社区话题
 			<hr>
 		</div>
 	</div>
-	
+
 	<div class="panel panel-default">
 		<div class="panel-header">
 			<div class="row">
 				<span><a href="/groups"><img src="/images/home_tool1.png"></a> </span><span>  项目评级 </span>
 			</div>
 		</div>
-		
+
 		<div class="panel-body">
 			社区话题
 			<hr>
 		</div>
 	</div>
-	
+
 	<div class="index-ads">
 		放置一则广告
 		<hr>
 	</div>
-	
 
-	
+
+
 	<div class="panel panel-default">
 		<div class="panel-header">
 			<div class="row">
 				<span><a href="/groups"><img src="/images/home_tool9.png"></a> </span><span>  活动 </span>
 			</div>
 		</div>
-		
+
 		<div class="panel-body">
 			<div class="row home-meetup">
 				<div class="col-md-6">
@@ -135,13 +135,13 @@
 							<p><i class="fa fa-street-view" aria-hidden="true"></i> <%= meetup_group.city %></p>
 							<p><i class="fa fa-clock-o" aria-hidden="true"></i> <%= meetup_group.activity_time %></p>
 							<p><span class="label label-success"><%= t(meetup_group.meetup_type, :scope => "meetup_group.meetup_type") %></span></p>
-						</div>	
+						</div>
 						<hr>
 	        <% end %>
-					<p class="text-center"><%= link_to("更多线下活动", meetup_groups_path(:order => "by_offline")) %></p>	
-				</div>	
-					
-					
+					<p class="text-center"><%= link_to("更多线下活动", meetup_groups_path(:order => "by_offline")) %></p>
+				</div>
+
+
 				<div class="col-md-6">
 					<% @offline_meetups.each do |meetup_group| %>
 						<div class="job-item">
@@ -150,10 +150,10 @@
 							<p><i class="fa fa-street-view" aria-hidden="true"></i> <%= meetup_group.city %></p>
 							<p><i class="fa fa-clock-o" aria-hidden="true"></i> <%= meetup_group.activity_time %></p>
 							<p><span class="label label-success"><%= t(meetup_group.meetup_type, :scope => "meetup_group.meetup_type") %></span></p>
-						</div>	
+						</div>
 						<hr>
 	        <% end %>
-					<p class="text-center"><%= link_to("更多线上活动", meetup_groups_path(:order => "by_online")) %></p>	
+					<p class="text-center"><%= link_to("更多线上活动", meetup_groups_path(:order => "by_online")) %></p>
 				</div>
 			</div>
 
@@ -167,7 +167,7 @@
 				<span><a href="/groups"><img src="/images/home_tool3.png"></a> </span><span>  课程 </span>
 			</div>
 		</div>
-		
+
 		<div class="panel-body">
 			最新或者推荐课程
 			<hr>
@@ -180,7 +180,7 @@
 				<span><a href="/groups"><img src="/images/home_tool4.png"></a> </span><span>机会</span>
 			</div>
 		</div>
-		
+
 		<div class="panel-body">
 			<div class="row home-job">
 				<div class="col-md-6">
@@ -196,7 +196,7 @@
 		      <% end %>
 					<p class="text-center"><%= link_to("更多实习机会", jobs_path(:order => "by_internship")) %></p>
 				</div>
-				
+
 				<div class="col-md-6">
 					<% @fulltime_jobs.each do |job| %>
 		        <div class="job-item">
@@ -209,7 +209,7 @@
 		        </div>
 		      <% end %>
 					<p class="text-center"><%= link_to("更多全职工作", jobs_path(:order => "by_fulltime")) %></p>
-				</div>	
+				</div>
 			</div>
 		</div>
 	</div>
