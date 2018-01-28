@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row show-content">
+    <table class="table">
+      <%= render "common/account_menu" %>
+    </table>
+    <div class="col-md-6">
+
+      <div class="alert alert-warning">注意！更新密码以后需要重新登陆。</div>
+
+        <%= simple_form_for(@user, url: setting_path, html: { method: :put }) do |f| %>
+
+          <input type="hidden" name="by" value="password" />
+          <%= f.input :current_password %>
+          <%= f.input :password %>
+          <%= f.input :password_confirmation %>
+          <div class="form-actions hide-ios">
+            <%= f.submit "更新密码", disable_with: "Submiting...", class: "btn btn-success"%>
+          </div>
+        <% end %>
+
+    </div>
+  </div>
+</div>

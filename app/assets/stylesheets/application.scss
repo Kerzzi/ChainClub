@@ -72,7 +72,7 @@ body {
 
  .app-body{
    padding: 0px 56px 0px 65px; //前台页面统一宽度
- }  
+ }
 
  .show-content{
    margin: 10px auto;
@@ -80,7 +80,7 @@ body {
    border-radius: 1px;
    box-shadow: 1px 2px 4px 0 rgba(0,0,0,0.25);
    min-height: 950px;
-   background-color: #FAFAFA;
+   background-color: #FFF;
  }
 
  .side-content{
@@ -89,7 +89,7 @@ body {
    border-radius: 1px;
    box-shadow: 1px 2px 4px 0 rgba(0,0,0,0.25);
    // min-height: 950px;
-   background-color: #FAFAFA;
+   background-color: #FFF;
    hr{
      // height : 1.5px; // 高度
      background : #263238;// 背景色，一般来说设置了高度之后背景色默认白色了，所以加一个背景色为黑色
@@ -103,7 +103,7 @@ body {
 
   height: 170px;
 	width: 100%;
-	
+
   background-image: url(https://ww4.sinaimg.cn/large/006tNc79gy1fnoi97a3x9j31hc0e6dg0.jpg);
   background-repeat:no-repeat;  //背景图片不重复
   background-size: cover; //背景全覆盖，相当于宽度100%
@@ -111,7 +111,7 @@ body {
   color: #fff;
   .search-input{
     position:relative;
-    top: 35%; 
+    top: 35%;
     transform: translateY(-10%);  //垂直居中
   }
 }
@@ -120,7 +120,7 @@ body {
    .all_image_css {
      transition: 0.8s;
    }
-   
+
    .ads_image_css{
      img {
        max-width:100%; height:auto;         //重要样式代码，需要配合application.js的自适应代码块一起使用。可以实现图片按照divbox大小自动伸缩，从而实现响应式布局。
@@ -128,7 +128,7 @@ body {
    }
 
 
-  /* 头像的圆形图片格式 */ 
+  /* 头像的圆形图片格式 */
   .avatar-80{
     width: 80px;
   }
@@ -136,16 +136,16 @@ body {
     width: 50px;
   }
   .avatar-group-index{
-    position:relative;  
-    width:100%;  
-    height:0;  
-    padding-top:100%;  
+    position:relative;
+    width:100%;
+    height:0;
+    padding-top:100%;
     img{
-      position:absolute;  
-      top:0;  
-      left:0;  
-      width:100%;  
-      height:100%; 
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
       border-radius:50%;
     }
   }
@@ -173,7 +173,7 @@ body {
 
 .app-navbar{
   padding: 0px 56px 0px 65px; //拉宽前台navbar
-}  
+}
 
 .navbar-default{
   color: #000 !important;
@@ -243,6 +243,9 @@ body {
     opacity: 0.7;
     transition: 0.8s;
   }
+
+
+
 
 // mega-dropdown
 

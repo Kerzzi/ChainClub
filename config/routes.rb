@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       get :search
     end
   end
-  
+
   resources :nodes do
     member do
       post :block
@@ -30,9 +30,9 @@ Rails.application.routes.draw do
       get :reward
     end
   end
-  
+
   get 'topics/node:id', to: 'topics#node', as: 'node_topics'
-  
+
   resources :topics do
     member do
       post :answer
@@ -49,7 +49,7 @@ Rails.application.routes.draw do
       get :search
       get :no_answer
       get :popular
-      
+
       get :favorites
       # post :preview
     end
@@ -98,12 +98,16 @@ Rails.application.routes.draw do
       get :search
     end
   end
-  
+
   namespace :account do
     resources :groups
     resources :posts
+    resources :topics
+    resources :jobs
+    resources :meetup_groups
+    resources :passwords
   end
-  
+
   namespace :admin do
     root to: 'home#index', as: 'root'
     resources :groups do

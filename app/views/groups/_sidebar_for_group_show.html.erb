@@ -2,16 +2,16 @@
 <div class="panel panel-default">
   <div class="panel-body">
     加上用户的头像等
-    <%= link_to t('我的小组主页'), new_group_path, class: 'btn btn-primary btn-block' %>  
+    <%= link_to t('我的小组主页'), new_group_path, class: 'btn btn-primary btn-block' %>
   </div>
 </div>
 
 <div class="panel panel-default">
   <div class="panel-body">
     <% if current_user && current_user == @group.user %>
-      <%= link_to("编辑小组信息", edit_group_path(@group), class: "btn btn-primary btn-block")%>
+      <%= link_to("编辑小组信息", edit_group_path(@group), class: "btn btn-default btn-block")%>
     <% end %>
-    <%= link_to t('我要发言'), new_group_post_path(@group), class: 'btn btn-primary btn-block' %>  
+    <%= link_to t('我要发言'), new_group_post_path(@group), class: 'btn btn-default btn-block' %>  
   </div>
 </div>
 
@@ -31,7 +31,7 @@
 <div class="panel panel-default">
   <div class="panel-heading">这个小组的成员也喜欢</div>
   <div class="panel-body">
-    做个随机推荐 
+    做个随机推荐
   </div>
 </div>
 
@@ -52,6 +52,6 @@
 
 <div class="panel panel-default">
   <div class="panel-body">
-    <%= link_to t('申请创建小组'), new_group_path, class: 'btn btn-danger btn-block' %>  
+    <%= link_to t('申请创建小组'), new_group_path, class: 'btn btn-danger btn-block' %>
   </div>
 </div>

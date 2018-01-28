@@ -1,26 +1,71 @@
-<div class="col-md-12">
+<div class="container">
+  <div class="row show-content">
+    <table class="table">
+      <%= render "common/account_menu" %>
+    </table>
+    <div class="col-md-12">
+      <table class="table table-hover ">
+        <thead>
+          <tr>
+            <th colspan="6" class="text-center">我发布的文章</th>
+          </tr>
+          <tr class="warning">
+            <th>文章标题</th>
+            <th>归属小组</th>
+            <th>评论数量</th>
+            <th>收藏数量</th>
+            <th>更新时间</th>
+            <th>管理操作</th>
+          </tr>
+        </thead>
 
-  <h2 class="text-center"> 我发表过的文章 </h2>
+        <tbody>
+          <% @posts.each do |post| %>
+            <tr>
+              <td> <%= link_to(post.title, group_post_path(post.group,post)) %> </td>
+              <td> <%= link_to(post.group.title, group_path(post.group)) %> </td>
+              <td> <%= post.post_comments.count %> </td>
+              <td> <%= post.post_comments.count %> </td>
+              <td> <%= post.updated_at %> </td>
+              <td>
+                <%= link_to "", edit_group_post_path(post.group,post), class: "fa fa-pencil" %>
+                <%= link_to "", group_post_path(post.group,post), 'data-confirm' => '确定删除?', method: :delete, class: "fa fa-trash" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
 
-  <table class="table">
-    <thead>
-      <tr>
-        <th> Title </th>
-        <th> Group Name </th>
-        <th> Last Update </th>
-        <th colspan="2"></th>
-      </tr>
-    </thead>
+    </div>
 
-    <tbody>
-      <% @posts.each do |post| %>
-        <tr>
-          <td> <%= post.title %> </td>
-          <td> <%= post.group.title %> </td>
-          <td> <%= post.updated_at %> </td>
-          <td> <%= link_to('Delete', group_post_path(post.group, post), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default btn-xs") %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+    <div class="col-md-12">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th colspan="5" class="text-center">我收藏的文章</th>
+          </tr>
+          <tr class="warning">
+            <th>文章标题</th>
+            <th>归属小组</th>
+            <th>评论数量</th>
+            <th>收藏数量</th>
+            <th>更新时间</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @posts.each do |post| %>
+            <tr>
+              <td> <%= link_to(post.title, group_post_path(post.group,post)) %> </td>
+              <td> <%= link_to(post.group.title, group_path(post.group)) %> </td>
+              <td> <%= post.post_comments.count %> </td>
+              <td> <%= post.post_comments.count %> </td>
+              <td> <%= post.updated_at %> </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
 </div>
