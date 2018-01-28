@@ -100,6 +100,8 @@ Rails.application.routes.draw do
   end
 
   namespace :account do
+    resources :users
+    resources :profiles
     resources :groups
     resources :posts
     resources :topics

@@ -1,0 +1,91 @@
+<div class="container">
+  <div class="row show-content">
+    <table class="table">
+      <%= render "common/account_menu" %>
+    </table>
+    <div class="col-md-6">
+
+        <%= simple_form_for [:account,@user] do |f| %>
+          <div class="alert alert-warning">完善基本信息，让更多的人认识你！</div>
+          <div class="form-group">
+            <%= f.input :avatar, :label =>"头像", as: :file %>
+            <% if f.object.avatar.present? %>
+              <label>
+                <%= f.check_box :remove_avatar %> 删除图档
+              </label>
+              <%= link_to f.object.avatar.filename, f.object.avatar.url, :target => "_blank" %>
+            <% end %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label "所在时区" %>
+            <%= f.time_zone_select :time_zone %>
+          </div>
+
+          <%= f.input :username, :label =>"用户名" %>
+
+          <%= f.input :summary, as: :text, input_html: { rows: "6" }, :label =>"个人简介" %>
+
+
+          <%= f.fields_for :profile do |ff| %>
+
+            <%= ff.input :location, :label =>"所在城市" %>
+
+            <div class="form-group">
+              <%= ff.label "生日" %>
+              <%= ff.text_field :birthday, :class => "form-control" %>
+            </div>
+
+            <%= ff.input :education, :label =>"教育程度" %>
+            <%= ff.input :school, :label =>"毕业学校" %>
+            <%= ff.input :company, :label =>"所在公司/组织" %>
+            <%= ff.input :occupation, :label =>"职业" %>
+            <%= ff.input :position, :label =>"职位" %>
+            <%= ff.input :specialty, :label =>"技能" %>
+
+          <% end %>
+
+
+          <div class="form-group">
+            <%= f.submit "更新信息", :class => "btn btn-success", data: { disable_with: "Submitting..." } %>
+          </div>
+
+        <% end %>
+    </div>
+
+    <div class="col-md-6">
+
+
+        <%= simple_form_for [:account,@user] do |f| %>
+
+          <%= f.fields_for :profile do |ff| %>
+
+            <div class="alert alert-warning">联系方式</div>
+
+            <%= ff.input :qq, :label =>"QQ号" %>
+            <%= ff.input :github, :label =>"Github" %>
+            <%= ff.input :weibo, :label =>"微博" %>
+            <%= ff.input :wechat, :label =>"微信" %>
+            <%= ff.input :bio, :label =>"博客" %>
+
+            <div class="alert alert-warning">以下信息用于通知重要信息以及寄送礼品/奖品(其他用户不可见)</div>
+
+            <%= ff.input :name, :label =>"真实姓名" %>
+            <%= ff.input :name, :label =>"手机号码" %>
+            <%= ff.input :address, :label =>"礼品接收地址" %>
+            <%= ff.input :introduce, :label =>"邮编" %>
+
+          <% end %>
+
+          <div class="form-group">
+            <%= f.submit "更新信息", :class => "btn btn-success", data: { disable_with: "Submitting..." } %>
+          </div>
+
+        <% end %>
+    </div>
+  </div>
+</div>
+
+<script>
+  $("#user_profile_attributes_birthday").datepicker({ format: "yyyy-mm-dd", language: "<%= I18n.locale %>" });
+</script>

@@ -2,18 +2,21 @@ class Account::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :find_user
 
+  def index
+
+  end
+
   def show
   end
 
   def edit
-    # 跟刚才后台情况一样，如果没有 @user.profile，要先新建一个
-    # unless @user.profile 等同于 if !@user.profile 或 if @user.profile.nil?
+
   end
 
   def update
     if @user.update(user_params)
       flash[:notice] = "修改成功"
-      redirect_to user_path
+      redirect_to account_users_path
     else
       render "edit"
     end
