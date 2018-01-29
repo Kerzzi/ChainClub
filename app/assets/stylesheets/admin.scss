@@ -101,82 +101,57 @@ body {
     height: 32px; //定制图片高度
 }
 
- /* footer */
+//footer样式设置
 
- .footer{
-     /* 和 navbar 一样，footer 也采用固定高度*/
-     /* 0 flex-grow, 0 flex-shrink, auto flex-basis */
-     flex: 0 0 auto;
-     width:100%;
-     text-align: center;
-     height: 240px;
-     background-color: #E0E0E0;
-     margin-bottom: auto;
-     padding: 15px 0;
-     color: #212121;
+.footer{
+    /* 和 navbar 一样，footer 也采用固定高度*/
+    /* 0 flex-grow, 0 flex-shrink, auto flex-basis */
+    flex: 0 0 auto;
+    width:100%;
+    text-align: center;
+    min-height: 220px;
+    padding-top: 15px;
+    background-color: #E0E0E0;
+    margin-bottom: auto;
+    color: #212121;
 
-     p{
-         font-size: 14px;
-         text-align: left;
-     }
+    p{
+        font-size: 14px;
+        text-align: left;
+    }
 
-     li{
-       margin-top: 5px;
-     }
+    li{
+      margin-top: 3px;
+    }
 
-     a{
-       text-decoration:none;
-       color: #616161;
-     }
-     a:hover,
-     a:active,
-     a:focus{
-       color: #424242;
-     }
+    a{
+      text-decoration:none;
+      color: #616161;
+    }
+    a:hover,
+    a:active,
+    a:focus{
+      color: #424242;
+    }
 
-     img{
-       width: 35px;
-       margin: 5px;
-     }
+    img{
+      width: 65px;
+      margin: 5px;
+    }
 
-     img:hover{
-       opacity: 0.75;
-     }
+    img:hover{
+      opacity: 0.75;
+    }
 
-     .footer-box{
-       text-align: left !important;
-       margin-top: 15px;
-       .icon{
-         margin-left: 7.5px;
-       }
-       i{
-         margin-right: 7.5px;
-       }
-     }
-
-     .footer-content{
-       font-size: 16px;
-       color: #616161;
-       letter-spacing: 1px;
-       margin-top: 10px;
-       font-weight: 200;
-
-       img{
-         width: 30px;
-         margin-left: 7.5px;
-         margin-right: -0.1px;
-       }
-     }
-     .copyright-info{
-       float: left;
-       color: #616161;
-     }
-     .legal-info{
-       float: right;
-       color: #9E9E9E;
-     }
- }
-
+    .copyright-info{
+      float: left;
+      color: #616161;
+    }
+    .legal-info{
+      float: right;
+      color: #9E9E9E;
+    }
+}
  /* end of footer */
 
 
