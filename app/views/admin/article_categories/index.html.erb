@@ -43,7 +43,9 @@
       <% end %>
     
       <div class="text-center">
-        <%= will_paginate @article_categories %>
+        <div class="text-center">
+          <%= will_paginate @article_categories, renderer: BootstrapPagination::Rails, :previous_label => t('上一页'), :next_label => t('下一页') %>
+        </div>
       </div>
     </div><!-- /admin_article_category -->
   </div><!-- /panel-body -->

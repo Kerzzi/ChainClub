@@ -3,6 +3,7 @@
     <table class="table">
       <%= render "common/account_menu" %>
     </table>
+    
     <div class="col-md-6">
       <table class="table table-hover ">
         <thead>
@@ -25,17 +26,17 @@
             </tr>
           <% end %>
         </tbody>
+        <div class="text-center">
+          <%= will_paginate @groups, renderer: BootstrapPagination::Rails, :previous_label => t('上一页'), :next_label => t('下一页') %>
+        </div>
       </table>
-
     </div>
 
     <div class="col-md-6">
       <table class="table table-hover">
         <thead>
           <tr>
-            <td></td>
-            <td class="text-center">我加入的小组</td>
-            <td></td>
+            <th colspan="5" class="text-center">我加入的小组</th>
           </tr>
           <tr class="warning">
             <th>小组名称</th>
@@ -54,6 +55,9 @@
           <% end %>
         </tbody>
       </table>
+      <div class="text-center">
+        <%= will_paginate @participated_groups, renderer: BootstrapPagination::Rails, :previous_label => t('上一页'), :next_label => t('下一页') %>
+      </div>
     </div>
 
   </div>

@@ -62,7 +62,7 @@
         <p><%= submit_tag "批次删除", :class => "btn btn-danger", :data => { :confirm => "Are you sure?" } %></p>
       <% end %>
       <div class="text-center">
-        <%= will_paginate @jobs %>
+        <%= will_paginate @jobs, renderer: BootstrapPagination::Rails, :previous_label => t('上一页'), :next_label => t('下一页') %>
       </div>
     </div><!-- /admin_jobs -->
   </div><!-- /panel-body -->

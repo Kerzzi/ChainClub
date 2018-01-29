@@ -30,7 +30,9 @@
           <% end %>
         </tbody>
       </table>
-
+      <div class="text-center">
+        <%= will_paginate @jobs, renderer: BootstrapPagination::Rails, :previous_label => t('上一页'), :next_label => t('下一页') %>
+      </div>
     </div>
 
     <div class="col-md-12">
@@ -60,6 +62,9 @@
           <% end %>
         </tbody>
       </table>
+      <div class="text-center">
+        <%= will_paginate @jobs, renderer: BootstrapPagination::Rails, :previous_label => t('上一页'), :next_label => t('下一页') %>
+      </div>
     </div>
 
   </div>

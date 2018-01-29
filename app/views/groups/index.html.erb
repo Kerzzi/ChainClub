@@ -31,7 +31,9 @@
             </span>
           </p>
         <% end %>
-
+        <div class="text-center">
+          <%= will_paginate @posts, renderer: BootstrapPagination::Rails, :previous_label => t('上一页'), :next_label => t('下一页') %>
+        </div>
       </div><!-- /panel-body -->
       
     </div>

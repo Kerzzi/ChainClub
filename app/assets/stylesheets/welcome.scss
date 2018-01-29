@@ -13,6 +13,13 @@
 
 // 首页轮播图
 
+.index-ads{
+  margin: -5px 0 15px 0;
+  img {
+    width:100%; height:200px;         //通用广告图片样式。
+    }
+}
+
 .slideshow {
     list-style: none;
     z-index: 1;

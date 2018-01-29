@@ -9,7 +9,7 @@ class GroupsController < ApplicationController
     @posts = case params[:order]
              when 'by_hot'
                #按评论数量排序,后期改为只比较最近一周的
-               Post.all.sort_by{|post| -post.post_comments.count}
+               Post.all.paginate(:page => params[:page], :per_page => 10).sort_by{|post| -post.post_comments.count}
              else
                Post.all.recent.paginate(:page => params[:page], :per_page => 10)
              end
