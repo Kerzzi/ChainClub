@@ -1,0 +1,36 @@
+<div class="panel panel-default">
+  <div class="panel-header">
+    <div class="row">
+      <span><a href="/groups"><img src="/images/home_tool1.png"></a> </span><span>  项目评级 </span>
+    </div>
+  </div>
+
+  <div class="panel-body">
+    <% @projects.each do |project| %>
+      <div class="col-xl-3 col-lg-2 col-md-2 col-sm-4 col-xs-4">
+          <div class="project-card">
+              <% if project.logo.present? %>
+                <%= link_to image_tag(project.logo.url(:projectlogo)),project_path(project), :target => "_blank" %>
+              <% else %>
+                <img src="https://inst.eecs.berkeley.edu/~cs194-26/fa14/upload/files/proj3/cs194-fi/images/warm_sky.jpg" alt="Ver post">
+              <% end %>
+              <div class="card-body secondbase">
+                  <h4 class="card-project-grade">
+                    <% if project.project_grade.present? %>
+                      <span class="label label-danger"><b>项目评分 <%=  project.project_grade.grade %>分</b></span>
+                    <% else %>
+                      <span class="label label-warning"><b>待评级</b></span>
+                    <% end %>
+                  </h4>
+
+                  <div class="card-project-title">
+                    <h5 class="text-center"><%= link_to(project.title, project_path(project)) %></h5>
+                  </div>
+              </div>
+          </div>
+      </div>
+    <% end %>
+  </div>
+  <hr>
+  <p class="text-center"><%= link_to("更多项目", projects_path) %></p>
+</div>

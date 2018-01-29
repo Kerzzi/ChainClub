@@ -1,0 +1,39 @@
+<div class="col-md-6">
+  <div class="panel panel-default">
+    <div class="panel-header">
+      <div class="row">
+        <span><a href="/official_articles"><img src="/images/home_tool2.png"></a> </span><span>  最新资讯 </span><a class="pull-right" href="/official_articles">更多</a>
+      </div>
+    </div>
+
+    <div class="panel-body">
+      <% @official_articles.each do |official_article| %>
+        <div class="official_article-item">
+          <h4><%= link_to(official_article.title, official_article_path(official_article)) %></h4>
+        </div>
+      <% end %>
+      <hr>
+      <p class="text-center"><%= link_to("更多最新资讯", official_articles_path) %></p>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-6">
+  <div class="panel panel-default">
+    <div class="panel-header">
+      <div class="row">
+        <span><a href="/topics"><img src="/images/home_tool2.png"></a> </span><span>  热门资讯 </span><a class="pull-right" href="/topics">更多</a>
+      </div>
+    </div>
+
+    <div class="panel-body">
+      <% @article_hots.each do |article_hot| %>
+        <div class="official_article-item">
+          <h4><%= link_to(article_hot.title, official_article_path(article_hot)) %></h4>
+        </div>
+      <% end %>
+      <hr>
+      <p class="text-center"><%= link_to("更多热门资讯", official_articles_path) %></p>
+    </div>
+  </div>
+</div>

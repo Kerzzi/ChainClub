@@ -1,0 +1,17 @@
+<div class="panel panel-default">
+  <div class="panel-header">
+    <div class="row">
+      <span><a href="/groups"><img src="/images/home_tool3.png"></a> </span><span>  课程 </span>
+    </div>
+  </div>
+
+  <div class="panel-body">
+    <% @courses.each do |course| %>
+      <div class="coursee-item">
+        <p><%= link_to(course.title, course_path(course)) %></p>
+      </div>
+    <% end %>
+    <hr>
+    <p class="text-center"><%= link_to("更多课程", courses_path) %></p>
+  </div>
+</div>

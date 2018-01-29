@@ -1,0 +1,31 @@
+<div class="panel panel-default">
+  <div class="panel-header">
+    <div class="row">
+      <span><a href="/groups"><img src="/images/home_tool7.png"></a> </span><span>  小组 </span>
+    </div>
+  </div>
+
+  <div class="panel-body">
+    <% @groups.each do |group| %>
+      <div class="col-xl-3 col-lg-2 col-md-2 col-sm-4 col-xs-4 group-item">
+        <div class="group-card">
+          <% if group.logo.present? %>
+            <%= link_to image_tag(group.logo.url(:group_index_logo)),group_path(group), :target => "_blank" %>
+          <% else %>
+            <img src="https://ww2.sinaimg.cn/large/006tKfTcly1fnt7p9w5h6j306o06owec.jpg" alt="group_logo">
+          <% end %>
+
+          <div class="group-card-title text-center">
+            <p style="overflow:hidden;"><%= link_to(group.title,group_path(group)) %></p>
+            <span>
+              <i class="fa fa-user-circle-o" aria-hidden="true"></i> <%= group.members.count %>
+            </span>
+          </div>
+
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <hr>
+  <p class="text-center"><%= link_to("更多小组", groups_path) %></p>
+</div>

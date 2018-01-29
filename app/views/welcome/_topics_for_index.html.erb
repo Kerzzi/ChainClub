@@ -1,0 +1,41 @@
+<div class="panel panel-default">
+  <div class="panel-header">
+    <div class="row">
+      <span><a href="/topics"><img src="/images/home_tool5.png"></a> </span><span>  社区 </span>
+    </div>
+  </div>
+
+  <div class="panel-body">
+    <% @topics.each do |topic| %>
+      <div class="topic media topic-<%= topic.id %>">
+        <div class="avatar media-left">
+          <img src= "<%= render_user_avatar(topic.user, 50) %>" style="width:50px; height:50px; border-radius: 50%;">
+        </div>
+        <div class="infos media-body">
+          <div class="title media-heading">
+
+              <%= topic.node.name %>
+              <%= link_to(topic.title, topic_path(topic)) %>
+
+
+              <i class="fa fa-angle-double-up" title="置顶"></i>
+
+          </div>
+          <div class="info">
+            <span class="name">
+              <%= topic.user.display_name %>
+            </span> • 发布于 <span><%= time_tag(topic.created_at) %></span>
+          </div>
+        </div>
+        <div class="count media-right">
+          <% if topic.answers.count > 0 %>
+          <span class="badge"><%= topic.answers.count %></span>
+
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+    <hr>
+    <p class="text-center"><%= link_to("更多话题", topics_path) %></p>
+  </div>
+</div>

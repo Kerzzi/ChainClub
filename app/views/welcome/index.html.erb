@@ -1,18 +1,17 @@
 <div class="">
 	<ul class="slideshow">
 			<li>
-					<!-- <h3>轮播图</h3> -->
-					<span>轮播图1</span>
+				<!-- <h3>轮播图</h3> -->
+				<span>轮播图1</span>
 			</li>
 			<li>
 				<span>轮播图2</span>
-
 			</li>
 			<li>
 				<span>轮播图3</span>
 			</li>
 			<li>
-					<span>轮播图4</span>
+				<span>轮播图4</span>
 			</li>
 	</ul>
 </div>
@@ -22,277 +21,25 @@
 </div>
 
 <div class="home-tool">
-	<div class="container">
-		<div class="row home-tool-box">
-			<a class="tool-item" href="/topics"><img src="/images/home_tool5.png"><p class="title ellipsis">社区</p></a>
-			<a class="tool-item" href="/official_articles"><img src="/images/home_tool2.png"><p class="title ellipsis">资讯</p></a>
-			<a class="tool-item" href="/projects"><img src="/images/home_tool1.png"><p class="title ellipsis">评级</p></a>
-			<a class="tool-item" href="/groups"><img src="/images/home_tool7.png"><p class="title ellipsis">小组</p></a>
-			<a class="tool-item" href="/courses"><img src="/images/home_tool3.png"><p class="title ellipsis">课程</p></a>
-			<a class="tool-item" href="/meetup_groups"><img src="/images/home_tool9.png"><p class="title ellipsis">活动</p></a>
-			<a class="tool-item" href="/jobs"><img src="/images/home_tool4.png"><p class="title ellipsis">机会</p></a>
-			<a class="tool-item" href="/sites"><img src="/images/home_tool6.png"><p class="title ellipsis">导航</p></a>
-			<a class="tool-item" href="/welcome/about"><img src="/images/home_tool8.png"><p class="title ellipsis">关于</p></a>
-		</div>
-	</div>
+	<%= render "home_tool" %>
 </div>
-
 
 <br>
 <div class="container">
 	<div class="row">
-		<div class="col-md-6">
-			<div class="panel panel-default">
-				<div class="panel-header">
-					<div class="row">
-						<span><a href="/official_articles"><img src="/images/home_tool2.png"></a> </span><span>  最新资讯 </span><a class="pull-right" href="/official_articles">更多</a>
-					</div>
-				</div>
-
-				<div class="panel-body">
-					<% @official_articles.each do |official_article| %>
-						<div class="official_article-item">
-							<h4><%= link_to(official_article.title, official_article_path(official_article)) %></h4>
-						</div>
-	        <% end %>
-					<hr>
-					<p class="text-center"><%= link_to("更多最新资讯", official_articles_path) %></p>
-				</div>
-			</div>
-		</div>
-
-		<div class="col-md-6">
-			<div class="panel panel-default">
-				<div class="panel-header">
-					<div class="row">
-						<span><a href="/topics"><img src="/images/home_tool2.png"></a> </span><span>  热门资讯 </span><a class="pull-right" href="/topics">更多</a>
-					</div>
-				</div>
-
-				<div class="panel-body">
-					<% @article_hots.each do |article_hot| %>
-						<div class="official_article-item">
-							<h4><%= link_to(article_hot.title, official_article_path(article_hot)) %></h4>
-						</div>
-	        <% end %>
-					<hr>
-					<p class="text-center"><%= link_to("更多热门资讯", official_articles_path) %></p>
-				</div>
-			</div>
-		</div>
+		<%= render "articles_for_index" %>
 	</div>
 
-	<div class="panel panel-default">
-		<div class="panel-header">
-			<div class="row">
-				<span><a href="/topics"><img src="/images/home_tool5.png"></a> </span><span>  社区 </span>
-			</div>
-		</div>
-
-		<div class="panel-body">
-			<% @topics.each do |topic| %>
-				<div class="topic media topic-<%= topic.id %>">
-					<div class="avatar media-left">
-						<img src= "<%= render_user_avatar(topic.user, 50) %>" style="width:50px; height:50px; border-radius: 50%;">
-					</div>
-					<div class="infos media-body">
-						<div class="title media-heading">
-
-								<%= topic.node.name %>
-								<%= link_to(topic.title, topic_path(topic)) %>
-
-
-								<i class="fa fa-angle-double-up" title="置顶"></i>
-
-						</div>
-						<div class="info">
-							<span class="name">
-								<%= topic.user.display_name %>
-							</span> • 发布于 <span><%= time_tag(topic.created_at) %></span>
-						</div>
-					</div>
-					<div class="count media-right">
-						<% if topic.answers.count > 0 %>
-						<span class="badge"><%= topic.answers.count %></span>
-
-						<% end %>
-					</div>
-				</div>
-			<% end %>
-			<hr>
-			<p class="text-center"><%= link_to("更多话题", topics_path) %></p>
-		</div>
-	</div>
-
-	<div class="panel panel-default">
-		<div class="panel-header">
-			<div class="row">
-				<span><a href="/groups"><img src="/images/home_tool7.png"></a> </span><span>  小组 </span>
-			</div>
-		</div>
-
-		<div class="panel-body">
-			<% @groups.each do |group| %>
-				<div class="col-xl-3 col-lg-2 col-md-2 col-sm-4 col-xs-4 group-item">
-				  <div class="group-card">
-				    <% if group.logo.present? %>
-				      <%= link_to image_tag(group.logo.url(:group_index_logo)),group_path(group), :target => "_blank" %>
-				    <% else %>
-				      <img src="https://ww2.sinaimg.cn/large/006tKfTcly1fnt7p9w5h6j306o06owec.jpg" alt="group_logo">
-				    <% end %>
-
-				    <div class="group-card-title text-center">
-				      <p style="overflow:hidden;"><%= link_to(group.title,group_path(group)) %></p>
-				      <span>
-				        <i class="fa fa-user-circle-o" aria-hidden="true"></i> <%= group.members.count %>
-				      </span>
-				    </div>
-
-				  </div>
-				</div>
-			<% end %>
-		</div>
-		<hr>
-		<p class="text-center"><%= link_to("更多小组", groups_path) %></p>
-	</div>
-
-	<div class="panel panel-default">
-		<div class="panel-header">
-			<div class="row">
-				<span><a href="/groups"><img src="/images/home_tool1.png"></a> </span><span>  项目评级 </span>
-			</div>
-		</div>
-
-		<div class="panel-body">
-			<% @projects.each do |project| %>
-	      <div class="col-xl-3 col-lg-2 col-md-2 col-sm-4 col-xs-4">
-	          <div class="project-card">
-	              <% if project.logo.present? %>
-	                <%= link_to image_tag(project.logo.url(:projectlogo)),project_path(project), :target => "_blank" %>
-	              <% else %>
-	                <img src="https://inst.eecs.berkeley.edu/~cs194-26/fa14/upload/files/proj3/cs194-fi/images/warm_sky.jpg" alt="Ver post">
-	              <% end %>
-	              <div class="card-body secondbase">
-	                  <h4 class="card-project-grade">
-	                    <% if project.project_grade.present? %>
-	                      <span class="label label-danger"><b>项目评分 <%=  project.project_grade.grade %>分</b></span>
-	                    <% else %>
-	                      <span class="label label-warning"><b>待评级</b></span>
-	                    <% end %>
-	                  </h4>
-
-	                  <div class="card-project-title">
-	                    <h5 class="text-center"><%= link_to(project.title, project_path(project)) %></h5>
-	                  </div>
-	              </div>
-	          </div>
-	      </div>
-	    <% end %>
-		</div>
-		<hr>
-		<p class="text-center"><%= link_to("更多项目", projects_path) %></p>
-	</div>
+	<%= render "topics_for_index" %>
+	<%= render "groups_for_index" %>
+	<%= render "projects_for_index" %>
 
 	<div class="index-ads">
 		<a href="/"><img src="https://ww4.sinaimg.cn/large/006tNc79ly1fnxt2eiv23j31kw098tb0.jpg" alt="广告"></a>
 	</div>
 
-
-
-	<div class="panel panel-default">
-		<div class="panel-header">
-			<div class="row">
-				<span><a href="/groups"><img src="/images/home_tool9.png"></a> </span><span>  活动 </span>
-			</div>
-		</div>
-
-		<div class="panel-body">
-			<div class="row home-meetup">
-				<div class="col-md-6">
-					<% @offline_meetups.each do |meetup_group| %>
-						<div class="job-item">
-							<p><span class="pull-right">更新于 <%= meetup_group.updated_at %></span></p>
-							<h4><%= link_to(meetup_group.title, meetup_group_path(meetup_group)) %></h4>
-							<p><i class="fa fa-street-view" aria-hidden="true"></i> <%= meetup_group.city %></p>
-							<p><i class="fa fa-clock-o" aria-hidden="true"></i> <%= meetup_group.activity_time %></p>
-							<p><span class="label label-success"><%= t(meetup_group.meetup_type, :scope => "meetup_group.meetup_type") %></span></p>
-						</div>
-						<hr>
-	        <% end %>
-					<p class="text-center"><%= link_to("更多线下活动", meetup_groups_path(:order => "by_offline")) %></p>
-				</div>
-
-
-				<div class="col-md-6">
-					<% @offline_meetups.each do |meetup_group| %>
-						<div class="job-item">
-							<p><span class="pull-right">更新于 <%= meetup_group.updated_at %></span></p>
-							<h4><%= link_to(meetup_group.title, meetup_group_path(meetup_group)) %></h4>
-							<p><i class="fa fa-street-view" aria-hidden="true"></i> <%= meetup_group.city %></p>
-							<p><i class="fa fa-clock-o" aria-hidden="true"></i> <%= meetup_group.activity_time %></p>
-							<p><span class="label label-success"><%= t(meetup_group.meetup_type, :scope => "meetup_group.meetup_type") %></span></p>
-						</div>
-						<hr>
-	        <% end %>
-					<p class="text-center"><%= link_to("更多线上活动", meetup_groups_path(:order => "by_online")) %></p>
-				</div>
-			</div>
-
-		</div>
-	</div>
-
-
-	<div class="panel panel-default">
-		<div class="panel-header">
-			<div class="row">
-				<span><a href="/groups"><img src="/images/home_tool3.png"></a> </span><span>  课程 </span>
-			</div>
-		</div>
-
-		<div class="panel-body">
-			最新或者推荐课程
-			<hr>
-		</div>
-	</div>
-
-	<div class="panel panel-default">
-		<div class="panel-header">
-			<div class="row">
-				<span><a href="/groups"><img src="/images/home_tool4.png"></a> </span><span>机会</span>
-			</div>
-		</div>
-
-		<div class="panel-body">
-			<div class="row home-job">
-				<div class="col-md-6">
-					<% @internship_jobs.each do |job| %>
-		        <div class="job-item">
-		          <p><span><%= job.publisher %></span><span class="pull-right">更新于 <%= job.updated_at %></span></p>
-		          <h4><%= link_to(job.title, job_path(job)) %></h4>
-		          <p><i class="fa fa-street-view" aria-hidden="true"></i> <%= job.city %></p>
-		          <p><i class="fa fa-clock-o" aria-hidden="true"></i> <%= job.deadline %></p>
-		          <p><span class="label label-success"><%= t(job.category) %></span></p>
-		          <hr>
-		        </div>
-		      <% end %>
-					<p class="text-center"><%= link_to("更多实习机会", jobs_path(:order => "by_internship")) %></p>
-				</div>
-
-				<div class="col-md-6">
-					<% @fulltime_jobs.each do |job| %>
-		        <div class="job-item">
-		          <p><span><%= job.publisher %></span><span class="pull-right">更新于 <%= job.updated_at %></span></p>
-		          <h4><%= link_to(job.title, job_path(job)) %></h4>
-		          <p><i class="fa fa-street-view" aria-hidden="true"></i> <%= job.city %></p>
-		          <p><i class="fa fa-clock-o" aria-hidden="true"></i> <%= job.deadline %></p>
-		          <p><span class="label label-success"><%= t(job.category) %></span></p>
-		          <hr>
-		        </div>
-		      <% end %>
-					<p class="text-center"><%= link_to("更多全职工作", jobs_path(:order => "by_fulltime")) %></p>
-				</div>
-			</div>
-		</div>
-	</div>
+	<%= render "meetup_groups_for_index" %>
+	<%= render "courses_for_index" %>
+	<%= render "jobs_for_index" %>
 
 </div>

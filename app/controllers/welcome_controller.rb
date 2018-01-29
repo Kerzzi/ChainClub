@@ -4,7 +4,7 @@ class WelcomeController < ApplicationController
     @article_hots = OfficialArticle.where(:status => "public").paginate(:page => params[:page], :per_page => 7).sort_by{|official_article| -official_article.article_comments.count}
     @topics = Topic.published.paginate(:page => params[:page], :per_page => 8)
     @groups = Group.published.recent.paginate(:page => params[:page], :per_page => 6)
-    @projects = Project.published.recent.paginate(:page => params[:page], :per_page => 4)
+    @projects = Project.published.recent.paginate(:page => params[:page], :per_page => 6)
     @courses = Course.published.paginate(:page => params[:page], :per_page => 8) 
 
     @online_meetups = MeetupGroup.all.online_meetup.paginate(:page => params[:page], :per_page => 3)

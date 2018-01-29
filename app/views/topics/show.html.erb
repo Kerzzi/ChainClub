@@ -9,17 +9,15 @@
             </div>
 
             <div class="col-md-1">
-              <div class="avatar pull-right"><img src= "<%= render_user_avatar(@topic.user, 50) %>" style="width:50px; height:50px; border-radius: 50%;"</div>
+              <div class="avatar pull-right"><img src= "<%= render_user_avatar(@topic.user, 50) %>" style="width:50px; height:50px; border-radius: 50%;" ></div>
             </div>
+            
           </div>
           <p>本文由 <%= @topic.user.display_name %> · 发布于<%= time_tag(@topic.created_at) %> · 最后由 admin 回复于 1 天前 · 12次阅读</p>
-
         </div>
 
         <div class="panel-body topic-content">
           <div class="col-md-12 ">
-
-
 
             <%= sanitize @topic.content %>
 
@@ -44,7 +42,7 @@
         <div class="panel-footer">关注 / 喜欢 / 收藏</div>
 
       </div>
-    </div>
+    
     
       <div class="panel panel-default">
         <div class="panel-heading">
@@ -59,11 +57,12 @@
 
       <%= render "answers/form"%>
       <%= render 'related_topics' %>
-
-  </div>  
+    </div>
   
     <div class="sidebar col-md-3">
       <%= render "sidebar_for_topic_show" %>
     </div>
+    
+  </div>    
 </div>
 

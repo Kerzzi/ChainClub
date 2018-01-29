@@ -27,8 +27,6 @@
         </div>
         <div class="quantity-size">
           <p class="delivery">其他 <span class="delivery">电子产品，不支持退款</span></p>
-          <p class="quantity">库存 <span class="quantity"><%= @course.quantity %></span> 件 </p>
-          <!-- <p>购买: &nbsp &nbsp &nbsp<input type="text" style="width:50px" name="quantity" value="1" />&nbsp件</p> -->
         </div>
         <div class="action">
           <div class="col-md-10" >
@@ -90,23 +88,26 @@
             <br />
             <div class="tab-content container">
               <div class="tab-pane active" id="tab_default_1">
-                  <p class="product-description2 text-center">讲师介绍</p>
-                 <p class="product-description"><%= sanitize @course.lecturer %></p>
+                <p class="product-description2 text-center">讲师介绍</p>
+                <div class="container">
+                  <p class="product-description"><%= sanitize @course.lecturer %></p>
+                </div>
                  <p class="product-description2 text-center">课程介绍</p>
                   <!--商品大图展示 -->
                  <div class="container">
                     <p class="product-description"><%= sanitize @course.introduce %></p>
                  </div>
+                 
+                 <p class="faq-title text-center">常见问题</p>
                  <div class="faq container">
-                   <p class="faq-title text-center">常见问题</p>
                    <p class="question">大讲堂说明</p>
-                   <p class="answer">区块链研习社大讲堂只提供相关课程介绍，具体课程问题请联系相应课程平台。</p>
+                   <p class="answer">1. 区块链研习社大讲堂只提供相关课程介绍，具体课程问题请联系相应课程平台。</p>
                    <p class="question">如何申请退货？</p>
                    <p class="answer">
-                     1.电子产品，一经付款不支持退款；<br />
+                     1. 电子产品，一经付款不支持退款；<br />
                    </p>
                    <p class="question">如何开具发票？</p>
-                   <p class="answer">区块链研习社大讲堂只提供相关课程介绍，如需开具发票，请联系具体课程平台。</p>
+                   <p class="answer">1. 区块链研习社大讲堂只提供相关课程介绍，如需开具发票，请联系具体课程平台。</p>
                  </div>
               </div><!-- End of tab_default_1 -->
 
