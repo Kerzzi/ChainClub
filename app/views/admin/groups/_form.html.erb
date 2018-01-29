@@ -1,7 +1,7 @@
 <%= simple_form_for  [:admin,@group] do |f| %>
 
   <div class="form-group">
-    <%= f.label :logo %>
+    <%= f.label "小组logo" %>
     <%= f.file_field :logo, :class => "form-control" %>
     <% if f.object.logo.present? %>
       <label>
@@ -12,12 +12,12 @@
   </div>
 
    <div class="form-group">
-     <%= f.label :status %>
+     <%= f.label "发布状态" %>
      <%= f.select :status, Group::STATUS.map{ |s| [t(s, :scope => "group.status"), s] }, {}, :class => "form-control" %>
    </div>
 
   <div class="form-group">
-    <%= f.input :title, input_html: { class: "form-control"} %>
+    <%= f.input :title, input_html: { class: "form-control"}, :label => "小组名称" %>
   </div>
 
   <div class="form-group">
@@ -25,5 +25,5 @@
     <%= f.cktext_area :description, ckeditor: { language: 'zh-CN'} %>
   </div>
 
-  <%= f.submit "Submit", class: "btn btn-primary", data: { disable_with: "Submiting..." } %>
+  <%= f.submit "提交", class: "btn btn-primary", data: { disable_with: "Submiting..." } %>
 <% end %>

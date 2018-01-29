@@ -25,15 +25,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resource :setting do
-    member do
-      get :account
-      get :password
-      get :profile
-      get :reward
-    end
-  end
-
   get 'topics/node:id', to: 'topics#node', as: 'node_topics'
 
   resources :topics do

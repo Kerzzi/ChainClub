@@ -1,11 +1,11 @@
 <div class="panel panel-default">
   <!-- Default panel contents -->
-  <div class="panel-heading">网址导航分类管理</div>
+  <div class="panel-heading">网址分类管理</div>
   <div class="panel-body">
     <p>...</p>
     <div class="group">
       <%= link_to("新增分类", new_admin_site_node_path, class: "btn btn-primary pull-right") %>
-      <%= link_to("网址导航管理", admin_sites_path, class: "btn btn-success pull-right") %>
+      <%= link_to("网址管理", admin_sites_path, class: "btn btn-success pull-right") %>
     </div>
     <p>操作说明：mark</p>
     <hr>
@@ -17,7 +17,7 @@
           <thead>
             <tr>
               <th><%= check_box_tag "全选", "1", false, :id => "toggle_all" %></th>
-              <td>#</td>
+              <td>ID/td>
               <td>分类名</td>
               <td>排序</td>
               <td class="opts">操作</td>

@@ -62,7 +62,7 @@
         <div class="article-review-box">
           <%= simple_form_for ([@official_article, @article_comment]) do |f| %>
             <div class="">
-              <%= f.input :content, :label => "发表评论" %>
+              <%= f.input :content, input_html: { rows: "6" }, :label => "发表评论" %>
             </div>
             <div class="">
               <%= f.submit "提交评论", class: "btn btn-sm btn-default ", data: {disable_with: "Submiting"} %>

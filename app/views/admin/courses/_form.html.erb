@@ -1,6 +1,6 @@
 <%= form_for [:admin,@course] do |f| %>
   <div class="form-group">
-    <%= f.label :logo %>
+    <%= f.label "主图" %>
     <%= f.file_field :logo, :class => "form-control" %>
     <% if f.object.logo.present? %>
       <label>
@@ -11,46 +11,46 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :title %>
+    <%= f.label "课程名称" %>
     <%= f.text_field :title, :class => "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :status %>
+    <%= f.label "发布状态" %>
     <%= f.select :status, Course::STATUS.map{ |s| [t(s, :scope => "course.status"), s] }, {}, :class => "form-control" %>
   </div>
   
   <div class="form-group">
-    <%= f.label :price %>
+    <%= f.label "现价" %>
     <%= f.text_field :price, :class => "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :msrp %>
+    <%= f.label "原价" %>
     <%= f.text_field :msrp, :class => "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :url %>
+    <%= f.label "课程链接" %>
     <%= f.text_field :url, :class => "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :quantity %>
+    <%= f.label "库存" %>
     <%= f.text_field :quantity, :class => "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :lecturer %>
+    <%= f.label "讲师名称" %>
     <%= f.cktext_area :lecturer, ckeditor: { language: 'zh-CN'} %>
   </div>
 
   <div class="form-group">
-    <%= f.label :introduce %>
+    <%= f.label "课程简介" %>
     <%= f.cktext_area :introduce, ckeditor: { language: 'zh-CN'} %>
   </div>
 
   <div class="form-group">
-    <%= f.submit "Submit", :class => "btn btn-primary" %>
+    <%= f.submit "提交", :class => "btn btn-primary" %>
   </div>
 <% end %>

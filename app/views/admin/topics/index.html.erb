@@ -1,7 +1,7 @@
 <div class="panel panel-default">
   <div class="panel-heading">网址导航管理</div>
   <div class="panel-body">
-    <p>简单说明</p>
+    <p>搜索功能尚未完成</p>
     <br>
     <div class="toolbar">
       <form class="form-inline" action="<%= admin_topics_path %>">
@@ -38,7 +38,7 @@
             <%= t(topic.status, :scope => "topic.status") %> ·
             <%= link_to truncate(topic.title, length: 30), topic, target: "_blank" %>
           </td>
-          <td><%= topic.node_name %></td>
+          <td><%= topic.node.name %></td>
           <td><%= topic.user.email %></td>
           <td><%= topic.answers_count %></td>
           <td>

@@ -13,8 +13,8 @@
         <a class="time" href="#"><%= time_tag(answer.created_at) %></a>
         <span class="opts pull-right">
           <% if answer.user == current_user %>
-            <%= link_to("Delete", topic_answer_path(@topic, answer), method: :delete, data: {
-              confirm: "Are you sure?"},class: "btn btn-sm pull-right") %>
+            <%= link_to("删除", topic_answer_path(@topic, answer), method: :delete, data: {
+              confirm: "Are you sure?"},class: "btn btn-xs pull-right") %>
           <% end %>
         </span>
         <div class="answer-content">

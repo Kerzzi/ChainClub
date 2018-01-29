@@ -2,13 +2,13 @@
 
   <fieldset>
     <legend></legend>
-    <%= f.input :name %>
-    <%= f.input :section_id, collection: Section.all.collect { |s| [s.name,s.id] } %>
-    <%= f.input :sort %>
-    <%= f.input :summary, as: :text, input_html: { style: "width:100%; height:200px;"} %>
+    <%= f.input :name, :label => "子节点名称" %>
+    <%= f.input :section_id, collection: Section.all.collect { |s| [s.name,s.id] }, :label => "上一级节点" %>
+    <%= f.input :sort, :label => "排序/权重" %>
+    <%= f.input :summary, as: :text, input_html: { style: "width:100%; height:200px;"}, :label => "节点介绍" %>
     <div class="form-group">
-      <%= f.submit "Submit", class: "btn btn-primary", data: { disable_with: "Submiting..." } %>
-      <%= link_to 'Back', admin_nodes_path %>
+      <%= f.submit "提交", class: "btn btn-primary", data: { disable_with: "Submiting..." } %>
+      <%= link_to '返回', admin_nodes_path %>
       <div class="pull-right"><a href="#" target="_blank">点击右下角拉升文本框</a><i class="fa fa-arrows-v" aria-hidden="true"></i></div>
       <div class="pull-right "><a href="#" target="_blank"><i class="fa fa-tip"></i> 排版说明</a>&nbsp; · &nbsp;</div>
     </div>

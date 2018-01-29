@@ -1,6 +1,5 @@
 <%= form_for [:admin,@topic] do |f| %>
 
-
   <div class="form-group">
     <%= f.label "话题类别" %>
     <%= f.select :node_id, Node.all.map{ |c| [c.name, c.id] }, {}, :class => "form-control" %>

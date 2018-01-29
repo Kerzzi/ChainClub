@@ -1,6 +1,6 @@
 <%= simple_form_for([:admin, @section]) do |f| %>
   <%= f.input :name, :label =>"分类名称" %>
-  <%= f.input :sort, :label =>"排序" %>
+  <%= f.input :sort, :label =>"排序/权重" %>
   <div class="form-group">
     <%= f.submit "提交", class: "btn btn-primary", data: { disable_with: "Submiting..." } %>
   </div>

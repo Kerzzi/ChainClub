@@ -3,28 +3,28 @@ zh-CN:
   bulk_delete: 批量删除
   official_article:
     status:
-      draft: 草稿
-      public: 公开
-      private: 私密
+      draft: 待审核
+      public: 公开发布
+      private: 隐藏
   group:
     status:
       draft: 待审核
-      public: 公开
+      public: 公开发布
       private: 隐藏
   course:
     status:
-      draft: 草稿
-      public: 公开
+      draft: 待审核
+      public: 公开发布
       private: 隐藏
   project:
     status:
-      draft: 草稿
-      public: 公开
+      draft: 待审核
+      public: 公开发布
       private: 隐藏
   topic:
     status:
-      draft: 草稿
-      public: 公开
+      draft: 待审核
+      public: 公开发布
       private: 隐藏
   admin:
     official_article: 官方文章管理
@@ -43,6 +43,6 @@ zh-CN:
       online: 线上活动
       offline: 线下活动
     status:
-      draft: 草稿
-      public: 公开
+      draft: 待审核
+      public: 公开发布
       private: 隐藏

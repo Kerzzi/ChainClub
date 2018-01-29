@@ -1,7 +1,7 @@
 <%= simple_form_for [:admin,@site_node] do |f| %>
   <div class="form-group">
-    <%= f.input :name, input_html: { class: "form-control"} , :label =>"二级节点名称" %>
-    <%= f.input :sort, input_html: { class: "form-control"} , :label =>"排序"  %>
+    <%= f.input :name, input_html: { class: "form-control"} , :label =>"类别名称" %>
+    <%= f.input :sort, input_html: { class: "form-control"} , :label =>"排序/权重"  %>
   </div>
-  <%= f.submit "Submit", class: "btn btn-primary", data: { disable_with: "Submiting..." } %>
+  <%= f.submit "提交", class: "btn btn-primary", data: { disable_with: "Submiting..." } %>
 <% end %>

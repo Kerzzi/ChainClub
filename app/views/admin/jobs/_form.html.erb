@@ -1,51 +1,51 @@
 <%= form_for [:admin,@job] do |f| %>
   <div class="form-group">
-    <%= f.label :title %>
+    <%= f.label "标题" %>
     <%= f.text_field :title, :class => "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :publisher %>
+    <%= f.label "发布方" %>
     <%= f.text_field :publisher, :class => "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :category %>
+    <%= f.label "工作类型" %>
     <%= f.select :category, Job::CATEGORYS.map{ |x| [t(x, :scope => "job.category"), x] }, { :include_blank => true }, :class => "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :city %>
+    <%= f.label "工作城市" %>
     <%= f.text_field :city, :class => "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :deadline %>
+    <%= f.label "截止日期" %>
     <%= f.text_field :deadline, :class => "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :benefit %>
+    <%= f.label "工作福利" %>
     <%= f.cktext_area :benefit, ckeditor: { language: 'zh-CN'} %>
   </div>
 
   <div class="form-group">
-    <%= f.label :introduce %>
+    <%= f.label "公司介绍" %>
     <%= f.cktext_area :introduce, ckeditor: { language: 'zh-CN'} %>
   </div>
 
   <div class="form-group">
-    <%= f.label :demand %>
+    <%= f.label "工作要求" %>
     <%= f.cktext_area :demand, ckeditor: { language: 'zh-CN'} %>
   </div>
 
   <div class="form-group">
-    <%= f.label :process %>
+    <%= f.label "申请方式" %>
     <%= f.cktext_area :process, ckeditor: { language: 'zh-CN'} %>
   </div>
 
   <div class="form-group">
-    <%= f.submit "Submit", :class => "btn btn-primary" %>
+    <%= f.submit "提交", :class => "btn btn-primary" %>
   </div>
 <% end %>
 

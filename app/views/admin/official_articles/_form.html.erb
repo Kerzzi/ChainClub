@@ -1,7 +1,7 @@
 <%= simple_form_for [:admin,@official_article] do |f| %>
 
   <div class="form-group">
-    <%= f.label :image %>
+    <%= f.label "主图"%>
     <%= f.file_field :image, :class => "form-control" %>
     <% if f.object.image.present? %>
       <label>
@@ -23,15 +23,15 @@
   </div>
 
   <div class="form-group">
-    <%= f.input :title, input_html: { class: "form-control"} %>
-    <%= f.input :author, input_html: { class: "form-control"} %>
-    <%= f.input :source, input_html: { class: "form-control"} %>
-    <%= f.input :summary, input_html: { style: "width:100%; height:100px;"} %>
-    <%= f.association :article_category %>
+    <%= f.input :title, input_html: { class: "form-control"} , :label => "标题"%>
+    <%= f.input :author, input_html: { class: "form-control"} , :label => "作者"%>
+    <%= f.input :source, input_html: { class: "form-control"}, :label => "来源" %>
+    <%= f.input :summary, input_html: { style: "width:100%; height:100px;"}, :label => "简介" %>
+    <%= f.association :article_category , :label => "文章类别"%>
   </div>
   
   <div class="form-group">
-    <%= f.input :content, as: :ckeditor %>
+    <%= f.input :content, as: :ckeditor, :label => "文章内容" %>
   </div>
   
   <%= f.submit "发布官方文章", class: "btn btn-primary", data: { disable_with: "Submiting..." } %>

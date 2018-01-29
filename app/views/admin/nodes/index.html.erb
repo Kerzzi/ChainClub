@@ -1,28 +1,38 @@
-<div class="toolbar">
-  <%= link_to '新建节点', new_admin_node_path, class: "btn btn-default" %>
-</div>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">话题子节点管理</h3>
+  </div>
+  <div class="panel-body">
+    
+    <div class="toolbar">
+      <%= link_to '新建子节点', new_admin_node_path, class: "btn btn-success pull-right" %>
+    </div>
+    <p>操作说明：mark</p>
+    <hr>
 
-<table class="table table-bordered table-striped table-condensed">
-  <tr class="head">
-    <td class="first">#</td>
-    <td>Name</td>
-    <td>分类</td>
-    <td>排序</td>
-    <td>帖子数量</td>
-    <td>管理操作</td>
-  </tr>
+    <table class="table table-bordered table-striped table-condensed">
+      <tr class="head text-center">
+        <td class="first">ID</td>
+        <td>子节点名称</td>
+        <td>上一级节点</td>
+        <td>排序/权重</td>
+        <td>该节点下帖子数量</td>
+        <td>管理操作</td>
+      </tr>
 
-<% @nodes.each do |node| %>
-  <tr>
-    <td class="first"><%= node.id %></td>
-    <td><%= link_to node.name, node_topics_path(node.id) %></td>
-    <td><%= node.section.name %></td>
-    <td><%= node.sort %></td>
-    <td><%= node.topics_count %></td>
-    <td>
-      <%= link_to "", edit_admin_node_path(node), class: "fa fa-pencil" %>
-      <%= link_to "", admin_node_path(node), 'data-confirm' => '确定删除?', method: :delete, class: "fa fa-trash" %>
-    </td>
-  </tr>
-<% end %>
-</table>
+    <% @nodes.each do |node| %>
+      <tr class="text-center">
+        <td class="first"><%= node.id %></td>
+        <td><%= link_to node.name, node_topics_path(node.id) %></td>
+        <td><%= node.section.name %></td>
+        <td><%= node.sort %></td>
+        <td><%= node.topics_count %></td>
+        <td>
+          <%= link_to "", edit_admin_node_path(node), class: "fa fa-pencil" %>
+          <%= link_to "", admin_node_path(node), 'data-confirm' => '确定删除?', method: :delete, class: "fa fa-trash" %>
+        </td>
+      </tr>
+    <% end %>
+    </table>
+  </div>
+</div>  

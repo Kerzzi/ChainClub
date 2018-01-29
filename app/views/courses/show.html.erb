@@ -19,7 +19,7 @@
       <!-- End of left card -->
       <!-- Start of right cart -->
       <div class="details col-md-5" style="margin-top:50px;">
-        <h3 class="product-title"><%= @course.title %></h3>
+        <h3 class="product-title"><%= link_to(@course.title, course_path(@course)) %></h3>
         <div class="price-service">
           <p class="price">原价 <span class="rmb">￥ </span><span class="msrp"><%= @course.msrp %></span> 元</p>
           <p class="price">现价 <span class="rmb">￥ </span><span class="price"><%= @course.price %></span> 元</p>
