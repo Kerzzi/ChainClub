@@ -32,9 +32,9 @@
     z-index: 2;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    -webkit-animation: imageAnimation 24s linear infinite 0s;
-    -moz-animation: imageAnimation 24s linear infinite 0s;
-    animation: imageAnimation 24s linear infinite 0s;
+    -webkit-animation: imageAnimation 24s ease infinite 0s;
+    -moz-animation: imageAnimation 24s ease infinite 0s;
+    animation: imageAnimation 24s ease infinite 0s;
 }
 .slideshow li h3 {
     position: absolute;
@@ -48,9 +48,9 @@
     font-family: 'Josefin Sans', sans-serif;
     text-transform: uppercase;
     color: #fff;
-    -webkit-animation: titleAnimation 24s linear 0.2 0s;
-    -moz-animation: titleAnimation 24s linear 0.2 0s;
-    animation: titleAnimation 24s linear 0.2 0s;
+    -webkit-animation: titleAnimation 24s ease 0.2 0s;
+    -moz-animation: titleAnimation 24s ease 0.2 0s;
+    animation: titleAnimation 24s ease 0.2 0s;
 }
 @media only screen and (min-width: 768px) {
     .slideshow li h3 {
@@ -87,11 +87,11 @@
 @-webkit-keyframes imageAnimation {
     0% {
         opacity: 0;
-        -webkit-animation-timing-function: ease-in;
+        -webkit-animation-timing-function: ease;
     }
     12.5% {
         opacity: 1;
-        -webkit-animation-timing-function: ease-out;
+        -webkit-animation-timing-function: ease;
     }
     25% {
         opacity: 1;
@@ -106,11 +106,11 @@
 @-moz-keyframes imageAnimation {
     0% {
         opacity: 0;
-        -moz-animation-timing-function: ease-in;
+        -moz-animation-timing-function: ease;
     }
     12.5% {
         opacity: 1;
-        -moz-animation-timing-function: ease-out;
+        -moz-animation-timing-function: ease;
     }
     25% {
         opacity: 1;
@@ -125,15 +125,15 @@
 @keyframes imageAnimation {
     0% {
         opacity: 0;
-        -webkit-animation-timing-function: ease-in;
-        -moz-animation-timing-function: ease-in;
-        animation-timing-function: ease-in;
+        -webkit-animation-timing-function: ease;
+        -moz-animation-timing-function: ease;
+        animation-timing-function: ease;
     }
     12.5% {
         opacity: 1;
-        -webkit-animation-timing-function: ease-out;
-        -moz-animation-timing-function: ease-out;
-        animation-timing-function: ease-out;
+        -webkit-animation-timing-function: ease;
+        -moz-animation-timing-function: ease;
+        animation-timing-function: ease;
     }
     25% {
         opacity: 1;
