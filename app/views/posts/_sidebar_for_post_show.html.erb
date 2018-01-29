@@ -26,42 +26,44 @@
 <div class="panel panel-default">
   <div class="panel-body">
     <a href="#" class="btn btn-block btn-sm btn-move-page" data-type="top"><i class="fa fa-arrow-up"></i></a>
-    <div class="buttons">
-      <div class="group likes opts">
-        点赞
-      </div>
+    
+    <!-- <div class="buttons">
       <div class="group">
         <div class="btn-group" role="group">
           关注
-          收藏
+          收藏点赞
         </div>
       </div>
     </div>
-    <hr />
-    <div class="group">
-      这里放分享插件
+    <hr/> -->
+  
+    <div class="group share text-center">
+      <%= social_share_button_tag(@post.title) %><!-- 社交分享 -->
     </div>
+  
     <hr />
     <div class="reply-buttons">
-      <div class="total">
+      <div class="total text-center">
         共收到 <b>7</b> 条回复
       </div>
-      打赏作者
     </div>
-    <hr />
+    
+    <!-- <hr />
+    
     <div class="group opts">
       <% if current_user.is_editor? %>
         <div style="margin-bottom: 8px">
-          参考rubychina,取消、置顶、加精、屏蔽、等操作
+          取消、置顶、加精、屏蔽、等操作
         </div>
       <% end %>
 
       <% if current_user == @post.user or current_user.is_editor? %>
       <div>
-          参考rubychina   关闭话题、重新修改、开启话题。
+          关闭话题、重新修改、开启话题。
       </div>
       <% end %>
-    </div>
+    </div> -->
+    
     <a href="#" class="btn btn-block btn-move-page" data-type="bottom"><i class="fa fa-arrow-down"></i></a>
   </div>
 </div>
