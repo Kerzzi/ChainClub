@@ -72,49 +72,44 @@
           <% if @article_comments.blank? %>
             <p class="text-center">这篇文章还没有人评论，来为ta添加一个吧！</p>
           <% else %>
+            <div class="article-reviews ">
+              <% @article_comments.each do |article_comment| %>
+                <div class="row">
 
-          <div class="article-reviews ">
-            <% @article_comments.each do |article_comment| %>
-              <div class="row">
+                  <!-- 评论者头像 -->
+                  <div class="col-sm-1 col-xs-2">
+                    <div class="avatar"><img src= "<%= render_user_avatar(article_comment.user, 50) %>" style="width:50px; hight:50px; border-radius:50%;"></div>
+                  </div>
 
-                <!-- 评论者头像 -->
-                <div class="col-sm-1 col-xs-2">
-                  <div class="avatar"><img src= "<%= render_user_avatar(article_comment.user, 50) %>" style="width:50px; hight:50px; border-radius:50%;"></div>
-                </div>
-
-                <!-- 评论内容 -->
-                <div class="col-sm-11 ccol-xs-10">
-                  <div class="article-review-username">
-                    <div>
-                      <span><%= article_comment.user.display_name %></span> ·  
-                      <span><%= article_comment.created_at.strftime("%Y-%m-%d %H:%M:%S") %></span>
-                      <span class="pull-right">
+                  <!-- 评论内容 -->
+                  <div class="col-sm-11 col-xs-10">
+                    <div class="article-review-username">
+                      <span class="">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span> <%= article_comment.user.display_name %> · 
+                        <span class="glyphicon glyphicon-time" aria-hidden="true"></span> <%= article_comment.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
                         <% if (current_user && current_user == article_comment.user) || can_editor? %>
-                        <%= link_to("Delete", official_article_article_comment_path(@official_article,article_comment), 
-                                  method: :delete, data: { confirm: "确定删除该评论?" } )%> 
+                          <span aria-hidden="true"> <%= link_to(" 删除", official_article_article_comment_path(@official_article,article_comment), method: :delete, data: {
+                            confirm: "确定删除吗?"}) %>
+                          </span>  
                         <% end %>
                       </span>
                     </div>  
-                  </div>
 
-                  <div>
-                    <%= simple_format(article_comment.content) %>
+                    <div class="article-review-content">
+                      <%= simple_format(article_comment.content) %>
+                    </div>
                   </div>
 
                 </div>
-
-              </div>
-              <hr>
-            <% end %>
-          </div>
-
+                <hr>
+              <% end %>
+            </div>
           <% end %>
-
-        </div>
-
+        </div><!-- article-review-box -->
+        
       </div>
 
-    <%= render "sidebar_for_article_show.html.erb" %>
+      <%= render "sidebar_for_article_show.html.erb" %>
 
     </div>
 

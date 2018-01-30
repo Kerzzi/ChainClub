@@ -6,19 +6,20 @@
   <div class="col-md-11">
     <div class="infos">
       <div class="info">
-        <span class="name">
-          <%= answer.user.display_name %>
-        </span> ·
-        <span class='floor'>#23</span> ·
-        <a class="time" href="#"><%= time_tag(answer.created_at) %></a>
-        <span class="opts pull-right">
-          <% if answer.user == current_user %>
-            <%= link_to("删除", topic_answer_path(@topic, answer), method: :delete, data: {
-              confirm: "Are you sure?"},class: "btn btn-xs pull-right") %>
-          <% end %>
-        </span>
-        <div class="answer-content">
-            <p ><%= sanitize answer.content %></p>
+        <div class="topic-answer-info">
+          <span class="">
+            <span class="glyphicon glyphicon-user" aria-hidden="true"></span> <%= answer.user.display_name %> · 
+            <span class="glyphicon glyphicon-time" aria-hidden="true"></span> <%= time_tag(answer.created_at) %>
+            <% if answer.user == current_user %>
+              <span aria-hidden="true"> <%= link_to(" 删除", topic_answer_path(@topic, answer), method: :delete, data: {
+                confirm: "确定删除吗?"}) %>
+              </span>  
+            <% end %>
+          </span>
+        </div>  
+
+        <div class="topic-answer-content">
+          <p ><%= sanitize answer.content %></p>
         </div>
       </div>
     </div>

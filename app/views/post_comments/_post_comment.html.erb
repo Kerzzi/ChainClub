@@ -6,17 +6,19 @@
   <div class="col-md-11">
     <div class="infos">
       <div class="info">
-        <span class="name">
-          <%= post_comment.user.display_name %>
-        </span> ·
-        <a class="time" href="#"><%= time_tag(post_comment.created_at) %></a>
-        <span class="pull-right">
-          <% if (current_user && post_comment.user == current_user) || can_editor? %>
-            <%= link_to("删除", group_post_post_comment_path(@group, @post, post_comment), method: :delete, data: {
-              confirm: "确定删除吗?"},class: "btn btn-sm pull-right") %>
-          <% end %>
-        </span>
-        <div class="answer-content">
+        <div class="post-comment-info">
+          <span class="">
+            <span class="glyphicon glyphicon-user" aria-hidden="true"></span> <%= post_comment.user.display_name %> · 
+            <span class="glyphicon glyphicon-time" aria-hidden="true"></span> <%= time_tag(post_comment.created_at) %>
+            <% if (current_user && post_comment.user == current_user) || can_editor? %>
+              <span aria-hidden="true"> <%= link_to(" 删除", group_post_post_comment_path(@group, @post, post_comment), method: :delete, data: {
+                confirm: "确定删除吗?"}) %>
+              </span>  
+            <% end %>
+          </span>
+        </div>  
+
+        <div class="post-comment-content">
           <p ><%= sanitize post_comment.content %></p>
         </div>
       </div>
