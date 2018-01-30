@@ -9,12 +9,15 @@
       <% @site_nodes.each do |node| %>
         <div class="panel panel-default">
           <div class="panel-body">
-
-            <h4><%= node.name %></h4>
+            <div class="site-node">
+              <h4><%= node.name %><span class="pull-right"><%= link_to "更多", "#", target: "_blank" %></span></h4>
+            </div>
             <hr>
 
             <% node.sites.each do |site| %>
-              <span> <%= link_to site.name, site.url, target: "_blank" %>  </span>
+              <button type="button" class="btn" data-toggle="tooltip" data-placement="top" title="<%= site.description %>">
+                <%= link_to site.name, site.url, target: "_blank" %>
+              </button>
               &nbsp; &nbsp;
             <% end %>
           </div>
@@ -23,6 +26,6 @@
     </div>
   </div>
   <div class="col-md-3">
-    <%= render "sidebar_for_site_show" %>
+    <%= render "sidebar_for_site_index" %>
   </div>
 </div>

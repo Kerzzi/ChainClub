@@ -26,6 +26,7 @@
 <div class="panel panel-default">
   <div class="panel-body">
     <a href="#" class="btn btn-block btn-sm btn-move-page" data-type="top"><i class="fa fa-arrow-up"></i></a>
+    <br>
     
     <!-- <div class="buttons">
       <div class="group">
@@ -37,7 +38,7 @@
     </div>
     <hr/> -->
   
-    <div class="group share text-center">
+    <div class="post-share text-center">
       <%= social_share_button_tag(@post.title) %><!-- 社交分享 -->
     </div>
   
@@ -47,6 +48,16 @@
         共收到 <b>7</b> 条回复
       </div>
     </div>
+    
+    <% if current_user && current_user == @post.user %>
+      <hr/>
+      <div class="post-admin text-center">
+        <label class="label label-success"> <%= link_to("更新文章", edit_group_post_path(@group,@post))%></label> 
+        <label class="label label-danger"><%= link_to("删除文章", group_post_path(@group,@post), 
+                        method: :delete, data: { confirm: "Are you sure?" } )%></label> 
+      </div>                  
+    <% end %>
+    
     
     <!-- <hr />
     
@@ -64,17 +75,11 @@
       <% end %>
     </div> -->
     
+    <br>
     <a href="#" class="btn btn-block btn-move-page" data-type="bottom"><i class="fa fa-arrow-down"></i></a>
   </div>
 </div>
 
-<% if current_user && current_user == @post.user %>
-  <div class="panel panel-default">
-    <div class="panel-body">
-        <%= link_to("更新文章", edit_group_post_path(@group,@post), class: "btn btn-success btn-block")%>  
-    </div>
-  </div>
-<% end %>
 
 <div class="panel panel-default">
   <div class="panel-heading">小组信息</div>
@@ -88,11 +93,11 @@
           <label class="label label-success"> 我是小组成员 </label>
           
           <% if (current_user && current_user != @post.group.user) && current_user.is_member_of?(@post.group) %>
-            &nbsp;&nbsp;<label class="label label-warning"><%= link_to("退出小组", quit_group_path(@group), method: :post) %></label>
+            &nbsp;&nbsp;<label class="label label-danger"><%= link_to("退出小组", quit_group_path(@group), method: :post) %></label>
           <% end %>
           
         <% else %>
-          <label class="label label-warning"> 不是小组成员 </label>
+          <label class="label label-danger"> 不是小组成员 </label>
           &nbsp;&nbsp;<label class="label label-success"><%= link_to("加入小组", join_group_path(@post.group), method: :post) %></label>
         <% end %>
       </span>

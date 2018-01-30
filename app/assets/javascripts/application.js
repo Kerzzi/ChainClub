@@ -96,3 +96,8 @@ $(document).ready(function() {
 		});
 
 });
+
+// 网址导航页面的提示信息
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip()
+})
