@@ -8,6 +8,6 @@ class Post < ApplicationRecord
   has_many :post_comments, dependent: :destroy
 
   scope :recent, -> { order("created_at DESC")}
-  
+  scope :random5, -> { limit(5).order("RANDOM()") }
   
 end

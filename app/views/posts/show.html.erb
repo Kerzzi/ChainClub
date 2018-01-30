@@ -11,28 +11,22 @@
             <div class="avatar pull-right"><img src= "<%= render_user_avatar(@post.user, 50) %>" style="width:50px; hight:50px; border-radius:50%;"></div>
           </div>
         </div>
-        <p>本文由 <%= @post.user.display_name %> · 发布于<%= @post.created_at %> · 最后由XX回复于天前 · 1281次阅读</p>
+        <p>本文由 <%= @post.user.display_name %> · 于 <%= @post.created_at %> · 发布在 <%= link_to(@group.title, group_path(@group))%> 小组 </p>
       </div>
       <div class="panel-body">
-        
-        <div class="col-md-12">
-
-          <div class="article-content">
-            <%= simple_format(@post.content) %>
-          </div>
-          <br>
-
+        <div class="article-content">
+          <%= simple_format(@post.content) %>
         </div>
-        
+        <br>
       </div>
     </div> 
     
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h4 class="panel-title"><%= @post.post_comments.count %> 个回复</h4>
+        <h5 class="panel-title"><%= @post.post_comments.count %> 个回复</h5>
       </div>
       <div class="panel-body">
-        <div >
+        <div>
           <%= render @post.post_comments %>
         </div>      
       </div>
@@ -42,10 +36,14 @@
     
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">相关话题</h3>
+        <h5 class="panel-title">推荐文章</h5>
       </div>
       <div class="panel-body">
-      <p>推荐5个相似话题</p>
+        <% @commends.each do |post| %>
+          <p>
+            <%= link_to post.group.title, group_path(post.group) %> · <%= link_to post.title, group_post_path(post.group,post) %> · <span class="badge"><%= post.post_comments.size %></span>
+          </p>
+        <% end %>
       </div>
     </div>  
     

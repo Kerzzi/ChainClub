@@ -9,16 +9,15 @@
         <span class="name">
           <%= post_comment.user.display_name %>
         </span> ·
-        <span class='floor'>#23</span> ·
         <a class="time" href="#"><%= time_tag(post_comment.created_at) %></a>
-        <span class="opts pull-right">
+        <span class="pull-right">
           <% if (current_user && post_comment.user == current_user) || can_editor? %>
-            <%= link_to("Delete", group_post_post_comment_path(@group, @post, post_comment), method: :delete, data: {
-              confirm: "Are you sure?"},class: "btn btn-sm pull-right") %>
+            <%= link_to("删除", group_post_post_comment_path(@group, @post, post_comment), method: :delete, data: {
+              confirm: "确定删除吗?"},class: "btn btn-sm pull-right") %>
           <% end %>
         </span>
         <div class="answer-content">
-            <p ><%= sanitize post_comment.content %></p>
+          <p ><%= sanitize post_comment.content %></p>
         </div>
       </div>
     </div>

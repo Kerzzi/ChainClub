@@ -6,6 +6,7 @@ class PostsController < ApplicationController
     @group = Group.find(params[:group_id])
     @post = Post.find(params[:id])
     @post_comments = @post.post_comments.paginate(:page => params[:page], :per_page => 10)
+    @commends = Post.where.not(:id => @post.id ).random5
   end
   
   def new
