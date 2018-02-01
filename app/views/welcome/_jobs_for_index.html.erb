@@ -14,7 +14,7 @@
             <h4><%= link_to(job.title, job_path(job)) %></h4>
             <p><i class="fa fa-street-view" aria-hidden="true"></i> <%= job.city %></p>
             <p><i class="fa fa-clock-o" aria-hidden="true"></i> <%= job.deadline %></p>
-            <p><span class="label label-success"><%= t(job.category) %></span></p>
+            <p><span class="label label-success"><%= t(job.category, :scope => "job.category") %></span></p>
             <hr>
           </div>
         <% end %>
@@ -28,7 +28,7 @@
             <h4><%= link_to(job.title, job_path(job)) %></h4>
             <p><i class="fa fa-street-view" aria-hidden="true"></i> <%= job.city %></p>
             <p><i class="fa fa-clock-o" aria-hidden="true"></i> <%= job.deadline %></p>
-            <p><span class="label label-success"><%= t(job.category) %></span></p>
+            <p><span class="label label-success"><%= t(job.category, :scope => "job.category") %></span></p>
             <hr>
           </div>
         <% end %>

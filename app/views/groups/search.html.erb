@@ -20,7 +20,7 @@
               <div class="row"> 
                 <div class="col-md-3">
                   <% if group.logo.present? %>
-                    <%= link_to image_tag(group.logo.url(:medium)),group_path(group) %>
+                    <%= link_to image_tag(group.logo.url(:group_index_logo)),group_path(group) %>
                   <% end %>
                 </div>
                 <div class="col-md-9">

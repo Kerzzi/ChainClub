@@ -101,3 +101,13 @@ $(document).ready(function() {
 $(document).ready(function(){
   $('[data-toggle="tooltip"]').tooltip()
 })
+
+// 首页搜索区域
+function showSearch(whichsearch){
+  var data_holder = whichsearch.getAttribute("data-placeholder");
+  var link = whichsearch.getAttribute("data-search-link");
+  var homeSearch = document.getElementById("homeSearch");
+  var homeSearchInput = document.getElementById("homeSearchInput");
+  homeSearch.setAttribute("action",link);
+  homeSearchInput.setAttribute("placeholder",data_holder);
+}
