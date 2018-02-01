@@ -30,6 +30,13 @@ Rails.application.routes.draw do
       get :password
     end
   end
+  
+  resources :posts do
+    collection do
+      get :search
+    end
+  end  
+
 
   get 'topics/node:id', to: 'topics#node', as: 'node_topics'
 

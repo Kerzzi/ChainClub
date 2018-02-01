@@ -1,6 +1,11 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, :only => [:new, :create, :edit, :update, :destroy]
   before_action :find_group_post_and_check_permission, only: [:edit, :update, :destroy]
+  before_action :validate_search_key, only: [:search]
+
+  def index
+    @posts = Post.all.recent.paginate(:page => params[:page], :per_page => 10)
+  end
 
   def show
     @group = Group.find(params[:group_id])
@@ -43,6 +48,24 @@ class PostsController < ApplicationController
     redirect_to group_path(@group), alert: "删除成功！"
   end
 
+  def search
+    if @query_string.present?
+      search_result = Post.ransack(@search_criteria).result(:distinct => true)
+      @posts = search_result.paginate(:page => params[:page], :per_page => 10 )
+    end
+  end
+
+  protected
+
+  def validate_search_key
+    @query_string = params[:q].gsub(/\\|\'|\/|\?/, "") if params[:q].present?
+    @search_criteria = search_criteria(@query_string)
+  end
+
+
+  def search_criteria(query_string)
+    { :title_cont => query_string }
+  end
 
   private
   def find_group_post_and_check_permission
@@ -57,4 +80,6 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:title, :content)
   end  
+  
+  
 end

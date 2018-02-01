@@ -8,9 +8,9 @@
         <h4 class="search-info-title">搜索信息不能为空，请输入关键字搜索</h4>
     <% elsif @sites.blank? %>
         <br>
-        <h4 class="search-info-title">亲，没有搜索到相关工作信息哦，要不换个关键词试试？</h4>
+        <h4 class="search-info-title">亲，没有搜索到相关网站信息哦，要不换个关键词试试？</h4>
     <% else %>
-        <h4 class="search-info-title"> 有关"<%= @query_string %>"的工作信息 </h4>
+        <h4 class="search-info-title"> 有关"<%= @query_string %>"的网站信息 </h4>
         <hr>
         <div id="site_nodes" class="site-body" >
         
@@ -28,6 +28,6 @@
     <% end %>    
   </div>
   <div class="col-md-4">
-    <%= render "sidebar_for_site_show" %>
+    <%= render "sidebar_for_site_index" %>
   </div>
 </div>
