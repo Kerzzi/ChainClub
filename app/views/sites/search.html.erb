@@ -3,6 +3,10 @@
 </div>
 
 <div class="container">
+  <%= render "common/flashes" %>
+</div>
+
+<div class="container">
   <div class="col-md-8">
     <% if @query_string.blank? %>
         <h4 class="search-info-title">搜索信息不能为空，请输入关键字搜索</h4>
