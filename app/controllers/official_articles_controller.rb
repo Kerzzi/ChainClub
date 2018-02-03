@@ -1,13 +1,13 @@
 class OfficialArticlesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :destroy, :join, :quit]
   before_action :validate_search_key, only: [:search]
-  
+
   # ---CRUD---
   def index
-    @official_articles = OfficialArticle.where(:status => "public").order("created_at DESC").paginate(:page => params[:page], :per_page => 15) 
+    @official_articles = OfficialArticle.where(:status => "public").order("created_at DESC").paginate(:page => params[:page], :per_page => 12) 
     @article_hots = OfficialArticle.where(:status => "public").sort_by{|official_article| -official_article.article_comments.count}    #按数据要求排序
   end
-  
+
   def show
     @official_article = OfficialArticle.find(params[:id])
     @user = @official_article.user
@@ -16,51 +16,51 @@ class OfficialArticlesController < ApplicationController
     @article_comment = ArticleComment.new
 
     @article_hots = OfficialArticle.where(:status => "public").sort_by{|official_article| -official_article.article_comments.count}    #按数据要求排序
-    
+
     if @official_article.status != "public"
       flash[:warning] = "这篇文章在审核中！不可查看！"
       redirect_to root_path
     end
   end
-  
+
   def new
-    @official_article = OfficialArticle.new 
+    @official_article = OfficialArticle.new
   end
-  
+
   def create
     @official_article = OfficialArticle.new(official_article_params)
     @official_article.user = current_user
-    
+
     if @official_article.save
       redirect_to official_articles_path
       flash[:notice] = "文章已提交，待管理员审核后可发布"
     else
-      render :new 
+      render :new
     end
   end
-  
-  def edit 
+
+  def edit
     @official_article = OfficialArticle.find(params[:id])
   end
-  
+
   def update
     @official_article = OfficialArticle.find(params[:id])
-    
-    if @official_article.update(official_article_params)    
+
+    if @official_article.update(official_article_params)
       redirect_to official_articles_path, notice: "文章更新成功！"
     else
-      render :edit 
+      render :edit
     end
   end
-  
+
   def destroy
     @official_article = OfficialArticle.find(params[:id])
     @official_article.destroy
     redirect_to official_articles_path, alert: "文章已删除"
   end
-  
+
   # ---official_article_collection 收藏文章---
-  
+
   # ---official_article_collection 喜欢文章---
   def like
     @official_article = OfficialArticle.find(params[:id])
@@ -79,7 +79,7 @@ class OfficialArticlesController < ApplicationController
     end
       redirect_to official_article_path(@official_article)
   end
-  
+
    def search
      if @query_string.present?
        search_result = OfficialArticle.ransack(@search_criteria).result(:distinct => true)
@@ -101,9 +101,9 @@ class OfficialArticlesController < ApplicationController
    def search_criteria(query_string)
      { :title_cont => query_string }
    end
-   
+
   private
-  
+
   def official_article_params
     params.require(:official_article).permit(:title, :content,:summary,:image, :user_id, :author, :source, :article_category_id, :status)
   end

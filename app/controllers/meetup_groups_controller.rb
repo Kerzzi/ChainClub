@@ -6,11 +6,11 @@ class MeetupGroupsController < ApplicationController
   def index
     @meetup_groups = case params[:order]
                       when 'by_offline'
-                        MeetupGroup.published.offline_meetup.paginate(:page => params[:page], :per_page => 10)
+                        MeetupGroup.published.offline_meetup.paginate(:page => params[:page], :per_page => 28)
                       when 'by_online'
-                        MeetupGroup.published.online_meetup.paginate(:page => params[:page], :per_page => 10)
+                        MeetupGroup.published.online_meetup.paginate(:page => params[:page], :per_page => 28)
                       else
-                        MeetupGroup.published.paginate(:page => params[:page], :per_page => 10)
+                        MeetupGroup.published.paginate(:page => params[:page], :per_page => 28)
                       end
 
   end

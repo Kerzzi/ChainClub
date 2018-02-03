@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_action :validate_search_key, only: [:search]
 
   def index
-    @posts = Post.all.recent.paginate(:page => params[:page], :per_page => 10)
+    @posts = Post.all.recent.paginate(:page => params[:page], :per_page => 30)
   end
 
   def show
@@ -13,7 +13,7 @@ class PostsController < ApplicationController
     @post_comments = @post.post_comments.paginate(:page => params[:page], :per_page => 10)
     @commends = Post.where.not(:id => @post.id ).random5
   end
-  
+
   def new
     @group = Group.find(params[:group_id])
     @post = Post.new
@@ -31,19 +31,19 @@ class PostsController < ApplicationController
       render :new
     end
   end
-  
-  def edit 
+
+  def edit
   end
-  
-  def update  
+
+  def update
     if @post.update(post_params)
       redirect_to group_path(@group), notice:"更新成功！"
     else
-      render :edit 
+      render :edit
     end
   end
-  
-  def destroy  
+
+  def destroy
     @post.destroy
     redirect_to group_path(@group), alert: "删除成功！"
   end
@@ -79,7 +79,7 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :content)
-  end  
-  
-  
+  end
+
+
 end

@@ -4,7 +4,7 @@ class GroupsController < ApplicationController
   before_action :validate_search_key, only: [:search]
 
   def index
-    @groups = Group.published.recent.paginate(:page => params[:page], :per_page => 10)
+    @groups = Group.published.recent.paginate(:page => params[:page], :per_page => 12)
 
     @posts = case params[:order]
              when 'by_hot'

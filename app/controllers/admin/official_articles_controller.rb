@@ -2,7 +2,7 @@ class Admin::OfficialArticlesController < Admin::BaseController
   before_action :require_editor!
 
   def index
-    @official_articles = OfficialArticle.all.paginate(:page => params[:page], :per_page => 15)
+    @official_articles = OfficialArticle.all.paginate(:page => params[:page], :per_page => 20)
   end
 
   def show

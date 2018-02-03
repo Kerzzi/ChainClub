@@ -2,7 +2,7 @@ class Admin::CoursesController < Admin::BaseController
   before_action :require_editor!
 
   def index
-    @courses = Course.all.paginate(:page => params[:page], :per_page => 10)
+    @courses = Course.all.paginate(:page => params[:page], :per_page => 20)
   end
 
   def show

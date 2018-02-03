@@ -15,6 +15,7 @@
             <th>活动城市</th>
             <th>活动地点</th>
             <th>活动时间</th>
+            <th>活动管理</th>
           </tr>
         </thead>
 
@@ -26,6 +27,10 @@
               <td> <%= meetup_group.city %> </td>
               <td> <%= meetup_group.address %> </td>
               <td> <%= meetup_group.activity_time %> </td>
+              <td>
+                <%= link_to "", edit_meetup_group_path(meetup_group), class: "fa fa-pencil" %>
+                <%= link_to "", meetup_group_path(meetup_group), 'data-confirm' => '确定删除?', method: :delete, class: "fa fa-trash" %>
+              </td>
             </tr>
           <% end %>
         </tbody>

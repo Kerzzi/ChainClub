@@ -2,7 +2,7 @@ class Admin::ProjectsController < Admin::BaseController
   before_action :require_editor!
 
   def index
-    @projects = Project.all.paginate(:page => params[:page], :per_page => 10)
+    @projects = Project.all.paginate(:page => params[:page], :per_page => 20)
   end
 
   def show

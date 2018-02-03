@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
   before_action :validate_search_key, only: [:search]
 
   def index
-    @projects = Project.published.recent.paginate(:page => params[:page], :per_page => 16)
+    @projects = Project.published.recent.paginate(:page => params[:page], :per_page => 28)
   end
 
   def show

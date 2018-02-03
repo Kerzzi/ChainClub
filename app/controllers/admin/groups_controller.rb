@@ -3,7 +3,7 @@ class Admin::GroupsController < Admin::BaseController
   before_action :validate_search_key, only: [:search]
 
   def index
-    @groups = Group.all.paginate(:page => params[:page], :per_page => 10)
+    @groups = Group.all.paginate(:page => params[:page], :per_page => 20)
   end
 
   def edit

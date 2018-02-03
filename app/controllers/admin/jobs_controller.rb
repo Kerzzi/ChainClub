@@ -3,7 +3,7 @@ class Admin::JobsController < Admin::BaseController
 
   def index
 
-    @jobs = Job.all.paginate(:page => params[:page], :per_page => 10)
+    @jobs = Job.all.paginate(:page => params[:page], :per_page => 20)
   end
 
   def show

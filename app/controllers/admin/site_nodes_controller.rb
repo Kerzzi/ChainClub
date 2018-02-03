@@ -1,39 +1,39 @@
 class Admin::SiteNodesController < Admin::BaseController
-  before_action :require_editor!  
-  
+  before_action :require_editor!
+
   def index
-    @site_nodes = SiteNode.all.paginate(:page => params[:page], :per_page => 10) 
-  end  
+    @site_nodes = SiteNode.all.paginate(:page => params[:page], :per_page => 20) 
+  end
 
   def edit
     @site_node = SiteNode.find(params[:id])
-  end  
-  
+  end
+
   def new
     @site_node = SiteNode.new
   end
 
   def create
     @site_node = SiteNode.new(site_node_params)
-    
+
     if @site_node.save
       redirect_to admin_site_nodes_path
     else
       render :new
-    end 
+    end
   end
-  
-  def update 
+
+  def update
     @site_node = SiteNode.find(params[:id])
-      
+
     if @site_node.update(site_node_params)
       redirect_to admin_site_nodes_path, notice:"更新成功！"
     else
-      render :edit 
+      render :edit
     end
   end
-  
-  def destroy  
+
+  def destroy
     @site_node = SiteNode.find(params[:id])
     @site_node.destroy
     redirect_to admin_site_nodes_path, alert: "删除成功！"
@@ -50,10 +50,10 @@ class Admin::SiteNodesController < Admin::BaseController
     flash[:alert] = "成功完成 #{total} 笔"
     redirect_to admin_site_nodes_path
   end
-  
+
   private
- 
+
   def site_node_params
     params.require(:site_node).permit(:name, :sort)
-  end 
+  end
 end
