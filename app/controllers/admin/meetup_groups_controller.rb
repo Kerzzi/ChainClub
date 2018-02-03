@@ -1,8 +1,8 @@
 class Admin::MeetupGroupsController < Admin::BaseController
-  before_action :find_meetup_group_and_check_permission, only: [:edit, :update, :destroy]  
+  before_action :find_meetup_group_and_check_permission, only: [:edit, :update, :destroy]
   before_action :validate_search_key, only: [:search]
-  
-  def index    
+
+  def index
     @meetup_groups = case params[:order]
                       when 'by_offline'
                         MeetupGroup.all.offline_meetup.paginate(:page => params[:page], :per_page => 10)
@@ -11,7 +11,7 @@ class Admin::MeetupGroupsController < Admin::BaseController
                       else
                         MeetupGroup.all.paginate(:page => params[:page], :per_page => 10)
                       end
-            
+
   end
 
   def new
@@ -28,27 +28,27 @@ class Admin::MeetupGroupsController < Admin::BaseController
       render :new
     end
   end
-  
+
   def show
     @meetup_group = MeetupGroup.find(params[:id])
   end
 
   def edit
-  end  
-    
-  def update  
+  end
+
+  def update
     if @meetup_group.update(meetup_group_params)
       redirect_to admin_meetup_groups_path, notice:"更新成功！"
     else
-      render :edit 
+      render :edit
     end
   end
-  
-  def destroy  
+
+  def destroy
     @meetup_group.destroy
     redirect_to admin_meetup_groups_path, alert: "删除成功！"
-  end 
-   
+  end
+
    def search
      if @query_string.present?
        search_result = MeetupGroup.ransack(@search_criteria).result(:distinct => true)
@@ -67,7 +67,7 @@ class Admin::MeetupGroupsController < Admin::BaseController
      flash[:alert] = "成功完成 #{total} 笔"
      redirect_to admin_meetup_groups_path
    end
-   
+
    protected
 
    # 取到params[:q]的内容并去掉非法的内容
@@ -80,14 +80,14 @@ class Admin::MeetupGroupsController < Admin::BaseController
    def search_criteria(query_string)
      { :title_cont => query_string }
    end
-   
+
   private
   def find_meetup_group_and_check_permission
     @meetup_group = MeetupGroup.find(params[:id])
   end
-  
+
   def meetup_group_params
-    params.require(:meetup_group).permit(:title, :status, :meetup_type, :time_limit, :activity_time, :city, :address, :register, :introduce, :user_id)
+    params.require(:meetup_group).permit(:title, :logo, :remove_logo, :status, :meetup_type, :time_limit, :activity_time, :city, :address, :register, :introduce, :user_id)
   end
 
 end

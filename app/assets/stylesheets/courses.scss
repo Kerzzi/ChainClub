@@ -26,7 +26,7 @@
   }
 }
 
-/* show page */
+/* 课程和活动 show page */
 div.social-share-button {
     margin: 0 auto;
 }
@@ -133,7 +133,8 @@ font-size: 18px;
 
 .preview-thumbnail.nav-tabs {
   border: none;
-  margin-top: 15px; }
+  margin-top: 15px;
+}
 
 .preview-thumbnail.nav-tabs li {
   width: 18%;
@@ -177,10 +178,8 @@ font-size: 18px;
 }
 
 .price-service{
-  // background-color: rgb(245,245,245);
-  margin-top: 30px;
-  margin-bottom: 30px;
-  padding-left: 10px;
+  margin-bottom: 10px;
+  padding-top: 10px;
   padding-right: 10px;
   color: #666;
   border-top: 1px dotted #dedede;
@@ -207,7 +206,7 @@ font-size: 18px;
   }
 }
 .quantity-size{
-  padding-left: 10px;
+
   padding-right: 10px;
   color: #666;
   p.quantity{

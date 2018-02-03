@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180128102836) do
+ActiveRecord::Schema.define(version: 20180203074039) do
 
   create_table "actions", force: :cascade do |t|
     t.string "action_type", null: false
@@ -116,6 +116,7 @@ ActiveRecord::Schema.define(version: 20180128102836) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "status", default: "public"
+    t.string "logo"
   end
 
   create_table "nodes", force: :cascade do |t|

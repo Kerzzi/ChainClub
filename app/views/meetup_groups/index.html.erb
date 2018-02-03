@@ -3,61 +3,38 @@
 </div>
 
 <div class="container">
-  <div class="container-fluid show-content">
-    <div class="row">
-      <div class="heading">
-        <a href="/meetup_groups"><h1 class="title">Meetup</h1></a>    
-      </div>
-      <div class="heading-inline">
-        <div class="left-info-block">
-          <span class="title">Meetup类型</span>&nbsp; |
-          <%= link_to("全部", meetup_groups_path) %>
-          <%= link_to("线下", meetup_groups_path(:order => "by_offline")) %>
-          <%= link_to("线上", meetup_groups_path(:order => "by_online")) %>
-        </div>
-        <div class="right-btn-block pull-right">
-          <%= link_to("关于Meetup", about_meetup_groups_path, class: "btn btn-default btn-guide") %>
-          <%= link_to("新建Meetup", new_meetup_group_path, class: "btn btn-default btn-guide") %>
-        </div>
-      </div> 
-      <div class="heading-line sub-heading">
-        <div class="lift-info-block">
-          <span class="title">Meetup周期</span>&nbsp; |
-          <a class="selection-link" href="/meetup_groups">全部</a>
-          <a class="selection-link" href="#">单次</a>
-          <a class="selection-link" href="#">长期</a>
-        </div>
-      </div>
-    </div>
 
-    <table class="table table-striped">
-      <thead>
-       <tr>
-          <th>活动名称</th>
-          <th>城市</th>
-          <th>时间</th>
-          <th>联系人</th>
-          <th>查看</th>
-        </tr>
-      </thead>
-      <tbody>
+  <div class="row">
+    <div class="col-md-9">
+      <div class="row">
         <% @meetup_groups.each do |meetup_group| %>
-          <tr>
-            <td><%= meetup_group.title %></td>
-            <td><%= meetup_group.city %></td>
-            <td><%= meetup_group.activity_time %></td>
-            <td><%= meetup_group.user.email %></td>
-            <td><%= link_to("查看", meetup_group_path(meetup_group), class: "btn btn-default") %></td>
-          </tr>
+          <div class="col-md-3 group-item">
+            <div class="meetup-card">
+              <% if meetup_group.logo.present? %>
+                <%= link_to image_tag(meetup_group.logo.url(:meetup_group_logo)),meetup_group_path(meetup_group), :target => "_blank" %>
+              <% else %>
+                <img src="https://ww2.sinaimg.cn/large/006tKfTcly1fnt7p9w5h6j306o06owec.jpg" alt="meetu-logo">
+              <% end %>
+
+              <div class="meetup-card-title text-center">
+                <p style="overflow:hidden;"><%= link_to(meetup_group.title,meetup_group_path(meetup_group)) %></p>
+              </div>
+
+            </div>
+          </div>
         <% end %>
-      </tbody>
-    </table>
-    
-    <div class="text-center">
-      <%= will_paginate @meetup_groups, renderer: BootstrapPagination::Rails, :previous_label => t('上一页'), :next_label => t('下一页') %>
+
+        <div class="text-center">
+          <%= will_paginate @meetup_groups, renderer: BootstrapPagination::Rails, :previous_label => t('上一页'), :next_label => t('下一页') %>
+        </div>
+      </div>
     </div>
-      
+
+    <div class="col-md-3 group-index-sidebar">
+      <%= render "sidebar_for_index" %>
+    </div>
+
   </div>
+
+
 </div>
-
-

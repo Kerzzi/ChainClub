@@ -1,19 +1,31 @@
 <div class="container-fluid">
   <%= simple_form_for [:admin,@meetup_group] do |f| %>
+
+    <div class="form-group">
+      <%= f.label "活动主图" %>
+      <%= f.file_field :logo, :class => "form-control" %>
+      <% if f.object.logo.present? %>
+        <label>
+          <%= f.check_box :remove_logo %> 删除图片
+        </label>
+        <%= link_to f.object.logo.filename, f.object.logo.url, :target => "_blank" %>
+      <% end %>
+    </div>
+
     <div class="form-group">
       <%= f.input :title, input_html: { class: "form-control"}, :label => "活动名称" %>
     </div>
-    
+
     <div class="form-group">
       <%= f.label "活动类型" %>
       <%= f.select :meetup_type, MeetupGroup::MEETUPTYPES.map{ |s| [t(s, :scope => "meetup_group.meetup_type"), s] }, {}, :class => "form-control" %>
     </div>
-    
+
     <div class="form-group">
       <%= f.label "发布状态" %>
       <%= f.select :status, MeetupGroup::STATUS.map{ |s| [t(s, :scope => "meetup_group.status"), s] }, {}, :class => "form-control" %>
     </div>
-    
+
     <div class="form-group">
       <%= f.input :time_limit, input_html: { class: "form-control"}, :label => "长期/单次活动" %>
     </div>
@@ -27,14 +39,14 @@
       <%= f.input :address, input_html: { class: "form-control"}, :label => "活动地点" %>
     </div>
     <div class="form-group">
-      <%= f.input :register, input_html: { class: "form-control"}, :label => "报名入口" %>
+      <%= f.input :register, input_html: { class: "form-control"}, placeholder: "https://", :label => "报名入口" %>
     </div>
-    
+
     <div class="form-group">
       <%= f.label "活动介绍" %>
       <%= f.cktext_area :introduce, ckeditor: { language: 'zh-CN'} %>
     </div>
-    
+
     <div class="form-actions">
       <%= f.submit "提交", disable_with: "Submiting...", class: "btn btn-primary"%>
     </div>

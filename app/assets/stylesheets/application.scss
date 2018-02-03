@@ -47,6 +47,12 @@ body {
     color: #000;
   }
 
+  span{
+    a{
+      color: #FFF;
+    }
+  }
+
   letter-spacing: 0.1em;
   a {                                                 // 所有a标签统一样式
     color: #666;                                      // 链接反转的样式
@@ -185,7 +191,7 @@ body {
     color: #eb5424 !important;
   }
   &.show_bgcolor {
-    background-color: #02061A; //背景颜色
+    background-color: #02061A; //背景颜色,需要改掉
   }
 
   .navbar-header {
@@ -196,6 +202,7 @@ body {
     a:hover {
       // color: #D0CFCE;
       transition: 0.5s;                                 // 鼠标指向时 0.5面渐变
+
     }
   }
   .navbar-nav li a {

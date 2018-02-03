@@ -1,0 +1,25 @@
+<div class="panel panel-default">
+  <div class="panel-body ">
+    <div class="admin-meetup">
+      <%= link_to("发起新活动", new_meetup_group_path, class: "btn btn-danger btn-block") %>
+    </div>
+  </div>
+</div>
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">活动类型</div>
+  <div class="panel-body ">
+    <span class="label label-info"><%= link_to("全部", meetup_groups_path) %></span>
+    <span class="label label-success"><%= link_to("线下", meetup_groups_path(:order => "by_offline")) %></span>
+    <span class="label label-primary"><%= link_to("线上", meetup_groups_path(:order => "by_online")) %></span>
+    <span class="label label-warning"><%= link_to("关于活动", about_meetup_groups_path) %></span>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">广告位</div>
+  <div class="panel-body ads-image-css">
+    <img src= "https://ww4.sinaimg.cn/large/006tKfTcly1fnt6b3yncgj30ik0t8dhw.jpg" >
+  </div>
+</div>

@@ -1,123 +1,112 @@
-<div class="container cc-meetup">
-  <div class="col-md-9 meetup-block">
-    <div class="show-content">
-      <div class="heading">
-        <h1 class="title"><%= link_to("Meetup", meetup_groups_path) %></h1>  
-      </div>
-      <div class="heading-line">
-        <p>Meetup由区块链研习社社友自发组织！</p>
-      </div>
-      <hr/>
-
-      
-      <div class="meetup-title">
-        <h2 class="text-center"> <%= @meetup_group.title %></h2>
-      </div>
-      
-      <div class="row meetup-detail">
-        <div class="col-md-2">
-          <p>活动期限:</p>
-        </div>
-
-        <div class="col-md-10">
-          <%= @meetup_group.time_limit %>
+<div class="container">
+  <div class="show-page">
+    <ol class="breadcrumb">
+      <li><a href="<%= root_path %>">首页</a></li>
+      <li><a href="<%= meetup_groups_path %>">活动列表</a></li>
+      <li class="active"><%= @meetup_group.title %></li>
+    </ol>
+    <!-- Start of product card -->
+    <div class="container card">
+      <!-- Start of left card -->
+      <div class="preview col-md-7 " style="">
+        <div class="preview-pic tab-content" >
+          <% if @meetup_group.logo.present? %>
+            <%= link_to image_tag(@meetup_group.logo.url(:meetup_group_logo)), @meetup_group.logo.url, :target => "_blank" %>
+          <% end %>
         </div>
       </div>
+      <!-- End of left card -->
+      <!-- Start of right cart -->
+      <div class="details col-md-5" style="margin-top:50px;">
+        <h3 class="product-title"><%= link_to(@meetup_group.title, meetup_group_path(@meetup_group)) %></h3>
+        <div class="price-service">
+          <p class="price">活动期限 &nbsp;&nbsp;<span class="delivery"> <%= @meetup_group.time_limit %></span></p>
+          <p class="price">活动类型 &nbsp;&nbsp;<span class="label label-success"> <%= t(@meetup_group.meetup_type, :scope => "meetup_group.meetup_type") %></span></p>
+          <p class="service">举办时间 &nbsp;&nbsp;<span class="delivery"> <%= @meetup_group.activity_time %></span></p>
+          <p class="delivery">举办城市 &nbsp;&nbsp;<span class="delivery"> <%= @meetup_group.city %></span></p>
+          <p class="delivery">聚会地点 &nbsp;&nbsp;<span class="delivery"> <%= @meetup_group.address %></span></p>
+        </div>
+        <div class="quantity-size">
+          <p class="delivery">发起人 <span class="delivery"><%= @meetup_group.user.display_name %></span></p>
+        </div>
+        <div class="action">
+          <div class="col-md-10" >
+            <a class="add-to-cart btn btn-block" href="<%= @meetup_group.register %>" role="button">立即报名</a>
+          </div>
 
-      <div class="row">
-        <div class="col-md-2">
-          <p>活动类型:</p>
-        </div>
+          <div class="col-md-2"  >
+            <%= link_to "#", :class => "like btn btn-default",method: :post do %>
+              <i class="fa fa-heart fa-lg"></i>
+            <% end %>
+          </div>
 
-        <div class="col-md-10">
-          <%= t(@meetup_group.meetup_type, :scope => "meetup_group.meetup_type") %>
         </div>
-      </div>
-      
-      <div class="row">
-        <div class="col-md-2">
-          <p>举办时间:</p>
-        </div>
+        <div class="row share">
+          <hr />
+          <div class="col-md-6">
+              <p> 收藏人气（3） </p>
+          </div>
 
-        <div class="col-md-10">
-          <%= @meetup_group.activity_time %>
+          <div class="col-md-6">
+            <%= link_to '#', method: :put do %>
+              <div class="pi-thumbs-up">
+                <!-- <i class="fa fa-thumbs-up fa-2x" , style="color:#ff5722;"></i> -->
+                点赞（5）
+              </div>
+            <% end %>
+          </div>
         </div>
-      </div>
-      
-      <div class="row">
-        <div class="col-md-2">
-          <p>城市:</p>
+        <div class="row share">
+          <div class="col-md-6 ">
+              <p><i class="fa fa-share-alt" aria-hidden="true"></i> 分享 </p>
+          </div>
+          <div class="col-md-6" style="margin-left:-40px;">
+            <%= social_share_button_tag(@meetup_group.title) %><!-- 社交分享 -->
+          </div>
         </div>
+      </div><!-- End of left card -->
+    </div><!-- End of product card -->
 
-        <div class="col-md-10">
-          <%= @meetup_group.city %>
-        </div>
-      </div>
-      
-      <div class="row">
-        <div class="col-md-2">
-          <p>聚会地点:</p>
-        </div>
+    <!-- Start of product description & reviews -->
+    <div class="row course_description col-md-12">
+      <div class="tabs" >
+        <div class="tabbable-panel">
+          <div class="tabbable-line">
+            <ul class="nav nav-tabs">
+              <li role="presentation" class="active">
+                <a href="#tab_default_1" data-toggle="tab">活动详情</a>
+              </li>
+              <li>
+                <a href="#tab_default_2" data-toggle="tab">活动评论<span class="badge">4</span> </a>
+              </li>
+            </ul>
+            <br/>
+            <div class="tab-content container">
+              <div class="tab-pane active" id="tab_default_1">
+                <p class="product-description2 text-center">活动详情</p>
+                <div class="container">
+                  <p class="product-description"><%= sanitize @meetup_group.introduce %></p>
+                </div>
+              </div><!-- End of tab_default_1 -->
 
-        <div class="col-md-10">
-          <%= @meetup_group.address %>
-        </div>
-      </div>
-      
-      <div class="row">
-        <div class="col-md-2">
-          <p>聚会详情:</p>
-        </div>
+              <div class="tab-pane" id="tab_default_2">
+                  <div class="row">
+                    <div class="col-sm-12 ">
+                      <h4>
+                        共 3 条评论
+                      </h4>
+                      <hr>
+                      <div class="course-reviews" >
+                        <p >mark</p>
+                      </div>
+                    </div>
+                  </div>
+                </div><!-- End of tab_default_2 -->
+              </div><!-- End of tab-content -->
+            </div><!-- End of tabbable-line -->
+          </div><!-- End of tabbable-panel -->
+        </div><!-- End of tabs -->
+      </div><!-- End of product description & reviews -->
 
-        <div class="col-md-10">
-          <%= sanitize @meetup_group.introduce %>
-        </div>
-      </div>    
-
-      <div class="row">
-        <div class="col-md-2">
-          <p>报名入口:</p>
-        </div>
-
-        <div class="col-md-10">
-          <%= @meetup_group.register %>
-        </div>
-      </div> 
-      
-      <div class="row">
-        <div class="col-md-2">
-          <p>联系人:</p>
-        </div>
-
-        <div class="col-md-10">
-          <%= @meetup_group.user.email %>
-        </div>
-      </div>   
-      
-    </div>
-  </div>
-
-  <div class="col-md-3">
-    <% if can_editor? %>
-      <div class="side-content project-admin">
-        <h4>管理操作</h4>
-        <hr>
-        <%= link_to("更新", edit_meetup_group_path(@meetup_group), class: "btn btn-default")%> &nbsp; 
-        <%= link_to("删除", meetup_group_path(@meetup_group),    class: "btn btn-default", 
-                    method: :delete, data: { confirm: "Are you sure?" } )%> &nbsp;
-        <%= link_to("全部", meetup_groups_path, class: "btn btn-default")%>
-      </div>
-    <% end %>
-    <div class="side-content meetup_group-admin">
-      <p>更多Meetup</p>
-      <hr>
-      <%= link_to("查看全部Meetup", meetup_groups_path, class: "btn btn-default")%>
-    </div>
-    <div class="side-content meetup_group-admin">
-      <p>更多Meetup</p>
-      <hr>
-      <p>Mark:后期加入推荐Meetup</p>
-    </div>
-  </div>
+  </div><!-- End of product show page -->
 </div>
-    
