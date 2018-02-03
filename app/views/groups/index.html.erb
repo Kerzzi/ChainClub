@@ -13,12 +13,12 @@
           </div>
         </div>
       </div><!-- /panel-body -->
-      
+
     </div>
-    
+
     <div class="panel panel-default">
       <div class="panel-heading">
-        <%= link_to("最新动态", groups_path) %> | 
+        <%= link_to("最新动态", groups_path) %> |
         <%= link_to("热门帖子", groups_path(:order => "by_hot")) %>
       </div>
       <div class="panel-body">
@@ -26,8 +26,8 @@
           <p>
             <%= link_to post.group.title, group_path(post.group) %> · <%= link_to post.title, group_post_path(post.group,post) %>  <span class="badge"><%= post.post_comments.count %></span>
             <span class="pull-right">
-              <span class="glyphicon glyphicon-user" aria-hidden="true"></span> <%= post.user.display_name %> · 
-              <span class="glyphicon glyphicon-time" aria-hidden="true"></span> <%= post.created_at %> 
+              <span class="glyphicon glyphicon-user" aria-hidden="true"></span> <%= post.user.display_name %> ·
+              <span class="glyphicon glyphicon-time" aria-hidden="true"></span> <%= time_tag(post.created_at) %> 
             </span>
           </p>
         <% end %>
@@ -35,7 +35,7 @@
           <%= will_paginate @posts, renderer: BootstrapPagination::Rails, :previous_label => t('上一页'), :next_label => t('下一页') %>
         </div>
       </div><!-- /panel-body -->
-      
+
     </div>
   </div>
 

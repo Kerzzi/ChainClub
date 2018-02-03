@@ -10,7 +10,7 @@
       <div class="col-md-6">
         <% @internship_jobs.each do |job| %>
           <div class="job-item">
-            <p><span><%= job.publisher %></span><span class="pull-right">更新于 <%= job.updated_at %></span></p>
+            <p><span><%= job.publisher %></span><span class="pull-right">更新于 <%= time_tag(job.updated_at) %></span></p>
             <h4><%= link_to(job.title, job_path(job)) %></h4>
             <p><i class="fa fa-street-view" aria-hidden="true"></i> <%= job.city %></p>
             <p><i class="fa fa-clock-o" aria-hidden="true"></i> <%= job.deadline %></p>
@@ -24,7 +24,7 @@
       <div class="col-md-6">
         <% @fulltime_jobs.each do |job| %>
           <div class="job-item">
-            <p><span><%= job.publisher %></span><span class="pull-right">更新于 <%= job.updated_at %></span></p>
+            <p><span><%= job.publisher %></span><span class="pull-right">更新于 <%= time_tag(job.updated_at) %></span></p>
             <h4><%= link_to(job.title, job_path(job)) %></h4>
             <p><i class="fa fa-street-view" aria-hidden="true"></i> <%= job.city %></p>
             <p><i class="fa fa-clock-o" aria-hidden="true"></i> <%= job.deadline %></p>

@@ -10,7 +10,7 @@
       <div class="col-md-6">
         <% @offline_meetups.each do |meetup_group| %>
           <div class="job-item">
-            <p><span class="pull-right">更新于 <%= meetup_group.updated_at %></span></p>
+            <p><span class="pull-right">更新于 <%= time_tag(meetup_group.updated_at) %></span></p>
             <h4><%= link_to(meetup_group.title, meetup_group_path(meetup_group)) %></h4>
             <p><i class="fa fa-street-view" aria-hidden="true"></i> <%= meetup_group.city %></p>
             <p><i class="fa fa-clock-o" aria-hidden="true"></i> <%= meetup_group.activity_time %></p>
@@ -25,7 +25,7 @@
       <div class="col-md-6">
         <% @offline_meetups.each do |meetup_group| %>
           <div class="job-item">
-            <p><span class="pull-right">更新于 <%= meetup_group.updated_at %></span></p>
+            <p><span class="pull-right">更新于 <%= time_tag(meetup_group.updated_at) %></span></p>
             <h4><%= link_to(meetup_group.title, meetup_group_path(meetup_group)) %></h4>
             <p><i class="fa fa-street-view" aria-hidden="true"></i> <%= meetup_group.city %></p>
             <p><i class="fa fa-clock-o" aria-hidden="true"></i> <%= meetup_group.activity_time %></p>

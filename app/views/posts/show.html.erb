@@ -6,12 +6,12 @@
           <div class="col-md-11">
             <h3 class="panel-title"><%= @post.title %></h3>
           </div>
-          
+
           <div class="col-md-1">
             <div class="avatar pull-right"><img src= "<%= render_user_avatar(@post.user, 50) %>" style="width:50px; hight:50px; border-radius:50%;"></div>
           </div>
         </div>
-        <p>本文由 <%= @post.user.display_name %> · 于 <%= @post.created_at %> · 发布在 <%= link_to(@group.title, group_path(@group))%> 小组 </p>
+        <p>本文由 <%= @post.user.display_name %> · 于 <%= time_tag(post.created_at) %> · 发布在 <%= link_to(@group.title, group_path(@group))%> 小组 </p>
       </div>
       <div class="panel-body">
         <div class="article-content">
@@ -19,8 +19,8 @@
         </div>
         <br>
       </div>
-    </div> 
-    
+    </div>
+
     <div class="panel panel-default">
       <div class="panel-heading">
         <h5 class="panel-title"><%= @post.post_comments.count %> 个回复</h5>
@@ -28,12 +28,12 @@
       <div class="panel-body">
         <div>
           <%= render @post.post_comments %>
-        </div>      
+        </div>
       </div>
     </div>
-    
+
     <%= render "post_comments/form"%>
-    
+
     <div class="panel panel-default">
       <div class="panel-heading">
         <h5 class="panel-title">推荐文章</h5>
@@ -45,11 +45,11 @@
           </p>
         <% end %>
       </div>
-    </div>  
-    
-  </div>    
-    
+    </div>
+
+  </div>
+
   <div class="sidebar col-md-3">
     <%= render "sidebar_for_post_show" %>
   </div>
-</div>  
+</div>

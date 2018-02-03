@@ -5,7 +5,7 @@
   <h2><%= @job.title %></h2>
   工作地点：<%= @job.city %>
   <hr>
-  最后更新时间：<%= @job.updated_at %>
+  最后更新时间：<%= time_tag(job.updated_at) %>
   <hr>
   <h3>发布方</h3>
   <strong><%= @job.publisher %></strong>

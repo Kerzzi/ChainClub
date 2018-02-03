@@ -11,29 +11,29 @@
           <div class="col-md-11">
             <h1 class="panel-title">&nbsp;&nbsp;&nbsp;<%= @group.title %></h1>
           </div>
-        </div>  
-      </div>  
+        </div>
+      </div>
       <div class="panel-body">
 
-              
+
         <div class="col-md-12">
-          创建于<%= @group.created_at %>
+          创建于<%= time_tag(@group.created_at) %>
           组长：<%= @group.user.display_name %>
           <p><%= render_group_description(@group) %></p>
         </div>
       </div>
-    </div>      
-          
+    </div>
+
     <div class="panel panel-default">
       <div class="panel-heading">
         <span><%= link_to("最新话题 ", group_path(@group) ) %></span>/
         <span><%= link_to("热门话题", group_path(@group, :order => "by_hot")) %></span>
         <!-- /<span>推荐话题</span>/<span>精华帖</span> -->
-      </div>  
+      </div>
       <div class="panel-body">
-          
+
         <table class="table table-hover">
-          <thead> 
+          <thead>
            <tr>
               <th>话题</th>
               <th>作者</th>
@@ -47,17 +47,17 @@
                 <td><%= link_to post.title, group_post_path(@group,post) %></td>
                 <td><%= post.user.display_name %></td>
                 <td><%= post.post_comments.size %></td>
-                <td><%= post.created_at %></td>
+                <td><%= time_tag(post.created_at) %></td>
               </tr>
             <% end %>
           </tbody>
         </table>
-  
+
       </div>
-    </div> 
-  </div>    
-    
+    </div>
+  </div>
+
   <div class="sidebar col-md-3">
     <%= render "sidebar_for_group_show" %>
   </div>
-</div>        
+</div>

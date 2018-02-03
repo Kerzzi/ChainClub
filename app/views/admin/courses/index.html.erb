@@ -6,14 +6,14 @@
     <div class="group">
       <%= link_to("新增课程", new_admin_course_path, class: "btn btn-primary pull-right") %>
     </div>
-    
+
     <p>操作说明：mark</p>
     <hr>
-      
+
     <!-- Table -->
     <div id="admin_courses">
       <%= form_tag bulk_update_admin_courses_path, :class => "form-inline" do %>
-      
+
         <table class="table table-hover">
           <thead>
             <tr>
@@ -38,10 +38,10 @@
                 <td><%= course.msrp %></td>
                 <td><%= course.price %></td>
                 <td><%= course.user.email %></td>
-                <td><%= course.updated_at %></td>
+                <td><%= time_tag(course.updated_at) %> </td>
                 <td>
                   <%= link_to "", edit_admin_course_path(course), class: "fa fa-pencil" %>
-                  <%= link_to "", admin_course_path(course), 'data-confirm' => '确定删除?', method: :delete, class: "fa fa-trash" %>                
+                  <%= link_to "", admin_course_path(course), 'data-confirm' => '确定删除?', method: :delete, class: "fa fa-trash" %>
                 </td>
               </tr>
             <% end %>

@@ -6,7 +6,7 @@
   原价：<%= @course.msrp %>
   现价：<%= @course.price %>
   <hr>
-  最后更新时间：<%= @course.updated_at %>
+  最后更新时间：<%= time_tag(course.updated_at) %>
   <hr>
   <h3>前往学习</h3>
   <%= @course.url %>
