@@ -22,7 +22,7 @@ class GroupsController < ApplicationController
     @posts = case params[:order]
              when 'by_hot'
                #按评论数量排序
-               @group.posts.sort_by{|post| -post.post_comments.count}
+               @group.posts.paginate(:page => params[:page], :per_page => 10).sort_by{|post| -post.post_comments.count}
 
              else
                @group.posts.recent.paginate(:page => params[:page], :per_page => 10)

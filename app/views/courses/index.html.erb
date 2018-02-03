@@ -3,45 +3,32 @@
 </div>
 
 <div class="container">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title">课程列表</h3>
-    </div>
-    <div class="panel-body">
+  <div class="col-md-9 group-index-box">
+    <div class="row">
+      <% @courses.each do |course| %>
+        <div class="col-md-3 group-item">
+          <div class="course-card">
+            <% if course.logo.present? %>
+              <%= link_to image_tag(course.logo.url(:medium)),course_path(course), :target => "_blank" %>
+            <% else %>
+              <img src="https://ww2.sinaimg.cn/large/006tKfTcly1fnt7p9w5h6j306o06owec.jpg" alt="course_logo">
+            <% end %>
 
-      <p>尚未完成：mark</p>
-      <p>课程这部分不准备自己建立课程系统，只是作为宣传页面。建议使用其他第三方平台，第三方平台的浏览更大。</p>
-      <p>这里只是介绍这些课程，放上介绍、课程二维码或者链接即可。</p>
-      <hr>
+            <div class="course-card-title text-center">
+              <p style="overflow:hidden;"><%= link_to(course.title,course_path(course)) %></p>
+            </div>
 
-      <!-- Table -->
-      <div id="index_courses">
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <td>#</td>
-                <td>课程</td>
-                <td>原价</td>
-                <td>现价</td>
-                <td>更新时间</td>
-              </tr>
-            </thead>
-            <tbody>
-              <% @courses.each do |course| %>
-                <tr>
-                  <td><%= course.id %></td>
-                  <td><%= link_to(course.title, course_path(course)) %></td>
-                  <td><%= course.msrp %></td>
-                  <td><%= course.price %></td>
-                  <td><%= time_tag(course.updated_at) %></td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table><!-- /Table -->
-        <div class="text-center">
-          <%= will_paginate @courses, renderer: BootstrapPagination::Rails, :previous_label => t('上一页'), :next_label => t('下一页') %>
+          </div>
         </div>
-      </div><!-- /index_courses -->
-    </div><!-- /panel-body -->
+      <% end %>
+
+      <div class="text-center">
+        <%= will_paginate @courses, renderer: BootstrapPagination::Rails, :previous_label => t('上一页'), :next_label => t('下一页') %>
+      </div>
+    </div>
   </div>
+  <div class="col-md-3 group-index-sidebar">
+
+  </div>
+
 </div>

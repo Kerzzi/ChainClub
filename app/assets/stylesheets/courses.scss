@@ -2,6 +2,29 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+/*index page */
+
+.course-card{
+  background-color: #FFF ;
+  border: 1px solid;
+  border-color: #CFD8DC;
+  padding: 3px 3px;
+
+  .course-card-title {
+      background-color: rgba(255,255,255,.9);
+      min-height: 40px;
+
+    p{
+      padding: 10px 0px 4px 0px;
+      font-size: 1.4em;
+    }
+  }
+
+  img {
+    width:100%; height:100px;
+    transition: 0.8s;
+  }
+}
 
 /* show page */
 div.social-share-button {
