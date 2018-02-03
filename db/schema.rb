@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180203074039) do
+ActiveRecord::Schema.define(version: 20180203111432) do
 
   create_table "actions", force: :cascade do |t|
     t.string "action_type", null: false
@@ -47,6 +47,14 @@ ActiveRecord::Schema.define(version: 20180203074039) do
   create_table "article_comments", force: :cascade do |t|
     t.text "content"
     t.integer "official_article_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "course_comments", force: :cascade do |t|
+    t.text "content"
+    t.integer "course_id"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -101,6 +109,14 @@ ActiveRecord::Schema.define(version: 20180203074039) do
     t.boolean "is_hidden", default: true
     t.string "category"
     t.index ["user_id"], name: "index_jobs_on_user_id"
+  end
+
+  create_table "meetup_comments", force: :cascade do |t|
+    t.text "content"
+    t.integer "meetup_group_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "meetup_groups", force: :cascade do |t|

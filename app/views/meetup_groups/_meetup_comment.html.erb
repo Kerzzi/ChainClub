@@ -1,0 +1,47 @@
+<!-- 活动评论 -->
+<div class="col-md-12 meetup-review-box">
+  <%= simple_form_for ([@meetup_group, @meetup_comment]) do |f| %>
+  
+    <%= f.input :content, input_html: { rows: "6" }, :label => "发表评论" %>
+    <%= f.submit "提交评论", class: "btn btn-sm btn-default ", data: {disable_with: "Submiting"} %>
+  
+  <% end %>
+  <hr>
+  
+  <% if @meetup_comments.blank? %>
+    <p class="text-center">该活动还没有人评论，来为ta添加一个吧！</p>
+  <% else %>
+    <div class="meetup-reviews ">
+      <% @meetup_comments.each do |meetup_comment| %>
+        <div class="row">
+
+          <!-- 评论者头像 -->
+          <div class="col-sm-1 col-xs-2">
+            <div class="avatar"><img src= "<%= render_user_avatar(meetup_comment.user, 50) %>" style="width:50px; hight:50px; border-radius:50%;"></div>
+          </div>
+
+          <!-- 评论内容 -->
+          <div class="col-sm-11 col-xs-10">
+            <div class="meetup-review-username">
+              <span class="">
+                <span class="glyphicon glyphicon-user" aria-hidden="true"></span> <%= meetup_comment.user.display_name %> · 
+                <span class="glyphicon glyphicon-time" aria-hidden="true"></span> <%= meetup_comment.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
+                <% if (current_user && current_user == meetup_comment.user) || can_editor? %>
+                  <span class="label label-danger" aria-hidden="true"> <%= link_to(" 删除", meetup_group_meetup_comment_path(@meetup_group,meetup_comment), method: :delete, data: {
+                    confirm: "确定删除吗?"}) %>
+                  </span>  
+                <% end %>
+              </span>
+            </div>  
+
+            <div class="meetup-review-content">
+              <%= simple_format(meetup_comment.content) %>
+            </div>
+          </div>
+
+        </div>
+        <hr>
+      <% end %>
+    </div>
+  <% end %>
+</div><!-- meetup-review-box -->

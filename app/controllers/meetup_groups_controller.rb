@@ -35,6 +35,8 @@ class MeetupGroupsController < ApplicationController
 
   def show
     @meetup_group = MeetupGroup.find(params[:id])
+    @meetup_comment = MeetupComment.new
+    @meetup_comments = @meetup_group.meetup_comments.recent.paginate(:page => params[:page], :per_page => 10)
   end
 
   def edit

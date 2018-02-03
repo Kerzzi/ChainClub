@@ -13,12 +13,15 @@ class User < ApplicationRecord
   has_many :article_comments, dependent: :destroy  #官方文章official article的评论
   has_many :answers, dependent: :destroy
   has_many :topics, dependent: :destroy
-  has_many :meetup_groups
+  has_many :meetup_groups, dependent: :destroy
+  has_many :meetup_comments, dependent: :destroy
   has_one :profile, dependent: :destroy
   has_many :jobs
   has_many :courses
+  has_many :course_comments, dependent: :destroy
   has_many :projects
   has_many :post_comments, dependent: :destroy
+  
    
   action_store :like, :topic, counter_cache: true
   action_store :star, :topic, counter_cache: true, user_counter_cache: true

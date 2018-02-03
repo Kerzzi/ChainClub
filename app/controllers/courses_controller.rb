@@ -7,6 +7,8 @@ class CoursesController < ApplicationController
 
   def show
     @course = Course.find(params[:id])
+    @course_comment = CourseComment.new
+    @course_comments = @course.course_comments.recent.paginate(:page => params[:page], :per_page => 10)
   end
 
   def search

@@ -80,6 +80,7 @@ Rails.application.routes.draw do
     end
   end
   resources :meetup_groups do
+    resources :meetup_comments
     collection do
       get :search
       get :about
@@ -96,6 +97,7 @@ Rails.application.routes.draw do
     end
   end
   resources :courses do
+    resources :course_comments
     collection do
       get :search
     end

@@ -3,6 +3,8 @@ class MeetupGroup < ApplicationRecord
 
   has_paper_trail
   belongs_to :user
+  has_many :meetup_comments, dependent: :destroy
+  
   validates :title, presence: true
   validates :meetup_type, presence: true
   validates :time_limit, presence: true
