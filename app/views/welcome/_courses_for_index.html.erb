@@ -7,11 +7,24 @@
 
   <div class="panel-body">
     <% @courses.each do |course| %>
-      <div class="coursee-item">
-        <p><%= link_to(course.title, course_path(course)) %></p>
+      <div class="col-md-2 course-item">
+        <div class="course-card">
+          <% if course.logo.present? %>
+            <%= link_to image_tag(course.logo.url(:medium)),course_path(course), :target => "_blank" %>
+          <% else %>
+            <img src="https://ww2.sinaimg.cn/large/006tKfTcly1fnt7p9w5h6j306o06owec.jpg" alt="course_logo">
+          <% end %>
+
+          <div class="course-card-title text-center">
+            <p><%= link_to(course.title,course_path(course)) %></p>
+          </div>
+
+        </div>
       </div>
     <% end %>
-    <hr>
-    <p class="text-center"><%= link_to("更多课程", courses_path) %></p>
+    
   </div>
+  
+  <hr>
+  <p class="text-center"><%= link_to("更多课程", courses_path) %></p>
 </div>
