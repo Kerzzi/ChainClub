@@ -7,8 +7,33 @@
 </div>
 
 <div class="container">
-  <div class="col-md-9">
+  <div class="col-md-9 topic-index">
     <div class="panel panel-default">
+      <div class="panel-heading">话题节点</div>
+      <div class="panel-body">
+        
+        <% Section.includes(:nodes).all.each do |section| %>
+        <div class="node media">
+          <div class="col-md-2" >
+            <label class="media-left" ><%= section.name %></label>
+          </div>
+            
+          <div class="col-md-10">
+            <% section.nodes.sorted.each do |node| %>
+            
+              <span class="col-md-2"><%= link_to(node.name, node_topics_path(node), title: node.name, data: { id: node.id })%></span>
+              
+            <% end %>
+          </div>
+        </div>
+        <% end %>
+        
+      </div>
+    </div>    
+        
+        
+    <div class="panel panel-default">
+      <div class="panel-heading">最新话题</div>
       <div class="panel-body item-list">
         <% @topics.each do |topic| %>
 
@@ -23,7 +48,7 @@
                   <%= link_to(truncate(topic.title,:length =>46), topic_path(topic)) %>
 
 
-                  <i class="fa fa-angle-double-up" title="置顶"></i>
+                  <!-- <i class="fa fa-angle-double-up" title="置顶"></i> -->
 
               </div>
               <div class="info">

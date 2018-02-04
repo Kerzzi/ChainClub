@@ -8,3 +8,16 @@
     border-radius: 6px;                 //为所有图片设置6px的圆角
     }
 }
+
+.topic-index{
+  span{
+    a{
+      color: #424242;
+    }
+    a:hover {
+      color: #F4511E;
+      transition: 0.5s;                                 // 鼠标指向时 0.5面渐变
+      text-decoration: none;                            // 移除下划线
+    }    
+  }
+}
