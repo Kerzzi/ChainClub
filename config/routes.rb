@@ -49,6 +49,7 @@ Rails.application.routes.draw do
       delete :unfollow
       get :ban
       post :action
+      
       post :like
       post :unlike
     end

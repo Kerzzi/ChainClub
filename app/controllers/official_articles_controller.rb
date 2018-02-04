@@ -1,5 +1,5 @@
 class OfficialArticlesController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :destroy, :join, :quit]
+  before_action :authenticate_user!, only: [:new, :create, :destroy, :join, :quit, :like, :unlike]
   before_action :validate_search_key, only: [:search]
 
   # ---CRUD---
@@ -22,7 +22,7 @@ class OfficialArticlesController < ApplicationController
       redirect_to root_path
     end
   end
-
+ 
   def new
     @official_article = OfficialArticle.new
   end
@@ -70,7 +70,7 @@ class OfficialArticlesController < ApplicationController
     end
       redirect_to official_article_path(@official_article)
   end
-
+ 
   def unlike
     @official_article = OfficialArticle.find(params[:id])
 

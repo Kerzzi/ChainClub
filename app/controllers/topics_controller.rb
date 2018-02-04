@@ -1,5 +1,5 @@
 class TopicsController < ApplicationController
-  before_action :authenticate_user!, :only => [:new, :create, :edit, :update, :destroy, :favorite, :unfavorite, :follow, :unfollow,
+  before_action :authenticate_user!, :only => [:new, :create, :edit, :update, :destroy,  :follow, :unfollow,
                                             :action, :favorites]
 
   before_action :find_topic, only: [ :ban, :edit, :update, :destroy, :follow,
@@ -85,13 +85,12 @@ class TopicsController < ApplicationController
   end
 
 
-  # ---topic收藏文章---
+  # ---topic点赞---
   def like
     @topic = Topic.find(params[:id])
 
     if !current_user.is_fan_of?(@topic)
       current_user.like_topic!(@topic)
-
     end
       redirect_to topic_path(@topic)
   end
@@ -101,7 +100,6 @@ class TopicsController < ApplicationController
 
     if current_user.is_fan_of?(@topic)
       current_user.unlike_topic!(@topic)
-
     end
       redirect_to topic_path(@topic)
   end
@@ -109,16 +107,6 @@ class TopicsController < ApplicationController
 
   #下面这些操作暂时未完成
   # ---预览功能尚未完成，后期安装markdown编辑器---
-  def favorite
-    current_user.favorite_topic(params[:id])
-    render plain: "1"
-  end
-
-  def unfavorite
-    current_user.unfavorite_topic(params[:id])
-    render plain: "1"
-  end
-
   def follow
     current_user.follow_topic(@topic)
     render plain: "1"

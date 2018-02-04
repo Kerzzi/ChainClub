@@ -1,3 +1,4 @@
+
 <!-- 右侧边栏 -->
 <div class="col-md-4">
 
@@ -28,6 +29,46 @@
 
   </div>
 
+
+  <div class="article-sidebar">
+    <a href="#" class="btn btn-block btn-sm btn-move-page" data-type="top"><i class="fa fa-arrow-up"></i></a>
+
+    <br/>
+
+    <div class="row text-center">
+      <% if current_user && current_user.is_fan_of?(@official_article) %>
+        <%= link_to unlike_official_article_path(@official_article), method: :post, class: "btn btn-danger" do %>
+          <i class="fa fa-heart-o fa-lg"></i>
+        <% end %>   
+      <% else %>    
+        <%= link_to like_official_article_path(@official_article), method: :post, class: "btn  btn-default" do %>
+          <i class="fa fa-heart-o fa-lg"></i>
+        <% end %>        
+      <% end %>             
+     <p><span><%= @official_article.fans.count %></span> 个赞</p>
+
+    </div>
+  
+    <hr/>
+    
+    <div class="group share text-center">
+      <%= social_share_button_tag(@official_article.title) %><!-- 社交分享 -->
+    </div>
+    
+    <hr/>
+
+    <div class="total text-center">
+      共收到 <b><%= @official_article.article_comments.count %></b> 条回复
+    </div>
+
+    <!--打赏作者 -->
+
+    <hr />
+
+    <a href="#" class="btn btn-block btn-move-page" data-type="bottom"><i class="fa fa-arrow-down"></i></a>
+  </div>
+
+
   <!-- 热评文章 -->
 
   <div class="article-show-hot-list">
@@ -54,16 +95,15 @@
   </div>
 
   <!-- 投稿按钮 -->
-  <div class="">
+  <div class="text-center">
     <%= link_to("我要投稿", new_official_article_path, class: "btn btn-danger center-block") %>
   </div>
-  <hr>
+  <br>
   <!-- 管理按钮 -->
   <% if current_user && current_user.is_editor? %>
-
     <div class="text-center">
       <%= link_to("更新文章", edit_official_article_path(@official_article), class: "btn btn-success center-block") %>
     </div> 
+  <% end %>  
 
-  <% end %>   
 </div>

@@ -9,24 +9,29 @@
 <div class="panel panel-default">
   <div class="panel-body">
     <a href="#" class="btn btn-block btn-sm btn-move-page" data-type="top"><i class="fa fa-arrow-up"></i></a>
-    <!-- <div class="buttons">
-      <div class="group likes opts">
-        点赞
-      </div>
-      <div class="group">
-        <div class="btn-group" role="group">
 
+    <br/>
 
-          关注
-          收藏
-        </div>
-      </div>
-    </div> -->
-    <hr />
+    <div class="row text-center">
+
+      <% if current_user && current_user.is_fan_of?(@topic) %>
+        <%= link_to unlike_topic_path(@topic), method: :post, class: "btn btn-danger" do %>
+          <i class="fa fa-heart-o fa-lg"></i>
+        <% end %>   
+      <% else %>    
+        <%= link_to like_topic_path(@topic), method: :post, class: "btn  btn-default" do %>
+          <i class="fa fa-heart-o fa-lg"></i>
+        <% end %>        
+      <% end %>             
+     <p><span><%= @topic.fans.count %></span> 个赞</p>
+
+    </div>
+  
+    <hr/>
     <div class="group share text-center">
       <%= social_share_button_tag(@topic.title) %><!-- 社交分享 -->
     </div>
-    <hr />
+    <hr/>
 
     <div class="total text-center">
       共收到 <b><%= @topic.answers.count %></b> 条回复
