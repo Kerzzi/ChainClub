@@ -8,7 +8,7 @@
   <div class="panel-body">
     <div class="row home-meetup">
       <div class="col-md-6">
-        <% @offline_meetups.each do |meetup_group| %>
+        <% @online_meetups.each do |meetup_group| %>
           <div class="job-item">
             <p><span class="pull-right">更新于 <%= time_tag(meetup_group.updated_at) %></span></p>
             <h4><%= link_to(meetup_group.title, meetup_group_path(meetup_group)) %></h4>
