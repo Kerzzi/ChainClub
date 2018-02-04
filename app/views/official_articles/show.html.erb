@@ -7,7 +7,7 @@
 
     <div class="article-show">
 
-      <div class="col-md-8 article-show-box">
+      <div class="col-md-9 article-show-box">
 
         <!-- 标题 -->
         <div class="article-title">
@@ -46,20 +46,6 @@
           <%= simple_format(@official_article.content) %>
         </div>
 
-        <!-- 文章收藏功能 -->
-        <div class="article-collection text-center">
-          <% if current_user && current_user.is_fan_of?(@official_article) %>
-            <div class="article-collection-btn">
-              <%= link_to unlike_official_article_path(@official_article), method: :post, class: "btn btn-lg btn-danger" do %>
-              <i class="fa fa-thumbs-up fa-1x">  赞  (<span><%= @official_article.fans.count %></span>) </i><% end %>
-            </div>
-          <% else %>
-            <div class="article-collection-btn">
-              <%= link_to like_official_article_path(@official_article), method: :post, class: "btn btn-lg btn-default" do %>
-              <i class="fa fa-thumbs-o-up fa-1x">  赞  (<span><%= @official_article.fans.count %></span>) </i><% end %>
-            </div>
-          <% end %>
-        </div>
         <hr>
 
         <!-- 文章评论 -->

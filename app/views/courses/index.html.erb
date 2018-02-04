@@ -19,7 +19,7 @@
             <% end %>
 
             <div class="course-card-title text-center">
-              <p style="overflow:hidden;"><%= link_to(course.title,course_path(course)) %></p>
+              <p style="overflow:hidden;"><%= link_to(truncate(course.title,:length => 16),course_path(course)) %></p>
             </div>
 
           </div>

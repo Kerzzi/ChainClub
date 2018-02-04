@@ -7,7 +7,7 @@
     <ol class="row breadcrumb">
       <li><a href="<%= root_path %>">首页</a></li>
       <li><a href="<%= meetup_groups_path %>">活动列表</a></li>
-      <li class="active"><%= @meetup_group.title %></li>
+      <li class="active">当前页面</li>
     </ol>
     <!-- Start of product card -->
     <div class="row card">
@@ -22,6 +22,7 @@
       <!-- End of left card -->
       <!-- Start of right cart -->
       <div class="details col-md-5" style="margin-top:50px;">
+        
         <h3 class="product-title"><%= link_to(@meetup_group.title, meetup_group_path(@meetup_group)) %></h3>
         <div class="price-service">
           <p class="price">活动期限 &nbsp;&nbsp;<span class="delivery"> <%= @meetup_group.time_limit %></span></p>
@@ -39,26 +40,24 @@
           </div>
 
           <div class="col-md-2"  >
-            <%= link_to "#", :class => "like btn btn-default",method: :post do %>
-              <i class="fa fa-heart fa-lg"></i>
-            <% end %>
+            <% if current_user && current_user.is_favor_of_meetup_group?(@meetup_group) %>
+              <%= link_to unfavorite_meetup_group_path(@meetup_group), method: :post, class: "btn btn-danger" do %>
+                <i class="fa fa-heart-o fa-lg"></i>
+              <% end %>   
+            <% else %>    
+              <%= link_to favorite_meetup_group_path(@meetup_group), method: :post, class: "like btn  btn-default" do %>
+                <i class="fa fa-heart-o fa-lg"></i>
+              <% end %>        
+            <% end %> 
           </div>
 
         </div>
         <div class="row share">
-          <hr />
+          <hr/>
           <div class="col-md-6">
-              <p> 收藏人气（3） </p>
+              <p> 收藏人气（<%= @meetup_group.favors.count %>） </p>
           </div>
 
-          <div class="col-md-6">
-            <%= link_to '#', method: :put do %>
-              <div class="pi-thumbs-up">
-                <!-- <i class="fa fa-thumbs-up fa-2x" , style="color:#ff5722;"></i> -->
-                点赞（5）
-              </div>
-            <% end %>
-          </div>
         </div>
         <div class="row share">
           <div class="col-md-6 ">

@@ -9,7 +9,7 @@
     <div class="panel-body">
       <% @official_articles.each do |official_article| %>
         <div class="official_article-item">
-          <h4><%= link_to(official_article.title, official_article_path(official_article)) %></h4>
+          <h4><%= link_to(truncate(official_article.title,:length => 34), official_article_path(official_article)) %></h4>
         </div>
       <% end %>
       <hr>
@@ -29,7 +29,7 @@
     <div class="panel-body">
       <% @article_hots.each do |article_hot| %>
         <div class="official_article-item">
-          <h4><%= link_to(article_hot.title, official_article_path(article_hot)) %></h4>
+          <h4><%= link_to(truncate(article_hot.title,:length => 34), official_article_path(article_hot)) %></h4>
         </div>
       <% end %>
       <hr>

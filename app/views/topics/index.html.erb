@@ -20,7 +20,7 @@
               <div class="title media-heading">
 
                   <%= topic.node.name %>
-                  <%= link_to(topic.title, topic_path(topic)) %>
+                  <%= link_to(truncate(topic.title,:length =>46), topic_path(topic)) %>
 
 
                   <i class="fa fa-angle-double-up" title="置顶"></i>

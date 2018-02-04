@@ -11,7 +11,7 @@
 <div class="container">
 
   <div class="row">  
-    <div class="col-md-8 article-index-box">
+    <div class="col-md-9 article-index-box">
 
       <% @official_articles.each do |official_article| %>
         <div class="article-all">
@@ -29,7 +29,7 @@
             <!-- 文章列表标题、作者、日期 -->
             <div class="col-md-9">
               <div class="row">
-                <%= link_to(official_article.title,official_article_path(official_article), class: "article-index-title") %>
+                <%= link_to(truncate(official_article.title,:length => 40),official_article_path(official_article), class: "article-index-title") %>
               </div>
               <div class="row article-summary">
                 <%= official_article.summary %>
@@ -55,7 +55,7 @@
 
     </div>
     
-    <div class="col-md-4 sidebar">
+    <div class="col-md-3 sidebar">
       <%= render "sidebar_for_article_index" %>
     </div>  
   </div>

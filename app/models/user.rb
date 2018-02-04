@@ -13,13 +13,16 @@ class User < ApplicationRecord
   has_many :article_comments, dependent: :destroy  #官方文章official article的评论
   has_many :answers, dependent: :destroy
   has_many :topics, dependent: :destroy
+  has_many :projects
   has_many :meetup_groups, dependent: :destroy
+  has_many :courses  
   has_many :meetup_comments, dependent: :destroy
   has_one :profile, dependent: :destroy
   has_many :jobs
-  has_many :courses
+  
   has_many :course_comments, dependent: :destroy
-  has_many :projects
+
+  
   has_many :post_comments, dependent: :destroy
   
    
@@ -76,7 +79,7 @@ class User < ApplicationRecord
   has_many :official_article_relationships
   has_many :liked_official_articles, :through => :official_article_relationships, :source => :official_article
   
-  def is_fan_of?(official_article)
+  def is_fan_of_official_article?(official_article)
     liked_official_articles.include?(official_article)
   end
   
@@ -92,7 +95,7 @@ class User < ApplicationRecord
   has_many :topic_relationships
   has_many :liked_topics, :through => :topic_relationships, :source => :topic
   
-  def is_fan_of?(topic)
+  def is_fan_of_topic?(topic)
     liked_topics.include?(topic)
   end
   
@@ -104,5 +107,89 @@ class User < ApplicationRecord
     liked_topics.delete(topic)
   end
   
+  # ---收藏活动功能三方关系代码块---
+
+  has_many :meetup_group_relationships
+  has_many :favorite_meetup_groups, :through => :meetup_group_relationships, :source => :meetup_group
+
+  def is_favor_of_meetup_group?(meetup_group)
+    favorite_meetup_groups.include?(meetup_group)
+  end
   
+  def favorite_meetup_group!(meetup_group)
+    favorite_meetup_groups << meetup_group
+  end
+
+  def unfavorite_meetup_group!(meetup_group)
+    favorite_meetup_groups.delete(meetup_group)
+  end
+
+  # ---收藏招聘信息功能三方关系代码块---
+
+  has_many :job_relationships
+  has_many :favorite_jobs, :through => :job_relationships, :source => :job
+  
+  def is_favor_of_job?(job)
+    favorite_jobs.include?(job)
+  end
+  
+  def favorite_job!(job)
+    favorite_jobs << job
+  end
+
+  def unfavorite_job!(job)
+    favorite_jobs.delete(job)
+  end
+    
+  # ---收藏课程功能三方关系代码块---
+
+  has_many :course_relationships
+  has_many :favorite_courses, :through => :course_relationships, :source => :course
+
+  def is_favor_of_course?(course)
+    favorite_courses.include?(course)
+  end
+  
+  def favorite_course!(course)
+    favorite_courses << course
+  end
+
+  def unfavorite_course!(course)
+    favorite_courses.delete(course)
+  end
+
+  # ---收藏项目功能三方关系代码块---
+  
+  has_many :project_relationships
+  has_many :favorite_projects, :through => :project_relationships, :source => :project
+  
+  def is_favor_of_project?(project)
+    favorite_projects.include?(project)
+  end
+  
+  def favorite_project!(project)
+    favorite_projects << project
+  end
+
+  def unfavorite_project!(project)
+    favorite_projects.delete(project)
+  end
+
+  # ---收藏项目功能三方关系代码块---
+  
+  has_many :post_relationships
+  has_many :favorite_posts, :through => :post_relationships, :source => :post
+  
+  def is_favor_of_post?(post)
+    favorite_posts.include?(post)
+  end
+  
+  def favorite_post!(post)
+    favorite_posts << post
+  end
+
+  def unfavorite_post!(post)
+    favorite_posts.delete(post)
+  end
+      
 end

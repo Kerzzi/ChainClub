@@ -7,6 +7,18 @@
     <div class="panel panel-default">
       <div class="panel-body topic-content">
 
+        <div class="group" >
+          <% if current_user && current_user.is_favor_of_project?(@project) %>
+            <%= link_to unfavorite_project_path(@project), method: :post, class: "btn btn-success pull-right" do %>
+              <i class="fa fa-star-o fa-lg"></i>
+            <% end %>   
+          <% else %>    
+            <%= link_to favorite_project_path(@project), method: :post, class: "btn  btn-default pull-right" do %>
+              <i class="fa fa-star-o fa-lg"></i>
+            <% end %>        
+          <% end %> 
+        </div>
+        
         <h4>项目概况</h4>
         <hr/>
 

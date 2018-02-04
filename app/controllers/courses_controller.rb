@@ -1,5 +1,6 @@
 class CoursesController < ApplicationController
   before_action :validate_search_key, only: [:search]
+  before_action :authenticate_user! , only: [:favorite, :unfavorite]
 
   def index
     @courses = Course.published.recent.paginate(:page => params[:page], :per_page => 28) 
@@ -18,7 +19,25 @@ class CoursesController < ApplicationController
      end
    end
 
+   # --收藏课程---
+   def favorite
+     @course = Course.find(params[:id])
 
+     if !current_user.is_favor_of_course?(@course)
+       current_user.favorite_course!(@course)
+     end
+       redirect_to course_path(@course)
+   end
+
+   def unfavorite
+     @course = Course.find(params[:id])
+
+     if current_user.is_favor_of_course?(@course)
+       current_user.unfavorite_course!(@course)
+     end
+       redirect_to course_path(@course)
+   end
+   
    protected
 
    # 取到params[:q]的内容并去掉非法的内容

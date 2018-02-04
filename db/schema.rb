@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180203111432) do
+ActiveRecord::Schema.define(version: 20180204114045) do
 
   create_table "actions", force: :cascade do |t|
     t.string "action_type", null: false
@@ -60,6 +60,13 @@ ActiveRecord::Schema.define(version: 20180203111432) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "course_relationships", force: :cascade do |t|
+    t.integer "course_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "courses", force: :cascade do |t|
     t.string "title"
     t.integer "price"
@@ -94,6 +101,13 @@ ActiveRecord::Schema.define(version: 20180203111432) do
     t.string "status", default: "draft"
   end
 
+  create_table "job_relationships", force: :cascade do |t|
+    t.integer "job_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "jobs", force: :cascade do |t|
     t.string "title"
     t.string "city"
@@ -113,6 +127,13 @@ ActiveRecord::Schema.define(version: 20180203111432) do
 
   create_table "meetup_comments", force: :cascade do |t|
     t.text "content"
+    t.integer "meetup_group_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "meetup_group_relationships", force: :cascade do |t|
     t.integer "meetup_group_id"
     t.integer "user_id"
     t.datetime "created_at", null: false
@@ -179,6 +200,13 @@ ActiveRecord::Schema.define(version: 20180203111432) do
     t.index ["user_id"], name: "index_post_comments_on_user_id"
   end
 
+  create_table "post_relationships", force: :cascade do |t|
+    t.integer "post_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "content"
@@ -218,6 +246,13 @@ ActiveRecord::Schema.define(version: 20180203111432) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "project_id"
+  end
+
+  create_table "project_relationships", force: :cascade do |t|
+    t.integer "project_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "projects", force: :cascade do |t|

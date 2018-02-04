@@ -5,21 +5,22 @@
   <% @article_hots.each do |article_hot| %>
     <hr>
     <div class="row article-show-hot">
-      <div class="col-xs-4 all_image_css">
+      <div class="col-xs-5 all_image_css">
         <% if article_hot.image.present? %>
           <%= link_to image_tag(article_hot.image.thumb.url, class: "img-rounded img-responsive center-block"), official_article_path(article_hot) %>
         <% else %>
           <%= link_to image_tag("http://placehold.it/80x80&text=No Pic", class: "img-circle img-responsive center-block"), official_article_path(article_hot) %>
         <% end %>
       </div>
-      <div class="col-xs-8">
-          <p><%= link_to(article_hot.title, official_article_path(article_hot)) %></p>
+      <div class="col-xs-7">
+          <p><%= link_to(truncate(article_hot.title,:length =>20), official_article_path(article_hot)) %></p>
       </div>
     </div>
   <% end %>
-  <hr>
-
+  <br/>
 </div>
+
+<br/>
 
 <div class="panel panel-default">
   <div class="panel-body">

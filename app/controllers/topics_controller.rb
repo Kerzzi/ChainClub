@@ -89,7 +89,7 @@ class TopicsController < ApplicationController
   def like
     @topic = Topic.find(params[:id])
 
-    if !current_user.is_fan_of?(@topic)
+    if !current_user.is_fan_of_topic?(@topic)
       current_user.like_topic!(@topic)
     end
       redirect_to topic_path(@topic)
@@ -98,7 +98,7 @@ class TopicsController < ApplicationController
   def unlike
     @topic = Topic.find(params[:id])
 
-    if current_user.is_fan_of?(@topic)
+    if current_user.is_fan_of_topic?(@topic)
       current_user.unlike_topic!(@topic)
     end
       redirect_to topic_path(@topic)

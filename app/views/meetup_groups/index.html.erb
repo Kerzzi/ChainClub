@@ -21,7 +21,7 @@
               <% end %>
 
               <div class="meetup-card-title text-center">
-                <p style="overflow:hidden;"><%= link_to(meetup_group.title,meetup_group_path(meetup_group)) %></p>
+                <p><%= link_to(truncate(meetup_group.title,:length => 16),meetup_group_path(meetup_group)) %></p>
               </div>
 
             </div>

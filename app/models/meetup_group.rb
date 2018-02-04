@@ -5,6 +5,9 @@ class MeetupGroup < ApplicationRecord
   belongs_to :user
   has_many :meetup_comments, dependent: :destroy
   
+  has_many :meetup_group_relationships
+  has_many :favors, through: :meetup_group_relationships, source: :user   
+  
   validates :title, presence: true
   validates :meetup_type, presence: true
   validates :time_limit, presence: true
@@ -14,6 +17,8 @@ class MeetupGroup < ApplicationRecord
   validates :register, presence: true
   validates :introduce, presence: true
   validates :logo, presence: true
+
+
 
   MEETUPTYPES = ["online", "offline"]
   validates_inclusion_of :meetup_type, :in => MEETUPTYPES

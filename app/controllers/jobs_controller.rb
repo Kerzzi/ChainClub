@@ -1,5 +1,5 @@
 class JobsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy, :favorite, :unfavorite]
   before_action :validate_search_key, only: [:search]
 
   def index
@@ -66,6 +66,25 @@ class JobsController < ApplicationController
       search_result = Job.published.ransack(@search_criteria).result(:distinct => true)
       @jobs = search_result.paginate(:page => params[:page], :per_page => 10 )
     end
+  end
+
+  # --收藏功能---
+  def favorite
+    @job = Job.find(params[:id])
+
+    if !current_user.is_favor_of_job?(@job)
+      current_user.favorite_job!(@job)
+    end
+      redirect_to job_path(@job)
+  end
+
+  def unfavorite
+    @job = Job.find(params[:id])
+
+    if current_user.is_favor_of_job?(@job)
+      current_user.unfavorite_job!(@job)
+    end
+      redirect_to job_path(@job)
   end
   
   protected

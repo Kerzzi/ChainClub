@@ -24,7 +24,7 @@
                   </h4>
 
                   <div class="card-project-title">
-                    <h5 class="text-center"><%= link_to(project.title, project_path(project)) %></h5>
+                    <h5 class="text-center"><%= link_to(truncate(project.title,:length => 16), project_path(project)) %></h5>
                   </div>
               </div>
           </div>

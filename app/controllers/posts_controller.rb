@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, :only => [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_user!, :only => [:new, :create, :edit, :update, :destroy, :favorite, :unfavorite]
   before_action :find_group_post_and_check_permission, only: [:edit, :update, :destroy]
   before_action :validate_search_key, only: [:search]
 
@@ -37,7 +37,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to group_path(@group), notice:"更新成功！"
+      redirect_to group_post_path(@group,@post), notice:"更新成功！"
     else
       render :edit
     end
@@ -46,6 +46,27 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     redirect_to group_path(@group), alert: "删除成功！"
+  end
+
+  # --收藏功能---
+  def favorite
+    @post = Post.find(params[:id])
+    @group = Group.find(params[:group_id])
+
+    if !current_user.is_favor_of_post?(@post)
+      current_user.favorite_post!(@post)
+    end
+      redirect_to group_post_path(@group,@post)
+  end
+
+  def unfavorite
+    @post = Post.find(params[:id])
+    @group = Group.find(params[:group_id])
+
+    if current_user.is_favor_of_post?(@post)
+      current_user.unfavorite_post!(@post)
+    end
+      redirect_to group_post_path(@group,@post)
   end
 
   def search

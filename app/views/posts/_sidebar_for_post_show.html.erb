@@ -28,15 +28,22 @@
     <a href="#" class="btn btn-block btn-sm btn-move-page" data-type="top"><i class="fa fa-arrow-up"></i></a>
     <br>
     
-    <!-- <div class="buttons">
-      <div class="group">
-        <div class="btn-group" role="group">
-          关注
-          收藏点赞
-        </div>
-      </div>
+    <div class="row text-center">
+
+      <% if current_user && current_user.is_favor_of_post?(@post) %>
+        <%= link_to unfavorite_group_post_path(@group,@post), method: :post, class: "btn favorite-btn" do %>
+          <i class="fa fa-heart fa-lg"></i>
+        <% end %>   
+      <% else %>    
+        <%= link_to favorite_group_post_path(@group,@post), method: :post, class: "btn favorite-btn " do %>
+          <i class="fa fa-heart-o fa-lg"></i>
+        <% end %>        
+      <% end %>             
+     <p><span><%= @post.favors.count %></span> 个赞</p>
+
     </div>
-    <hr/> -->
+  
+    <hr/>
   
     <div class="post-share text-center">
       <%= social_share_button_tag(@post.title) %><!-- 社交分享 -->

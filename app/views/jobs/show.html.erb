@@ -7,11 +7,7 @@
     <div class="panel panel-default">
       <div class="panel-body job-show">
         <div class="col-md-12">
-          <% if can_editor? %>
-            <div class="group">
-              <%= link_to("更新公告", edit_job_path(@job), class: "btn btn-default pull-right")%>
-            </div>
-          <% end %>
+        
           <h3><%= @job.title %></h3>
 
           <i class="fa fa-street-view" aria-hidden="true"></i> <%= @job.city %>
@@ -19,7 +15,7 @@
           <br>
           <span class="label label-success"><%= t(@job.category, :scope => "job.category") %></span>
           <hr>
-          最后更新时间：<%= time_tag(job.updated_at) %>
+          最后更新时间：<%= time_tag(@job.updated_at) %>
           <hr>
           <h4>发布方</h4>
           <strong><%= @job.publisher %></strong>

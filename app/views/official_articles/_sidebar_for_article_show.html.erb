@@ -1,6 +1,6 @@
 
 <!-- 右侧边栏 -->
-<div class="col-md-4">
+<div class="col-md-3">
 
   <!-- 文章作者 -->
   <div class="article-side-author">
@@ -23,7 +23,7 @@
     <div class="article-author-title-list">
       <h5>Ta的最新文章</h5>
       <% @userarticles.each do |userarticle| %>
-        <p>· <%= link_to(userarticle.title, official_article_path(userarticle)) %><span class="article-author-title-list-time">(<%= userarticle.created_at.strftime("%Y-%m-%d %H:%M:%S") %>)</span></p>
+        <p>· <%= link_to( truncate(userarticle.title,:length => 20) , official_article_path(userarticle)) %><span class="article-author-title-list-time">(<%= userarticle.created_at.strftime("%Y-%m-%d %H:%M:%S") %>)</span></p>
       <% end %>
     </div>
 
@@ -36,12 +36,12 @@
     <br/>
 
     <div class="row text-center">
-      <% if current_user && current_user.is_fan_of?(@official_article) %>
-        <%= link_to unlike_official_article_path(@official_article), method: :post, class: "btn btn-danger" do %>
-          <i class="fa fa-heart-o fa-lg"></i>
+      <% if current_user && current_user.is_fan_of_official_article?(@official_article) %>
+        <%= link_to unlike_official_article_path(@official_article), method: :post, class: "btn favorite-btn" do %>
+          <i class="fa fa-heart fa-lg"></i>
         <% end %>   
       <% else %>    
-        <%= link_to like_official_article_path(@official_article), method: :post, class: "btn  btn-default" do %>
+        <%= link_to like_official_article_path(@official_article), method: :post, class: "btn  favorite-btn" do %>
           <i class="fa fa-heart-o fa-lg"></i>
         <% end %>        
       <% end %>             
@@ -78,22 +78,22 @@
     <% @article_hots.each do |article_hot| %>
       <hr>
       <div class="row article-show-hot">
-        <div class="col-xs-4 all_image_css">
+        <div class="col-xs-5">
           <% if article_hot.image.present? %>
             <%= link_to image_tag(article_hot.image.thumb.url, class: "img-rounded img-responsive center-block"), official_article_path(article_hot) %>
           <% else %>
             <%= link_to image_tag("http://placehold.it/80x80&text=No Pic", class: "img-circle img-responsive center-block"), official_article_path(article_hot) %>
           <% end %>
         </div>
-        <div class="col-xs-8">
-            <p><%= link_to(article_hot.title, official_article_path(article_hot)) %></p>
+        <div class="col-xs-7">
+          <p><%= link_to(truncate(article_hot.title,:length => 20) , official_article_path(article_hot)) %></p>
         </div>
       </div>
     <% end %>
-    <hr>
 
   </div>
-
+  
+  <br/>
   <!-- 投稿按钮 -->
   <div class="text-center">
     <%= link_to("我要投稿", new_official_article_path, class: "btn btn-danger center-block") %>

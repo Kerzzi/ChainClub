@@ -16,7 +16,7 @@
           <% end %>
 
           <div class="group-card-title text-center">
-            <p style="overflow:hidden;"><%= link_to(group.title,group_path(group)) %></p>
+            <p ><%= link_to(truncate(group.title,:length => 16),group_path(group)) %></p>
             <span>
               <i class="fa fa-user-circle-o" aria-hidden="true"></i> <%= group.members.count %>
             </span>

@@ -65,7 +65,7 @@ class OfficialArticlesController < ApplicationController
   def like
     @official_article = OfficialArticle.find(params[:id])
 
-    if !current_user.is_fan_of?(@official_article)
+    if !current_user.is_fan_of_official_article?(@official_article)
       current_user.like_official_article!(@official_article)
     end
       redirect_to official_article_path(@official_article)
@@ -74,7 +74,7 @@ class OfficialArticlesController < ApplicationController
   def unlike
     @official_article = OfficialArticle.find(params[:id])
 
-    if current_user.is_fan_of?(@official_article)
+    if current_user.is_fan_of_official_article?(@official_article)
       current_user.unlike_official_article!(@official_article)
     end
       redirect_to official_article_path(@official_article)

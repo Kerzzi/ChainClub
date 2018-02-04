@@ -1,5 +1,5 @@
 class MeetupGroupsController < ApplicationController
-  before_action :authenticate_user!, :only => [:new, :create]
+  before_action :authenticate_user!, :only => [:new, :create, :favorite, :unfavorite]
   before_action :find_meetup_group_and_check_permission, only: [:edit, :update, :destroy]
   before_action :validate_search_key, only: [:search]
 
@@ -60,6 +60,25 @@ class MeetupGroupsController < ApplicationController
        search_result = MeetupGroup.ransack(@search_criteria).result(:distinct => true)
        @meetup_groups = search_result.paginate(:page => params[:page], :per_page => 15 )
      end
+   end
+
+   # --收藏功能---
+   def favorite
+     @meetup_group = MeetupGroup.find(params[:id])
+
+     if !current_user.is_favor_of_meetup_group?(@meetup_group)
+       current_user.favorite_meetup_group!(@meetup_group)
+     end
+       redirect_to meetup_group_path(@meetup_group)
+   end
+
+   def unfavorite
+     @meetup_group = MeetupGroup.find(params[:id])
+
+     if current_user.is_favor_of_meetup_group?(@meetup_group)
+       current_user.unfavorite_meetup_group!(@meetup_group)
+     end
+       redirect_to meetup_group_path(@meetup_group)
    end
 
 

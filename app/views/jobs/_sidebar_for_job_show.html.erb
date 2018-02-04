@@ -1,5 +1,29 @@
 <div class="panel panel-default">
   <div class="panel-body job-show">
+    <% if can_editor? %>
+      <div class="group">
+        <%= link_to("更新公告", edit_job_path(@job), class: "btn btn-default btn-block")%>
+      </div>
+      <br>
+    <% end %>
+    
+
+    <div class="group"  >
+      <% if current_user && current_user.is_favor_of_job?(@job) %>
+        <%= link_to unfavorite_job_path(@job), method: :post, class: "btn btn-default btn-block" do %>
+          <i class="fa fa-star-o fa-lg"> 已收藏 </i>
+        <% end %>   
+      <% else %>    
+        <%= link_to favorite_job_path(@job), method: :post, class: "btn  btn-default btn-block" do %>
+          <i class="fa fa-star-o fa-lg"> 收藏 </i>
+        <% end %>        
+      <% end %> 
+    </div>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-body job-show">
     <h4>相似机会</h4>
     <hr>
     <div class="commend-job">

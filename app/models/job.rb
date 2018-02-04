@@ -5,6 +5,9 @@ class Job < ApplicationRecord
 
   belongs_to :user
 
+  has_many :job_relationships
+  has_many :favors, through: :job_relationships, source: :user  
+
   CATEGORYS = ["fulltime", "internship"]
 
   # Scope #

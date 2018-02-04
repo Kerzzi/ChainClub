@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :authenticate_user!, :only => [:new, :create]
+  before_action :authenticate_user!, :only => [:new, :create, :edit, :unfavorite, :favorite]
   before_action :validate_search_key, only: [:search]
 
   def index
@@ -29,6 +29,26 @@ class ProjectsController < ApplicationController
     end
   end
 
+
+  # --收藏功能---
+  def favorite
+    @project = Project.find(params[:id])
+
+    if !current_user.is_favor_of_project?(@project)
+      current_user.favorite_project!(@project)
+    end
+      redirect_to project_path(@project)
+  end
+
+  def unfavorite
+    @project = Project.find(params[:id])
+
+    if current_user.is_favor_of_project?(@project)
+      current_user.unfavorite_project!(@project)
+    end
+      redirect_to project_path(@project)
+  end
+  
    def search
      if @query_string.present?
        search_result = Project.ransack(@search_criteria).result(:distinct => true)

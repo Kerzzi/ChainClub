@@ -4,6 +4,9 @@ class Course < ApplicationRecord
 
   belongs_to :user
   has_many :course_comments, dependent: :destroy
+
+  has_many :course_relationships
+  has_many :favors, through: :course_relationships, source: :user  
   
   mount_uploader :logo, CourseLogoUploader
   STATUS = ["draft", "public", "private"]

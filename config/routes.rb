@@ -75,6 +75,10 @@ Rails.application.routes.draw do
     end
     resources :posts do
       resources :post_comments
+      member do
+        post :favorite
+        post :unfavorite
+      end
     end
     collection do
       get :search
@@ -86,11 +90,21 @@ Rails.application.routes.draw do
       get :search
       get :about
     end
+    
+    member do
+      post :favorite
+      post :unfavorite
+    end
+        
   end
   resources :jobs do
     collection do
       get :search
     end
+    member do
+      post :favorite
+      post :unfavorite
+    end    
   end
   resources :site_nodes
 
@@ -104,11 +118,19 @@ Rails.application.routes.draw do
     collection do
       get :search
     end
+    member do
+      post :favorite
+      post :unfavorite
+    end    
   end
   resources :projects do
     collection do
       get :search
     end
+    member do
+      post :favorite
+      post :unfavorite
+    end    
   end
 
   namespace :account do
