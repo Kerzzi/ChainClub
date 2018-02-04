@@ -7,13 +7,13 @@ class TopicsController < ApplicationController
   before_action :validate_search_key, only: [:search]
 
   def index
-    @topics = Topic.published.paginate(:page => params[:page], :per_page => 16)
+    @topics = Topic.published.recent.paginate(:page => params[:page], :per_page => 16)
   end
 
   # 用于分节点显示文章，node这部分还是存在问题
   def node
     @node = Node.find(params[:id])
-    @topics = @node.topics.all
+    @topics = @node.topics.published.recent
     @topics = @topics.includes(:user).page(params[:page])
     @page_title = "#{@node.name} &raquo; #{t('menu.topics')}"
     @page_title = [@node.name, t("menu.topics")].join(" · ")

@@ -2,7 +2,7 @@ class CoursesController < ApplicationController
   before_action :validate_search_key, only: [:search]
 
   def index
-    @courses = Course.published.paginate(:page => params[:page], :per_page => 28) 
+    @courses = Course.published.recent.paginate(:page => params[:page], :per_page => 28) 
   end
 
   def show

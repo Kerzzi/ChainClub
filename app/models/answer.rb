@@ -6,4 +6,6 @@ class Answer < ApplicationRecord
   belongs_to :user
   belongs_to :topic
   
+  scope :recent, -> { order("created_at DESC")}
+  
 end

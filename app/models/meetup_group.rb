@@ -25,4 +25,5 @@ class MeetupGroup < ApplicationRecord
   scope :online_meetup, -> { where(:meetup_type => "online")}
   scope :offline_meetup, -> { where(:meetup_type => "offline")}
   scope :published, -> { where(:status => "public")}
+  scope :recent, -> { order("created_at DESC")}
 end

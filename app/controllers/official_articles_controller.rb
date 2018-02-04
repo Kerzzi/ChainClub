@@ -4,15 +4,15 @@ class OfficialArticlesController < ApplicationController
 
   # ---CRUD---
   def index
-    @official_articles = OfficialArticle.where(:status => "public").order("created_at DESC").paginate(:page => params[:page], :per_page => 12) 
+    @official_articles = OfficialArticle.where(:status => "public").recent.paginate(:page => params[:page], :per_page => 12) 
     @article_hots = OfficialArticle.where(:status => "public").sort_by{|official_article| -official_article.article_comments.count}    #按数据要求排序
   end
 
   def show
     @official_article = OfficialArticle.find(params[:id])
     @user = @official_article.user
-    @userarticles = @official_article.user.official_articles.order("created_at DESC").paginate(:page => params[:page], :per_page => 5)
-    @article_comments = @official_article.article_comments.order("created_at DESC")
+    @userarticles = @official_article.user.official_articles.recent.paginate(:page => params[:page], :per_page => 5)
+    @article_comments = @official_article.article_comments.recent
     @article_comment = ArticleComment.new
 
     @article_hots = OfficialArticle.where(:status => "public").sort_by{|official_article| -official_article.article_comments.count}    #按数据要求排序

@@ -5,4 +5,6 @@ class ArticleComment < ApplicationRecord
   belongs_to :official_article
   
   validates :content, presence: true
+  
+  scope :recent, -> { order("created_at DESC")}
 end

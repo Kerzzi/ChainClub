@@ -3,7 +3,7 @@ class Admin::SitesController < Admin::BaseController
 
   def index
     @site_nodes = SiteNode.all
-    @sites = Site.all.paginate(:page => params[:page], :per_page => 20) 
+    @sites = Site.all.recent.paginate(:page => params[:page], :per_page => 20) 
   end
 
   def show

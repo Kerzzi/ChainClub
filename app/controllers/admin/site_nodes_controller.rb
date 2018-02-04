@@ -2,7 +2,7 @@ class Admin::SiteNodesController < Admin::BaseController
   before_action :require_editor!
 
   def index
-    @site_nodes = SiteNode.all.paginate(:page => params[:page], :per_page => 20) 
+    @site_nodes = SiteNode.all.recent.paginate(:page => params[:page], :per_page => 20) 
   end
 
   def edit

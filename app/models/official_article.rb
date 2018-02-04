@@ -15,6 +15,9 @@ class OfficialArticle < ApplicationRecord
 
   has_many :official_article_relationships                   # 收藏文章关系
   has_many :fans, through: :official_article_relationships, source: :user
+  
+  scope :recent, -> { order("created_at DESC")}
+  scope :published, -> { where(:status => "public")}
 
   def to_param
     "#{self.id}-#{self.title}"

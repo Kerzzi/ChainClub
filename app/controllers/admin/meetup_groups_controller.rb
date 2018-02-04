@@ -5,11 +5,11 @@ class Admin::MeetupGroupsController < Admin::BaseController
   def index
     @meetup_groups = case params[:order]
                       when 'by_offline'
-                        MeetupGroup.all.offline_meetup.paginate(:page => params[:page], :per_page => 20)
+                        MeetupGroup.all.recent.offline_meetup.paginate(:page => params[:page], :per_page => 20)
                       when 'by_online'
-                        MeetupGroup.all.online_meetup.paginate(:page => params[:page], :per_page => 20)
+                        MeetupGroup.all.recent.online_meetup.paginate(:page => params[:page], :per_page => 20)
                       else
-                        MeetupGroup.all.paginate(:page => params[:page], :per_page => 20)
+                        MeetupGroup.all.recent.paginate(:page => params[:page], :per_page => 20)
                       end
 
   end

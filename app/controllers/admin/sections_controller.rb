@@ -2,7 +2,7 @@ class Admin::SectionsController < Admin::BaseController
   before_action :find_section, only: [:show, :edit, :update, :destroy]
 
   def index
-    @sections = Section.all
+    @sections = Section.all.recent
   end
 
   def show

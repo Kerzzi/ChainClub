@@ -8,5 +8,6 @@ class Node < ApplicationRecord
 
   scope :hots, -> { order(topics_count: :desc) }
   scope :sorted, -> { order(sort: :desc) }
+  scope :recent, -> { order("created_at DESC")}
 
 end

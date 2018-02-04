@@ -1,6 +1,6 @@
 class Admin::TopicsController < Admin::BaseController
   def index
-    @topics = Topic.all.paginate(:page => params[:page], :per_page => 20)
+    @topics = Topic.all.recent.paginate(:page => params[:page], :per_page => 20)
   end
 
   def show

@@ -16,4 +16,5 @@ class Group < ApplicationRecord
   # Scope #
   scope :random5, -> { limit(5).order("RANDOM()") }
   scope :published, -> { where(:status => "public")}
+  scope :recent, -> { order("created_at DESC")}
 end

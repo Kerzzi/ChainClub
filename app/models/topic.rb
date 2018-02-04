@@ -16,6 +16,7 @@ class Topic < ApplicationRecord
   scope :published, -> { where(:status => "public")}
   scope :random5, -> { limit(5).order("RANDOM()") }
   scope :last_actived,       -> { order(last_active_mark: :desc) }
+  scope :recent, -> { order("created_at DESC")}
 
   scope :high_replies,       -> { order(answers_count: :desc).order(id: :desc) }
   scope :no_reply,           -> { where(answers_count: 0) }
