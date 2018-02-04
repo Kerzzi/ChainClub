@@ -20,7 +20,7 @@
 
     <!-- 最近文章 -->
     <div class="article-author-title-list">
-      <h5>最近文章</h5>
+      <h5>Ta的最新文章</h5>
       <% @userarticles.each do |userarticle| %>
         <p>· <%= link_to(userarticle.title, official_article_path(userarticle)) %><span class="article-author-title-list-time">(<%= userarticle.created_at.strftime("%Y-%m-%d %H:%M:%S") %>)</span></p>
       <% end %>
@@ -30,9 +30,9 @@
 
   <!-- 热评文章 -->
 
-  <div class=" article-show-hot-list">
+  <div class="article-show-hot-list">
 
-    <h5>热评文章</h5>
+    <h5>热评资讯</h5>
 
     <% @article_hots.each do |article_hot| %>
       <hr>
@@ -58,12 +58,12 @@
     <%= link_to("我要投稿", new_official_article_path, class: "btn btn-danger center-block") %>
   </div>
   <hr>
-  <!-- 投稿按钮 -->
+  <!-- 管理按钮 -->
   <% if current_user && current_user.is_editor? %>
-    <div class="">
-      <%= link_to("更新文章", edit_official_article_path(@official_article), class: "btn btn-danger center-block") %>
-      <hr>
-      <%= link_to("隐藏文章", edit_official_article_path(@official_article), class: "btn btn-danger center-block") %>
+
+    <div class="text-center">
+      <%= link_to("更新文章", edit_official_article_path(@official_article), class: "btn btn-success center-block") %>
     </div> 
+
   <% end %>   
 </div>
