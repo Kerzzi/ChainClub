@@ -10,7 +10,7 @@ class TopicsController < ApplicationController
     @topics = Topic.published.paginate(:page => params[:page], :per_page => 16)
   end
 
-  # node这部分还是存在问题
+  # 用于分节点显示文章，node这部分还是存在问题
   def node
     @node = Node.find(params[:id])
     @topics = @node.topics.all

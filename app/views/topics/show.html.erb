@@ -9,7 +9,7 @@
         <div class="panel-heading">
           <div class="row">
             <div class="col-md-11">
-              <h1 class="panel-title"><strong><%= @topic.node.name %></strong> · <%= @topic.title %></h1>
+              <h1 class="panel-title"><strong><%= link_to(@topic.node.name, node_topics_path(@node) ) %></strong> · <%= @topic.title %></h1>
             </div>
 
             <div class="col-md-1">
