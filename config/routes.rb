@@ -135,6 +135,7 @@ Rails.application.routes.draw do
 
   namespace :account do
     resources :users
+    resources :courses
     resources :groups
     resources :posts
     resources :topics

@@ -3,5 +3,6 @@ class Account::MeetupGroupsController < ApplicationController
 
   def index
     @meetup_groups = current_user.meetup_groups.recent.paginate(:page => params[:page], :per_page => 10)
+    @favorite_meetup_groups = current_user.favorite_meetup_groups.recent.paginate(:page => params[:page], :per_page => 10)
   end
 end

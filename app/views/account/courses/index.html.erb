@@ -1,0 +1,77 @@
+<div class="container">
+  <%= render "common/flashes" %>
+</div>
+
+<div class="container">
+  <div class="row show-content">
+    <table class="table">
+      <%= render "common/account_menu" %>
+    </table>
+    <div class="col-md-12">
+      <table class="table table-hover ">
+        <thead>
+          <tr>
+            <th colspan="5" class="text-center">我发布的课程</th>
+          </tr>
+          <tr class="warning">
+            <th>课程名称</th>
+            <th>现价</th>
+            <th>课程网址</th>
+            <th>发布时间</th>
+            <th>管理操作</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @courses.each do |course| %>
+            <tr>
+              <td> <%= link_to(course.title, course_path(course)) %> </td>
+              <td> <%= course.price %> </td>
+              <td> <%= course.url %> </td>
+              <td> <%= time_tag(course.created_at) %> </td>
+              <td> 
+                <%= link_to "", edit_course_path(course), class: "fa fa-pencil" %>
+                <%= link_to "", course_path(course), 'data-confirm' => '确定删除?', method: :delete, class: "fa fa-trash" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <div class="text-center">
+        <%= will_paginate @courses, renderer: BootstrapPagination::Rails, :previous_label => t('上一页'), :next_label => t('下一页') %>
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <table class="table table-hover ">
+        <thead>
+          <tr>
+            <th colspan="5" class="text-center">我收藏的课程</th>
+          </tr>
+          <tr class="warning">
+            <th>课程名称</th>
+            <th>现价</th>
+            <th>课程网址</th>
+            <th>发布时间</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @favorite_courses.each do |course| %>
+            <tr>
+              <td> <%= link_to(course.title, course_path(course)) %> </td>
+              <td> <%= course.price %> </td>
+              <td> <%= course.url %> </td>
+              <td> <%= time_tag(course.created_at) %> </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <div class="text-center">
+        <%= will_paginate @favorite_courses, renderer: BootstrapPagination::Rails, :previous_label => t('上一页'), :next_label => t('下一页') %>
+      </div>
+    </div>
+
+  </div>
+</div>

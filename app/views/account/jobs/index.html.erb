@@ -55,7 +55,7 @@
         </thead>
 
         <tbody>
-          <% @jobs.each do |job| %>
+          <% @favorite_jobs.each do |job| %>
             <tr>
               <td> <%= link_to(job.title, job_path(job)) %> </td>
               <td><span class="label label-success"><%= t(job.category, :scope => "job.category") %></span></td>
@@ -67,7 +67,7 @@
         </tbody>
       </table>
       <div class="text-center">
-        <%= will_paginate @jobs, renderer: BootstrapPagination::Rails, :previous_label => t('上一页'), :next_label => t('下一页') %>
+        <%= will_paginate @favorite_jobs, renderer: BootstrapPagination::Rails, :previous_label => t('上一页'), :next_label => t('下一页') %>
       </div>
     </div>
 

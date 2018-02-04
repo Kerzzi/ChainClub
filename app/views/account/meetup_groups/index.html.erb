@@ -62,7 +62,7 @@
         </thead>
 
         <tbody>
-          <% @meetup_groups.each do |meetup_group| %>
+          <% @favorite_meetup_groups.each do |meetup_group| %>
             <tr>
               <td> <%= link_to(meetup_group.title, meetup_group_path(meetup_group)) %> </td>
               <td> <%= t(meetup_group.meetup_type, :scope => "meetup_group.meetup_type") %></td>
@@ -74,7 +74,7 @@
         </tbody>
       </table>
       <div class="text-center">
-        <%= will_paginate @meetup_groups, renderer: BootstrapPagination::Rails, :previous_label => t('上一页'), :next_label => t('下一页') %>
+        <%= will_paginate @favorite_meetup_groups, renderer: BootstrapPagination::Rails, :previous_label => t('上一页'), :next_label => t('下一页') %>
       </div>
     </div>
 

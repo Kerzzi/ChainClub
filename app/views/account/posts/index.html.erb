@@ -61,7 +61,7 @@
         </thead>
 
         <tbody>
-          <% @posts.each do |post| %>
+          <% @favorite_posts.each do |post| %>
             <tr>
               <td> <%= link_to(post.title, group_post_path(post.group,post)) %> </td>
               <td> <%= link_to(post.group.title, group_path(post.group)) %> </td>
@@ -73,7 +73,7 @@
         </tbody>
       </table>
       <div class="text-center">
-        <%= will_paginate @posts, renderer: BootstrapPagination::Rails, :previous_label => t('上一页'), :next_label => t('下一页') %>
+        <%= will_paginate @favorite_posts, renderer: BootstrapPagination::Rails, :previous_label => t('上一页'), :next_label => t('下一页') %>
       </div>
     </div>
 

@@ -51,7 +51,7 @@
         </thead>
 
         <tbody>
-          <% @topics.each do |topic| %>
+          <% @liked_topics.each do |topic| %>
             <tr>
               <td> <%= link_to(topic.title, topic_path(topic)) %> </td>
               <td> <%= topic.node.name %> </td>
@@ -61,7 +61,7 @@
         </tbody>
       </table>
       <div class="text-center">
-        <%= will_paginate @topics, renderer: BootstrapPagination::Rails, :previous_label => t('上一页'), :next_label => t('下一页') %>
+        <%= will_paginate @liked_topics, renderer: BootstrapPagination::Rails, :previous_label => t('上一页'), :next_label => t('下一页') %>
       </div>
     </div>
 
