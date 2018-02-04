@@ -91,6 +91,8 @@ Rails.application.routes.draw do
       get :search
     end
   end
+  resources :site_nodes
+
   resources :sites do
     collection do
       get :search

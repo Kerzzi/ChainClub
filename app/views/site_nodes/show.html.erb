@@ -1,0 +1,33 @@
+<div class="row search-for-project search-secticon">
+  <%= render "sites/search_bar" %>
+</div>
+
+<div class="container">
+  <%= render "common/flashes" %>
+</div>
+
+<div class="container">
+  <div class="col-md-9">
+
+    <div  class="site-body" >
+
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="site-node">
+            <h4><%= @site_node.name %><span class="pull-right"><%= link_to "返回", sites_path %></span></h4>
+          </div>
+          <hr>
+
+          <% @sites.each do |site| %>
+            <p><%= link_to site.name, site.url, target: "_blank" %> &nbsp; <span><%= site.description %></span></p>        
+          <% end %>
+                    
+        </div>
+      </div>
+  
+    </div>
+  </div>
+  <div class="col-md-3">
+    <%= render "sites/sidebar_for_site_index" %>
+  </div>
+</div>
