@@ -1,36 +1,23 @@
 class UsersController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :find_user
 
-  def show
-  end
-
-  def edit
-    # 跟刚才后台情况一样，如果没有 @user.profile，要先新建一个
-    # unless @user.profile 等同于 if !@user.profile 或 if @user.profile.nil?
-  end
-
-  def update
-    if @user.update(user_params)
-      flash[:notice] = "修改成功"
-      redirect_to user_path
+  def show  
+    
+    if User.find_by_id(params[:id])
+      @user = User.find(params[:id])
+      @user.create_profile unless @user.profile
+      @groups = @user.groups.recent.paginate(:page => params[:page], :per_page => 10)
+      @participated_groups = @user.participated_groups.recent.paginate(:page => params[:page], :per_page => 10)
+      @posts = @user.posts.recent.paginate(:page => params[:page], :per_page => 10)
+      @favorite_posts = @user.favorite_posts.recent.paginate(:page => params[:page], :per_page => 10)
+      @topics = @user.topics.recent.paginate(:page => params[:page], :per_page => 10)
+      @liked_topics = @user.liked_topics.recent.paginate(:page => params[:page], :per_page => 10)
     else
-      render "edit"
+      redirect_to root_path
     end
+    
   end
 
-  protected
-
-  def find_user
-    @user = current_user
-    # 跟刚才后台情况一样，如果没有 @user.profile，要先新建一个
-    # unless @user.profile 等同于 if !@user.profile 或 if @user.profile.nil?
-    @user.create_profile unless @user.profile
-  end
-
-  def user_params
-    params.require(:user).permit(:time_zone, :summary, :username, :avatar, :remove_avatar, :profile_attributes => [:id, :name, :birthday, :location, :school, :education, :company, :occupation, :position, :address, :qq, :github, :weibo, :wechat, :bio, :specialty, :introduce])
-  end
 
 end

@@ -1,0 +1,16 @@
+<p>Email: <%= @user.email %></p>
+<p>个人简介: <%= @user.summary %></p>
+<p>生日: <%= @user.profile.birthday %></p>
+<p>城市: <%= @user.profile.location %></p>
+<p>毕业学校: <%= @user.profile.school %></p>
+<p>教育程度: <%= @user.profile.education %></p>
+<p>公司: <%= @user.profile.company %></p>
+<p>职业: <%= @user.profile.occupation %></p>
+<p>职位: <%= @user.profile.position %></p>
+<p>地址: <%= @user.profile.address %></p>
+<p>QQ号码: <%= @user.profile.qq %></p>
+<p>微博: <%= @user.profile.weibo %></p>
+<p>微信号: <%= @user.profile.wechat %></p>
+<p>个人博客: <%= simple_format @user.profile.bio %></p>
+<p>特长: <%= @user.profile.specialty %></p>
+<p>电话号码: <%= @user.profile.phone %></p>

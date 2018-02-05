@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'welcome/about'
 
   devise_for :users
-  resource :user
+  resources :users
 
   resources :official_articles do
     resources :article_comments

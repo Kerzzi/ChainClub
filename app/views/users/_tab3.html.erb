@@ -1,0 +1,89 @@
+<div class="col-md-12">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th colspan="5" class="text-center">我加入的小组</th>
+      </tr>
+      <tr class="warning">
+        <th>小组名称</th>
+        <th>文章数量</th>
+        <th>成员数量</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @participated_groups.each do |group| %>
+        <tr>
+          <td> <%= link_to(group.title, group_path(group)) %> </td>
+          <td> <%= group.posts.count %> </td>
+          <td> <%= group.members.count %> </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="text-center">
+    <%= will_paginate @participated_groups, renderer: BootstrapPagination::Rails, :previous_label => t('上一页'), :next_label => t('下一页') %>
+  </div>
+</div>
+
+
+<div class="col-md-12">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th colspan="5" class="text-center">我收藏的文章</th>
+      </tr>
+      <tr class="warning">
+        <th>文章标题</th>
+        <th>归属小组</th>
+        <th>评论数量</th>
+        <th>收藏数量</th>
+        <th>更新时间</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @favorite_posts.each do |post| %>
+        <tr>
+          <td> <%= link_to(post.title, group_post_path(post.group,post)) %> </td>
+          <td> <%= link_to(post.group.title, group_path(post.group)) %> </td>
+          <td> <%= post.post_comments.count %> </td>
+          <td> <%= post.post_comments.count %> </td>
+          <td> <%= time_tag(post.updated_at) %> </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="text-center">
+    <%= will_paginate @favorite_posts, renderer: BootstrapPagination::Rails, :previous_label => t('上一页'), :next_label => t('下一页') %>
+  </div>
+</div>
+
+<div class="col-md-12">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th colspan="5" class="text-center">我收藏的话题</th>
+      </tr>
+      <tr class="warning">
+        <th>话题</th>
+        <th>话题类别</th>
+        <th>评论数量</th>
+
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @liked_topics.each do |topic| %>
+        <tr>
+          <td> <%= link_to(topic.title, topic_path(topic)) %> </td>
+          <td> <%= topic.node.name %> </td>
+          <td> <%= topic.answers.count %> </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="text-center">
+    <%= will_paginate @liked_topics, renderer: BootstrapPagination::Rails, :previous_label => t('上一页'), :next_label => t('下一页') %>
+  </div>
+</div>
