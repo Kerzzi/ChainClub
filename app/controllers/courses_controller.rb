@@ -8,6 +8,8 @@ class CoursesController < ApplicationController
 
   def show
     @course = Course.find(params[:id])
+    set_page_title @course.title
+    set_page_description "#{@course.introduce}"
     @course_comment = CourseComment.new
     @course_comments = @course.course_comments.recent.paginate(:page => params[:page], :per_page => 10)
   end

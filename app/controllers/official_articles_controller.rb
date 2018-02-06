@@ -10,6 +10,8 @@ class OfficialArticlesController < ApplicationController
 
   def show
     @official_article = OfficialArticle.find(params[:id])
+    set_page_title @official_article.title
+    set_page_description "#{@official_article.content}"     
     @user = @official_article.user
     @userarticles = @official_article.user.official_articles.recent.paginate(:page => params[:page], :per_page => 5)
     @article_comments = @official_article.article_comments.recent

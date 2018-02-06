@@ -31,7 +31,8 @@ class TopicsController < ApplicationController
   def show
     @topic = Topic.unscoped.includes(:user).find(params[:id])
     @commends = Topic.where.not(:id => @topic.id ).random5
-
+    set_page_title @topic.title
+    set_page_description "#{@topic.content}"
     @node = @topic.node
     @user = @topic.user
     # @answers = @topic.answers

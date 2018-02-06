@@ -10,6 +10,8 @@ class PostsController < ApplicationController
   def show
     @group = Group.find(params[:group_id])
     @post = Post.find(params[:id])
+    set_page_title @post.title
+    set_page_description "#{@post.content}"    
     @post_comments = @post.post_comments.paginate(:page => params[:page], :per_page => 10)
     @commends = Post.where.not(:id => @post.id ).random5
   end

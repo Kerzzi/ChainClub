@@ -66,22 +66,6 @@
     <% end %>
     
     
-    <!-- <hr />
-    
-    <div class="group opts">
-      <% if current_user.is_editor? %>
-        <div style="margin-bottom: 8px">
-          取消、置顶、加精、屏蔽、等操作
-        </div>
-      <% end %>
-
-      <% if current_user == @post.user or current_user.is_editor? %>
-      <div>
-          关闭话题、重新修改、开启话题。
-      </div>
-      <% end %>
-    </div> -->
-    
     <br>
     <a href="#" class="btn btn-block btn-move-page" data-type="bottom"><i class="fa fa-arrow-down"></i></a>
   </div>
@@ -91,7 +75,7 @@
 <div class="panel panel-default">
   <div class="panel-heading">小组信息</div>
   <ul class="list-group">
-    <li class="list-group-item">小组名称：<%= link_to(@post.group.title, group_path(@group)) %></li>
+    <li class="list-group-item">小组名称：<%= link_to(truncate(@post.group.title,:length => 16), group_path(@group)) %></li>
     <li class="list-group-item">小组成员: <%= Group.count %> 人</li>
     <li class="list-group-item">帖子数: <%= @group.posts.count %> 条</li>
     <li class="list-group-item">

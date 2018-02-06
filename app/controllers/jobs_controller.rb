@@ -17,6 +17,8 @@ class JobsController < ApplicationController
 
   def show
     @job = Job.find(params[:id])
+    set_page_title @job.title
+    set_page_description "#{@job.introduce}"    
     # 随机推荐5个相同类型的职位（去除当前职位） #
     @commends = Job.published.where.not(:id => @job.id ).random5
 
