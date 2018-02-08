@@ -1,5 +1,5 @@
 GEM
-  remote: https://rubygems.org/
+  remote: https://gems.ruby-china.org/
   specs:
     action-store (0.3.2)
       rails (~> 5, >= 4.2.0)
