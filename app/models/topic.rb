@@ -9,6 +9,7 @@ class Topic < ApplicationRecord
   has_many :topic_relationships
   has_many :fans, through: :topic_relationships, source: :user
 
+
   STATUS = ["draft", "public", "private"]
   validates_inclusion_of :status, :in => STATUS
 
