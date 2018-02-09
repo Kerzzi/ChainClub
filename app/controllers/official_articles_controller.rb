@@ -5,7 +5,7 @@ class OfficialArticlesController < ApplicationController
   # ---CRUD---
   def index
     @official_articles = OfficialArticle.where(:status => "public").recent.paginate(:page => params[:page], :per_page => 12) 
-    @article_hots = OfficialArticle.where(:status => "public").sort_by{|official_article| -official_article.article_comments.count}    #按数据要求排序
+    @article_hots = OfficialArticle.where(:status => "public").paginate(:page => params[:page], :per_page => 5).sort_by{|official_article| -official_article.article_comments.count}    #按数据要求排序
   end
 
   def show

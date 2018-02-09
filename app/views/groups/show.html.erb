@@ -30,33 +30,24 @@
 
     <div class="panel panel-default">
       <div class="panel-heading">
-        <span><%= link_to("最新话题 ", group_path(@group) ) %></span>/
-        <span><%= link_to("热门话题", group_path(@group, :order => "by_hot")) %></span>
+        <%= link_to("最新话题 ", group_path(@group) ) %> /
+        <%= link_to("热门话题", group_path(@group, :order => "by_hot")) %>
         <!-- /<span>推荐话题</span>/<span>精华帖</span> -->
       </div>
       <div class="panel-body">
 
-        <table class="table table-hover">
-          <thead>
-           <tr>
-              <th>话题</th>
-              <th>作者</th>
-              <th>评论数</th>
-              <th>发表时间</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @posts.each do |post| %>
-              <tr>
-                <td><%= link_to post.title, group_post_path(@group,post) %></td>
-                <td><%= post.user.display_name %></td>
-                <td><%= post.post_comments.size %></td>
-                <td><%= time_tag(post.created_at) %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-
+        <% @posts.each do |post| %>
+          <p>
+            <%= link_to post.group.title, group_path(post.group) %> · <%= link_to truncate(post.title,:length => 23), group_post_path(post.group,post) %>  <span class="badge"><%= post.post_comments.count %></span>
+            <span class="pull-right">
+              <span class="glyphicon glyphicon-user" aria-hidden="true"></span> <%= post.user.display_name %> ·
+              <span class="glyphicon glyphicon-time" aria-hidden="true"></span> <%= time_tag(post.created_at) %>
+            </span>
+          </p>
+        <% end %>
+        <div class="text-center">
+          <%= will_paginate @posts, renderer: BootstrapPagination::Rails, :previous_label => t('上一页'), :next_label => t('下一页') %>
+        </div>
       </div>
     </div>
   </div>
