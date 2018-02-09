@@ -22,7 +22,7 @@
               <% if official_article.image.present? %>
                 <%= link_to image_tag(official_article.image.articleimg.url, class: "product-list-style-img img-responsive"), official_article_path(official_article) %>
               <% else %>
-                <%= link_to image_tag("http://placehold.it/600x400&text=No Pic", class: "product-list-style-img img-responsive"), official_article_path(article)%>
+                <%= link_to image_tag("https://ww2.sinaimg.cn/large/006tKfTcly1fnt7p9w5h6j306o06owec.jpg", class: "product-list-style-img img-responsive"), official_article_path(official_article)%>
               <% end %>
             </div>
 
